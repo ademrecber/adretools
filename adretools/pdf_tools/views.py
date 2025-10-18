@@ -33,10 +33,10 @@ def convert_pdf_to_word(request):
     
     try:
         from docx import Document
-        import PyPDF2
+        from pypdf import PdfReader
         
         # PDF oku
-        reader = PyPDF2.PdfReader(pdf_file)
+        reader = PdfReader(pdf_file)
         
         # Word belgesi oluştur
         doc = Document()
@@ -79,11 +79,11 @@ def convert_pdf_to_excel(request):
     pdf_file = request.FILES['pdf']
     
     try:
-        import PyPDF2
+        from pypdf import PdfReader
         import pandas as pd
         
         # PDF oku
-        reader = PyPDF2.PdfReader(pdf_file)
+        reader = PdfReader(pdf_file)
         
         # Tüm metni topla
         all_text = ""
@@ -146,7 +146,7 @@ def split_pdf(request):
     pdf_file = request.FILES['pdf']
     
     try:
-        from PyPDF2 import PdfReader, PdfWriter
+        from pypdf import PdfReader, PdfWriter
         import zipfile
         
         # PDF'i oku
@@ -192,7 +192,7 @@ def merge_pdf(request):
         return JsonResponse({'error': 'At least 2 PDF files required'}, status=400)
     
     try:
-        from PyPDF2 import PdfReader, PdfWriter
+        from pypdf import PdfReader, PdfWriter
         
         writer = PdfWriter()
         
@@ -226,7 +226,7 @@ def compress_pdf(request):
     pdf_file = request.FILES['pdf']
     
     try:
-        from PyPDF2 import PdfReader, PdfWriter
+        from pypdf import PdfReader, PdfWriter
         
         reader = PdfReader(pdf_file)
         writer = PdfWriter()
@@ -261,7 +261,7 @@ def encrypt_pdf(request):
     password = request.POST['password']
     
     try:
-        from PyPDF2 import PdfReader, PdfWriter
+        from pypdf import PdfReader, PdfWriter
         
         # Geçici dosya oluştur
         with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as temp_pdf:
@@ -313,7 +313,7 @@ def add_watermark(request):
     try:
         from reportlab.pdfgen import canvas
         from reportlab.lib.pagesizes import letter
-        from PyPDF2 import PdfReader, PdfWriter
+        from pypdf import PdfReader, PdfWriter
         
         # Geçici dosya oluştur
         with tempfile.NamedTemporaryFile(suffix='.pdf', delete=False) as temp_pdf:
