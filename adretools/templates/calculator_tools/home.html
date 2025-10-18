@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Calculator Tools - BMI, Age, World Clock - AdreTools" %}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="Free online calculators: BMI calculator, age calculator, world clock, percentage calculator. Fast and accurate calculation tools.">
+<meta name="keywords" content="bmi calculator, age calculator, world clock, body mass index, calculate age, time zones, percentage calculator">
+<meta property="og:title" content="Free Online Calculator Tools - BMI, Age, World Clock">
+<meta property="og:description" content="Professional calculator tools: BMI calculator, age calculator, world clock and more calculation tools online for free.">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center mb-4">
+        <h1><i class="fas fa-calculator text-primary"></i> {% trans "Calculator Tools" %}</h1>
+        <p class="lead">{% trans "Free online calculators for daily use" %}</p>
+        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+    </div>
+</div>
+
+<div class="row g-4">
+    {% for tool in tools %}
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="{{ tool.icon }} fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">{{ tool.name }}</h5>
+                <p class="card-text">{{ tool.desc }}</p>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{ tool.id }}Modal">
+                    {% trans "Calculate" %}
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- BMI Calculator Modal -->
+<div class="modal fade" id="bmiModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-weight"></i> {% trans "BMI Calculator" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">{% trans "Weight (kg)" %}</label>
+                        <input type="number" id="weight" class="form-control" placeholder="70" step="0.1">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">{% trans "Height (cm)" %}</label>
+                        <input type="number" id="height" class="form-control" placeholder="175" step="0.1">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" onclick="calculateBMI()">{% trans "Calculate BMI" %}</button>
+                </div>
+                <div id="bmiResult" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Age Calculator Modal -->
+<div class="modal fade" id="ageModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-birthday-cake"></i> {% trans "Age Calculator" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">{% trans "Birth Date" %}</label>
+                    <input type="date" id="birthDate" class="form-control">
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" onclick="calculateAge()">{% trans "Calculate Age" %}</button>
+                </div>
+                <div id="ageResult" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- World Clock Modal -->
+<div class="modal fade" id="world-clockModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-globe"></i> {% trans "World Clock" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row" id="worldClocks">
+                    <!-- World clocks will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Percentage Calculator Modal -->
+<div class="modal fade" id="percentageModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-percent"></i> {% trans "Percentage Calculator" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label">{% trans "Number" %}</label>
+                        <input type="number" id="number" class="form-control" placeholder="50">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">{% trans "Percentage" %}</label>
+                        <input type="number" id="percentage" class="form-control" placeholder="20">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">{% trans "Result" %}</label>
+                        <input type="text" id="percentResult" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" onclick="calculatePercentage()">{% trans "Calculate" %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Date Calculator Modal -->
+<div class="modal fade" id="dateModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-calendar"></i> {% trans "Date Calculator" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">{% trans "Start Date" %}</label>
+                        <input type="date" id="startDate" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">{% trans "End Date" %}</label>
+                        <input type="date" id="endDate" class="form-control">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" onclick="calculateDateDiff()">{% trans "Calculate Days" %}</button>
+                </div>
+                <div id="dateResult" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/calculator-tools.js"></script>
+{% endblock %}

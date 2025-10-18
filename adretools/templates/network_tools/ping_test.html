@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ description }}">
+<meta name="keywords" content="{{ keywords }}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1><i class="fas fa-wifi text-info"></i> {% trans "Online Ping Test - Free" %}</h1>
+            <p class="lead">{% trans "Test connection speed" %}</p>
+            <a href="{% url 'network_tools:home' %}" class="btn btn-outline-secondary">← {% trans "Network Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-wifi"></i> {% trans "Ping Test" %}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Target IP/Domain" %}</label>
+                        <input type="text" id="pingTarget" class="form-control" placeholder="{% trans 'e.g: google.com' %}">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Packet Count" %}</label>
+                        <select id="pingCount" class="form-select">
+                            <option value="4">4 {% trans "packets" %}</option>
+                            <option value="8">8 {% trans "packets" %}</option>
+                            <option value="16">16 {% trans "packets" %}</option>
+                        </select>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-info btn-lg" onclick="pingTest()">
+                            <i class="fas fa-play"></i> {% trans "Start Ping" %}
+                        </button>
+                    </div>
+                    
+                    <div id="pingResult" class="mt-4" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function pingTest() {
+    const target = document.getElementById('pingTarget').value.trim();
+    const count = document.getElementById('pingCount').value;
+    
+    if (!target) {
+        alert('{% trans "Please enter target IP/domain!" %}');
+        return;
+    }
+    
+    try {
+        const response = await fetch('/network/api/ping-test/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ target: target, count: parseInt(count) })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.status === 'success') {
+            document.getElementById('pingResult').innerHTML = `
+                <div class="alert alert-success">
+                    <h4>Ping Sonucu: ${data.target}</h4>
+                    <p>Gönderilen: ${data.packets_sent} paket</p>
+                    <p>Alınan: ${data.packets_received} paket</p>
+                    <p>Kayıp: %${data.packet_loss}</p>
+                    <p>Ortalama Süre: ${data.avg_time}ms</p>
+                </div>
+            `;
+            document.getElementById('pingResult').style.display = 'block';
+        } else {
+            alert('{% trans "Ping failed" %}: ' + (data.error || '{% trans "Unknown error" %}'));
+        }
+    } catch (error) {
+        alert('{% trans "Connection error" %}: ' + error.message);
+    }
+}
+</script>
+{% endblock %}

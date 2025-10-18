@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "QR & Barcode Tools - AdreTools" %}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center mb-4">
+        <h2><i class="fas fa-qrcode text-primary"></i> {% trans "QR & Barcode Tools" %}</h2>
+        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+    </div>
+</div>
+
+<div class="row g-4">
+    {% for tool in tools %}
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="{{ tool.icon }} fa-2x text-primary mb-3"></i>
+                <h5 class="card-title">{{ tool.name }}</h5>
+                <p class="card-text">{{ tool.desc }}</p>
+                <button class="btn btn-primary" onclick="showTool('{{ tool.id }}')">{% trans "Use" %}</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- QR Oluştur -->
+<div id="generate" class="tool-section mt-5" style="display:none;">
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-qrcode"></i> {% trans "Generate QR Code" %}</h5>
+        </div>
+        <div class="card-body">
+            <!-- QR Türü Seçimi -->
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label class="form-label">{% trans "QR Type" %}</label>
+                    <select id="qrType" class="form-select" onchange="changeQRType()">
+                        <option value="text">{% trans "Text" %}</option>
+                        <option value="url">{% trans "URL/Link" %}</option>
+                        <option value="wifi">{% trans "WiFi" %}</option>
+                        <option value="sms">{% trans "SMS" %}</option>
+                        <option value="email">{% trans "Email" %}</option>
+                        <option value="phone">{% trans "Phone" %}</option>
+                        <option value="vcard">{% trans "vCard (Contact)" %}</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- İçerik Alanları -->
+            <div id="contentArea">
+                <!-- Metin/URL -->
+                <div id="textContent" class="content-type">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Content" %}</label>
+                        <textarea id="qrText" class="form-control" rows="3" placeholder="{% trans 'Enter QR code content...' %}"></textarea>
+                    </div>
+                </div>
+
+                <!-- WiFi -->
+                <div id="wifiContent" class="content-type" style="display:none;">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">{% trans "Network Name (SSID)" %}</label>
+                            <input type="text" id="wifiSSID" class="form-control" placeholder="{% trans 'WiFi network name' %}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">{% trans "Password" %}</label>
+                            <input type="text" id="wifiPassword" class="form-control" placeholder="{% trans 'WiFi password' %}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Security Type" %}</label>
+                        <select id="wifiSecurity" class="form-select">
+                            <option value="WPA">WPA/WPA2</option>
+                            <option value="WEP">WEP</option>
+                            <option value="nopass">{% trans "No Password" %}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- SMS -->
+                <div id="smsContent" class="content-type" style="display:none;">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">{% trans "Phone Number" %}</label>
+                            <input type="text" id="smsPhone" class="form-control" placeholder="+90 555 123 45 67">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">{% trans "Message" %}</label>
+                            <input type="text" id="smsMessage" class="form-control" placeholder="{% trans 'SMS message' %}">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div id="emailContent" class="content-type" style="display:none;">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Email Address" %}</label>
+                        <input type="email" id="emailAddress" class="form-control" placeholder="{% trans 'example@email.com' %}">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">{% trans "Subject" %}</label>
+                            <input type="text" id="emailSubject" class="form-control" placeholder="{% trans 'Email subject' %}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">{% trans "Message" %}</label>
+                            <textarea id="emailBody" class="form-control" rows="2" placeholder="{% trans 'Email content' %}"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Telefon -->
+                <div id="phoneContent" class="content-type" style="display:none;">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Phone Number" %}</label>
+                        <input type="text" id="phoneNumber" class="form-control" placeholder="+90 555 123 45 67">
+                    </div>
+                </div>
+
+                <!-- vCard -->
+                <div id="vcardContent" class="content-type" style="display:none;">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">{% trans "First Name" %}</label>
+                            <input type="text" id="vcardFirstName" class="form-control" placeholder="{% trans 'First Name' %}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">{% trans "Last Name" %}</label>
+                            <input type="text" id="vcardLastName" class="form-control" placeholder="{% trans 'Last Name' %}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">{% trans "Phone" %}</label>
+                            <input type="text" id="vcardPhone" class="form-control" placeholder="+90 555 123 45 67">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">{% trans "Email" %}</label>
+                            <input type="email" id="vcardEmail" class="form-control" placeholder="{% trans 'example@email.com' %}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Company" %}</label>
+                        <input type="text" id="vcardOrg" class="form-control" placeholder="{% trans 'Company name' %}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- QR Ayarları -->
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">{% trans "Size" %}</label>
+                    <select id="qrSize" class="form-select">
+                        <option value="200">{% trans "Small (200px)" %}</option>
+                        <option value="400" selected>{% trans "Medium (400px)" %}</option>
+                        <option value="600">{% trans "Large (600px)" %}</option>
+                        <option value="800">{% trans "Extra Large (800px)" %}</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">{% trans "Error Correction" %}</label>
+                    <select id="qrErrorCorrection" class="form-select">
+                        <option value="L">{% trans "Low (7%)" %}</option>
+                        <option value="M" selected>{% trans "Medium (15%)" %}</option>
+                        <option value="Q">{% trans "High (25%)" %}</option>
+                        <option value="H">{% trans "Very High (30%)" %}</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">{% trans "Foreground Color" %}</label>
+                    <input type="color" id="qrForeground" class="form-control form-control-color" value="#000000">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label class="form-label">{% trans "Background Color" %}</label>
+                    <input type="color" id="qrBackground" class="form-control form-control-color" value="#ffffff">
+                </div>
+            </div>
+
+            <!-- QR Şekli -->
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">{% trans "QR Shape" %}</label>
+                    <select id="qrStyle" class="form-select">
+                        <option value="square">Kare</option>
+                        <option value="round">Yuvarlak</option>
+                        <option value="dot">Nokta</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Logo Ekle (Opsiyonel)</label>
+                    <input type="file" id="qrLogo" class="form-control" accept="image/*">
+                </div>
+            </div>
+
+            <!-- Önizleme ve Oluştur -->
+            <div class="text-center">
+                <button class="btn btn-primary me-2" onclick="generateQR()">QR Oluştur</button>
+                <button class="btn btn-success me-2" onclick="downloadQR('png')">PNG İndir</button>
+                <button class="btn btn-info me-2" onclick="downloadQR('jpg')">JPG İndir</button>
+                <button class="btn btn-warning me-2" onclick="downloadQR('svg')">SVG İndir</button>
+                <button class="btn btn-danger" onclick="downloadQR('pdf')">PDF İndir</button>
+            </div>
+
+            <!-- QR Önizleme -->
+            <div id="qrPreview" class="text-center mt-4" style="display:none;">
+                <h6>QR Kod Önizleme:</h6>
+                <div id="qrCanvas"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- QR Oku -->
+<div id="read" class="tool-section mt-5" style="display:none;">
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-camera"></i> QR Kod Oku</h5>
+        </div>
+        <div class="card-body text-center">
+            <button class="btn btn-primary" onclick="readQR()">QR Resmi Seç ve Oku</button>
+            <div id="qrResult" class="mt-3"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Barkod Oluştur -->
+<div id="barcode" class="tool-section mt-5" style="display:none;">
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-barcode"></i> Barkod Oluştur</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Barkod Türü</label>
+                    <select id="barcodeType" class="form-select">
+                        <option value="code128">Code 128</option>
+                        <option value="ean13">EAN-13</option>
+                        <option value="upc">UPC-A</option>
+                        <option value="code39">Code 39</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Barkod Verisi</label>
+                    <input type="text" id="barcodeData" class="form-control" placeholder="Barkod verisi girin">
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-primary me-2" onclick="generateBarcode()">Barkod Oluştur</button>
+                <button class="btn btn-success me-2" onclick="downloadBarcode('png')">PNG İndir</button>
+                <button class="btn btn-info me-2" onclick="downloadBarcode('jpg')">JPG İndir</button>
+                <button class="btn btn-danger" onclick="downloadBarcode('pdf')">PDF İndir</button>
+            </div>
+            <div id="barcodePreview" class="text-center mt-4" style="display:none;">
+                <h6>Barkod Önizleme:</h6>
+                <div id="barcodeCanvas"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% load static %}{% static 'js/qr-tools.js' %}"></script>
+{% endblock %}

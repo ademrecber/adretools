@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "URL Shortener" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+.url-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+.stats-card { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+.result-card { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; }
+.qr-code { max-width: 200px; border: 3px solid white; border-radius: 10px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <a href="/" class="btn btn-outline-secondary mb-3">
+            <i class="fas fa-home"></i> {% trans "Back to Home" %}
+        </a>
+        <h1 class="display-4 text-primary">🔗 {% trans "URL Shortener" %}</h1>
+        <p class="lead">{% trans "Shorten long links and generate QR codes" %}</p>
+    </div>
+
+    <div class="row">
+        <!-- URL Kısaltma -->
+        <div class="col-md-6">
+            <div class="card url-card mb-4">
+                <div class="card-header">
+                    <h5><i class="fas fa-link"></i> {% trans "Shorten URL" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>{% trans "Long URL" %}:</label>
+                        <input type="url" id="originalUrl" class="form-control" placeholder="https://example.com/very/long/url">
+                    </div>
+                    <button class="btn btn-light btn-block" onclick="shortenUrl()">
+                        <i class="fas fa-compress-alt"></i> {% trans "Shorten" %}
+                    </button>
+                </div>
+            </div>
+
+            <!-- İstatistik Sorgulama -->
+            <div class="card stats-card">
+                <div class="card-header">
+                    <h5><i class="fas fa-chart-line"></i> {% trans "Query Statistics" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>{% trans "Short Code" %}:</label>
+                        <input type="text" id="statsCode" class="form-control" placeholder="abc123">
+                    </div>
+                    <button class="btn btn-light btn-block" onclick="getStats()">
+                        <i class="fas fa-search"></i> {% trans "Get Statistics" %}
+                    </button>
+                    <div id="statsResult" class="mt-3" style="display: none;">
+                        <div class="alert alert-light">
+                            <strong>{% trans "Original URL" %}:</strong> <span id="statsOriginalUrl"></span><br>
+                            <strong>{% trans "Click Count" %}:</strong> <span id="statsClickCount"></span><br>
+                            <strong>{% trans "Created" %}:</strong> <span id="statsCreatedAt"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sonuç -->
+        <div class="col-md-6">
+            <div id="resultCard" class="card result-card" style="display: none;">
+                <div class="card-header">
+                    <h5><i class="fas fa-check-circle"></i> {% trans "Shortened URL" %}</h5>
+                </div>
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <label>{% trans "Short URL" %}:</label>
+                        <div class="input-group">
+                            <input type="text" id="shortUrl" class="form-control" readonly>
+                            <div class="input-group-append">
+                                <button class="btn btn-light" onclick="copyUrl()">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>{% trans "QR Code" %}:</label><br>
+                        <img id="qrCode" class="qr-code" alt="{% trans 'QR Code' %}">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <small>
+                            <strong>{% trans "Click Count" %}:</strong> <span id="clickCount">0</span><br>
+                            <strong>{% trans "Original URL" %}:</strong> <span id="displayOriginalUrl"></span>
+                        </small>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-light btn-sm btn-block" onclick="downloadQR()">
+                                <i class="fas fa-download"></i> {% trans "Download QR" %}
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-light btn-sm btn-block" onclick="shareUrl()">
+                                <i class="fas fa-share"></i> {% trans "Share" %}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/url-tools.js' %}"></script>
+{% endblock %}

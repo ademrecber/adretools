@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ description }}">
+<meta name="keywords" content="{{ keywords }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Hash Generator - AdreTools",
+  "description": "{{ description }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "applicationCategory": "SecurityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TRY"
+  },
+  "featureList": [
+    "MD5 Hash",
+    "SHA1 Hash",
+    "SHA256 Hash",
+    "SHA512 Hash"
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1><i class="fas fa-fingerprint text-success"></i> {% trans "Online Hash Generator - Free" %}</h1>
+            <p class="lead">{% trans "Generate MD5, SHA1, SHA256 hash values" %}</p>
+            <a href="{% url 'dev_tools:home' %}" class="btn btn-outline-secondary">← {% trans "Developer Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-fingerprint"></i> {% trans "Hash Generator" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Text" %}</label>
+                        <textarea id="hashInput" class="form-control" rows="4" placeholder="{% trans 'Enter the text you want to hash...' %}"></textarea>
+                    </div>
+                    
+                    <div class="text-center mb-4">
+                        <button class="btn btn-success btn-lg" onclick="generateHashes()">
+                            <i class="fas fa-magic"></i> {% trans "Generate Hash" %}
+                        </button>
+                    </div>
+                    
+                    <div id="hashResults" style="display:none;">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">MD5</label>
+                                <div class="input-group">
+                                    <input type="text" id="md5Hash" class="form-control" readonly>
+                                    <button class="btn btn-outline-primary" onclick="copyHash('md5Hash')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">SHA1</label>
+                                <div class="input-group">
+                                    <input type="text" id="sha1Hash" class="form-control" readonly>
+                                    <button class="btn btn-outline-primary" onclick="copyHash('sha1Hash')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">SHA256</label>
+                                <div class="input-group">
+                                    <input type="text" id="sha256Hash" class="form-control" readonly>
+                                    <button class="btn btn-outline-primary" onclick="copyHash('sha256Hash')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">SHA512</label>
+                                <div class="input-group">
+                                    <input type="text" id="sha512Hash" class="form-control" readonly>
+                                    <button class="btn btn-outline-primary" onclick="copyHash('sha512Hash')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="hashStatus" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{% trans "About Hash Algorithms" %}</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>🔐 MD5</h5>
+                            <p>{% trans "128-bit hash value. Fast but weak in terms of security." %}</p>
+                            
+                            <h5>🔒 SHA1</h5>
+                            <p>{% trans "160-bit hash value. More secure than MD5 but no longer recommended." %}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>🛡️ SHA256</h5>
+                            <p>{% trans "256-bit hash value. The most widely used secure algorithm today." %}</p>
+                            
+                            <h5>🔐 SHA512</h5>
+                            <p>{% trans "512-bit hash value. Highest security level." %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function generateHashes() {
+    const input = document.getElementById('hashInput').value.trim();
+    
+    if (!input) {
+        showStatus('{% trans "Please enter text!" %}', 'warning');
+        return;
+    }
+    
+    try {
+        const response = await fetch('/dev/api/hash-generator/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: input })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            document.getElementById('md5Hash').value = data.hashes.md5;
+            document.getElementById('sha1Hash').value = data.hashes.sha1;
+            document.getElementById('sha256Hash').value = data.hashes.sha256;
+            document.getElementById('sha512Hash').value = data.hashes.sha512;
+            
+            document.getElementById('hashResults').style.display = 'block';
+            showStatus('✅ {% trans "Hash values generated!" %}', 'success');
+        } else {
+            showStatus('❌ ' + data.error, 'danger');
+        }
+    } catch (error) {
+        showStatus('❌ {% trans "Connection error" %}: ' + error.message, 'danger');
+    }
+}
+
+function copyHash(elementId) {
+    const element = document.getElementById(elementId);
+    element.select();
+    document.execCommand('copy');
+    showStatus('📋 {% trans "Hash copied!" %}', 'info');
+}
+
+function showStatus(message, type) {
+    document.getElementById('hashStatus').innerHTML = `
+        <div class="alert alert-${type} alert-dismissible fade show">
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    `;
+}
+</script>
+{% endblock %}

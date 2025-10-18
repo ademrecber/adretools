@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "AdreTools - Free Online Tools: PDF, Image, QR Code, Network Tools" %}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="Free online tools collection: PDF split/merge, image editor, QR code generator, network tools, developer tools. No registration required.">
+<meta name="keywords" content="online tools, pdf tools, image editor, qr code generator, network tools, developer tools, free tools, web tools">
+<meta property="og:title" content="AdreTools - Free Online Tools Collection">
+<meta property="og:description" content="Professional online tools for PDF editing, image processing, QR codes, network analysis and development. All free to use.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AdreTools - Free Online Tools">
+<meta name="twitter:description" content="Complete collection of free online tools for professionals">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AdreTools - Free Online Tools",
+  "description": "Complete collection of free online tools for PDF, images, QR codes, networking and development",
+  "url": "{{ request.build_absolute_uri }}",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Online Tools Collection",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "SoftwareApplication", "name": "PDF Tools", "description": "Split, merge, convert PDF files"}},
+      {"@type": "Offer", "itemOffered": {"@type": "SoftwareApplication", "name": "Image Tools", "description": "Resize, crop, convert images"}},
+      {"@type": "Offer", "itemOffered": {"@type": "SoftwareApplication", "name": "QR Code Generator", "description": "Create and read QR codes"}},
+      {"@type": "Offer", "itemOffered": {"@type": "SoftwareApplication", "name": "Network Tools", "description": "IP lookup, ping test, speed test"}},
+      {"@type": "Offer", "itemOffered": {"@type": "SoftwareApplication", "name": "Developer Tools", "description": "JSON formatter, hash generator, regex tester"}}
+    ]
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center mb-5">
+        <h1 class="display-4">AdreTools</h1>
+        <p class="lead">{% trans "Daily tools to make your work easier" %}</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    {% for tool in tools %}
+    <div class="col-md-4">
+        <div class="card tool-card h-100">
+            <div class="card-body text-center">
+                <i class="{{ tool.icon }} fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">{{ tool.name }}</h5>
+                <p class="card-text">{{ tool.desc }}</p>
+                <a href="{{ tool.url }}" class="btn btn-primary">{% trans "View Tools" %}</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

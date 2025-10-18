@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ description }}">
+<meta name="keywords" content="{{ keywords }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Online IP Lookup - Ücretsiz",
+  "description": "{{ description }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "applicationCategory": "NetworkingApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TRY"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1><i class="fas fa-search-location text-info"></i> {% trans "Online IP Lookup - Free" %}</h1>
+            <p class="lead">{% trans "Query IP address location, ISP information and details" %}</p>
+            <a href="{% url 'network_tools:home' %}" class="btn btn-outline-secondary">← {% trans "Network Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-search-location"></i> {% trans "Query IP Address" %}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "IP Address" %}</label>
+                        <input type="text" id="ipInput" class="form-control" placeholder="{% trans 'e.g: 8.8.8.8' %}">
+                        <small class="text-muted">{% trans "Enter IP address in IPv4 format" %}</small>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-info btn-lg" onclick="lookupIP()">
+                            <i class="fas fa-search"></i> {% trans "Lookup IP" %}
+                        </button>
+                    </div>
+                    
+                    <div id="loadingSpinner" class="text-center mt-3" style="display:none;">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="visually-hidden">{% trans "Querying..." %}</span>
+                        </div>
+                        <p class="mt-2">{% trans "Querying IP information..." %}</p>
+                    </div>
+                    
+                    <div id="ipResult" class="mt-4" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{% trans "What is IP Lookup?" %}</h3>
+                    <p>{% trans "IP Lookup is a tool that allows you to learn the geographical location, internet service provider (ISP) and other technical information of an IP address." %}</p>
+                    
+                    <h4>{% trans "Features:" %}</h4>
+                    <ul>
+                        <li>🌍 {% trans "Geographical location (country, city, region)" %}</li>
+                        <li>🏢 {% trans "ISP and organization information" %}</li>
+                        <li>🕐 {% trans "Time zone information" %}</li>
+                        <li>📍 {% trans "Latitude and longitude coordinates" %}</li>
+                        <li>⚡ {% trans "Fast and reliable results" %}</li>
+                    </ul>
+                    
+                    <h4>Kullanım Alanları:</h4>
+                    <ul>
+                        <li>Güvenlik analizi ve log inceleme</li>
+                        <li>Coğrafi hedefleme</li>
+                        <li>Ağ yönetimi ve troubleshooting</li>
+                        <li>Spam ve kötü amaçlı trafiğin tespiti</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function lookupIP() {
+    const ip = document.getElementById('ipInput').value.trim();
+    
+    if (!ip) {
+        alert('{% trans "Please enter an IP address!" %}');
+        return;
+    }
+    
+    // IP format kontrolü
+    const ipRegex = /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+    if (!ipRegex.test(ip)) {
+        alert('{% trans "Invalid IP address format!" %}');
+        return;
+    }
+    
+    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('ipResult').style.display = 'none';
+    
+    try {
+        const response = await fetch('/network/api/ip-lookup/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ ip: ip })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            displayIPResult(data);
+        } else {
+            alert('{% trans "Error" %}: ' + data.error);
+        }
+    } catch (error) {
+        alert('{% trans "Connection error" %}: ' + error.message);
+    } finally {
+        document.getElementById('loadingSpinner').style.display = 'none';
+    }
+}
+
+function displayIPResult(data) {
+    const resultDiv = document.getElementById('ipResult');
+    
+    resultDiv.innerHTML = `
+        <div class="alert alert-success">
+            <h4><i class="fas fa-check-circle"></i> IP Bilgileri Bulundu!</h4>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <tr><th>IP Adresi:</th><td>${data.ip}</td></tr>
+                    <tr><th>Ülke:</th><td>${data.country || 'Bilinmiyor'}</td></tr>
+                    <tr><th>Bölge:</th><td>${data.region || 'Bilinmiyor'}</td></tr>
+                    <tr><th>Şehir:</th><td>${data.city || 'Bilinmiyor'}</td></tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <tr><th>ISP:</th><td>${data.isp || 'Bilinmiyor'}</td></tr>
+                    <tr><th>Organizasyon:</th><td>${data.org || 'Bilinmiyor'}</td></tr>
+                    <tr><th>Zaman Dilimi:</th><td>${data.timezone || 'Bilinmiyor'}</td></tr>
+                    <tr><th>Koordinatlar:</th><td>${data.lat}, ${data.lon}</td></tr>
+                </table>
+            </div>
+        </div>
+    `;
+    
+    resultDiv.style.display = 'block';
+}
+
+// Enter tuşu ile arama
+document.getElementById('ipInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        lookupIP();
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'dev_tools:home' %}">{% trans "Developer Tools" %}</a></li>
+                    <li class="breadcrumb-item active">{% trans "Timestamp Converter" %}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mb-4">{% trans "Timestamp Converter" %}</h1>
+            <p class="lead">{% trans "Convert Unix timestamps to human readable dates and vice versa" %}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>{% trans "Timestamp to Date" %}</h5>
+                </div>
+                <div class="card-body">
+                    <input type="number" id="timestampInput" class="form-control mb-3" placeholder="{% trans 'Enter Unix timestamp (e.g. 1640995200)' %}">
+                    <button id="convertToDateBtn" class="btn btn-primary">{% trans "Convert to Date" %}</button>
+                    <div id="dateResult" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5>{% trans "Date to Timestamp" %}</h5>
+                </div>
+                <div class="card-body">
+                    <input type="datetime-local" id="dateInput" class="form-control mb-3">
+                    <button id="convertToTimestampBtn" class="btn btn-primary">{% trans "Convert to Timestamp" %}</button>
+                    <div id="timestampResult" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>{% trans "Current Timestamp" %}</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>{% trans "Current Unix Timestamp:" %}</strong> <span id="currentTimestamp"></span></p>
+                    <p><strong>{% trans "Current Date:" %}</strong> <span id="currentDate"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const timestampInput = document.getElementById('timestampInput');
+    const dateInput = document.getElementById('dateInput');
+    const convertToDateBtn = document.getElementById('convertToDateBtn');
+    const convertToTimestampBtn = document.getElementById('convertToTimestampBtn');
+    const dateResult = document.getElementById('dateResult');
+    const timestampResult = document.getElementById('timestampResult');
+    const currentTimestamp = document.getElementById('currentTimestamp');
+    const currentDate = document.getElementById('currentDate');
+
+    // Update current timestamp every second
+    function updateCurrent() {
+        const now = new Date();
+        const timestamp = Math.floor(now.getTime() / 1000);
+        currentTimestamp.textContent = timestamp;
+        currentDate.textContent = now.toLocaleString();
+    }
+    updateCurrent();
+    setInterval(updateCurrent, 1000);
+
+    convertToDateBtn.addEventListener('click', async function() {
+        const timestamp = timestampInput.value.trim();
+        if (!timestamp) {
+            alert('{% trans "Please enter timestamp!" %}');
+            return;
+        }
+
+        try {
+            const response = await fetch('{% url "dev_tools:timestamp_converter_api" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    timestamp: timestamp,
+                    action: 'to_date'
+                })
+            });
+
+            const data = await response.json();
+            
+            if (response.ok) {
+                dateResult.innerHTML = `
+                    <div class="alert alert-success">
+                        <strong>{% trans "Local Time:" %}</strong> ${data.date}<br>
+                        <strong>{% trans "UTC Time:" %}</strong> ${data.utc}<br>
+                        <strong>{% trans "ISO Format:" %}</strong> ${data.iso}
+                    </div>
+                `;
+            } else {
+                dateResult.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+            }
+        } catch (error) {
+            dateResult.innerHTML = '<div class="alert alert-danger">{% trans "Connection error" %}</div>';
+        }
+    });
+
+    convertToTimestampBtn.addEventListener('click', async function() {
+        const date = dateInput.value.trim();
+        if (!date) {
+            alert('{% trans "Please select date!" %}');
+            return;
+        }
+
+        try {
+            const response = await fetch('{% url "dev_tools:timestamp_converter_api" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    date: date,
+                    action: 'to_timestamp'
+                })
+            });
+
+            const data = await response.json();
+            
+            if (response.ok) {
+                timestampResult.innerHTML = `
+                    <div class="alert alert-success">
+                        <strong>{% trans "Unix Timestamp:" %}</strong> ${data.timestamp}
+                    </div>
+                `;
+            } else {
+                timestampResult.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+            }
+        } catch (error) {
+            timestampResult.innerHTML = '<div class="alert alert-danger">{% trans "Connection error" %}</div>';
+        }
+    });
+});
+</script>
+{% endblock %}

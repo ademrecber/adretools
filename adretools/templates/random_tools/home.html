@@ -1,0 +1,349 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Random Tools - Number Generator, Lucky Wheel, Name Picker - AdreTools" %}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="Free random tools: Random number generator, lucky wheel spinner, dice roller, professional name picker lottery system.">
+<meta name="keywords" content="random number generator, lucky wheel, name picker, lottery system, dice roller, kura sistemi, şans çarkı">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<style>
+.wheel-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 5px solid #333;
+    background: #f8f9fa;
+}
+
+.winner-display {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0,0,0,0.8) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 99999 !important;
+    animation: fadeIn 0.5s ease-in;
+}
+.winner-content {
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    animation: bounceIn 1s ease-out;
+    border: 5px solid #fff;
+}
+.winner-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin: 20px 0;
+}
+.winner-name {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #d4af37;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    margin: 20px 0;
+    animation: pulse 2s infinite;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.1); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+}
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+.dice-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.dice {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: transform 0.5s;
+}
+.dice.rolling {
+    animation: roll 1s ease-in-out;
+}
+@keyframes roll {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(90deg); }
+    50% { transform: rotate(180deg); }
+    75% { transform: rotate(270deg); }
+}
+.name-item {
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+.name-item:hover {
+    background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+    transform: translateY(-2px);
+}
+.winner-animation {
+    animation: winner 2s ease-in-out;
+    background: linear-gradient(45deg, #ffd700, #ffed4e) !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5) !important;
+}
+@keyframes winner {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+.winner-segment {
+    animation: glowing 2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 20px currentColor) drop-shadow(0 0 30px currentColor);
+}
+@keyframes glowing {
+    0%, 100% {
+        filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 10px currentColor);
+        opacity: 1;
+    }
+    50% {
+        filter: drop-shadow(0 0 15px currentColor) drop-shadow(0 0 25px currentColor) drop-shadow(0 0 35px currentColor);
+        opacity: 0.8;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center mb-4">
+        <h1><i class="fas fa-dice text-primary"></i> {% trans "Random Tools" %}</h1>
+        <p class="lead">{% trans "Professional random generators and lottery systems" %}</p>
+        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+    </div>
+</div>
+
+<div class="row g-4">
+    {% for tool in tools %}
+    <div class="col-md-3">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="{{ tool.icon }} fa-3x text-primary mb-3"></i>
+                <h5 class="card-title">{{ tool.name }}</h5>
+                <p class="card-text">{{ tool.desc }}</p>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{ tool.id }}Modal">
+                    {% trans "Use Tool" %}
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Random Number Generator Modal -->
+<div class="modal fade" id="random-numberModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-hashtag"></i> {% trans "Random Number Generator" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">{% trans "Minimum" %}</label>
+                        <input type="number" id="minNumber" class="form-control" value="1">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">{% trans "Maximum" %}</label>
+                        <input type="number" id="maxNumber" class="form-control" value="100">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">{% trans "How many numbers?" %}</label>
+                    <input type="number" id="countNumbers" class="form-control" value="1" min="1" max="100">
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary btn-lg" onclick="generateRandomNumbers()">
+                        <i class="fas fa-random"></i> {% trans "Generate" %}
+                    </button>
+                </div>
+                <div id="randomResult" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Lucky Wheel Modal -->
+<div class="modal fade" id="lucky-wheelModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-dharmachakra"></i> {% trans "Lucky Wheel" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>{% trans "Add Options" %}</h6>
+                        <div class="input-group mb-2">
+                            <input type="text" id="wheelOption" class="form-control" placeholder="{% trans 'Enter option' %}">
+                            <button class="btn btn-success" onclick="addWheelOption()">{% trans "Add" %}</button>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-md-6">
+                                <label class="form-label small">{% trans "Spin Duration (seconds)" %}</label>
+                                <input type="number" id="spinDuration" class="form-control" value="8" min="3" max="15">
+                            </div>
+                        </div>
+                        <div id="wheelOptions" class="mb-3"></div>
+                        <button class="btn btn-warning btn-sm" onclick="clearWheelOptions()">{% trans "Clear All" %}</button>
+                    </div>
+                    <div class="col-md-6 text-center">
+
+                        <div id="wheelContainer" style="display: none;">
+                            <div class="wheel-container">
+                                <div id="wheel" class="wheel"></div>
+                            </div>
+                            <button class="btn btn-primary btn-lg mt-3" onclick="spinWheel()" id="spinBtn">
+                                <i class="fas fa-play"></i> {% trans "Spin Wheel" %}
+                            </button>
+                            <div id="wheelResult" class="mt-3"></div>
+                        </div>
+                        <div id="wheelPreview" class="text-center">
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle"></i><br>
+                                {% trans "Add options to see the wheel" %}
+                            </div>
+                            <button class="btn btn-success" onclick="showWheel()" id="showWheelBtn" style="display: none;">
+                                <i class="fas fa-eye"></i> {% trans "Show Wheel" %}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dice Roller Modal -->
+<div class="modal fade" id="diceModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-dice"></i> {% trans "Dice Roller" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="mb-3">
+                    <label class="form-label">{% trans "Number of dice" %}</label>
+                    <select id="diceCount" class="form-select" style="max-width: 200px; margin: 0 auto;">
+                        <option value="1">1 {% trans "dice" %}</option>
+                        <option value="2">2 {% trans "dice" %}</option>
+                        <option value="3">3 {% trans "dice" %}</option>
+                        <option value="4">4 {% trans "dice" %}</option>
+                        <option value="5">5 {% trans "dice" %}</option>
+                        <option value="6">6 {% trans "dice" %}</option>
+                    </select>
+                </div>
+                <div id="diceContainer" class="dice-container mb-4"></div>
+                <button class="btn btn-primary btn-lg" onclick="rollDice()">
+                    <i class="fas fa-dice"></i> {% trans "Roll Dice" %}
+                </button>
+                <div id="diceResult" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Professional Name Picker Modal -->
+<div class="modal fade" id="name-pickerModal" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-users"></i> {% trans "Professional Lottery System" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h6><i class="fas fa-plus-circle"></i> {% trans "Add Participants" %}</h6>
+                        <div class="input-group mb-2">
+                            <input type="text" id="participantName" class="form-control" placeholder="{% trans 'Enter name' %}">
+                            <button class="btn btn-success" onclick="addParticipant()">{% trans "Add" %}</button>
+                        </div>
+                        <div class="mb-3">
+                            <textarea id="bulkNames" class="form-control" rows="4" placeholder="{% trans 'Or paste multiple names (one per line)' %}"></textarea>
+                            <button class="btn btn-info btn-sm mt-2" onclick="addBulkParticipants()">{% trans "Add All" %}</button>
+                        </div>
+                        <div class="d-flex gap-2 mb-3">
+                            <button class="btn btn-warning btn-sm" onclick="clearAllParticipants()">{% trans "Clear All" %}</button>
+                            <button class="btn btn-secondary btn-sm" onclick="shuffleParticipants()">{% trans "Shuffle" %}</button>
+                        </div>
+                        <div class="alert alert-info">
+                            <small><i class="fas fa-info-circle"></i> {% trans "Total participants" %}: <span id="participantCount">0</span></small>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6><i class="fas fa-list"></i> {% trans "Participants List" %}</h6>
+                        <div id="participantsList" style="max-height: 400px; overflow-y: auto;"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6><i class="fas fa-trophy"></i> {% trans "Lottery Settings" %}</h6>
+                        <div class="mb-3">
+                            <label class="form-label">{% trans "Number of winners" %}</label>
+                            <input type="number" id="winnerCount" class="form-control" value="1" min="1">
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="allowDuplicates">
+                                <label class="form-check-label">{% trans "Allow same person to win multiple times" %}</label>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-lg w-100 mb-3" onclick="startLottery()">
+                            <i class="fas fa-play"></i> {% trans "Start Lottery" %}
+                        </button>
+                        <div id="lotteryResult"></div>
+                        <div id="winnerHistory" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="/static/js/random-tools.js"></script>
+{% endblock %}

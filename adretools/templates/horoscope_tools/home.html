@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Horoscope Calculator" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+.horoscope-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+.result-card { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+.zodiac-icon { font-size: 48px; margin-bottom: 15px; }
+.trait-badge { background: rgba(255,255,255,0.2); padding: 5px 10px; margin: 3px; border-radius: 15px; font-size: 12px; display: inline-block; }
+.info-section { background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; margin: 10px 0; }
+.chinese-animal { font-size: 36px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <a href="/" class="btn btn-outline-secondary mb-3">
+            <i class="fas fa-home"></i> {% trans "Back to Home" %}
+        </a>
+        <h1 class="display-4 text-primary">🔮 {% trans "Horoscope Calculator" %}</h1>
+        <p class="lead">{% trans "Discover your zodiac sign, ascendant and personality traits with your birth date" %}</p>
+    </div>
+
+    <div class="row">
+        <!-- Doğum Bilgileri -->
+        <div class="col-md-6">
+            <div class="card horoscope-card">
+                <div class="card-header">
+                    <h5><i class="fas fa-calendar-alt"></i> {% trans "Birth Information" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>{% trans "Birth Date" %}:</label>
+                        <input type="date" id="birthDate" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>{% trans "Birth Time (Optional)" %}:</label>
+                        <input type="time" id="birthTime" class="form-control" value="12:00">
+                        <small class="form-text text-light">{% trans "Required to calculate ascendant" %}</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>{% trans "Birth Place (Optional)" %}:</label>
+                        <input type="text" id="birthPlace" class="form-control" placeholder="{% trans 'Istanbul' %}" value="{% trans 'Istanbul' %}">
+                    </div>
+                    
+                    <button class="btn btn-light btn-block" onclick="calculateHoroscope()">
+                        <i class="fas fa-star"></i> {% trans "Calculate Horoscope" %}
+                    </button>
+                    
+                    <div class="mt-3">
+                        <button class="btn btn-outline-light btn-sm" onclick="setToday()">{% trans "Today" %}</button>
+                        <button class="btn btn-outline-light btn-sm" onclick="clearForm()">{% trans "Clear" %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sonuçlar -->
+        <div class="col-md-6">
+            <div id="resultCard" class="card result-card" style="display: none;">
+                <div class="card-header">
+                    <h5><i class="fas fa-magic"></i> {% trans "Horoscope Analysis" %}</h5>
+                </div>
+                <div class="card-body">
+                    <!-- Batı Burcu -->
+                    <div class="info-section">
+                        <div class="text-center">
+                            <div id="zodiacIcon" class="zodiac-icon">♈</div>
+                            <h4 id="zodiacName">-</h4>
+                            <p><strong>{% trans "Element" %}:</strong> <span id="zodiacElement">-</span></p>
+                            <p><strong>{% trans "Planet" %}:</strong> <span id="zodiacPlanet">-</span></p>
+                        </div>
+                        <div class="mt-3">
+                            <strong>{% trans "Personality Traits" %}:</strong>
+                            <div id="zodiacTraits"></div>
+                        </div>
+                    </div>
+
+                    <!-- Çin Burcu -->
+                    <div class="info-section">
+                        <div class="text-center">
+                            <div id="chineseAnimal" class="chinese-animal">🐭</div>
+                            <h5 id="chineseName">-</h5>
+                        </div>
+                        <div class="mt-2">
+                            <strong>{% trans "Traits" %}:</strong>
+                            <div id="chineseTraits"></div>
+                        </div>
+                    </div>
+
+                    <!-- Diğer Bilgiler -->
+                    <div class="info-section">
+                        <div class="row small">
+                            <div class="col-6"><strong>{% trans "Ascendant" %}:</strong> <span id="ascendant">-</span></div>
+                            <div class="col-6"><strong>{% trans "Age" %}:</strong> <span id="age">-</span></div>
+                            <div class="col-6"><strong>{% trans "Life Number" %}:</strong> <span id="lifeNumber">-</span></div>
+                            <div class="col-6"><strong>{% trans "Season" %}:</strong> <span id="season">-</span></div>
+                            <div class="col-12 mt-2"><strong>{% trans "Day of Birth" %}:</strong> <span id="dayOfWeek">-</span></div>
+                            <div class="col-12 mt-1"><strong>{% trans "Life Number Meaning" %}:</strong><br><span id="lifeNumberMeaning">-</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/horoscope-tools.js' %}"></script>
+{% endblock %}

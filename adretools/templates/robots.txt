@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: {{ request.scheme }}://{{ request.get_host }}/sitemap.xml
+
+# Disallow admin
+Disallow: /admin/
+
+# Allow important pages
+Allow: /
+Allow: /pdf/
+Allow: /image/
+Allow: /qr/
+Allow: /svg/
+Allow: /network/
+Allow: /dev/
+Allow: /text/
+Allow: /color/
+Allow: /url/
+Allow: /password/
+Allow: /converter/
+Allow: /horoscope/
+
+# Crawl-delay
+Crawl-delay: 1

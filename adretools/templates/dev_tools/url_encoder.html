@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'dev_tools:home' %}">{% trans "Developer Tools" %}</a></li>
+                    <li class="breadcrumb-item active">{% trans "URL Encoder" %}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mb-4">{% trans "URL Encoder/Decoder" %}</h1>
+            <p class="lead">{% trans "Encode and decode URLs online for free" %}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>{% trans "Input Text" %}</h5>
+                </div>
+                <div class="card-body">
+                    <textarea id="inputText" class="form-control" rows="8" placeholder="{% trans 'Enter URL to encode/decode...' %}"></textarea>
+                    <div class="mt-3">
+                        <button id="encodeBtn" class="btn btn-primary me-2">{% trans "Encode" %}</button>
+                        <button id="decodeBtn" class="btn btn-secondary">{% trans "Decode" %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>{% trans "Result" %}</h5>
+                </div>
+                <div class="card-body">
+                    <textarea id="resultText" class="form-control" rows="8" readonly></textarea>
+                    <div class="mt-3">
+                        <button id="copyBtn" class="btn btn-success">{% trans "Copy" %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const inputText = document.getElementById('inputText');
+    const resultText = document.getElementById('resultText');
+    const encodeBtn = document.getElementById('encodeBtn');
+    const decodeBtn = document.getElementById('decodeBtn');
+    const copyBtn = document.getElementById('copyBtn');
+
+    async function processText(action) {
+        const text = inputText.value.trim();
+        if (!text) {
+            alert('{% trans "Please enter text!" %}');
+            return;
+        }
+
+        try {
+            const response = await fetch('{% url "dev_tools:url_encoder_api" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    text: text,
+                    action: action
+                })
+            });
+
+            const data = await response.json();
+            
+            if (response.ok) {
+                resultText.value = data.result;
+            } else {
+                alert(data.error || '{% trans "An error occurred" %}');
+            }
+        } catch (error) {
+            alert('{% trans "Connection error" %}');
+        }
+    }
+
+    encodeBtn.addEventListener('click', () => processText('encode'));
+    decodeBtn.addEventListener('click', () => processText('decode'));
+
+    copyBtn.addEventListener('click', function() {
+        if (resultText.value) {
+            navigator.clipboard.writeText(resultText.value);
+            alert('{% trans "Copied!" %}');
+        }
+    });
+});
+</script>
+{% endblock %}

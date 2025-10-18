@@ -1,0 +1,442 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "PDF Tools - Free Online PDF Split, Merge, Convert - AdreTools" %}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="Free online PDF tools: Split PDF, merge PDF files, convert PDF to Word/Excel, compress PDF. Fast and secure PDF editor tools.">
+<meta name="keywords" content="pdf split, pdf merge, pdf converter, pdf tools, split pdf online, merge pdf files, pdf to word, pdf compressor">
+<meta property="og:title" content="Free Online PDF Tools - Split, Merge, Convert PDF">
+<meta property="og:description" content="Professional PDF tools: Split, merge, convert and edit PDF files online for free. No registration required.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free PDF Tools Online">
+<meta name="twitter:description" content="Split, merge, convert PDF files online for free">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF Tools - AdreTools",
+  "description": "Free online PDF tools for splitting, merging, converting and editing PDF files",
+  "url": "{{ request.build_absolute_uri }}",
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "PDF Split",
+    "PDF Merge",
+    "PDF to Word Converter",
+    "PDF Compressor",
+    "PDF Security"
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center mb-4">
+        <h2><i class="fas fa-file-pdf text-danger"></i> {% trans "PDF Tools" %}</h2>
+        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+    </div>
+</div>
+
+<div class="row g-4">
+    {% for tool in tools %}
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="{{ tool.icon }} fa-2x text-primary mb-3"></i>
+                <h5 class="card-title">{{ tool.name }}</h5>
+                <p class="card-text">{{ tool.desc }}</p>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{% if tool.id == 'multi-split' %}multiSplitModal{% elif tool.id == 'folder-merge' %}folderMergeModal{% elif tool.id == 'interval-split' %}intervalSplitModal{% elif tool.id == 'image-pdf' %}imagePdfModal{% else %}{{ tool.id }}Modal{% endif %}">{% trans "Use" %}</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- PDF Böl Modal -->
+<div class="modal fade" id="splitModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-cut"></i> {% trans "Split PDF" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <button class="btn btn-primary" onclick="splitPDF()">{% trans "Select and Split PDF" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PDF Birleştir Modal -->
+<div class="modal fade" id="mergeModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-compress-arrows-alt"></i> {% trans "Merge PDF" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <button class="btn btn-success" onclick="addPDF()">+ {% trans "Add PDF" %}</button>
+                    <button class="btn btn-primary" onclick="mergeSelectedPDFs()">{% trans "Merge" %}</button>
+                </div>
+                <div id="fileList" class="list-group"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Çoklu Böl Modal -->
+<div class="modal fade" id="multiSplitModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-scissors"></i> {% trans "Multi-Page Split" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <button class="btn btn-primary" onclick="selectPDF()">{% trans "Select PDF" %}</button>
+                    <div id="selectedFileDisplay" class="mt-2"></div>
+                </div>
+                <div id="rangeContainer" class="mb-3"></div>
+                <div class="text-center">
+                    <button class="btn btn-success" onclick="addRange()">+ {% trans "Add Range" %}</button>
+                    <button class="btn btn-primary" onclick="splitMultipleRanges()">{% trans "Split and Download" %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Klasör Birleştir Modal -->
+<div class="modal fade" id="folderMergeModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-folder-plus"></i> {% trans "Merge Folder" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <button class="btn btn-success" onclick="addFolder()">+ {% trans "Add Folder" %}</button>
+                    <button class="btn btn-primary" onclick="mergeFolderPDFs()">{% trans "Merge" %}</button>
+                </div>
+                <div id="folderList" class="list-group"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Aralıklı Böl Modal -->
+<div class="modal fade" id="intervalSplitModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-layer-group"></i> {% trans "Interval Page Split" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-3">
+                    <button class="btn btn-primary" onclick="selectIntervalPDF()">{% trans "Select PDF" %}</button>
+                    <div id="intervalFileDisplay" class="mt-2"></div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">{% trans "How many pages to split?" %}</label>
+                        <input type="number" id="intervalSize" class="form-control" value="3" min="1" placeholder="{% trans 'e.g: 3' %}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">{% trans "Start page" %}</label>
+                        <input type="number" id="startPage" class="form-control" value="1" min="1" placeholder="{% trans 'e.g: 1' %}">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-success" onclick="splitByInterval()">{% trans "Split by Interval" %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PDF Dönüştür Modal -->
+<div class="modal fade" id="convertModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-exchange-alt"></i> {% trans "Convert PDF" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <h6>PDF → Word</h6>
+                        <button class="btn btn-primary" onclick="convertPDFToWord()">{% trans "Convert" %}</button>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>PDF → Excel</h6>
+                        <button class="btn btn-success" onclick="convertPDFToExcel()">{% trans "Convert" %}</button>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <h6>Word → PDF</h6>
+                        <button class="btn btn-warning" onclick="convertWordToPDF()">{% trans "Convert" %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PDF Güvenlik Modal -->
+<div class="modal fade" id="securityModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-shield-alt"></i> {% trans "PDF Security" %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Adım 1: PDF Seçimi -->
+                <div id="step1-select-pdf" class="security-step">
+                    <div class="text-center mb-4">
+                        <h5><i class="fas fa-file-pdf text-danger"></i> {% trans "Step 1: Select PDF File" %}</h5>
+                        <button class="btn btn-primary btn-lg" onclick="selectSecurityPDF()">
+                            <i class="fas fa-upload"></i> {% trans "Select PDF File" %}
+                        </button>
+                        <div id="selectedSecurityFile" class="mt-3"></div>
+                    </div>
+                </div>
+
+                <!-- Adım 2: Güvenlik Seçenekleri -->
+                <div id="step2-security-options" class="security-step" style="display: none;">
+                    <div class="text-center mb-4">
+                        <h5><i class="fas fa-shield-alt text-success"></i> {% trans "Step 2: Choose Security Options" %}</h5>
+                    </div>
+                    
+                    <div class="row">
+                        <!-- Şifreleme Seçeneği -->
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-lock fa-2x text-danger mb-3"></i>
+                                    <h6 class="card-title">{% trans "Password Protection" %}</h6>
+                                    <p class="card-text small">{% trans "Add password to protect your PDF" %}</p>
+                                    <button class="btn btn-danger" onclick="showEncryptionForm()">
+                                        <i class="fas fa-key"></i> {% trans "Add Password" %}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Filigran Seçeneği -->
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-stamp fa-2x text-info mb-3"></i>
+                                    <h6 class="card-title">{% trans "Watermark" %}</h6>
+                                    <p class="card-text small">{% trans "Add text watermark to your PDF" %}</p>
+                                    <button class="btn btn-info" onclick="showWatermarkForm()">
+                                        <i class="fas fa-font"></i> {% trans "Add Watermark" %}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adım 3: Şifreleme Formu -->
+                <div id="step3-encryption" class="security-step" style="display: none;">
+                    <div class="text-center mb-4">
+                        <h5><i class="fas fa-key text-danger"></i> {% trans "Password Protection Settings" %}</h5>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="backToSecurityOptions()">
+                            <i class="fas fa-arrow-left"></i> {% trans "Back" %}
+                        </button>
+                    </div>
+                    
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label class="form-label"><i class="fas fa-lock"></i> {% trans "Enter Password" %}</label>
+                                <input type="password" id="pdfPassword" class="form-control" placeholder="{% trans 'Enter a strong password' %}">
+
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label"><i class="fas fa-lock"></i> {% trans "Confirm Password" %}</label>
+                                <input type="password" id="pdfPasswordConfirm" class="form-control" placeholder="{% trans 'Confirm your password' %}">
+                            </div>
+                            
+                            <div class="text-center">
+                                <button class="btn btn-danger btn-lg" onclick="encryptPDF()">
+                                    <i class="fas fa-shield-alt"></i> {% trans "Encrypt PDF" %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adım 3: Filigran Formu -->
+                <div id="step3-watermark" class="security-step" style="display: none;">
+                    <div class="text-center mb-4">
+                        <h5><i class="fas fa-stamp text-info"></i> {% trans "Watermark Settings" %}</h5>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="backToSecurityOptions()">
+                            <i class="fas fa-arrow-left"></i> {% trans "Back" %}
+                        </button>
+                    </div>
+                    
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <label class="form-label"><i class="fas fa-font"></i> {% trans "Watermark Text" %}</label>
+                                <input type="text" id="watermarkText" class="form-control" placeholder="{% trans 'e.g: CONFIDENTIAL, DRAFT, Company Name' %}">
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label class="form-label">{% trans "Position" %}</label>
+                                    <select id="watermarkPosition" class="form-select">
+                                        <option value="center">{% trans "Center" %}</option>
+                                        <option value="top-left">{% trans "Top Left" %}</option>
+                                        <option value="top-right">{% trans "Top Right" %}</option>
+                                        <option value="bottom-left">{% trans "Bottom Left" %}</option>
+                                        <option value="bottom-right">{% trans "Bottom Right" %}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">{% trans "Opacity" %}</label>
+                                    <select id="watermarkOpacity" class="form-select">
+                                        <option value="0.3">30% ({% trans "Light" %})</option>
+                                        <option value="0.5" selected>50% ({% trans "Medium" %})</option>
+                                        <option value="0.7">70% ({% trans "Dark" %})</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">{% trans "Size" %}</label>
+                                    <select id="watermarkSize" class="form-select">
+                                        <option value="20">{% trans "Small" %} (20pt)</option>
+                                        <option value="36" selected>{% trans "Medium" %} (36pt)</option>
+                                        <option value="48">{% trans "Large" %} (48pt)</option>
+                                        <option value="72">{% trans "Extra Large" %} (72pt)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button class="btn btn-info btn-lg" onclick="addWatermark()">
+                                    <i class="fas fa-stamp"></i> {% trans "Add Watermark" %}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PDF Sıkıştır Modal -->
+<div class="modal fade" id="compressModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-compress"></i> PDF Sıkıştır</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="mb-3">
+                    <label class="form-label">Kalite Seçimi</label>
+                    <select id="compressionLevel" class="form-select">
+                        <option value="high">Yüksek Kalite</option>
+                        <option value="medium" selected>Orta Kalite</option>
+                        <option value="low">Düşük Kalite</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="compressPDF()">PDF Sıkıştır</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PDF Düzenle Modal -->
+<div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-edit"></i> PDF Düzenle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <h6>Sayfa Döndür</h6>
+                        <select id="rotationAngle" class="form-select mb-2">
+                            <option value="90">90° Sağa</option>
+                            <option value="180">180°</option>
+                            <option value="270">270° Sola</option>
+                        </select>
+                        <button class="btn btn-primary" onclick="rotatePDF()">Döndür</button>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h6>Boş Sayfa Ekle</h6>
+                        <input type="number" id="pagePosition" class="form-control mb-2" placeholder="Pozisyon" min="1">
+                        <button class="btn btn-success" onclick="addBlankPage()">Sayfa Ekle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resim ↔ PDF Modal -->
+<div class="modal fade" id="imagePdfModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"><i class="fas fa-images"></i> Resim ↔ PDF</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <h6>Resim → PDF</h6>
+                        <button class="btn btn-primary" onclick="imagesToPDF()">Resimleri Seç</button>
+                        <div id="selectedImages" class="mt-2"></div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h6>PDF → Resim</h6>
+                        <select id="imageFormat" class="form-select mb-2">
+                            <option value="png">PNG</option>
+                            <option value="jpg">JPG</option>
+                        </select>
+                        <button class="btn btn-success" onclick="pdfToImages()">PDF Seç</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+{% load static %}
+<script src="{% static 'js/pdf-main.js' %}"></script>
+<script src="{% static 'js/pdf-split.js' %}"></script>
+<script src="{% static 'js/pdf-merge.js' %}"></script>
+<script src="{% static 'js/pdf-multi-split.js' %}"></script>
+<script src="{% static 'js/pdf-folder-merge.js' %}"></script>
+<script src="{% static 'js/pdf-convert.js' %}"></script>
+<script src="{% static 'js/pdf-security.js' %}"></script>
+<script src="{% static 'js/pdf-compress.js' %}"></script>
+<script src="{% static 'js/pdf-edit.js' %}"></script>
+<script src="{% static 'js/pdf-image.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ description }}">
+<meta name="keywords" content="{{ keywords }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Regex Tester - AdreTools",
+  "description": "{{ description }}",
+  "url": "{{ request.build_absolute_uri }}",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TRY"
+  },
+  "featureList": [
+    "Regex Test",
+    "Pattern Matching",
+    "Flags Desteği",
+    "Görsel Vurgulama"
+  ]
+}
+</script>
+<style>
+.match-highlight {
+    background-color: #ffeb3b;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1><i class="fas fa-search text-success"></i> {% trans "Online Regex Tester - Free" %}</h1>
+            <p class="lead">{% trans "Test your Regular Expression patterns" %}</p>
+            <a href="{% url 'dev_tools:home' %}" class="btn btn-outline-secondary">← {% trans "Developer Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-code"></i> {% trans "Regex Pattern" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Pattern" %}</label>
+                        <input type="text" id="regexPattern" class="form-control" placeholder="[a-zA-Z0-9]+">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Flags" %}</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="flagI" value="i">
+                            <label class="form-check-label" for="flagI">i (ignore case)</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="flagM" value="m">
+                            <label class="form-check-label" for="flagM">m (multiline)</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="flagS" value="s">
+                            <label class="form-check-label" for="flagS">s (dotall)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Test Text" %}</label>
+                        <textarea id="testText" class="form-control" rows="8" placeholder="{% trans 'Enter the text to be tested here...' %}"></textarea>
+                    </div>
+                    
+                    <button class="btn btn-success" onclick="testRegex()">
+                        <i class="fas fa-play"></i> {% trans "Test" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-list"></i> {% trans "Results" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div id="regexResults">
+                        <p class="text-muted">{% trans "Regex test results will appear here..." %}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-eye"></i> {% trans "Visual Result" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div id="highlightedText" class="border p-3" style="min-height: 100px; background-color: #f8f9fa;">
+                        <p class="text-muted">{% trans "Matches will be highlighted here..." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5>{% trans "Common Regex Examples" %}</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-outline-info btn-sm me-2 mb-2" onclick="setExample('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}')">Email</button>
+                            <button class="btn btn-outline-info btn-sm me-2 mb-2" onclick="setExample('\\d{3}-\\d{3}-\\d{4}')">Telefon</button>
+                            <button class="btn btn-outline-info btn-sm me-2 mb-2" onclick="setExample('\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b')">IP Adresi</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-outline-info btn-sm me-2 mb-2" onclick="setExample('https?://[\\w\\.-]+')">URL</button>
+                            <button class="btn btn-outline-info btn-sm me-2 mb-2" onclick="setExample('\\b[A-Z]{2,}\\b')">{% trans "Capital Letters" %}</button>
+                            <button class="btn btn-outline-info btn-sm me-2 mb-2" onclick="setExample('\\d+')">{% trans "Numbers" %}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function testRegex() {
+    const pattern = document.getElementById('regexPattern').value.trim();
+    const text = document.getElementById('testText').value;
+    
+    if (!pattern) {
+        alert('{% trans "Please enter regex pattern!" %}');
+        return;
+    }
+    
+    // Flags'i topla
+    let flags = '';
+    if (document.getElementById('flagI').checked) flags += 'i';
+    if (document.getElementById('flagM').checked) flags += 'm';
+    if (document.getElementById('flagS').checked) flags += 's';
+    
+    try {
+        const response = await fetch('/dev/api/regex-tester/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pattern: pattern, text: text, flags: flags })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            displayResults(data.matches, data.match_count);
+            highlightMatches(text, data.matches);
+        } else {
+            document.getElementById('regexResults').innerHTML = `
+                <div class="alert alert-danger">❌ ${data.error}</div>
+            `;
+        }
+    } catch (error) {
+        document.getElementById('regexResults').innerHTML = `
+            <div class="alert alert-danger">❌ Bağlantı hatası: ${error.message}</div>
+        `;
+    }
+}
+
+function displayResults(matches, count) {
+    let html = `<div class="alert alert-success">✅ ${count} {% trans "matches found" %}</div>`;
+    
+    if (matches.length > 0) {
+        html += '<div class="list-group">';
+        matches.forEach((match, index) => {
+            html += `
+                <div class="list-group-item">
+                    <strong>{% trans "Match" %} ${index + 1}:</strong> "${match.match}"<br>
+                    <small class="text-muted">{% trans "Position" %}: ${match.start}-${match.end}</small>
+                </div>
+            `;
+        });
+        html += '</div>';
+    }
+    
+    document.getElementById('regexResults').innerHTML = html;
+}
+
+function highlightMatches(text, matches) {
+    let highlightedText = text;
+    let offset = 0;
+    
+    matches.forEach(match => {
+        const start = match.start + offset;
+        const end = match.end + offset;
+        const highlighted = `<span class="match-highlight">${match.match}</span>`;
+        
+        highlightedText = highlightedText.substring(0, start) + 
+                         highlighted + 
+                         highlightedText.substring(end);
+        
+        offset += highlighted.length - match.match.length;
+    });
+    
+    document.getElementById('highlightedText').innerHTML = highlightedText || '<p class="text-muted">{% trans "No matches found" %}</p>';
+}
+
+function setExample(pattern) {
+    document.getElementById('regexPattern').value = pattern;
+}
+</script>
+{% endblock %}

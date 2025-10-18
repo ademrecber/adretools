@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ description }}">
+<meta name="keywords" content="{{ keywords }}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1><i class="fas fa-globe text-info"></i> {% trans "Online Domain Checker - Free" %}</h1>
+            <p class="lead">{% trans "Check domain information" %}</p>
+            <a href="{% url 'network_tools:home' %}" class="btn btn-outline-secondary">← {% trans "Network Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-globe"></i> {% trans "Domain Query" %}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Domain Address" %}</label>
+                        <input type="text" id="domainInput" class="form-control" placeholder="{% trans 'e.g: google.com' %}">
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-info btn-lg" onclick="checkDomain()">
+                            <i class="fas fa-search"></i> {% trans "Check Domain" %}
+                        </button>
+                    </div>
+                    
+                    <div id="domainResult" class="mt-4" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function checkDomain() {
+    const domain = document.getElementById('domainInput').value.trim();
+    
+    if (!domain) {
+        alert('{% trans "Please enter a domain address!" %}');
+        return;
+    }
+    
+    try {
+        const response = await fetch('/network/api/domain-checker/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ domain: domain })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            document.getElementById('domainResult').innerHTML = `
+                <div class="alert alert-success">
+                    <h4>{% trans "Domain" %}: ${data.domain}</h4>
+                    <p>{% trans "Status" %}: ${data.status}</p>
+                    <p>IP: ${data.ip || '{% trans "Not found" %}'}</p>
+                </div>
+            `;
+            document.getElementById('domainResult').style.display = 'block';
+        } else {
+            alert('{% trans "Error" %}: ' + data.error);
+        }
+    } catch (error) {
+        alert('{% trans "Connection error" %}: ' + error.message);
+    }
+}
+</script>
+{% endblock %}

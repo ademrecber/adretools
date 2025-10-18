@@ -1,0 +1,1511 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-18 15:50+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "PDF Tools"
+msgstr "PDF Araçları"
+
+msgid "Split, merge, convert PDF files"
+msgstr "PDF böl, birleştir, dönüştür"
+
+msgid "Image Tools"
+msgstr "Resim Araçları"
+
+msgid "Resize images, change formats"
+msgstr "Resim boyutlandır, format değiştir"
+
+msgid "QR & Barcode"
+msgstr "QR & Barkod"
+
+msgid "Generate QR codes, read barcodes"
+msgstr "QR kod oluştur, barkod okut"
+
+msgid "SVG Tools"
+msgstr "SVG Araçları"
+
+msgid "Edit SVG files"
+msgstr "SVG dosyalarını düzenle"
+
+msgid "Text Tools"
+msgstr "Metin Araçları"
+
+msgid "Analyze and convert text"
+msgstr "Metin analiz et ve dönüştür"
+
+msgid "Color Picker"
+msgstr "Renk Bulucu"
+
+msgid "Pick colors from images and analyze"
+msgstr "Görselden renk seç ve analiz et"
+
+msgid "URL Shortener"
+msgstr "URL Kısaltıcı"
+
+msgid "Shorten long links and generate QR"
+msgstr "Uzun linkleri kısalt ve QR oluştur"
+
+msgid "Password Generator"
+msgstr "Şifre Üretici"
+
+msgid "Generate strong passwords and security check"
+msgstr "Güçlü şifre oluştur ve güvenlik kontrolü"
+
+msgid "Unit Converter"
+msgstr "Birim Dönüştürücü"
+
+msgid "Convert length, weight, temperature"
+msgstr "Uzunluk, ağırlık, sıcaklık dönüştür"
+
+msgid "Horoscope Calculator"
+msgstr "Burç Hesaplayıcı"
+
+msgid "Calculate zodiac sign and traits by birth date"
+msgstr "Doğum tarihi ile burç, yükselen ve özellikler"
+
+msgid "Network Tools"
+msgstr "Ağ Araçları"
+
+msgid "IP lookup, domain check, port scan"
+msgstr "IP sorgula, domain kontrol, port tara"
+
+msgid "Developer Tools"
+msgstr "Geliştirici Araçları"
+
+msgid "JSON, Hash, Regex, SQL tools"
+msgstr "JSON, Hash, Regex, SQL araçları"
+
+msgid "All rights reserved."
+msgstr "Tüm hakları saklıdır."
+
+msgid "Back to Home"
+msgstr ""
+
+#, fuzzy
+#| msgid "Pick colors from images and analyze"
+msgid "Pick colors from images and learn details"
+msgstr "Görselden renk seç ve analiz et"
+
+msgid "Upload Image"
+msgstr ""
+
+msgid "Click or drag and drop"
+msgstr ""
+
+msgid "JPG, PNG, GIF, WEBP supported"
+msgstr ""
+
+msgid "Remove Image"
+msgstr ""
+
+msgid "Selected Color"
+msgstr ""
+
+msgid "Coordinate"
+msgstr ""
+
+msgid "Copy All Color Codes"
+msgstr ""
+
+#, fuzzy
+#| msgid "Color Picker"
+msgid "Color History"
+msgstr "Renk Bulucu"
+
+msgid "No color selected yet"
+msgstr ""
+
+msgid "Clear History"
+msgstr ""
+
+#, fuzzy
+#| msgid "Convert length, weight, temperature"
+msgid "Convert length, weight, temperature and more"
+msgstr "Uzunluk, ağırlık, sıcaklık dönüştür"
+
+msgid "Length"
+msgstr ""
+
+msgid "Weight"
+msgstr ""
+
+msgid "Temperature"
+msgstr ""
+
+msgid "Area"
+msgstr ""
+
+msgid "Volume"
+msgstr ""
+
+msgid "Speed"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "From Unit"
+msgstr ""
+
+msgid "Result"
+msgstr ""
+
+msgid "To Unit"
+msgstr ""
+
+msgid "Quick Conversion"
+msgstr ""
+
+msgid "AdreTools - Free Online Tools: PDF, Image, QR Code, Network Tools"
+msgstr "AdreTools - Ücretsiz Online Araçlar: PDF, Resim, QR Kod, Ağ Araçları"
+
+msgid "Daily tools to make your work easier"
+msgstr "Günlük işlerinizi kolaylaştıran araçlar"
+
+msgid "View Tools"
+msgstr "Araçları Gör"
+
+msgid "Home"
+msgstr ""
+
+msgid "Base64 Encoder"
+msgstr ""
+
+msgid "Base64 Encoder/Decoder"
+msgstr ""
+
+msgid "Encode and decode Base64 strings online for free"
+msgstr ""
+
+msgid "Input Text"
+msgstr ""
+
+msgid "Enter text to encode/decode..."
+msgstr ""
+
+msgid "Encode"
+msgstr ""
+
+msgid "Decode"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Please enter text!"
+msgstr ""
+
+msgid "An error occurred"
+msgstr ""
+
+msgid "Connection error"
+msgstr ""
+
+msgid "Copied!"
+msgstr ""
+
+msgid "Online Hash Generator - Free"
+msgstr ""
+
+msgid "Generate MD5, SHA1, SHA256 hash values"
+msgstr ""
+
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Hash Generator"
+msgstr "Şifre Üretici"
+
+msgid "Text"
+msgstr ""
+
+msgid "Enter the text you want to hash..."
+msgstr ""
+
+msgid "Generate Hash"
+msgstr ""
+
+msgid "About Hash Algorithms"
+msgstr ""
+
+msgid "128-bit hash value. Fast but weak in terms of security."
+msgstr ""
+
+msgid "160-bit hash value. More secure than MD5 but no longer recommended."
+msgstr ""
+
+msgid "256-bit hash value. The most widely used secure algorithm today."
+msgstr ""
+
+msgid "512-bit hash value. Highest security level."
+msgstr ""
+
+msgid "Hash values generated!"
+msgstr ""
+
+msgid "Hash copied!"
+msgstr ""
+
+#, fuzzy
+#| msgid "Developer Tools"
+msgid "Developer Tools - AdreTools"
+msgstr "Geliştirici Araçları"
+
+msgid "Professional tools for coding and development"
+msgstr ""
+
+msgid "Use"
+msgstr ""
+
+msgid "Coming Soon"
+msgstr ""
+
+#, fuzzy
+#| msgid "Developer Tools"
+msgid "About Developer Tools"
+msgstr "Geliştirici Araçları"
+
+msgid ""
+"Speed up your coding process with AdreTools developer tools. Professional "
+"tools for all your needs from JSON formatting to hash generation."
+msgstr ""
+
+msgid "Validate, format and minify your JSON data."
+msgstr ""
+
+msgid "Generate MD5, SHA1, SHA256 hash values."
+msgstr ""
+
+msgid "Test your regular expression patterns."
+msgstr ""
+
+msgid "Encode/decode texts to Base64 format."
+msgstr ""
+
+msgid "Encode/decode HTML entities."
+msgstr ""
+
+msgid "Encode/decode URLs to safe format."
+msgstr ""
+
+msgid "Format and beautify SQL queries."
+msgstr ""
+
+msgid "Convert Unix timestamp values."
+msgstr ""
+
+msgid "HTML Encoder"
+msgstr ""
+
+msgid "HTML Encoder/Decoder"
+msgstr ""
+
+msgid "Encode and decode HTML entities online for free"
+msgstr ""
+
+msgid "Enter HTML to encode/decode..."
+msgstr ""
+
+msgid "Online JSON Formatter - Free"
+msgstr ""
+
+msgid "Validate, format and minify JSON"
+msgstr ""
+
+msgid "JSON Input"
+msgstr ""
+
+msgid "Format"
+msgstr ""
+
+msgid "Minify"
+msgstr ""
+
+msgid "Validate"
+msgstr ""
+
+msgid "Please enter JSON!"
+msgstr ""
+
+msgid "Valid JSON!"
+msgstr ""
+
+msgid "Invalid JSON"
+msgstr ""
+
+msgid "Operation successful!"
+msgstr ""
+
+msgid "Online Regex Tester - Free"
+msgstr ""
+
+msgid "Test your Regular Expression patterns"
+msgstr ""
+
+msgid "Regex Pattern"
+msgstr ""
+
+msgid "Pattern"
+msgstr ""
+
+msgid "Flags"
+msgstr ""
+
+msgid "Test Text"
+msgstr ""
+
+msgid "Enter the text to be tested here..."
+msgstr ""
+
+msgid "Test"
+msgstr ""
+
+msgid "Results"
+msgstr ""
+
+msgid "Regex test results will appear here..."
+msgstr ""
+
+msgid "Visual Result"
+msgstr ""
+
+msgid "Matches will be highlighted here..."
+msgstr ""
+
+msgid "Common Regex Examples"
+msgstr ""
+
+msgid "Capital Letters"
+msgstr ""
+
+msgid "Numbers"
+msgstr ""
+
+msgid "Please enter regex pattern!"
+msgstr ""
+
+msgid "matches found"
+msgstr ""
+
+msgid "Match"
+msgstr ""
+
+msgid "Position"
+msgstr ""
+
+msgid "No matches found"
+msgstr ""
+
+msgid "SQL Formatter"
+msgstr ""
+
+msgid "Format and beautify SQL queries online for free"
+msgstr ""
+
+msgid "SQL Input"
+msgstr ""
+
+msgid "Enter SQL query to format..."
+msgstr ""
+
+msgid "Formatted SQL"
+msgstr ""
+
+msgid "Please enter SQL query!"
+msgstr ""
+
+#, fuzzy
+#| msgid "Unit Converter"
+msgid "Timestamp Converter"
+msgstr "Birim Dönüştürücü"
+
+msgid "Convert Unix timestamps to human readable dates and vice versa"
+msgstr ""
+
+msgid "Timestamp to Date"
+msgstr ""
+
+msgid "Enter Unix timestamp (e.g. 1640995200)"
+msgstr ""
+
+#, fuzzy
+#| msgid "Unit Converter"
+msgid "Convert to Date"
+msgstr "Birim Dönüştürücü"
+
+msgid "Date to Timestamp"
+msgstr ""
+
+msgid "Convert to Timestamp"
+msgstr ""
+
+msgid "Current Timestamp"
+msgstr ""
+
+msgid "Current Unix Timestamp:"
+msgstr ""
+
+msgid "Current Date:"
+msgstr ""
+
+msgid "Please enter timestamp!"
+msgstr ""
+
+msgid "Local Time:"
+msgstr ""
+
+msgid "UTC Time:"
+msgstr ""
+
+msgid "ISO Format:"
+msgstr ""
+
+msgid "Please select date!"
+msgstr ""
+
+msgid "Unix Timestamp:"
+msgstr ""
+
+msgid "URL Encoder"
+msgstr ""
+
+msgid "URL Encoder/Decoder"
+msgstr ""
+
+#, fuzzy
+#| msgid "Resize images, change formats"
+msgid "Encode and decode URLs online for free"
+msgstr "Resim boyutlandır, format değiştir"
+
+msgid "Enter URL to encode/decode..."
+msgstr ""
+
+#, fuzzy
+#| msgid "Calculate zodiac sign and traits by birth date"
+msgid ""
+"Discover your zodiac sign, ascendant and personality traits with your birth "
+"date"
+msgstr "Doğum tarihi ile burç, yükselen ve özellikler"
+
+msgid "Birth Information"
+msgstr ""
+
+msgid "Birth Date"
+msgstr ""
+
+msgid "Birth Time (Optional)"
+msgstr ""
+
+msgid "Required to calculate ascendant"
+msgstr ""
+
+msgid "Birth Place (Optional)"
+msgstr ""
+
+msgid "Istanbul"
+msgstr ""
+
+msgid "Calculate Horoscope"
+msgstr ""
+
+msgid "Today"
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+#, fuzzy
+#| msgid "Horoscope Calculator"
+msgid "Horoscope Analysis"
+msgstr "Burç Hesaplayıcı"
+
+msgid "Element"
+msgstr ""
+
+msgid "Planet"
+msgstr ""
+
+msgid "Personality Traits"
+msgstr ""
+
+msgid "Traits"
+msgstr ""
+
+msgid "Ascendant"
+msgstr ""
+
+msgid "Age"
+msgstr ""
+
+msgid "Life Number"
+msgstr ""
+
+msgid "Season"
+msgstr ""
+
+msgid "Day of Birth"
+msgstr ""
+
+msgid "Life Number Meaning"
+msgstr ""
+
+#, fuzzy
+#| msgid "Developer Tools"
+msgid "Image Tools - AdreTools"
+msgstr "Geliştirici Araçları"
+
+msgid "Image Resizing"
+msgstr ""
+
+msgid "Select Image"
+msgstr ""
+
+msgid "Width (px)"
+msgstr ""
+
+msgid "Height (px)"
+msgstr ""
+
+#, python-format
+msgid "Percentage (%%)"
+msgstr ""
+
+msgid "Preset Sizes"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Instagram Square"
+msgstr ""
+
+msgid "Keep Aspect Ratio"
+msgstr ""
+
+msgid "Resize and Download"
+msgstr ""
+
+msgid "Image Cropping"
+msgstr ""
+
+msgid "Aspect Ratio"
+msgstr ""
+
+msgid "Free"
+msgstr ""
+
+msgid "Square"
+msgstr ""
+
+msgid "Wide"
+msgstr ""
+
+msgid "Standard"
+msgstr ""
+
+msgid "Photo"
+msgstr ""
+
+msgid "Width"
+msgstr ""
+
+msgid "Height"
+msgstr ""
+
+msgid "Crop and Download"
+msgstr ""
+
+#, fuzzy
+#| msgid "Image Tools"
+msgid "Image Rotation"
+msgstr "Resim Araçları"
+
+msgid "Rotation Angle"
+msgstr ""
+
+msgid "Right"
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+msgid "Custom Angle"
+msgstr ""
+
+msgid "Custom Angle (degrees)"
+msgstr ""
+
+msgid "Flip Horizontal"
+msgstr ""
+
+msgid "Flip Vertical"
+msgstr ""
+
+msgid "Rotate and Download"
+msgstr ""
+
+msgid "Format Conversion"
+msgstr ""
+
+msgid "Target Format"
+msgstr ""
+
+msgid "Quality (JPG/WEBP)"
+msgstr ""
+
+msgid "Quality"
+msgstr ""
+
+msgid "Keep Transparency (PNG)"
+msgstr ""
+
+msgid "Free Image Resizer Online - Resize Photos - AdreTools"
+msgstr ""
+
+msgid "Free Image Resizer Online - Resize Photos"
+msgstr ""
+
+#, fuzzy
+#| msgid "Resize images, change formats"
+msgid "Resize images and photos online for free"
+msgstr "Resim boyutlandır, format değiştir"
+
+#, fuzzy
+#| msgid "Image Tools"
+msgid "Image Resizer Tool"
+msgstr "Resim Araçları"
+
+msgid "Choose Image to Resize"
+msgstr ""
+
+msgid "How to Resize Images Online"
+msgstr ""
+
+msgid "Select JPG, PNG or WEBP"
+msgstr ""
+
+msgid "Set Dimensions"
+msgstr ""
+
+msgid "Choose new width & height"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "Get resized image"
+msgstr ""
+
+msgid "Free Image Resizer Features"
+msgstr ""
+
+msgid "Free Image Resize"
+msgstr ""
+
+msgid "No watermarks"
+msgstr ""
+
+msgid "Multiple Formats"
+msgstr ""
+
+msgid "Batch Resize"
+msgstr ""
+
+msgid "Multiple images"
+msgstr ""
+
+msgid "Quality Control"
+msgstr ""
+
+msgid "Maintain image quality"
+msgstr ""
+
+msgid "Custom Dimensions"
+msgstr ""
+
+msgid "Any size you want"
+msgstr ""
+
+msgid "Keep proportions"
+msgstr ""
+
+msgid "Instant Preview"
+msgstr ""
+
+msgid "See before download"
+msgstr ""
+
+msgid "No Registration"
+msgstr ""
+
+msgid "Use immediately"
+msgstr ""
+
+msgid "Online Domain Checker - Free"
+msgstr ""
+
+msgid "Check domain information"
+msgstr ""
+
+msgid "Domain Query"
+msgstr ""
+
+msgid "Domain Address"
+msgstr ""
+
+msgid "e.g: google.com"
+msgstr ""
+
+msgid "Check Domain"
+msgstr ""
+
+msgid "Please enter a domain address!"
+msgstr ""
+
+msgid "Domain"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Not found"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Network Tools - Online Network Tools - AdreTools"
+msgstr ""
+
+#, fuzzy
+#| msgid "IP lookup, domain check, port scan"
+msgid "IP lookup, domain checking and network tests"
+msgstr "IP sorgula, domain kontrol, port tara"
+
+msgid "IP Lookup"
+msgstr ""
+
+msgid "Query IP address information"
+msgstr ""
+
+msgid "Domain Checker"
+msgstr ""
+
+msgid "Port Scanner"
+msgstr ""
+
+msgid "Scan open ports"
+msgstr ""
+
+msgid "Ping Test"
+msgstr ""
+
+msgid "Test connection speed"
+msgstr ""
+
+msgid "Speed Test"
+msgstr ""
+
+msgid "Measure internet speed"
+msgstr ""
+
+#, fuzzy
+#| msgid "Network Tools"
+msgid "About Network Tools"
+msgstr "Ağ Araçları"
+
+msgid ""
+"With AdreTools network tools, you can query IP addresses, check domain "
+"information, perform port scanning and conduct ping tests."
+msgstr ""
+
+msgid ""
+"Learn the geographical location, ISP information and details of the IP "
+"address."
+msgstr ""
+
+msgid "Check the DNS records and whois information of the domain address."
+msgstr ""
+
+msgid "Perform security checks by scanning open ports of IP address."
+msgstr ""
+
+msgid "Test connection quality by pinging website or IP address."
+msgstr ""
+
+msgid "Online IP Lookup - Free"
+msgstr ""
+
+msgid "Query IP address location, ISP information and details"
+msgstr ""
+
+msgid "Query IP Address"
+msgstr ""
+
+msgid "IP Address"
+msgstr ""
+
+msgid "e.g: 8.8.8.8"
+msgstr ""
+
+msgid "Enter IP address in IPv4 format"
+msgstr ""
+
+msgid "Lookup IP"
+msgstr ""
+
+msgid "Querying..."
+msgstr ""
+
+msgid "Querying IP information..."
+msgstr ""
+
+msgid "What is IP Lookup?"
+msgstr ""
+
+msgid ""
+"IP Lookup is a tool that allows you to learn the geographical location, "
+"internet service provider (ISP) and other technical information of an IP "
+"address."
+msgstr ""
+
+msgid "Features:"
+msgstr ""
+
+msgid "Geographical location (country, city, region)"
+msgstr ""
+
+msgid "ISP and organization information"
+msgstr ""
+
+msgid "Time zone information"
+msgstr ""
+
+msgid "Latitude and longitude coordinates"
+msgstr ""
+
+msgid "Fast and reliable results"
+msgstr ""
+
+msgid "Please enter an IP address!"
+msgstr ""
+
+msgid "Invalid IP address format!"
+msgstr ""
+
+msgid "Online Ping Test - Free"
+msgstr ""
+
+msgid "Target IP/Domain"
+msgstr ""
+
+msgid "Packet Count"
+msgstr ""
+
+msgid "packets"
+msgstr ""
+
+msgid "Start Ping"
+msgstr ""
+
+msgid "Please enter target IP/domain!"
+msgstr ""
+
+msgid "Ping failed"
+msgstr ""
+
+msgid "Unknown error"
+msgstr ""
+
+msgid "Online Port Scanner - Free"
+msgstr ""
+
+msgid "Port Scanning"
+msgstr ""
+
+msgid "Ports"
+msgstr ""
+
+msgid "80,443,22 or 80-100"
+msgstr ""
+
+msgid "Scan Ports"
+msgstr ""
+
+msgid "Online Speed Test - Free"
+msgstr ""
+
+msgid "Test your internet connection speed"
+msgstr ""
+
+msgid "Internet Speed Test"
+msgstr ""
+
+msgid "Upload"
+msgstr ""
+
+msgid "Ping"
+msgstr ""
+
+msgid "Start Speed Test"
+msgstr ""
+
+msgid "Testing..."
+msgstr ""
+
+msgid "About Speed Test"
+msgstr ""
+
+msgid ""
+"Internet speed test measures your connection's download and upload speeds."
+msgstr ""
+
+msgid "Download Speed"
+msgstr ""
+
+msgid ""
+"Your data download speed from internet. Important for video streaming, file "
+"downloads."
+msgstr ""
+
+msgid "Upload Speed"
+msgstr ""
+
+msgid ""
+"Your data upload speed to internet. Important for video conferencing, file "
+"sharing."
+msgstr ""
+
+msgid "Time to reach server. Critical for online games and live streaming."
+msgstr ""
+
+msgid "Running ping test..."
+msgstr ""
+
+msgid "Measuring download speed..."
+msgstr ""
+
+msgid "Measuring upload speed..."
+msgstr ""
+
+msgid "Test completed!"
+msgstr ""
+
+msgid "Test error"
+msgstr ""
+
+msgid "Test failed"
+msgstr ""
+
+#, fuzzy
+#| msgid "Generate strong passwords and security check"
+msgid "Generate strong passwords and perform security checks"
+msgstr "Güçlü şifre oluştur ve güvenlik kontrolü"
+
+msgid "Generate Password"
+msgstr ""
+
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Password Length"
+msgstr "Şifre Üretici"
+
+msgid "Uppercase Letters (A-Z)"
+msgstr ""
+
+msgid "Lowercase Letters (a-z)"
+msgstr ""
+
+msgid "Numbers (0-9)"
+msgstr ""
+
+#, python-format
+msgid "Symbols (!@#$%%^&*)"
+msgstr ""
+
+msgid "Exclude Similar Characters (il1Lo0O)"
+msgstr ""
+
+msgid "Password Security Check"
+msgstr ""
+
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Password to Check"
+msgstr "Şifre Üretici"
+
+msgid "Enter your password"
+msgstr ""
+
+msgid "Your password is not sent to server, only analyzed"
+msgstr ""
+
+msgid "Perform Security Check"
+msgstr ""
+
+msgid "Generated Password"
+msgstr ""
+
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Password"
+msgstr "Şifre Üretici"
+
+msgid "Security Score"
+msgstr ""
+
+msgid "Generate New Password"
+msgstr ""
+
+msgid "Security Analysis"
+msgstr ""
+
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Password Details"
+msgstr "Şifre Üretici"
+
+msgid "Suggestions"
+msgstr ""
+
+#, fuzzy
+#| msgid "AdreTools - Free Online Tools: PDF, Image, QR Code, Network Tools"
+msgid "PDF Tools - Free Online PDF Split, Merge, Convert - AdreTools"
+msgstr "AdreTools - Ücretsiz Online Araçlar: PDF, Resim, QR Kod, Ağ Araçları"
+
+msgid "Split PDF"
+msgstr ""
+
+msgid "Select and Split PDF"
+msgstr ""
+
+msgid "Merge PDF"
+msgstr ""
+
+msgid "Add PDF"
+msgstr ""
+
+msgid "Merge"
+msgstr ""
+
+msgid "Multi-Page Split"
+msgstr ""
+
+msgid "Select PDF"
+msgstr ""
+
+msgid "Add Range"
+msgstr ""
+
+msgid "Split and Download"
+msgstr ""
+
+msgid "Merge Folder"
+msgstr ""
+
+msgid "Add Folder"
+msgstr ""
+
+msgid "Interval Page Split"
+msgstr ""
+
+msgid "How many pages to split?"
+msgstr ""
+
+msgid "e.g: 3"
+msgstr ""
+
+msgid "Start page"
+msgstr ""
+
+msgid "e.g: 1"
+msgstr ""
+
+msgid "Split by Interval"
+msgstr ""
+
+msgid "Convert PDF"
+msgstr ""
+
+#, fuzzy
+#| msgid "Unit Converter"
+msgid "Convert"
+msgstr "Birim Dönüştürücü"
+
+msgid "PDF Security"
+msgstr ""
+
+#, fuzzy
+#| msgid "Developer Tools"
+msgid "QR & Barcode Tools - AdreTools"
+msgstr "Geliştirici Araçları"
+
+#, fuzzy
+#| msgid "QR & Barcode"
+msgid "QR & Barcode Tools"
+msgstr "QR & Barkod"
+
+#, fuzzy
+#| msgid "Generate QR codes, read barcodes"
+msgid "Generate QR Code"
+msgstr "QR kod oluştur, barkod okut"
+
+msgid "QR Type"
+msgstr ""
+
+msgid "URL/Link"
+msgstr ""
+
+msgid "WiFi"
+msgstr ""
+
+msgid "SMS"
+msgstr ""
+
+msgid "Email"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "vCard (Contact)"
+msgstr ""
+
+msgid "Content"
+msgstr ""
+
+msgid "Enter QR code content..."
+msgstr ""
+
+msgid "Network Name (SSID)"
+msgstr ""
+
+msgid "WiFi network name"
+msgstr ""
+
+msgid "WiFi password"
+msgstr ""
+
+msgid "Security Type"
+msgstr ""
+
+msgid "No Password"
+msgstr ""
+
+msgid "Phone Number"
+msgstr ""
+
+msgid "Message"
+msgstr ""
+
+msgid "SMS message"
+msgstr ""
+
+msgid "Email Address"
+msgstr ""
+
+msgid "example@email.com"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Email subject"
+msgstr ""
+
+msgid "Email content"
+msgstr ""
+
+msgid "First Name"
+msgstr ""
+
+msgid "Last Name"
+msgstr ""
+
+msgid "Company"
+msgstr ""
+
+msgid "Company name"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Small (200px)"
+msgstr ""
+
+msgid "Medium (400px)"
+msgstr ""
+
+msgid "Large (600px)"
+msgstr ""
+
+msgid "Extra Large (800px)"
+msgstr ""
+
+msgid "Error Correction"
+msgstr ""
+
+#, python-format
+msgid "Low (7%%)"
+msgstr ""
+
+#, python-format
+msgid "Medium (15%%)"
+msgstr ""
+
+#, python-format
+msgid "High (25%%)"
+msgstr ""
+
+#, python-format
+msgid "Very High (30%%)"
+msgstr ""
+
+msgid "Foreground Color"
+msgstr ""
+
+msgid "Background Color"
+msgstr ""
+
+msgid "QR Shape"
+msgstr ""
+
+#, fuzzy
+#| msgid "Edit SVG files"
+msgid "Edit and convert SVG files"
+msgstr "SVG dosyalarını düzenle"
+
+msgid "PNG/JPG → SVG Conversion"
+msgstr ""
+
+msgid "Select Image File"
+msgstr ""
+
+msgid "Note"
+msgstr ""
+
+msgid "This process embeds the image into SVG."
+msgstr ""
+
+msgid "Conversion Mode"
+msgstr ""
+
+msgid "Simple (Embed image in SVG)"
+msgstr ""
+
+msgid "Advanced (Real SVG Path)"
+msgstr ""
+
+msgid "Convert to SVG"
+msgstr ""
+
+msgid "Converting..."
+msgstr ""
+
+msgid "SVG → PNG/JPG Conversion"
+msgstr ""
+
+#, fuzzy
+#| msgid "Edit SVG files"
+msgid "Select SVG File"
+msgstr "SVG dosyalarını düzenle"
+
+msgid "Output Format"
+msgstr ""
+
+msgid "Convert and Download"
+msgstr ""
+
+msgid "Vector SVG Trace"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "This creates real vector SVG!"
+msgstr ""
+
+msgid "Detail Level"
+msgstr ""
+
+msgid "1: Very detailed, 10: Simple"
+msgstr ""
+
+msgid "Create Vector SVG"
+msgstr ""
+
+msgid "Processing..."
+msgstr ""
+
+msgid "SVG Editing"
+msgstr ""
+
+msgid "New Width"
+msgstr ""
+
+msgid "Change"
+msgstr ""
+
+msgid "New Height"
+msgstr ""
+
+#, fuzzy
+#| msgid "Analyze and convert text"
+msgid "Analyze, transform and format texts"
+msgstr "Metin analiz et ve dönüştür"
+
+msgid "Text Input"
+msgstr ""
+
+msgid "Write your text here..."
+msgstr ""
+
+msgid "Your text will be automatically analyzed"
+msgstr ""
+
+msgid "Text Statistics"
+msgstr ""
+
+msgid "Characters (with spaces)"
+msgstr ""
+
+msgid "Characters (without spaces)"
+msgstr ""
+
+msgid "Word count"
+msgstr ""
+
+msgid "Line count"
+msgstr ""
+
+msgid "Paragraph count"
+msgstr ""
+
+msgid "Digit count"
+msgstr ""
+
+msgid "Letter count"
+msgstr ""
+
+msgid "Longest word"
+msgstr ""
+
+msgid "Average word length"
+msgstr ""
+
+msgid "Text Transformation"
+msgstr ""
+
+msgid "UPPERCASE"
+msgstr ""
+
+msgid "lowercase"
+msgstr ""
+
+msgid "Title Case"
+msgstr ""
+
+msgid "Reverse"
+msgstr ""
+
+msgid "URL Slug"
+msgstr ""
+
+msgid "Clean Spaces"
+msgstr ""
+
+msgid "Remove Special Chars"
+msgstr ""
+
+msgid "Clean HTML"
+msgstr ""
+
+msgid "Encoding & Hash"
+msgstr ""
+
+msgid "Base64 Encode"
+msgstr ""
+
+msgid "Base64 Decode"
+msgstr ""
+
+msgid "URL Encode"
+msgstr ""
+
+msgid "URL Decode"
+msgstr ""
+
+msgid "JSON Format"
+msgstr ""
+
+msgid "JSON Beautify"
+msgstr ""
+
+msgid "JSON Minify"
+msgstr ""
+
+#, fuzzy
+#| msgid "Shorten long links and generate QR"
+msgid "Shorten long links and generate QR codes"
+msgstr "Uzun linkleri kısalt ve QR oluştur"
+
+msgid "Shorten URL"
+msgstr ""
+
+msgid "Long URL"
+msgstr ""
+
+#, fuzzy
+#| msgid "URL Shortener"
+msgid "Shorten"
+msgstr "URL Kısaltıcı"
+
+msgid "Query Statistics"
+msgstr ""
+
+msgid "Short Code"
+msgstr ""
+
+msgid "Get Statistics"
+msgstr ""
+
+msgid "Original URL"
+msgstr ""
+
+msgid "Click Count"
+msgstr ""
+
+msgid "Created"
+msgstr ""
+
+#, fuzzy
+#| msgid "URL Shortener"
+msgid "Shortened URL"
+msgstr "URL Kısaltıcı"
+
+msgid "Short URL"
+msgstr ""
+
+msgid "QR Code"
+msgstr ""
+
+msgid "Download QR"
+msgstr ""
+
+msgid "Share"
+msgstr ""

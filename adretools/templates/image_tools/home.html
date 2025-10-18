@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Image Tools - AdreTools" %}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center mb-4">
+        <h2><i class="fas fa-image text-success"></i> {% trans "Image Tools" %}</h2>
+        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+    </div>
+</div>
+
+<div class="row g-4">
+    {% for tool in tools %}
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="{{ tool.icon }} fa-2x text-primary mb-3"></i>
+                <h5 class="card-title">{{ tool.name }}</h5>
+                <p class="card-text">{{ tool.desc }}</p>
+                <button class="btn btn-primary" onclick="showTool('{{ tool.id }}')">{% trans "Use" %}</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Boyutlandırma -->
+<div id="resize" class="tool-section mt-5" style="display:none;">
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-expand-arrows-alt"></i> {% trans "Image Resizing" %}</h5>
+        </div>
+        <div class="card-body">
+            <div class="text-center mb-3">
+                <button class="btn btn-primary" onclick="selectImageForResize()">{% trans "Select Image" %}</button>
+                <div id="resizeImageDisplay" class="mt-2"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label class="form-label">{% trans "Width (px)" %}</label>
+                    <input type="number" id="resizeWidth" class="form-control" placeholder="800">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">{% trans "Height (px)" %}</label>
+                    <input type="number" id="resizeHeight" class="form-control" placeholder="600">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">{% trans "Percentage (%)" %}</label>
+                    <input type="number" id="resizePercent" class="form-control" placeholder="50" min="1" max="500">
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">{% trans "Preset Sizes" %}</label>
+                    <select id="resizePreset" class="form-select" onchange="applyPresetSize()">
+                        <option value="">{% trans "Select" %}</option>
+                        <option value="1920x1080">Full HD (1920x1080)</option>
+                        <option value="1280x720">HD (1280x720)</option>
+                        <option value="800x600">SVGA (800x600)</option>
+                        <option value="640x480">VGA (640x480)</option>
+                        <option value="1080x1080">{% trans "Instagram Square" %} (1080x1080)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="keepAspectRatio" checked>
+                    <label class="form-check-label" for="keepAspectRatio">
+                        {% trans "Keep Aspect Ratio" %}
+                    </label>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success" onclick="resizeImage()">{% trans "Resize and Download" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Kırpma -->
+<div id="crop" class="tool-section mt-5" style="display:none;">
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-crop"></i> {% trans "Image Cropping" %}</h5>
+        </div>
+        <div class="card-body">
+            <div class="text-center mb-3">
+                <button class="btn btn-primary" onclick="selectImageForCrop()">{% trans "Select Image" %}</button>
+                <div id="cropImageDisplay" class="mt-2"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label class="form-label">{% trans "Aspect Ratio" %}</label>
+                    <select id="cropRatio" class="form-select">
+                        <option value="free">{% trans "Free" %}</option>
+                        <option value="1:1">{% trans "Square" %} (1:1)</option>
+                        <option value="16:9">{% trans "Wide" %} (16:9)</option>
+                        <option value="4:3">{% trans "Standard" %} (4:3)</option>
+                        <option value="3:2">{% trans "Photo" %} (3:2)</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">X</label>
+                    <input type="number" id="cropX" class="form-control" value="0" min="0">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Y</label>
+                    <input type="number" id="cropY" class="form-control" value="0" min="0">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">{% trans "Width" %}</label>
+                    <input type="number" id="cropWidth" class="form-control" min="1">
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">{% trans "Height" %}</label>
+                    <input type="number" id="cropHeight" class="form-control" min="1">
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success" onclick="cropImage()">{% trans "Crop and Download" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Döndürme -->
+<div id="rotate" class="tool-section mt-5" style="display:none;">
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-redo"></i> {% trans "Image Rotation" %}</h5>
+        </div>
+        <div class="card-body">
+            <div class="text-center mb-3">
+                <button class="btn btn-primary" onclick="selectImageForRotate()">{% trans "Select Image" %}</button>
+                <div id="rotateImageDisplay" class="mt-2"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">{% trans "Rotation Angle" %}</label>
+                    <select id="rotateAngle" class="form-select">
+                        <option value="90">90° {% trans "Right" %}</option>
+                        <option value="180">180°</option>
+                        <option value="270">270° {% trans "Left" %}</option>
+                        <option value="custom">{% trans "Custom Angle" %}</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">{% trans "Custom Angle (degrees)" %}</label>
+                    <input type="number" id="customAngle" class="form-control" placeholder="45" min="-360" max="360">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <button class="btn btn-info me-2" onclick="flipHorizontal()">{% trans "Flip Horizontal" %}</button>
+                    <button class="btn btn-info" onclick="flipVertical()">{% trans "Flip Vertical" %}</button>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success" onclick="rotateImage()">{% trans "Rotate and Download" %}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Format Dönüştürme -->
+<div id="convert" class="tool-section mt-5" style="display:none;">
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-exchange-alt"></i> {% trans "Format Conversion" %}</h5>
+        </div>
+        <div class="card-body">
+            <div class="text-center mb-3">
+                <button class="btn btn-primary" onclick="selectImageForConvert()">{% trans "Select Image" %}</button>
+                <div id="convertImageDisplay" class="mt-2"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label">{% trans "Target Format" %}</label>
+                    <select id="targetFormat" class="form-select">
+                        <option value="jpg">JPG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WEBP</option>
+                        <option value="bmp">BMP</option>
+                        <option value="tiff">TIFF</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">{% trans "Quality (JPG/WEBP)" %}</label>
+                    <input type="range" id="imageQuality" class="form-range" min="10" max="100" value="85">
+                    <small class="text-muted">{% trans "Quality" %}: <span id="qualityValue">85</span>%</small>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-check mt-4">
+                        <input class="form-check-input" type="checkbox" id="keepTransparency">
+                        <label class="form-check-label" for="keepTransparency">
+                            {% trans "Keep Transparency (PNG)" %}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success" onclick="convertFormat()">Dönüştür ve İndir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ICO Oluştur -->
+<div id="ico" class="tool-section mt-5" style="display:none;">
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-desktop"></i> ICO Simge Dosyası Oluştur</h5>
+        </div>
+        <div class="card-body">
+            <div class="text-center mb-3">
+                <button class="btn btn-primary" onclick="selectFileForIco()">Dosya Seç (JPG/PNG/PDF/SVG)</button>
+                <div id="icoFileDisplay" class="mt-2"></div>
+            </div>
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i>
+                <strong>Desteklenen Formatlar:</strong> JPG, PNG, PDF (ilk sayfa), SVG<br>
+                <strong>Çıkış:</strong> ICO dosyası (16x16, 32x32, 48x48, 64x64, 128x128, 256x256 boyutları)
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success" onclick="createIco()">ICO Oluştur ve İndir</button>
+                <div id="icoProgress" class="progress mt-3" style="display:none;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%">
+                        ICO oluşturuluyor...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sıkıştırma -->
+<div id="compress" class="tool-section mt-5" style="display:none;">
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-compress"></i> Resim Sıkıştırma</h5>
+        </div>
+        <div class="card-body">
+            <div class="text-center mb-3">
+                <button class="btn btn-primary" onclick="selectImageForCompress()">Resim Seç</button>
+                <div id="compressImageDisplay" class="mt-2"></div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label">Sıkıştırma Seviyesi</label>
+                    <select id="compressionLevel" class="form-select">
+                        <option value="light">Hafif (%90 kalite)</option>
+                        <option value="medium" selected>Orta (%70 kalite)</option>
+                        <option value="heavy">Ağır (%50 kalite)</option>
+                        <option value="custom">Özel</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Özel Kalite</label>
+                    <input type="range" id="customQuality" class="form-range" min="10" max="100" value="70">
+                    <small class="text-muted">Kalite: <span id="customQualityValue">70</span>%</small>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Hedef Boyut (MB)</label>
+                    <input type="number" id="targetSize" class="form-control" placeholder="1" step="0.1" min="0.1">
+                    <small class="text-muted">Boş bırakın veya 0 girin</small>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success" onclick="compressImage()">Sıkıştır ve İndir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% load static %}{% static 'js/image-tools.js' %}"></script>
+{% endblock %}

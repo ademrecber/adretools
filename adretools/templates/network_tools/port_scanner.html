@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ description }}">
+<meta name="keywords" content="{{ keywords }}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1><i class="fas fa-network-wired text-info"></i> {% trans "Online Port Scanner - Free" %}</h1>
+            <p class="lead">{% trans "Scan open ports" %}</p>
+            <a href="{% url 'network_tools:home' %}" class="btn btn-outline-secondary">← {% trans "Network Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-network-wired"></i> {% trans "Port Scanning" %}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Target IP/Domain" %}</label>
+                        <input type="text" id="targetInput" class="form-control" placeholder="{% trans 'e.g: google.com' %}">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Ports" %}</label>
+                        <input type="text" id="portsInput" class="form-control" value="80,443,22,21,25,53" placeholder="{% trans '80,443,22 or 80-100' %}">
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-info btn-lg" onclick="scanPorts()">
+                            <i class="fas fa-search"></i> {% trans "Scan Ports" %}
+                        </button>
+                    </div>
+                    
+                    <div id="scanResult" class="mt-4" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+async function scanPorts() {
+    const target = document.getElementById('targetInput').value.trim();
+    const ports = document.getElementById('portsInput').value.trim();
+    
+    if (!target) {
+        alert('{% trans "Please enter target IP/domain!" %}');
+        return;
+    }
+    
+    try {
+        const response = await fetch('/network/api/port-scanner/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ target: target, ports: ports })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            document.getElementById('scanResult').innerHTML = `
+                <div class="alert alert-success">
+                    <h4>Tarama Sonucu: ${data.target}</h4>
+                    <p>Açık Portlar: ${data.open_ports.join(', ') || 'Yok'}</p>
+                    <p>Toplam Taranan: ${data.total_scanned}</p>
+                </div>
+            `;
+            document.getElementById('scanResult').style.display = 'block';
+        } else {
+            alert('{% trans "Error" %}: ' + data.error);
+        }
+    } catch (error) {
+        alert('{% trans "Connection error" %}: ' + error.message);
+    }
+}
+</script>
+{% endblock %}

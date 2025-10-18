@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Text Tools" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+.stats-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+.transform-card { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+.encode-card { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; }
+.format-card { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; }
+.stat-item { border-bottom: 1px solid rgba(255,255,255,0.2); padding: 8px 0; }
+.stat-item:last-child { border-bottom: none; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <a href="/" class="btn btn-outline-secondary mb-3">
+            <i class="fas fa-home"></i> {% trans "Back to Home" %}
+        </a>
+        <h1 class="display-4 text-primary">📝 {% trans "Text Tools" %}</h1>
+        <p class="lead">{% trans "Analyze, transform and format texts" %}</p>
+    </div>
+
+    <div class="row">
+        <!-- Metin Girişi -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5><i class="fas fa-edit"></i> {% trans "Text Input" %}</h5>
+                </div>
+                <div class="card-body">
+                    <textarea id="inputText" class="form-control" rows="15" placeholder="{% trans 'Write your text here...' %}"></textarea>
+                    <small class="text-muted mt-2 d-block">{% trans "Your text will be automatically analyzed" %}</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sonuçlar -->
+        <div class="col-md-6">
+            <!-- İstatistikler -->
+            <div class="card stats-card mb-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-chart-bar"></i> {% trans "Text Statistics" %}</h5>
+                </div>
+                <div class="card-body" id="textStats">
+                    <div class="stat-item"><strong>{% trans "Characters (with spaces)" %}:</strong> <span id="charCount">0</span></div>
+                    <div class="stat-item"><strong>{% trans "Characters (without spaces)" %}:</strong> <span id="charNoSpaces">0</span></div>
+                    <div class="stat-item"><strong>{% trans "Word count" %}:</strong> <span id="wordCount">0</span></div>
+                    <div class="stat-item"><strong>{% trans "Line count" %}:</strong> <span id="lineCount">0</span></div>
+                    <div class="stat-item"><strong>{% trans "Paragraph count" %}:</strong> <span id="paragraphCount">0</span></div>
+                    <div class="stat-item"><strong>{% trans "Digit count" %}:</strong> <span id="digitCount">0</span></div>
+                    <div class="stat-item"><strong>{% trans "Letter count" %}:</strong> <span id="letterCount">0</span></div>
+                    <div class="stat-item"><strong>{% trans "Longest word" %}:</strong> <span id="longestWord">-</span></div>
+                    <div class="stat-item"><strong>{% trans "Average word length" %}:</strong> <span id="avgWordLength">0</span></div>
+                </div>
+            </div>
+
+            <!-- Dönüştürme -->
+            <div class="card transform-card mb-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-exchange-alt"></i> {% trans "Text Transformation" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="transformText('uppercase')">{% trans "UPPERCASE" %}</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="transformText('lowercase')">{% trans "lowercase" %}</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="transformText('title')">{% trans "Title Case" %}</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="transformText('reverse')">{% trans "Reverse" %}</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="transformText('slug')">{% trans "URL Slug" %}</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="transformText('clean_spaces')">{% trans "Clean Spaces" %}</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="transformText('clean_special')">{% trans "Remove Special Chars" %}</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="transformText('clean_html')">{% trans "Clean HTML" %}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kodlama -->
+            <div class="card encode-card mb-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-code"></i> {% trans "Encoding & Hash" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="encodeText('base64_encode')">{% trans "Base64 Encode" %}</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="encodeText('base64_decode')">{% trans "Base64 Decode" %}</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="encodeText('url_encode')">{% trans "URL Encode" %}</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="encodeText('url_decode')">{% trans "URL Decode" %}</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="encodeText('md5')">MD5 Hash</button>
+                        </div>
+                        <div class="col-6 mb-2">
+                            <button class="btn btn-light btn-sm btn-block" onclick="encodeText('sha256')">SHA256 Hash</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Format -->
+            <div class="card format-card">
+                <div class="card-header">
+                    <h5><i class="fas fa-align-left"></i> {% trans "JSON Format" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-light btn-sm btn-block" onclick="formatText('json_format')">{% trans "JSON Beautify" %}</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-light btn-sm btn-block" onclick="formatText('json_minify')">{% trans "JSON Minify" %}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/text-tools.js' %}"></script>
+{% endblock %}

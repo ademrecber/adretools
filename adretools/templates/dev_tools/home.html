@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Developer Tools - AdreTools" %}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="Geliştiriciler için ücretsiz online araçlar: JSON formatter, Hash generator, Regex tester, Base64 encoder ve daha fazlası.">
+<meta name="keywords" content="geliştirici araçları, developer tools, json formatter, hash generator, regex tester, base64 encoder">
+<meta property="og:title" content="Geliştirici Araçları - Developer Tools - AdreTools">
+<meta property="og:description" content="Geliştiriciler için ücretsiz online araçlar: JSON formatter, Hash generator, Regex tester ve daha fazlası.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Geliştirici Araçları - AdreTools">
+<meta name="twitter:description" content="Geliştiriciler için ücretsiz online araçlar koleksiyonu">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Geliştirici Araçları - AdreTools",
+  "description": "Geliştiriciler için ücretsiz online araçlar koleksiyonu",
+  "url": "{{ request.build_absolute_uri }}",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TRY"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Geliştirici Araçları",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "SoftwareApplication",
+          "name": "JSON Formatter",
+          "description": "JSON doğrula, formatla, minify et"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "SoftwareApplication",
+          "name": "Hash Generator",
+          "description": "MD5, SHA1, SHA256 hash oluştur"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "SoftwareApplication",
+          "name": "Regex Tester",
+          "description": "Regular expression test et"
+        }
+      }
+    ]
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center mb-4">
+        <h1><i class="fas fa-code text-success"></i> {% trans "Developer Tools" %}</h1>
+        <p class="lead">{% trans "Professional tools for coding and development" %}</p>
+        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+    </div>
+</div>
+
+<div class="row g-4">
+    {% for tool in tools %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 tool-card">
+            <div class="card-body text-center">
+                <i class="{{ tool.icon }} fa-3x text-success mb-3"></i>
+                <h5 class="card-title">{{ tool.name }}</h5>
+                <p class="card-text">{{ tool.desc }}</p>
+                {% if tool.id == 'json-formatter' %}
+                    <a href="{% url 'dev_tools:json_formatter_page' %}" class="btn btn-success">{% trans "Use" %}</a>
+                {% elif tool.id == 'hash-generator' %}
+                    <a href="{% url 'dev_tools:hash_generator_page' %}" class="btn btn-success">{% trans "Use" %}</a>
+                {% elif tool.id == 'regex-tester' %}
+                    <a href="{% url 'dev_tools:regex_tester_page' %}" class="btn btn-success">{% trans "Use" %}</a>
+                {% elif tool.id == 'base64-encoder' %}
+                    <a href="{% url 'dev_tools:base64_encoder_page' %}" class="btn btn-success">{% trans "Use" %}</a>
+                {% elif tool.id == 'url-encoder' %}
+                    <a href="{% url 'dev_tools:url_encoder_page' %}" class="btn btn-success">{% trans "Use" %}</a>
+                {% elif tool.id == 'html-encoder' %}
+                    <a href="{% url 'dev_tools:html_encoder_page' %}" class="btn btn-success">{% trans "Use" %}</a>
+                {% elif tool.id == 'sql-formatter' %}
+                    <a href="{% url 'dev_tools:sql_formatter_page' %}" class="btn btn-success">{% trans "Use" %}</a>
+                {% elif tool.id == 'timestamp-converter' %}
+                    <a href="{% url 'dev_tools:timestamp_converter_page' %}" class="btn btn-success">{% trans "Use" %}</a>
+                {% else %}
+                    <button class="btn btn-outline-success" disabled>{% trans "Coming Soon" %}</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3>{% trans "About Developer Tools" %}</h3>
+                <p>{% trans "Speed up your coding process with AdreTools developer tools. Professional tools for all your needs from JSON formatting to hash generation." %}</p>
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>📋 JSON Formatter</h5>
+                        <p>{% trans "Validate, format and minify your JSON data." %}</p>
+                        
+                        <h5>🔐 Hash Generator</h5>
+                        <p>{% trans "Generate MD5, SHA1, SHA256 hash values." %}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>🔍 Regex Tester</h5>
+                        <p>{% trans "Test your regular expression patterns." %}</p>
+                        
+                        <h5>🔒 Base64 Encoder</h5>
+                        <p>{% trans "Encode/decode texts to Base64 format." %}</p>
+                        
+                        <h5>🌐 HTML Encoder</h5>
+                        <p>{% trans "Encode/decode HTML entities." %}</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>🔗 URL Encoder</h5>
+                        <p>{% trans "Encode/decode URLs to safe format." %}</p>
+                        
+                        <h5>🗄️ SQL Formatter</h5>
+                        <p>{% trans "Format and beautify SQL queries." %}</p>
+                        
+                        <h5>⏰ Timestamp Converter</h5>
+                        <p>{% trans "Convert Unix timestamp values." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

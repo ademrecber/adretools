@@ -1,0 +1,24 @@
+/* Smooth scroll için */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Tool section'lar için margin */
+.tool-section {
+    scroll-margin-top: 20px;
+}
+
+/* Mobil için daha iyi görünüm */
+@media (max-width: 768px) {
+    .tool-section {
+        scroll-margin-top: 80px;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .btn {
+        margin-bottom: 0.5rem;
+    }
+}

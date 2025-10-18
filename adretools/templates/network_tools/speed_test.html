@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ description }}">
+<meta name="keywords" content="{{ keywords }}">
+<style>
+.speed-gauge {
+    width: 200px;
+    height: 200px;
+    border: 10px solid #e0e0e0;
+    border-radius: 50%;
+    position: relative;
+    margin: 20px auto;
+}
+.speed-needle {
+    width: 2px;
+    height: 80px;
+    background: #007bff;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform-origin: bottom;
+    transition: transform 0.5s ease;
+}
+.speed-display {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1><i class="fas fa-tachometer-alt text-info"></i> {% trans "Online Speed Test - Free" %}</h1>
+            <p class="lead">{% trans "Test your internet connection speed" %}</p>
+            <a href="{% url 'network_tools:home' %}" class="btn btn-outline-secondary">← {% trans "Network Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-tachometer-alt"></i> {% trans "Internet Speed Test" %}</h3>
+                </div>
+                <div class="card-body text-center">
+                    
+                    <!-- Hız Göstergesi -->
+                    <div class="speed-gauge">
+                        <div class="speed-needle" id="speedNeedle"></div>
+                    </div>
+                    
+                    <div class="speed-display" id="speedDisplay">0 Mbps</div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body">
+                                    <h5>{% trans "Download" %}</h5>
+                                    <h3 id="downloadSpeed">-- Mbps</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-success text-white">
+                                <div class="card-body">
+                                    <h5>{% trans "Upload" %}</h5>
+                                    <h3 id="uploadSpeed">-- Mbps</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-warning text-white">
+                                <div class="card-body">
+                                    <h5>{% trans "Ping" %}</h5>
+                                    <h3 id="pingTime">-- ms</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <button class="btn btn-info btn-lg" id="startTestBtn" onclick="startSpeedTest()">
+                            <i class="fas fa-play"></i> {% trans "Start Speed Test" %}
+                        </button>
+                        
+                        <div id="testProgress" class="progress mt-3" style="display:none;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:0%" id="progressBar">
+                                {% trans "Testing..." %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="testStatus" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{% trans "About Speed Test" %}</h3>
+                    <p>{% trans "Internet speed test measures your connection's download and upload speeds." %}</p>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5>📥 {% trans "Download Speed" %}</h5>
+                            <p>{% trans "Your data download speed from internet. Important for video streaming, file downloads." %}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>📤 {% trans "Upload Speed" %}</h5>
+                            <p>{% trans "Your data upload speed to internet. Important for video conferencing, file sharing." %}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>⚡ {% trans "Ping" %}</h5>
+                            <p>{% trans "Time to reach server. Critical for online games and live streaming." %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let testInProgress = false;
+
+async function startSpeedTest() {
+    if (testInProgress) return;
+    
+    testInProgress = true;
+    document.getElementById('startTestBtn').disabled = true;
+    document.getElementById('testProgress').style.display = 'block';
+    
+    // Reset values
+    document.getElementById('downloadSpeed').textContent = '-- Mbps';
+    document.getElementById('uploadSpeed').textContent = '-- Mbps';
+    document.getElementById('pingTime').textContent = '-- ms';
+    
+    try {
+        // Ping testi
+        updateStatus('{% trans "Running ping test..." %}');
+        updateProgress(20);
+        await sleep(1000);
+        const pingResult = await testPing();
+        document.getElementById('pingTime').textContent = pingResult + ' ms';
+        
+        // Download testi
+        updateStatus('{% trans "Measuring download speed..." %}');
+        updateProgress(50);
+        const downloadResult = await testSpeed('download');
+        document.getElementById('downloadSpeed').textContent = downloadResult.speed + ' Mbps';
+        updateSpeedGauge(downloadResult.speed);
+        
+        // Upload testi
+        updateStatus('{% trans "Measuring upload speed..." %}');
+        updateProgress(80);
+        const uploadResult = await testSpeed('upload');
+        document.getElementById('uploadSpeed').textContent = uploadResult.speed + ' Mbps';
+        
+        updateProgress(100);
+        updateStatus('{% trans "Test completed!" %}');
+        
+        setTimeout(() => {
+            document.getElementById('testProgress').style.display = 'none';
+            document.getElementById('testStatus').innerHTML = '';
+        }, 2000);
+        
+    } catch (error) {
+        updateStatus('{% trans "Test error" %}: ' + error.message);
+    } finally {
+        testInProgress = false;
+        document.getElementById('startTestBtn').disabled = false;
+    }
+}
+
+async function testSpeed(type) {
+    const response = await fetch('/network/api/speed-test/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: type })
+    });
+    
+    if (!response.ok) {
+        throw new Error('{% trans "Test failed" %}');
+    }
+    
+    return await response.json();
+}
+
+async function testPing() {
+    // Basit ping simülasyonu
+    const start = Date.now();
+    await fetch('/network/api/ping-test/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ target: 'google.com', count: 1 })
+    });
+    const end = Date.now();
+    return Math.round((end - start) / 2); // Yaklaşık ping süresi
+}
+
+function updateProgress(percent) {
+    document.getElementById('progressBar').style.width = percent + '%';
+}
+
+function updateStatus(message) {
+    document.getElementById('testStatus').innerHTML = `<div class="alert alert-info">${message}</div>`;
+}
+
+function updateSpeedGauge(speed) {
+    const needle = document.getElementById('speedNeedle');
+    const angle = Math.min(speed * 1.8, 180); // Max 100 Mbps için 180 derece
+    needle.style.transform = `rotate(${angle}deg)`;
+    document.getElementById('speedDisplay').textContent = speed + ' Mbps';
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+</script>
+{% endblock %}

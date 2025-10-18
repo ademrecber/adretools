@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Free Image Resizer Online - Resize Photos - AdreTools" %}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="Resize images online for free. Change photo dimensions, compress images, maintain quality. Supports JPG, PNG, WEBP formats.">
+<meta name="keywords" content="image resizer, resize photo online, image resize tool, photo resizer, compress image, resize picture">
+<meta property="og:title" content="Free Image Resizer Online - Resize Photos">
+<meta property="og:description" content="Professional image resizer tool. Resize photos, compress images and maintain quality online for free.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Image Resizer Tool",
+  "description": "Free online tool to resize images and photos",
+  "url": "{{ request.build_absolute_uri }}",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Resize Images",
+    "Compress Photos",
+    "Maintain Quality",
+    "Multiple Formats"
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1>{% trans "Free Image Resizer Online - Resize Photos" %}</h1>
+            <p class="lead">{% trans "Resize images and photos online for free" %}</p>
+            <a href="{% url 'image_tools:home' %}" class="btn btn-outline-secondary">← {% trans "Image Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-expand-arrows-alt"></i> {% trans "Image Resizer Tool" %}</h3>
+                </div>
+                <div class="card-body text-center">
+                    <button class="btn btn-primary btn-lg">
+                        <i class="fas fa-upload"></i> {% trans "Choose Image to Resize" %}
+                    </button>
+                    
+                    <div class="mt-4">
+                        <h4>{% trans "How to Resize Images Online" %}</h4>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <i class="fas fa-upload fa-2x text-primary mb-2"></i>
+                                <h6>{% trans "Upload Image" %}</h6>
+                                <p class="small">{% trans "Select JPG, PNG or WEBP" %}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <i class="fas fa-sliders-h fa-2x text-success mb-2"></i>
+                                <h6>{% trans "Set Dimensions" %}</h6>
+                                <p class="small">{% trans "Choose new width & height" %}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <i class="fas fa-download fa-2x text-info mb-2"></i>
+                                <h6>{% trans "Download" %}</h6>
+                                <p class="small">{% trans "Get resized image" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3>{% trans "Free Image Resizer Features" %}</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li>✅ <strong>{% trans "Free Image Resize" %}</strong> - {% trans "No watermarks" %}</li>
+                                <li>✅ <strong>{% trans "Multiple Formats" %}</strong> - JPG, PNG, WEBP</li>
+                                <li>✅ <strong>{% trans "Batch Resize" %}</strong> - {% trans "Multiple images" %}</li>
+                                <li>✅ <strong>{% trans "Quality Control" %}</strong> - {% trans "Maintain image quality" %}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li>✅ <strong>{% trans "Custom Dimensions" %}</strong> - {% trans "Any size you want" %}</li>
+                                <li>✅ <strong>{% trans "Aspect Ratio" %}</strong> - {% trans "Keep proportions" %}</li>
+                                <li>✅ <strong>{% trans "Instant Preview" %}</strong> - {% trans "See before download" %}</li>
+                                <li>✅ <strong>{% trans "No Registration" %}</strong> - {% trans "Use immediately" %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

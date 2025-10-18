@@ -1,0 +1,449 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "SVG Tools" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+.tool-card { cursor: pointer; transition: all 0.3s; }
+.tool-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+.tool-section { display: none; margin-top: 30px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <a href="/" class="btn btn-outline-secondary mb-3">
+            <i class="fas fa-home"></i> {% trans "Back to Home" %}
+        </a>
+        <h1 class="display-4 text-primary">🎨 {% trans "SVG Tools" %}</h1>
+        <p class="lead">{% trans "Edit and convert SVG files" %}</p>
+    </div>
+
+    <div class="row">
+        {% for tool in tools %}
+        <div class="col-md-6 mb-4">
+            <div class="card tool-card h-100" onclick="showTool('{{ tool.id }}')">
+                <div class="card-body text-center">
+                    <i class="{{ tool.icon }} fa-3x text-primary mb-3"></i>
+                    <h5 class="card-title">{{ tool.name }}</h5>
+                    <p class="card-text text-muted">{{ tool.desc }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- PNG/JPG → SVG -->
+    <div id="raster-to-svg" class="tool-section">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h4><i class="fas fa-vector-square"></i> {% trans "PNG/JPG → SVG Conversion" %}</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-outline-success btn-block mb-3" onclick="selectRasterFile()">
+                            <i class="fas fa-upload"></i> {% trans "Select Image File" %}
+                        </button>
+                        <div id="rasterFileDisplay"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <strong>{% trans "Note" %}:</strong> {% trans "This process embeds the image into SVG." %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "Conversion Mode" %}:</label>
+                            <select id="convertMode" class="form-control">
+                                <option value="embed">{% trans "Simple (Embed image in SVG)" %}</option>
+                                <option value="vector">{% trans "Advanced (Real SVG Path)" %}</option>
+                            </select>
+                        </div>
+
+                        <button class="btn btn-success btn-block" onclick="convertRasterToSVG()">
+                            <i class="fas fa-exchange-alt"></i> {% trans "Convert to SVG" %}
+                        </button>
+                        <div id="convertProgress" class="progress mt-3" style="display:none;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%">
+                                {% trans "Converting..." %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SVG → PNG/JPG -->
+    <div id="svg-to-raster" class="tool-section">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h4><i class="fas fa-image"></i> {% trans "SVG → PNG/JPG Conversion" %}</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-outline-info btn-block mb-3" onclick="selectSVGForRaster()">
+                            <i class="fas fa-upload"></i> {% trans "Select SVG File" %}
+                        </button>
+                        <div id="svgRasterFileDisplay"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>{% trans "Output Format" %}:</label>
+                            <select id="rasterFormat" class="form-control">
+                                <option value="png">PNG</option>
+                                <option value="jpg">JPG</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>{% trans "Width" %}:</label>
+                                    <input type="number" id="rasterWidth" class="form-control" value="800">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>{% trans "Height" %}:</label>
+                                    <input type="number" id="rasterHeight" class="form-control" value="600">
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-info btn-block" onclick="convertSVGToRaster()">
+                            <i class="fas fa-download"></i> {% trans "Convert and Download" %}
+                        </button>
+                        <div id="rasterProgress" class="progress mt-3" style="display:none;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%">
+                                {% trans "Converting..." %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vektör Trace -->
+    <div id="vector-trace" class="tool-section">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h4><i class="fas fa-bezier-curve"></i> {% trans "Vector SVG Trace" %}</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-outline-danger btn-block mb-3" onclick="selectImageForTrace()">
+                            <i class="fas fa-upload"></i> {% trans "Select Image File" %}
+                        </button>
+                        <div id="traceFileDisplay"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <strong>{% trans "Warning" %}:</strong> {% trans "This creates real vector SVG!" %}
+                        </div>
+                        <div class="form-group">
+                            <label>{% trans "Detail Level" %}:</label>
+                            <input type="range" id="traceDetail" class="form-control" min="1" max="10" value="5">
+                            <small class="text-muted">{% trans "1: Very detailed, 10: Simple" %}</small>
+                        </div>
+                        <button class="btn btn-danger btn-block" onclick="traceToVector()">
+                            <i class="fas fa-magic"></i> {% trans "Create Vector SVG" %}
+                        </button>
+                        <div id="traceProgress" class="progress mt-3" style="display:none;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:100%">
+                                {% trans "Processing..." %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SVG Düzenle -->
+    <div id="svg-edit" class="tool-section">
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h4><i class="fas fa-edit"></i> {% trans "SVG Editing" %}</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-outline-warning btn-block mb-3" onclick="selectSVGForEdit()">
+                            <i class="fas fa-upload"></i> {% trans "Select SVG File" %}
+                        </button>
+                        <div id="editSvgFileDisplay"></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>{% trans "New Width" %}:</label>
+                                    <input type="number" id="editWidth" class="form-control" placeholder="{% trans 'Change' %}">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>{% trans "New Height" %}:</label>
+                                    <input type="number" id="editHeight" class="form-control" placeholder="Değiştirme">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Dolgu Rengi:</label>
+                            <input type="color" id="fillColor" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Çizgi Rengi:</label>
+                            <input type="color" id="strokeColor" class="form-control">
+                        </div>
+                        <button class="btn btn-warning btn-block" onclick="editSVG()">
+                            <i class="fas fa-edit"></i> SVG Düzenle
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Araç gösterme
+function showTool(toolId) {
+    document.querySelectorAll('.tool-section').forEach(section => {
+        section.style.display = 'none';
+    });
+    const toolElement = document.getElementById(toolId);
+    toolElement.style.display = 'block';
+    setTimeout(() => {
+        window.scrollTo({
+            top: toolElement.offsetTop - 50,
+            behavior: 'smooth'
+        });
+    }, 50);
+}
+
+// Raster dosya seç
+let selectedRasterFile = null;
+function selectRasterFile() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (e) => {
+        selectedRasterFile = e.target.files[0];
+        document.getElementById('rasterFileDisplay').innerHTML = `
+            <div class="alert alert-success">
+                <i class="fas fa-check"></i> Seçilen: ${selectedRasterFile.name}
+            </div>`;
+    };
+    input.click();
+}
+
+// SVG seç (raster için)
+let selectedSVGForRaster = null;
+function selectSVGForRaster() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.svg';
+    input.onchange = (e) => {
+        selectedSVGForRaster = e.target.files[0];
+        document.getElementById('svgRasterFileDisplay').innerHTML = `
+            <div class="alert alert-success">
+                <i class="fas fa-check"></i> Seçilen: ${selectedSVGForRaster.name}
+            </div>`;
+    };
+    input.click();
+}
+
+// Trace için resim seç
+let selectedTraceFile = null;
+function selectImageForTrace() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = (e) => {
+        selectedTraceFile = e.target.files[0];
+        document.getElementById('traceFileDisplay').innerHTML = `
+            <div class="alert alert-success">
+                <i class="fas fa-check"></i> Seçilen: ${selectedTraceFile.name}
+            </div>`;
+    };
+    input.click();
+}
+
+// Edit için SVG seç
+let selectedSVGForEdit = null;
+function selectSVGForEdit() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.svg';
+    input.onchange = (e) => {
+        selectedSVGForEdit = e.target.files[0];
+        document.getElementById('editSvgFileDisplay').innerHTML = `
+            <div class="alert alert-success">
+                <i class="fas fa-check"></i> Seçilen: ${selectedSVGForEdit.name}
+            </div>`;
+    };
+    input.click();
+}
+
+// Raster'dan SVG'ye dönüştür
+async function convertRasterToSVG() {
+    if (!selectedRasterFile) {
+        alert('Lütfen bir resim dosyası seçin!');
+        return;
+    }
+    
+    document.getElementById('convertProgress').style.display = 'block';
+    
+    const formData = new FormData();
+    formData.append('image_file', selectedRasterFile);
+    formData.append('mode', document.getElementById('convertMode').value);
+    
+    try {
+        const response = await fetch('/svg/raster-to-svg/', {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (response.ok) {
+            const blob = await response.blob();
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = selectedRasterFile.name.replace(/\.[^/.]+$/, '') + '.svg';
+            link.click();
+        } else {
+            const error = await response.json();
+            alert('Hata: ' + error.error);
+        }
+    } catch (error) {
+        alert('Bağlantı hatası: ' + error.message);
+    } finally {
+        document.getElementById('convertProgress').style.display = 'none';
+    }
+}
+
+// SVG'den raster'a dönüştür
+async function convertSVGToRaster() {
+    if (!selectedSVGForRaster) {
+        alert('Lütfen bir SVG dosyası seçin!');
+        return;
+    }
+    
+    document.getElementById('rasterProgress').style.display = 'block';
+    
+    const formData = new FormData();
+    formData.append('svg_file', selectedSVGForRaster);
+    formData.append('format', document.getElementById('rasterFormat').value);
+    formData.append('width', document.getElementById('rasterWidth').value);
+    formData.append('height', document.getElementById('rasterHeight').value);
+    
+    try {
+        const response = await fetch('/svg/svg-to-raster/', {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (response.ok) {
+            const blob = await response.blob();
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            const ext = document.getElementById('rasterFormat').value;
+            link.download = selectedSVGForRaster.name.replace(/\.[^/.]+$/, '') + '.' + ext;
+            link.click();
+        } else {
+            const error = await response.json();
+            alert('Hata: ' + error.error);
+        }
+    } catch (error) {
+        alert('Bağlantı hatası: ' + error.message);
+    } finally {
+        document.getElementById('rasterProgress').style.display = 'none';
+    }
+}
+
+// Vektörel trace
+async function traceToVector() {
+    if (!selectedTraceFile) {
+        alert('Lütfen bir resim dosyası seçin!');
+        return;
+    }
+    
+    document.getElementById('traceProgress').style.display = 'block';
+    
+    const formData = new FormData();
+    formData.append('image_file', selectedTraceFile);
+    formData.append('detail_level', document.getElementById('traceDetail').value);
+    
+    try {
+        const response = await fetch('/svg/vector-trace/', {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (response.ok) {
+            const blob = await response.blob();
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'traced_' + selectedTraceFile.name.replace(/\.[^/.]+$/, '') + '.svg';
+            link.click();
+        } else {
+            const error = await response.json();
+            alert('Hata: ' + error.error);
+        }
+    } catch (error) {
+        alert('Bağlantı hatası: ' + error.message);
+    } finally {
+        document.getElementById('traceProgress').style.display = 'none';
+    }
+}
+
+// SVG düzenle
+async function editSVG() {
+    if (!selectedSVGForEdit) {
+        alert('Lütfen bir SVG dosyası seçin!');
+        return;
+    }
+    
+    const formData = new FormData();
+    formData.append('svg_file', selectedSVGForEdit);
+    
+    const width = document.getElementById('editWidth').value;
+    const height = document.getElementById('editHeight').value;
+    const fill = document.getElementById('fillColor').value;
+    const stroke = document.getElementById('strokeColor').value;
+    
+    if (width) formData.append('new_width', width);
+    if (height) formData.append('new_height', height);
+    if (fill) formData.append('fill_color', fill);
+    if (stroke) formData.append('stroke_color', stroke);
+    
+    try {
+        const response = await fetch('/svg/edit-svg/', {
+            method: 'POST',
+            body: formData
+        });
+        
+        if (response.ok) {
+            const blob = await response.blob();
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'edited_' + selectedSVGForEdit.name;
+            link.click();
+        } else {
+            const error = await response.json();
+            alert('Hata: ' + error.error);
+        }
+    } catch (error) {
+        alert('Bağlantı hatası: ' + error.message);
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Network Tools - Online Network Tools - AdreTools" %}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="Ücretsiz online ağ araçları: IP lookup, domain checker, port scanner, ping test. Hızlı ve güvenilir network tools.">
+<meta name="keywords" content="ağ araçları, network tools, ip lookup, domain checker, port scanner, ping test, online tools">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Ağ Araçları - AdreTools",
+  "description": "Ücretsiz online ağ araçları koleksiyonu",
+  "url": "{{ request.build_absolute_uri }}",
+  "applicationCategory": "NetworkingApplication",
+  "operatingSystem": "Web Browser",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TRY"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center mb-4">
+        <h1><i class="fas fa-network-wired text-info"></i> {% trans "Network Tools" %}</h1>
+        <p class="lead">{% trans "IP lookup, domain checking and network tests" %}</p>
+        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 tool-card">
+            <div class="card-body text-center">
+                <i class="fas fa-search-location fa-3x text-info mb-3"></i>
+                <h5 class="card-title">{% trans "IP Lookup" %}</h5>
+                <p class="card-text">{% trans "Query IP address information" %}</p>
+                <a href="{% url 'network_tools:ip_lookup_page' %}" class="btn btn-info">{% trans "Use" %}</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 tool-card">
+            <div class="card-body text-center">
+                <i class="fas fa-globe fa-3x text-info mb-3"></i>
+                <h5 class="card-title">{% trans "Domain Checker" %}</h5>
+                <p class="card-text">{% trans "Check domain information" %}</p>
+                <a href="{% url 'network_tools:domain_checker_page' %}" class="btn btn-info">{% trans "Use" %}</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 tool-card">
+            <div class="card-body text-center">
+                <i class="fas fa-network-wired fa-3x text-info mb-3"></i>
+                <h5 class="card-title">{% trans "Port Scanner" %}</h5>
+                <p class="card-text">{% trans "Scan open ports" %}</p>
+                <a href="{% url 'network_tools:port_scanner_page' %}" class="btn btn-info">{% trans "Use" %}</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 tool-card">
+            <div class="card-body text-center">
+                <i class="fas fa-wifi fa-3x text-info mb-3"></i>
+                <h5 class="card-title">{% trans "Ping Test" %}</h5>
+                <p class="card-text">{% trans "Test connection speed" %}</p>
+                <a href="{% url 'network_tools:ping_test_page' %}" class="btn btn-info">{% trans "Use" %}</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-3">
+        <div class="card h-100 tool-card">
+            <div class="card-body text-center">
+                <i class="fas fa-tachometer-alt fa-3x text-info mb-3"></i>
+                <h5 class="card-title">{% trans "Speed Test" %}</h5>
+                <p class="card-text">{% trans "Measure internet speed" %}</p>
+                <a href="{% url 'network_tools:speed_test_page' %}" class="btn btn-info">{% trans "Use" %}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3>{% trans "About Network Tools" %}</h3>
+                <p>{% trans "With AdreTools network tools, you can query IP addresses, check domain information, perform port scanning and conduct ping tests." %}</p>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>🔍 {% trans "IP Lookup" %}</h5>
+                        <p>{% trans "Learn the geographical location, ISP information and details of the IP address." %}</p>
+                        
+                        <h5>🌐 {% trans "Domain Checker" %}</h5>
+                        <p>{% trans "Check the DNS records and whois information of the domain address." %}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>🔌 {% trans "Port Scanner" %}</h5>
+                        <p>{% trans "Perform security checks by scanning open ports of IP address." %}</p>
+                        
+                        <h5>📡 {% trans "Ping Test" %}</h5>
+                        <p>{% trans "Test connection quality by pinging website or IP address." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

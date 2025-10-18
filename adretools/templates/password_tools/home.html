@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Password Generator" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+.generator-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+.checker-card { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+.result-card { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; }
+.strength-bar { height: 20px; border-radius: 10px; transition: all 0.3s; }
+.password-display { font-family: 'Courier New', monospace; font-size: 18px; letter-spacing: 2px; }
+.feedback-item { background: rgba(255,255,255,0.1); padding: 5px 10px; margin: 2px 0; border-radius: 15px; font-size: 12px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="text-center mb-5">
+        <a href="/" class="btn btn-outline-secondary mb-3">
+            <i class="fas fa-home"></i> {% trans "Back to Home" %}
+        </a>
+        <h1 class="display-4 text-primary">🔐 {% trans "Password Generator" %}</h1>
+        <p class="lead">{% trans "Generate strong passwords and perform security checks" %}</p>
+    </div>
+
+    <div class="row">
+        <!-- Şifre Üretici -->
+        <div class="col-md-6">
+            <div class="card generator-card mb-4">
+                <div class="card-header">
+                    <h5><i class="fas fa-key"></i> {% trans "Generate Password" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>{% trans "Password Length" %}: <span id="lengthValue">12</span></label>
+                        <input type="range" id="passwordLength" class="form-control-range" min="4" max="128" value="12">
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input type="checkbox" id="includeUppercase" class="form-check-input" checked>
+                            <label class="form-check-label">{% trans "Uppercase Letters (A-Z)" %}</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="includeLowercase" class="form-check-input" checked>
+                            <label class="form-check-label">{% trans "Lowercase Letters (a-z)" %}</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="includeNumbers" class="form-check-input" checked>
+                            <label class="form-check-label">{% trans "Numbers (0-9)" %}</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="includeSymbols" class="form-check-input" checked>
+                            <label class="form-check-label">{% trans "Symbols (!@#$%^&*)" %}</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" id="excludeSimilar" class="form-check-input">
+                            <label class="form-check-label">{% trans "Exclude Similar Characters (il1Lo0O)" %}</label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-light btn-block" onclick="generatePassword()">
+                        <i class="fas fa-magic"></i> {% trans "Generate Password" %}
+                    </button>
+                </div>
+            </div>
+
+            <!-- Şifre Kontrol -->
+            <div class="card checker-card">
+                <div class="card-header">
+                    <h5><i class="fas fa-shield-alt"></i> {% trans "Password Security Check" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>{% trans "Password to Check" %}:</label>
+                        <input type="password" id="checkPassword" class="form-control" placeholder="{% trans 'Enter your password' %}">
+                        <small class="form-text text-light">{% trans "Your password is not sent to server, only analyzed" %}</small>
+                    </div>
+                    <button class="btn btn-light btn-block" onclick="checkPasswordStrength()">
+                        <i class="fas fa-search"></i> {% trans "Perform Security Check" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sonuçlar -->
+        <div class="col-md-6">
+            <!-- Üretilen Şifre -->
+            <div id="generatedResult" class="card result-card mb-4" style="display: none;">
+                <div class="card-header">
+                    <h5><i class="fas fa-check-circle"></i> {% trans "Generated Password" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>{% trans "Password" %}:</label>
+                        <div class="input-group">
+                            <input type="text" id="generatedPassword" class="form-control password-display" readonly>
+                            <div class="input-group-append">
+                                <button class="btn btn-light" onclick="copyPassword()">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                                <button class="btn btn-light" onclick="togglePasswordVisibility('generatedPassword')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>{% trans "Security Score" %}:</label>
+                        <div class="progress mb-2">
+                            <div id="generatedStrengthBar" class="progress-bar strength-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span id="generatedStrengthLevel">-</span>
+                            <span id="generatedStrengthScore">0/100</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-light btn-sm btn-block" onclick="generatePassword()">
+                        <i class="fas fa-redo"></i> {% trans "Generate New Password" %}
+                    </button>
+                </div>
+            </div>
+
+            <!-- Kontrol Sonucu -->
+            <div id="checkResult" class="card result-card" style="display: none;">
+                <div class="card-header">
+                    <h5><i class="fas fa-analytics"></i> {% trans "Security Analysis" %}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>{% trans "Security Score" %}:</label>
+                        <div class="progress mb-2">
+                            <div id="checkStrengthBar" class="progress-bar strength-bar" style="width: 0%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span id="checkStrengthLevel">-</span>
+                            <span id="checkStrengthScore">0/100</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>{% trans "Password Details" %}:</label>
+                        <div id="passwordDetails" class="small"></div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label>{% trans "Suggestions" %}:</label>
+                        <div id="passwordFeedback"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/password-tools.js' %}"></script>
+{% endblock %}
