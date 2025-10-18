@@ -11,7 +11,7 @@ def image_home(request):
         {'name': 'Crop', 'id': 'crop', 'icon': 'fas fa-crop', 'desc': 'Crop image from desired area'},
         {'name': 'Rotate', 'id': 'rotate', 'icon': 'fas fa-redo', 'desc': 'Rotate or flip image'},
         {'name': 'Format Convert', 'id': 'convert', 'icon': 'fas fa-exchange-alt', 'desc': 'Convert between JPG, PNG, WEBP'},
-        {'name': 'Create ICO', 'id': 'ico', 'icon': 'fas fa-desktop', 'desc': 'JPG/PNG/PDF/SVG → ICO icon file'},
+        {'name': 'Create ICO', 'id': 'ico', 'icon': 'fas fa-desktop', 'desc': 'JPG/PNG/SVG → ICO icon file'},
         {'name': 'Compress', 'id': 'compress', 'icon': 'fas fa-compress', 'desc': 'Reduce file size'},
     ]
     return render(request, 'image_tools/home.html', {'tools': tools})
@@ -207,13 +207,7 @@ def create_ico(request):
         
         # Dosya türüne göre işle
         if file_ext == 'pdf':
-            # PDF için PyMuPDF kullan
-            import fitz
-            pdf_doc = fitz.open(stream=image_file.read(), filetype="pdf")
-            page = pdf_doc[0]
-            pix = page.get_pixmap()
-            img_data = pix.tobytes("png")
-            img = Image.open(io.BytesIO(img_data))
+            return JsonResponse({'error': 'PDF to ICO conversion is not supported'}, status=400)
         elif file_ext == 'svg':
             # SVG için cairosvg kullan
             from cairosvg import svg2png
