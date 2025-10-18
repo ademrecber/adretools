@@ -105,6 +105,15 @@ async function generateQR() {
         return;
     }
     
+    // Loading durumunu göster
+    const btn = document.getElementById('generateBtn');
+    const text = document.getElementById('generateText');
+    const spinner = document.getElementById('generateSpinner');
+    
+    btn.disabled = true;
+    text.textContent = 'Oluşturuluyor...';
+    spinner.style.display = 'inline-block';
+    
     const size = document.getElementById('qrSize').value;
     const errorCorrection = document.getElementById('qrErrorCorrection').value;
     const foreground = document.getElementById('qrForeground').value;
@@ -157,6 +166,11 @@ async function generateQR() {
         } else {
             alert('❌ Bir sorun oluştu\n\n' + error.message);
         }
+    } finally {
+        // Loading durumunu gizle
+        btn.disabled = false;
+        text.textContent = 'QR Oluştur';
+        spinner.style.display = 'none';
     }
 }
 
