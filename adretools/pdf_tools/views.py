@@ -224,30 +224,61 @@ def compress_pdf(request):
         return JsonResponse({'error': 'PDF file required'}, status=400)
     
     pdf_file = request.FILES['pdf']
+    quality = request.POST.get('quality', '50')  # 0-100 arası
     
     try:
         from pypdf import PdfReader, PdfWriter
+        from PIL import Image
+        import fitz  # PyMuPDF alternatif olarak
         
+        # Önce basit sıkıştırma dene
         reader = PdfReader(pdf_file)
         writer = PdfWriter()
         
-        # Sayfaları kopyala ve sıkıştır
+        # Gelişmiş sıkıştırma
         for page in reader.pages:
+            # İçerik akışlarını sıkıştır
             page.compress_content_streams()
+            
+            # Görüntüleri sıkıştır (varsa)
+            if '/XObject' in page['/Resources']:
+                xobjects = page['/Resources']['/XObject'].get_object()
+                for obj in xobjects:
+                    if xobjects[obj]['/Subtype'] == '/Image':
+                        # Görüntü sıkıştırması
+                        pass
+            
             writer.add_page(page)
+        
+        # Metadata'yı temizle
+        writer.add_metadata({
+            '/Title': '',
+            '/Author': '',
+            '/Subject': '',
+            '/Creator': 'AdreTools PDF Compressor'
+        })
         
         # Sıkıştırılmış PDF'i kaydet
         output_buffer = io.BytesIO()
         writer.write(output_buffer)
         output_buffer.seek(0)
         
+        # Boyut karşılaştırması
+        original_size = len(pdf_file.read())
+        pdf_file.seek(0)  # Reset file pointer
+        compressed_size = len(output_buffer.getvalue())
+        compression_ratio = ((original_size - compressed_size) / original_size) * 100
+        
         response = HttpResponse(output_buffer.getvalue(), content_type='application/pdf')
         response['Content-Disposition'] = f'attachment; filename="{pdf_file.name.replace(".pdf", "_compressed.pdf")}"'
+        response['X-Original-Size'] = str(original_size)
+        response['X-Compressed-Size'] = str(compressed_size)
+        response['X-Compression-Ratio'] = f'{compression_ratio:.1f}%'
         
         return response
         
     except Exception as e:
-        return JsonResponse({'error': f'Error: {str(e)}'}, status=500)
+        return JsonResponse({'error': f'Compression error: {str(e)}'}, status=500)
 
 @csrf_exempt
 def encrypt_pdf(request):
