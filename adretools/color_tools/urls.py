@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views
 
+app_name = 'color_tools'
+
 urlpatterns = [
-    path('', views.color_home, name='color_home'),
+    path('', views.color_home, name='home'),
     
     # SEO optimized URLs
     path('renk-secici/', views.color_home, name='color_picker_tr'),

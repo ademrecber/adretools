@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views
 
+app_name = 'password_tools'
+
 urlpatterns = [
-    path('', views.password_home, name='password_home'),
+    path('', views.password_home, name='home'),
     path('generate/', views.generate_password, name='generate_password'),
     path('check/', views.check_password, name='check_password'),
     

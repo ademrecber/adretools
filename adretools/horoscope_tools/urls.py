@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views
 
+app_name = 'horoscope_tools'
+
 urlpatterns = [
-    path('', views.horoscope_home, name='horoscope_home'),
+    path('', views.horoscope_home, name='home'),
     path('calculate/', views.calculate_horoscope, name='calculate_horoscope'),
     
     # SEO optimized URLs

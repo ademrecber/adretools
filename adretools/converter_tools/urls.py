@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = 'converter_tools'
+
 urlpatterns = [
     path('', views.converter_home, name='converter_home'),
     path('convert/', views.convert_unit, name='convert_unit'),

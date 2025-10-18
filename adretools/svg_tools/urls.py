@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = 'svg_tools'
+
 urlpatterns = [
     path('', views.svg_home, name='svg_home'),
     path('raster-to-svg/', views.raster_to_svg, name='raster_to_svg'),
