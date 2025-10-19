@@ -12,7 +12,6 @@ sitemaps = {
 }
 
 urlpatterns = [
-    path('i18n/', include('django.conf.urls.i18n')),
     # SEO
     path('sitemap.xml', TemplateView.as_view(template_name='sitemap.xml', content_type='application/xml')),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
@@ -20,6 +19,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
     path('pdf/', include('pdf_tools.urls')),
