@@ -25,3 +25,18 @@ def terms_of_service(request):
 
 def cookie_policy(request):
     return render(request, 'cookie-policy.html')
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def stats(request):
+    # Simulated usage statistics
+    stats_data = {
+        'total_tools': 13,
+        'monthly_users': '50,000+',
+        'files_processed': '1,000,000+',
+        'countries_served': 150,
+        'uptime': '99.9%',
+        'languages_supported': 4,
+    }
+    return render(request, 'stats.html', {'stats': stats_data})

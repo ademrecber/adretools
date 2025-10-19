@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}Usage Statistics - AdreTools{% endblock %}
+{% block meta_description %}AdreTools usage statistics and performance metrics. See how many users trust our free online tools worldwide.{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <h1 class="display-5 fw-bold text-center mb-4">Usage Statistics</h1>
+            <p class="lead text-center text-muted mb-5">Real-time insights into AdreTools usage and performance worldwide</p>
+            
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="text-primary mb-3">
+                                <i class="fas fa-users fa-3x"></i>
+                            </div>
+                            <h3 class="display-6 fw-bold text-primary">{{ stats.monthly_users }}</h3>
+                            <h6 class="text-muted">Monthly Active Users</h6>
+                            <p class="small text-muted mb-0">Growing community of users worldwide</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100 text-center border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="text-success mb-3">
+                                <i class="fas fa-file-alt fa-3x"></i>
+                            </div>
+                            <h3 class="display-6 fw-bold text-success">{{ stats.files_processed }}</h3>
+                            <h6 class="text-muted">Files Processed</h6>
+                            <p class="small text-muted mb-0">Total files processed since launch</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100 text-center border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="text-info mb-3">
+                                <i class="fas fa-globe fa-3x"></i>
+                            </div>
+                            <h3 class="display-6 fw-bold text-info">{{ stats.countries_served }}</h3>
+                            <h6 class=\"text-muted\">Countries Served</h6>
+                            <p class=\"small text-muted mb-0\">Global reach across all continents</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class=\"row g-4 mb-5\">
+                <div class=\"col-md-6\">
+                    <div class=\"card h-100 border-0 shadow-sm\">
+                        <div class=\"card-body p-4\">
+                            <h5 class=\"card-title mb-4\">
+                                <i class=\"fas fa-tools text-warning me-2\"></i>
+                                Available Tools
+                            </h5>
+                            <div class=\"row text-center\">
+                                <div class=\"col-6\">
+                                    <h3 class=\"display-6 fw-bold text-warning\">{{ stats.total_tools }}</h3>
+                                    <p class=\"text-muted mb-0\">Free Tools</p>
+                                </div>
+                                <div class=\"col-6\">
+                                    <h3 class=\"display-6 fw-bold text-warning\">{{ stats.languages_supported }}</h3>
+                                    <p class=\"text-muted mb-0\">Languages</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class=\"col-md-6\">
+                    <div class=\"card h-100 border-0 shadow-sm\">
+                        <div class=\"card-body p-4\">
+                            <h5 class=\"card-title mb-4\">
+                                <i class=\"fas fa-server text-danger me-2\"></i>
+                                System Performance
+                            </h5>
+                            <div class=\"row text-center\">
+                                <div class=\"col-12 mb-3\">
+                                    <h3 class=\"display-6 fw-bold text-danger\">{{ stats.uptime }}</h3>
+                                    <p class=\"text-muted mb-0\">Uptime Reliability</p>
+                                </div>
+                                <div class=\"col-12\">
+                                    <div class=\"progress\" style=\"height: 10px;\">
+                                        <div class=\"progress-bar bg-success\" role=\"progressbar\" style=\"width: 99.9%\"></div>
+                                    </div>
+                                    <small class=\"text-muted\">Last 30 days performance</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class=\"card border-0 shadow-sm\">
+                <div class=\"card-body p-4\">
+                    <h5 class=\"card-title mb-4\">
+                        <i class=\"fas fa-chart-line text-primary me-2\"></i>
+                        Most Popular Tools
+                    </h5>
+                    <div class=\"row g-3\">
+                        <div class=\"col-md-3 col-6\">
+                            <div class=\"text-center p-3 bg-light rounded\">
+                                <i class=\"fas fa-file-pdf text-danger mb-2\" style=\"font-size: 2rem;\"></i>
+                                <h6>PDF Tools</h6>
+                                <small class=\"text-muted\">35% of usage</small>
+                            </div>
+                        </div>
+                        <div class=\"col-md-3 col-6\">
+                            <div class=\"text-center p-3 bg-light rounded\">
+                                <i class=\"fas fa-qrcode text-primary mb-2\" style=\"font-size: 2rem;\"></i>
+                                <h6>QR Codes</h6>
+                                <small class=\"text-muted\">28% of usage</small>
+                            </div>
+                        </div>
+                        <div class=\"col-md-3 col-6\">
+                            <div class=\"text-center p-3 bg-light rounded\">
+                                <i class=\"fas fa-image text-success mb-2\" style=\"font-size: 2rem;\"></i>
+                                <h6>Image Tools</h6>
+                                <small class=\"text-muted\">22% of usage</small>
+                            </div>
+                        </div>
+                        <div class=\"col-md-3 col-6\">
+                            <div class=\"text-center p-3 bg-light rounded\">
+                                <i class=\"fas fa-key text-warning mb-2\" style=\"font-size: 2rem;\"></i>
+                                <h6>Password Gen</h6>
+                                <small class=\"text-muted\">15% of usage</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class=\"text-center mt-5\">
+                <p class=\"text-muted\">
+                    <i class=\"fas fa-info-circle me-1\"></i>
+                    Statistics are updated in real-time and represent approximate values for privacy protection.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

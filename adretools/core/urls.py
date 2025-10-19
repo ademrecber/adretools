@@ -9,4 +9,8 @@ urlpatterns = [
     path('kullanim-sartlari/', views.terms_of_service, name='terms_of_service_tr'),
     path('cookie-policy/', views.cookie_policy, name='cookie_policy'),
     path('cerez-politikasi/', views.cookie_policy, name='cookie_policy_tr'),
+    path('contact/', views.contact, name='contact'),
+    path('iletisim/', views.contact, name='contact_tr'),
+    path('stats/', views.stats, name='stats'),
+    path('istatistikler/', views.stats, name='stats_tr'),
 ]
