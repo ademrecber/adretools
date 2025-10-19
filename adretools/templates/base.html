@@ -38,16 +38,11 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'blog:blog_home' %}">{% trans "Rehberler" %}</a>
-                    </li>
-                </ul>
-            </div>
-            
             <div class="navbar-nav ms-auto">
-                <div class="nav-item dropdown">
+                <a class="nav-link text-white" href="{% url 'blog:blog_home' %}">
+                    <i class="fas fa-book"></i> {% trans "Rehberler" %}
+                </a>
+                <div class="nav-item dropdown ms-2">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="fas fa-globe"></i> 
                         {% get_current_language as LANGUAGE_CODE %}
