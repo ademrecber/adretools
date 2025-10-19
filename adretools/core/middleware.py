@@ -6,8 +6,21 @@ class AutoLanguageMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # Kullanıcının dil tercihi session'da varsa onu kullan
-        if 'django_language' in request.session:
+        # URL'den dil kodunu al
+        path_parts = request.path.strip('/').split('/')
+        url_language = None
+        
+        if path_parts and path_parts[0] in dict(settings.LANGUAGES):
+            url_language = path_parts[0]
+        
+        # URL'de dil kodu varsa onu kullan
+        if url_language:
+            language = url_language
+            translation.activate(language)
+            request.LANGUAGE_CODE = language
+            request.session['django_language'] = language
+        # Session'da dil varsa onu kullan
+        elif 'django_language' in request.session:
             language = request.session['django_language']
             translation.activate(language)
             request.LANGUAGE_CODE = language
