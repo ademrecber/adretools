@@ -35,6 +35,7 @@ urlpatterns += i18n_patterns(
     path('dev/', include('dev_tools.urls')),
     path('calculator/', include('calculator_tools.urls')),
     path('random/', include('random_tools.urls')),
+    path('blog/', include('blog.urls')),
     prefix_default_language=False,
 )
 

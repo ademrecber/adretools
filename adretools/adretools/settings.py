@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'dev_tools',
     'calculator_tools',
     'random_tools',
+    'blog',
 ]
 
 MIDDLEWARE = [
