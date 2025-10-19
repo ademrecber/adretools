@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-18 15:50+0300\n"
+"POT-Creation-Date: 2025-10-19 22:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,1450 +18,3616 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: .\calculator_tools\views.py:9 .\templates\calculator_tools\home.html:45
+msgid "BMI Calculator"
+msgstr ""
+
+#: .\calculator_tools\views.py:9
+msgid "Calculate Body Mass Index"
+msgstr ""
+
+#: .\calculator_tools\views.py:10 .\templates\calculator_tools\home.html:73
+msgid "Age Calculator"
+msgstr ""
+
+#: .\calculator_tools\views.py:10
+msgid "Calculate age from birth date"
+msgstr ""
+
+#: .\calculator_tools\views.py:11 .\templates\calculator_tools\home.html:95
+msgid "World Clock"
+msgstr ""
+
+#: .\calculator_tools\views.py:11
+msgid "World time zones"
+msgstr ""
+
+#: .\calculator_tools\views.py:12 .\templates\calculator_tools\home.html:112
+msgid "Percentage Calculator"
+msgstr ""
+
+#: .\calculator_tools\views.py:12
+msgid "Calculate percentages"
+msgstr ""
+
+#: .\calculator_tools\views.py:13 .\templates\calculator_tools\home.html:143
+msgid "Date Calculator"
+msgstr ""
+
+#: .\calculator_tools\views.py:13
+msgid "Calculate days between dates"
+msgstr ""
+
+#: .\core\views.py:6 .\templates\blog\home.html:20
+#: .\templates\pdf_tools\home.html:44
 #, fuzzy
 #| msgid "View Tools"
 msgid "PDF Tools"
 msgstr "Voir les outils"
 
+#: .\core\views.py:6
 msgid "Split, merge, convert PDF files"
 msgstr ""
 
+#: .\core\views.py:7 .\templates\image_tools\home.html:9
+#: .\templates\image_tools\resize.html:43
 #, fuzzy
 #| msgid "View Tools"
 msgid "Image Tools"
 msgstr "Voir les outils"
 
+#: .\core\views.py:7
 msgid "Resize images, change formats"
 msgstr ""
 
+#: .\core\views.py:8
 msgid "QR & Barcode"
 msgstr ""
 
+#: .\core\views.py:8
 msgid "Generate QR codes, read barcodes"
 msgstr ""
 
+#: .\core\views.py:9 .\templates\blog\home.html:407
+#: .\templates\svg_tools\home.html:5 .\templates\svg_tools\home.html:21
 #, fuzzy
 #| msgid "View Tools"
 msgid "SVG Tools"
 msgstr "Voir les outils"
 
+#: .\core\views.py:9
 msgid "Edit SVG files"
 msgstr ""
 
+#: .\core\views.py:10 .\templates\blog\home.html:236
+#: .\templates\text_tools\home.html:5 .\templates\text_tools\home.html:24
 #, fuzzy
 #| msgid "View Tools"
 msgid "Text Tools"
 msgstr "Voir les outils"
 
+#: .\core\views.py:10
 msgid "Analyze and convert text"
 msgstr ""
 
+#: .\core\views.py:11 .\templates\color_tools\home.html:5
+#: .\templates\color_tools\home.html:29
 msgid "Color Picker"
 msgstr ""
 
+#: .\core\views.py:11
 msgid "Pick colors from images and analyze"
 msgstr ""
 
+#: .\core\views.py:12 .\templates\url_tools\home.html:5
+#: .\templates\url_tools\home.html:22
 msgid "URL Shortener"
 msgstr ""
 
+#: .\core\views.py:12
 msgid "Shorten long links and generate QR"
 msgstr ""
 
+#: .\core\views.py:13 .\templates\password_tools\home.html:5
+#: .\templates\password_tools\home.html:24
 msgid "Password Generator"
 msgstr ""
 
+#: .\core\views.py:13
 msgid "Generate strong passwords and security check"
 msgstr ""
 
+#: .\core\views.py:14 .\templates\converter_tools\home.html:5
+#: .\templates\converter_tools\home.html:25
+#: .\templates\converter_tools\home.html:33
 msgid "Unit Converter"
 msgstr ""
 
+#: .\core\views.py:14
 msgid "Convert length, weight, temperature"
 msgstr ""
 
+#: .\core\views.py:15 .\templates\horoscope_tools\home.html:5
+#: .\templates\horoscope_tools\home.html:24
 msgid "Horoscope Calculator"
 msgstr ""
 
+#: .\core\views.py:15
 msgid "Calculate zodiac sign and traits by birth date"
 msgstr ""
 
+#: .\core\views.py:16 .\templates\blog\home.html:535
+#: .\templates\network_tools\domain_checker.html:17
+#: .\templates\network_tools\home.html:30
+#: .\templates\network_tools\ip_lookup.html:33
+#: .\templates\network_tools\ping_test.html:17
+#: .\templates\network_tools\port_scanner.html:17
+#: .\templates\network_tools\speed_test.html:43
 #, fuzzy
 #| msgid "View Tools"
 msgid "Network Tools"
 msgstr "Voir les outils"
 
+#: .\core\views.py:16
 msgid "IP lookup, domain check, port scan"
 msgstr ""
 
+#: .\core\views.py:17 .\templates\blog\home.html:492
+#: .\templates\dev_tools\base64_encoder.html:13
+#: .\templates\dev_tools\hash_generator.html:47
+#: .\templates\dev_tools\home.html:68
+#: .\templates\dev_tools\html_encoder.html:13
+#: .\templates\dev_tools\json_formatter.html:47
+#: .\templates\dev_tools\regex_tester.html:54
+#: .\templates\dev_tools\sql_formatter.html:13
+#: .\templates\dev_tools\timestamp_converter.html:13
+#: .\templates\dev_tools\url_encoder.html:13
 msgid "Developer Tools"
 msgstr ""
 
+#: .\core\views.py:17
 msgid "JSON, Hash, Regex, SQL tools"
 msgstr ""
 
+#: .\core\views.py:18 .\templates\blog\home.html:150
+#: .\templates\blog\home.html:172 .\templates\calculator_tools\home.html:17
+#, fuzzy
+#| msgid "View Tools"
+msgid "Calculator Tools"
+msgstr "Voir les outils"
+
+#: .\core\views.py:18
+msgid "BMI, Age, World Clock calculators"
+msgstr ""
+
+#: .\core\views.py:19 .\templates\blog\home.html:107
+#: .\templates\blog\home.html:129 .\templates\random_tools\home.html:151
+#, fuzzy
+#| msgid "View Tools"
+msgid "Random Tools"
+msgstr "Voir les outils"
+
+#: .\core\views.py:19
+msgid "Random number, lucky wheel, lottery system"
+msgstr ""
+
+#: .\random_tools\views.py:6 .\templates\blog\home.html:132
+#: .\templates\random_tools\home.html:179
+msgid "Random Number Generator"
+msgstr ""
+
+#: .\random_tools\views.py:6
+msgid "Generate random numbers"
+msgstr ""
+
+#: .\random_tools\views.py:7 .\templates\random_tools\home.html:213
+msgid "Lucky Wheel"
+msgstr ""
+
+#: .\random_tools\views.py:7
+msgid "Spin the wheel of fortune"
+msgstr ""
+
+#: .\random_tools\views.py:8 .\templates\random_tools\home.html:265
+msgid "Dice Roller"
+msgstr ""
+
+#: .\random_tools\views.py:8
+msgid "Roll virtual dice"
+msgstr ""
+
+#: .\random_tools\views.py:9
+msgid "Name Picker"
+msgstr ""
+
+#: .\random_tools\views.py:9
+msgid "Professional lottery system"
+msgstr ""
+
+#: .\templates\base.html:101
 msgid "All rights reserved."
 msgstr "Tous droits réservés."
 
-msgid "Back to Home"
+#: .\templates\base.html:102
+msgid "Terms of Service"
 msgstr ""
 
-msgid "Pick colors from images and learn details"
+#: .\templates\base.html:103
+msgid "Cookie Policy"
 msgstr ""
 
-msgid "Upload Image"
+#: .\templates\base.html:104
+msgid "Contact"
 msgstr ""
 
-msgid "Click or drag and drop"
+#: .\templates\base.html:105
+msgid "Statistics"
 msgstr ""
 
-msgid "JPG, PNG, GIF, WEBP supported"
+#: .\templates\blog\home.html:4 .\templates\blog\home.html:11
+msgid "Blog"
 msgstr ""
 
-msgid "Remove Image"
+#: .\templates\blog\home.html:5
+msgid ""
+"AdreTools blog - Online tools guides, tutorials and tips for PDF, QR code, "
+"image editing and more digital tools."
 msgstr ""
 
-msgid "Selected Color"
+#: .\templates\blog\home.html:12
+msgid ""
+"Comprehensive guides and tutorials for all AdreTools. Learn how to use our "
+"digital tools effectively with step-by-step instructions."
 msgstr ""
 
-msgid "Coordinate"
+#: .\templates\blog\home.html:25
+msgid "Complete PDF Management Solution"
 msgstr ""
 
-msgid "Copy All Color Codes"
+#: .\templates\blog\home.html:26
+msgid ""
+"Our comprehensive PDF tools suite provides everything you need for "
+"professional document management. Whether you're working with business "
+"reports, academic papers, or personal documents, these tools ensure "
+"efficient PDF processing with enterprise-level security and reliability."
 msgstr ""
 
-msgid "Color History"
+#: .\templates\blog\home.html:28
+msgid "PDF Merge - Combine Multiple Documents"
 msgstr ""
 
-msgid "No color selected yet"
+#: .\templates\blog\home.html:29
+msgid ""
+"Merge PDF files online free without losing quality. Perfect for combining "
+"invoices, reports, presentations, and contracts into single documents. "
+"Supports unlimited file size and maintains original formatting, bookmarks, "
+"and metadata. Essential for business workflows and document organization."
 msgstr ""
 
-msgid "Clear History"
+#: .\templates\blog\home.html:31
+msgid "PDF Split - Extract Pages Efficiently"
 msgstr ""
 
-msgid "Convert length, weight, temperature and more"
+#: .\templates\blog\home.html:32
+msgid ""
+"Split large PDF documents into smaller files or extract specific pages. "
+"Ideal for separating chapters, removing confidential sections, or creating "
+"focused documents. Batch processing available for multiple files with custom "
+"page ranges and automatic naming conventions."
 msgstr ""
 
-msgid "Length"
+#: .\templates\blog\home.html:34
+msgid "PDF Encryption - Secure Your Documents"
 msgstr ""
 
-msgid "Weight"
+#: .\templates\blog\home.html:35
+msgid ""
+"Protect sensitive documents with military-grade encryption. Set passwords "
+"for opening, printing, copying, and editing permissions. Perfect for legal "
+"documents, financial reports, and confidential business information. "
+"Complies with industry security standards and regulations."
 msgstr ""
 
-msgid "Temperature"
+#: .\templates\blog\home.html:37
+msgid "PDF Watermark - Brand Protection"
 msgstr ""
 
-msgid "Area"
+#: .\templates\blog\home.html:38
+msgid ""
+"Add custom watermarks to protect intellectual property and establish "
+"document authenticity. Support for text and image watermarks with adjustable "
+"transparency, positioning, and rotation. Essential for copyright protection, "
+"draft marking, and brand identification."
 msgstr ""
 
-msgid "Volume"
+#: .\templates\blog\home.html:42
+msgid "Quick Access Links"
 msgstr ""
 
-msgid "Speed"
+#: .\templates\blog\home.html:44
+#, fuzzy
+#| msgid "View Tools"
+msgid "PDF Tools Dashboard"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:45
+msgid "Merge PDF Files Online"
 msgstr ""
 
-msgid "Value"
+#: .\templates\blog\home.html:46
+msgid "Split PDF Documents"
 msgstr ""
 
-msgid "From Unit"
+#: .\templates\blog\home.html:47
+msgid "Encrypt PDF Security"
 msgstr ""
 
+#: .\templates\blog\home.html:51
+msgid "Popular Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:52
+msgid ""
+"PDF merge online, combine PDF files, split PDF pages, PDF password "
+"protection, secure PDF documents, PDF watermark generator, free PDF tools, "
+"document management, PDF editor online, business document processing"
+msgstr ""
+
+#: .\templates\blog\home.html:64 .\templates\blog\home.html:86
+#, fuzzy
+#| msgid "View Tools"
+msgid "QR Code Tools"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:69
+msgid "Professional QR Code Generator Suite"
+msgstr ""
+
+#: .\templates\blog\home.html:70
+msgid ""
+"Create high-quality QR codes for marketing campaigns, business cards, "
+"restaurant menus, and digital interactions. Our advanced QR code generator "
+"supports multiple data types with customizable designs and error correction "
+"levels for maximum scanning reliability."
+msgstr ""
+
+#: .\templates\blog\home.html:72
+msgid "URL QR Codes - Drive Traffic Instantly"
+msgstr ""
+
+#: .\templates\blog\home.html:73
+msgid ""
+"Generate QR codes for websites, landing pages, social media profiles, and "
+"online stores. Perfect for print advertising, business cards, flyers, and "
+"promotional materials. Track engagement and boost digital marketing ROI with "
+"scannable links that work on all smartphones."
+msgstr ""
+
+#: .\templates\blog\home.html:75
+msgid "WiFi QR Codes - Seamless Connection"
+msgstr ""
+
+#: .\templates\blog\home.html:76
+msgid ""
+"Create WiFi QR codes for restaurants, hotels, offices, and events. Guests "
+"can connect instantly without typing passwords. Supports WPA, WEP, and open "
+"networks with automatic configuration. Improve customer experience and "
+"reduce support requests."
+msgstr ""
+
+#: .\templates\blog\home.html:78
+msgid "vCard QR Codes - Digital Business Cards"
+msgstr ""
+
+#: .\templates\blog\home.html:79
+msgid ""
+"Transform traditional business cards into interactive digital experiences. "
+"Include contact information, social media links, company details, and "
+"profile photos. Eco-friendly networking solution that saves contacts "
+"directly to smartphones with one scan."
+msgstr ""
+
+#: .\templates\blog\home.html:81
+msgid "Text & SMS QR Codes - Instant Communication"
+msgstr ""
+
+#: .\templates\blog\home.html:82
+msgid ""
+"Generate QR codes for plain text, SMS messages, phone numbers, and email "
+"addresses. Perfect for event information, product details, instructions, and "
+"customer support. Enable quick communication without manual typing or number "
+"memorization."
+msgstr ""
+
+#: .\templates\blog\home.html:88
+msgid "QR Code Generator Online"
+msgstr ""
+
+#: .\templates\blog\home.html:89
+msgid "Create Custom QR Code"
+msgstr ""
+
+#: .\templates\blog\home.html:90
+msgid "Barcode Generator Tool"
+msgstr ""
+
+#: .\templates\blog\home.html:94
+msgid "Search Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:95
+msgid ""
+"QR code generator free, create QR code online, WiFi QR code maker, vCard QR "
+"generator, business card QR code, URL to QR code, barcode generator, QR code "
+"scanner, marketing QR codes, restaurant menu QR code"
+msgstr ""
+
+#: .\templates\blog\home.html:112
+msgid "Professional Random Generation Suite"
+msgstr ""
+
+#: .\templates\blog\home.html:113
+msgid ""
+"Generate truly random numbers, conduct fair selections, and create engaging "
+"interactive experiences with our cryptographically secure random tools. "
+"Perfect for games, contests, decision making, statistical sampling, and "
+"educational activities with guaranteed fairness and transparency."
+msgstr ""
+
+#: .\templates\blog\home.html:115
+msgid "Random Number Generator - Cryptographic Security"
+msgstr ""
+
+#: .\templates\blog\home.html:116
+msgid ""
+"Generate random numbers with military-grade security using advanced "
+"algorithms. Perfect for lottery systems, statistical research, gaming "
+"applications, and scientific simulations. Supports custom ranges, multiple "
+"numbers, and various distributions for professional and academic use."
+msgstr ""
+
+#: .\templates\blog\home.html:118
+msgid "Lucky Wheel Spinner - Interactive Decision Maker"
+msgstr ""
+
+#: .\templates\blog\home.html:119
+msgid ""
+"Create customizable spinning wheels for contests, giveaways, classroom "
+"activities, and team building exercises. Add unlimited options, customize "
+"colors and animations, and ensure fair random selection. Perfect for social "
+"media contests, educational games, and business decision making."
+msgstr ""
+
+#: .\templates\blog\home.html:121
+msgid "Dice Roller - Virtual Gaming Experience"
+msgstr ""
+
+#: .\templates\blog\home.html:122
+msgid ""
+"Roll virtual dice for board games, tabletop RPGs, probability experiments, "
+"and educational demonstrations. Support for multiple dice types (D4, D6, D8, "
+"D10, D12, D20, D100) with realistic physics simulation and statistical "
+"tracking for gaming enthusiasts and educators."
+msgstr ""
+
+#: .\templates\blog\home.html:124
+msgid "Name Picker - Fair Selection System"
+msgstr ""
+
+#: .\templates\blog\home.html:125
+msgid ""
+"Randomly select names from lists for presentations, classroom activities, "
+"team assignments, and contest winners. Bulk import capabilities, duplicate "
+"prevention, and selection history tracking ensure transparent and unbiased "
+"selection processes for any group size."
+msgstr ""
+
+#: .\templates\blog\home.html:131
+msgid "Random Tools Dashboard"
+msgstr ""
+
+#: .\templates\blog\home.html:133
+msgid "Lucky Wheel Spinner"
+msgstr ""
+
+#: .\templates\blog\home.html:137
+msgid "Gaming Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:138
+msgid ""
+"random number generator online, lucky wheel spinner, dice roller virtual, "
+"name picker random, lottery number generator, fair selection tool, random "
+"picker wheel, online dice game, contest winner picker"
+msgstr ""
+
+#: .\templates\blog\home.html:155
+msgid "Advanced Calculator Suite for Health & Life"
+msgstr ""
+
+#: .\templates\blog\home.html:156
+msgid ""
+"Comprehensive collection of specialized calculators for health monitoring, "
+"age calculations, financial planning, and daily mathematical needs. Accurate "
+"algorithms based on medical standards and international guidelines provide "
+"reliable results for personal and professional use."
+msgstr ""
+
+#: .\templates\blog\home.html:158
+msgid "BMI Calculator - Body Mass Index Health Assessment"
+msgstr ""
+
+#: .\templates\blog\home.html:159
+msgid ""
+"Calculate Body Mass Index using WHO standards with detailed health category "
+"analysis. Track weight status, understand health risks, and get personalized "
+"recommendations for maintaining optimal health. Supports metric and imperial "
+"units with age and gender considerations for accurate assessment."
+msgstr ""
+
+#: .\templates\blog\home.html:161
+msgid "Age Calculator - Precise Life Timeline"
+msgstr ""
+
+#: .\templates\blog\home.html:162
+msgid ""
+"Calculate exact age in years, months, days, hours, and minutes from birth "
+"date. Perfect for legal documents, insurance applications, retirement "
+"planning, and milestone celebrations. Includes leap year calculations and "
+"timezone considerations for international accuracy."
+msgstr ""
+
+#: .\templates\blog\home.html:164
+msgid "World Clock - Global Time Management"
+msgstr ""
+
+#: .\templates\blog\home.html:165
+msgid ""
+"Display current time across multiple time zones simultaneously for "
+"international business, travel planning, and global communication. Real-time "
+"updates with daylight saving time adjustments and major city presets for "
+"worldwide coordination and scheduling."
+msgstr ""
+
+#: .\templates\blog\home.html:167
+msgid "Scientific Calculator - Advanced Mathematics"
+msgstr ""
+
+#: .\templates\blog\home.html:168
+msgid ""
+"Perform complex mathematical operations including trigonometry, logarithms, "
+"exponentials, and statistical functions. Essential for students, engineers, "
+"scientists, and professionals requiring precise calculations with memory "
+"functions and operation history."
+msgstr ""
+
+#: .\templates\blog\home.html:174
+msgid "Calculator Tools Hub"
+msgstr ""
+
+#: .\templates\blog\home.html:175
+msgid "BMI Health Calculator"
+msgstr ""
+
+#: .\templates\blog\home.html:176
+msgid "Precise Age Calculator"
+msgstr ""
+
+#: .\templates\blog\home.html:180
+msgid "Health Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:181
+msgid ""
+"BMI calculator online, body mass index checker, age calculator exact, world "
+"clock time zones, scientific calculator advanced, health assessment tools, "
+"fitness calculator, time zone converter"
+msgstr ""
+
+#: .\templates\blog\home.html:193
+#, fuzzy
+#| msgid "View Tools"
+msgid "URL Tools"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:198
+msgid "Professional URL Management Platform"
+msgstr ""
+
+#: .\templates\blog\home.html:199
+msgid ""
+"Transform long, complex URLs into clean, shareable links perfect for social "
+"media marketing, email campaigns, and digital advertising. Advanced link "
+"management with analytics, custom domains, and branded short links for "
+"professional online presence and marketing success."
+msgstr ""
+
+#: .\templates\blog\home.html:201
+msgid "URL Shortener - Clean Link Creation"
+msgstr ""
+
+#: .\templates\blog\home.html:202
+msgid ""
+"Create short, memorable links from long URLs for social media posts, email "
+"newsletters, and marketing campaigns. Improve click-through rates with clean "
+"links that build trust and enhance user experience. Perfect for Twitter, "
+"Instagram, LinkedIn, and SMS marketing where character limits matter."
+msgstr ""
+
+#: .\templates\blog\home.html:204
+msgid "Link Analytics - Track Performance"
+msgstr ""
+
+#: .\templates\blog\home.html:205
+msgid ""
+"Monitor link performance with detailed analytics including click counts, "
+"geographic data, referrer sources, and device information. Optimize "
+"marketing campaigns with real-time insights and understand audience behavior "
+"for better targeting and engagement strategies."
+msgstr ""
+
+#: .\templates\blog\home.html:207
+msgid "Custom Branded Links - Professional Branding"
+msgstr ""
+
+#: .\templates\blog\home.html:208
+msgid ""
+"Create branded short links using custom domains for enhanced brand "
+"recognition and trust. Professional appearance in marketing materials, "
+"business communications, and social media presence. Increase click-through "
+"rates with recognizable, trustworthy branded URLs."
+msgstr ""
+
+#: .\templates\blog\home.html:210
+msgid "Bulk URL Processing - Enterprise Solutions"
+msgstr ""
+
+#: .\templates\blog\home.html:211
+msgid ""
+"Process multiple URLs simultaneously for large-scale marketing campaigns and "
+"content management. Batch shortening capabilities with CSV import/export, "
+"API integration, and automated link generation for enterprise-level digital "
+"marketing and content distribution workflows."
+msgstr ""
+
+#: .\templates\blog\home.html:215
+msgid "URL Management Tools"
+msgstr ""
+
+#: .\templates\blog\home.html:217
+msgid "URL Tools Dashboard"
+msgstr ""
+
+#: .\templates\blog\home.html:218
+msgid "Professional URL Shortener"
+msgstr ""
+
+#: .\templates\blog\home.html:219
+msgid "Link Management System"
+msgstr ""
+
+#: .\templates\blog\home.html:223
+msgid "Marketing Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:224
+msgid ""
+"URL shortener free, link shortener online, custom short links, branded URL "
+"shortener, link analytics tracker, social media links, marketing link "
+"management, click tracking tools"
+msgstr ""
+
+#: .\templates\blog\home.html:241
+msgid "Advanced Text Analysis & Processing Suite"
+msgstr ""
+
+#: .\templates\blog\home.html:242
+msgid ""
+"Comprehensive text analysis tools for writers, content creators, students, "
+"and professionals. Analyze text statistics, optimize content for SEO, check "
+"readability scores, and format text for various platforms with precision and "
+"efficiency for better communication and engagement."
+msgstr ""
+
+#: .\templates\blog\home.html:244
+msgid "Word Counter - Detailed Text Statistics"
+msgstr ""
+
+#: .\templates\blog\home.html:245
+msgid ""
+"Count words, characters, paragraphs, and sentences with real-time analysis "
+"for academic papers, blog posts, social media content, and professional "
+"documents. Track reading time, keyword density, and content length "
+"optimization for SEO and platform-specific requirements."
+msgstr ""
+
+#: .\templates\blog\home.html:247
+msgid "Character Counter - Precise Length Control"
+msgstr ""
+
+#: .\templates\blog\home.html:248
+msgid ""
+"Monitor character limits for social media posts, meta descriptions, SMS "
+"messages, and advertising copy. Real-time counting with platform-specific "
+"limits for Twitter, Instagram, Facebook, Google Ads, and email subject lines "
+"to maximize engagement and compliance."
+msgstr ""
+
+#: .\templates\blog\home.html:250
+msgid "Text Formatter - Professional Styling"
+msgstr ""
+
+#: .\templates\blog\home.html:251
+msgid ""
+"Transform text case, remove extra spaces, format paragraphs, and clean up "
+"copied content from various sources. Convert between uppercase, lowercase, "
+"title case, and sentence case for consistent formatting across documents, "
+"websites, and marketing materials."
+msgstr ""
+
+#: .\templates\blog\home.html:253
+msgid "Readability Analyzer - Content Optimization"
+msgstr ""
+
+#: .\templates\blog\home.html:254
+msgid ""
+"Analyze text readability using Flesch-Kincaid, Gunning Fog, and other "
+"standard metrics. Optimize content for target audiences, improve "
+"comprehension scores, and enhance user engagement with data-driven writing "
+"recommendations for better communication effectiveness."
+msgstr ""
+
+#: .\templates\blog\home.html:258
+#, fuzzy
+#| msgid "View Tools"
+msgid "Text Analysis Tools"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:260
+#, fuzzy
+#| msgid "View Tools"
+msgid "Text Tools Center"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:261
+msgid "Advanced Word Counter"
+msgstr ""
+
+#: .\templates\blog\home.html:262
+msgid "Text Statistics Analyzer"
+msgstr ""
+
+#: .\templates\blog\home.html:266
+msgid "Content Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:267
+msgid ""
+"word counter online, character counter tool, text analyzer free, readability "
+"checker, content optimization, SEO text analysis, writing tools online, text "
+"formatter, document statistics"
+msgstr ""
+
+#: .\templates\blog\home.html:279 .\templates\blog\home.html:301
+#, fuzzy
+#| msgid "View Tools"
+msgid "Password Tools"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:284
+msgid "Advanced Password Security Generator"
+msgstr ""
+
+#: .\templates\blog\home.html:285
+msgid ""
+"Generate cryptographically secure passwords that protect against brute force "
+"attacks, dictionary attacks, and social engineering. Our password generator "
+"uses industry-standard algorithms to create unbreakable passwords for "
+"personal and business security needs."
+msgstr ""
+
+#: .\templates\blog\home.html:287
+msgid "Strong Password Generation - Military Grade Security"
+msgstr ""
+
+#: .\templates\blog\home.html:288
+msgid ""
+"Create passwords with customizable length (8-128 characters), character sets "
+"including uppercase, lowercase, numbers, and special symbols. Advanced "
+"entropy calculation ensures maximum security against modern hacking "
+"techniques. Perfect for banking, email, social media, and business accounts."
+msgstr ""
+
+#: .\templates\blog\home.html:290
+msgid "Password Security Best Practices"
+msgstr ""
+
+#: .\templates\blog\home.html:291
+msgid ""
+"Learn essential password security guidelines including unique passwords for "
+"each account, regular password updates, two-factor authentication setup, and "
+"secure password storage methods. Protect against identity theft, financial "
+"fraud, and data breaches with proper password hygiene."
+msgstr ""
+
+#: .\templates\blog\home.html:293
+msgid "Business Password Policies"
+msgstr ""
+
+#: .\templates\blog\home.html:294
+msgid ""
+"Implement enterprise-level password policies for organizations. Generate "
+"bulk passwords for employee accounts, service accounts, and system access. "
+"Compliance with security standards including NIST, ISO 27001, and industry-"
+"specific regulations for healthcare, finance, and government sectors."
+msgstr ""
+
+#: .\templates\blog\home.html:296
+msgid "Password Strength Analysis"
+msgstr ""
+
+#: .\templates\blog\home.html:297
+msgid ""
+"Real-time password strength evaluation with detailed feedback on character "
+"diversity, length adequacy, and vulnerability assessment. Visual strength "
+"indicators help users understand password quality and improve security "
+"posture across all digital accounts."
+msgstr ""
+
+#: .\templates\blog\home.html:303
+msgid "Secure Password Generator"
+msgstr ""
+
+#: .\templates\blog\home.html:304
+msgid "Strong Password Creator"
+msgstr ""
+
+#: .\templates\blog\home.html:305
+msgid "Random Password Maker"
+msgstr ""
+
+#: .\templates\blog\home.html:309
+msgid "Security Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:310
+msgid ""
+"password generator online, strong password creator, secure password maker, "
+"random password generator, password security checker, business password "
+"policy, cybersecurity tools, account protection, identity theft prevention"
+msgstr ""
+
+#: .\templates\blog\home.html:322
+#, fuzzy
+#| msgid "View Tools"
+msgid "Color Tools"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:327
+msgid "Professional Color Design Studio"
+msgstr ""
+
+#: .\templates\blog\home.html:328
+msgid ""
+"Complete color management solution for designers, developers, and creative "
+"professionals. Generate harmonious color palettes, extract colors from "
+"images, convert between color formats, and ensure accessibility compliance "
+"with advanced color theory tools and real-time preview capabilities."
+msgstr ""
+
+#: .\templates\blog\home.html:330
+msgid "Color Picker - Precision Color Selection"
+msgstr ""
+
+#: .\templates\blog\home.html:331
+msgid ""
+"Select colors with pixel-perfect accuracy using advanced color picker tools. "
+"Support for HEX, RGB, HSL, CMYK, and LAB color spaces with real-time "
+"conversion and preview. Perfect for web design, graphic design, branding, "
+"and digital art projects requiring exact color matching."
+msgstr ""
+
+#: .\templates\blog\home.html:333
+msgid "Palette Generator - Harmonious Color Schemes"
+msgstr ""
+
+#: .\templates\blog\home.html:334
+msgid ""
+"Create professional color palettes using color theory principles including "
+"complementary, triadic, analogous, and monochromatic schemes. Generate brand "
+"colors, website themes, and design systems with scientifically balanced "
+"color relationships for visual harmony and impact."
+msgstr ""
+
+#: .\templates\blog\home.html:336
+msgid "Image Color Extractor - Dominant Color Analysis"
+msgstr ""
+
+#: .\templates\blog\home.html:337
+msgid ""
+"Extract dominant colors from photographs and images for design inspiration "
+"and brand development. Analyze color distribution, identify trending colors, "
+"and create palettes from existing visual content for consistent brand "
+"identity and design cohesion across projects."
+msgstr ""
+
+#: .\templates\blog\home.html:339
+msgid "Accessibility Checker - WCAG Compliance"
+msgstr ""
+
+#: .\templates\blog\home.html:340
+msgid ""
+"Ensure color accessibility compliance with WCAG guidelines for inclusive "
+"design. Test color contrast ratios, validate readability for visually "
+"impaired users, and optimize color choices for maximum accessibility without "
+"compromising aesthetic appeal in web and mobile applications."
+msgstr ""
+
+#: .\templates\blog\home.html:344
+msgid "Color Design Tools"
+msgstr ""
+
+#: .\templates\blog\home.html:346
+msgid "Color Studio Dashboard"
+msgstr ""
+
+#: .\templates\blog\home.html:347
+msgid "Professional Color Picker"
+msgstr ""
+
+#: .\templates\blog\home.html:348
+msgid "Color Palette Generator"
+msgstr ""
+
+#: .\templates\blog\home.html:352
+msgid "Design Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:353
+msgid ""
+"color picker online, hex color picker, color palette generator, color scheme "
+"creator, web design colors, brand color picker, accessibility color checker, "
+"color theory tools"
+msgstr ""
+
+#: .\templates\blog\home.html:365
+msgid "Horoscope Tools"
+msgstr ""
+
+#: .\templates\blog\home.html:370
+msgid "Comprehensive Astrology & Zodiac Platform"
+msgstr ""
+
+#: .\templates\blog\home.html:371
+msgid ""
+"Discover your astrological profile with detailed zodiac sign calculations, "
+"personality analysis, and compatibility insights. Based on traditional "
+"astrology principles and modern psychological interpretations for "
+"entertainment, self-reflection, and understanding personality traits and "
+"relationship dynamics."
+msgstr ""
+
+#: .\templates\blog\home.html:373
+msgid "Zodiac Sign Calculator - Precise Astrological Determination"
+msgstr ""
+
+#: .\templates\blog\home.html:374
+msgid ""
+"Calculate exact zodiac signs based on birth date and time with astronomical "
+"precision. Includes sun sign, moon sign, and rising sign calculations for "
+"comprehensive astrological profiles. Perfect for astrology enthusiasts, "
+"personality exploration, and understanding celestial influences on character "
+"traits."
+msgstr ""
+
+#: .\templates\blog\home.html:376
+msgid "Personality Analysis - Character Trait Insights"
+msgstr ""
+
+#: .\templates\blog\home.html:377
+msgid ""
+"Detailed personality descriptions based on zodiac characteristics including "
+"strengths, weaknesses, career preferences, and relationship patterns. "
+"Comprehensive analysis combining traditional astrology with modern "
+"psychology for self-understanding and personal development guidance."
+msgstr ""
+
+#: .\templates\blog\home.html:379
+msgid "Compatibility Checker - Relationship Harmony"
+msgstr ""
+
+#: .\templates\blog\home.html:380
+msgid ""
+"Analyze zodiac compatibility between partners, friends, and colleagues using "
+"astrological principles. Understand relationship dynamics, communication "
+"styles, and potential challenges for better interpersonal connections and "
+"romantic compatibility assessment."
+msgstr ""
+
+#: .\templates\blog\home.html:382
+msgid "Daily Horoscope - Astrological Guidance"
+msgstr ""
+
+#: .\templates\blog\home.html:383
+msgid ""
+"Personalized daily horoscope readings based on current planetary positions "
+"and zodiac influences. General guidance for decision making, mood insights, "
+"and awareness of favorable periods for various activities including career, "
+"relationships, and personal growth."
+msgstr ""
+
+#: .\templates\blog\home.html:387
+msgid "Astrology Tools"
+msgstr ""
+
+#: .\templates\blog\home.html:389
+msgid "Astrology Center"
+msgstr ""
+
+#: .\templates\blog\home.html:390
+msgid "Zodiac Calculator"
+msgstr ""
+
+#: .\templates\blog\home.html:394
+msgid "Astrology Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:395
+msgid ""
+"zodiac sign calculator, horoscope calculator, astrology chart, personality "
+"traits zodiac, compatibility checker, daily horoscope, birth chart "
+"calculator, astrological analysis"
+msgstr ""
+
+#: .\templates\blog\home.html:412
+msgid "Professional SVG Design & Optimization Suite"
+msgstr ""
+
+#: .\templates\blog\home.html:413
+msgid ""
+"Advanced SVG editing, optimization, and conversion tools for web developers, "
+"graphic designers, and digital artists. Create scalable vector graphics, "
+"optimize file sizes, convert formats, and edit SVG code with professional-"
+"grade tools for modern web development and responsive design."
+msgstr ""
+
+#: .\templates\blog\home.html:415
+msgid "SVG Editor - Visual Vector Design"
+msgstr ""
+
+#: .\templates\blog\home.html:416
+msgid ""
+"Create and edit SVG graphics with intuitive visual editor supporting shapes, "
+"paths, text, and complex illustrations. Perfect for icons, logos, "
+"illustrations, and web graphics that scale perfectly across all devices and "
+"screen resolutions without quality loss."
+msgstr ""
+
+#: .\templates\blog\home.html:418
+msgid "SVG Optimizer - File Size Reduction"
+msgstr ""
+
+#: .\templates\blog\home.html:419
+msgid ""
+"Optimize SVG files for web performance by removing unnecessary code, "
+"compressing paths, and minimizing file sizes without visual quality loss. "
+"Essential for fast-loading websites, mobile applications, and bandwidth-"
+"conscious web development projects."
+msgstr ""
+
+#: .\templates\blog\home.html:421
+msgid "Format Converter - Multi-Format Support"
+msgstr ""
+
+#: .\templates\blog\home.html:422
+msgid ""
+"Convert between SVG and other vector formats including AI, EPS, PDF, and "
+"raster formats like PNG, JPG for cross-platform compatibility. Maintain "
+"vector quality while ensuring compatibility with various design software and "
+"web browsers."
+msgstr ""
+
+#: .\templates\blog\home.html:424
+msgid "Code Editor - Direct SVG Manipulation"
+msgstr ""
+
+#: .\templates\blog\home.html:425
+msgid ""
+"Edit SVG code directly with syntax highlighting, validation, and real-time "
+"preview for advanced users and developers. Perfect for fine-tuning "
+"animations, adding interactivity, and implementing custom SVG solutions for "
+"web applications and interactive graphics."
+msgstr ""
+
+#: .\templates\blog\home.html:429
+#, fuzzy
+#| msgid "View Tools"
+msgid "SVG Development Tools"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:431
+msgid "SVG Studio Dashboard"
+msgstr ""
+
+#: .\templates\blog\home.html:432
+msgid "Professional SVG Editor"
+msgstr ""
+
+#: .\templates\blog\home.html:436
+msgid "Vector Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:437
+msgid ""
+"SVG editor online, vector graphics editor, SVG optimizer, scalable vector "
+"graphics, web icons editor, SVG code editor, vector illustration tool, "
+"responsive graphics"
+msgstr ""
+
+#: .\templates\blog\home.html:449
+#, fuzzy
+#| msgid "View Tools"
+msgid "Converter Tools"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:454
+msgid "Universal Unit Conversion Platform"
+msgstr ""
+
+#: .\templates\blog\home.html:455
+msgid ""
+"Comprehensive measurement conversion tools supporting international "
+"standards for length, weight, temperature, volume, area, and specialized "
+"units. Essential for international business, scientific research, "
+"engineering projects, cooking, and everyday calculations requiring accurate "
+"unit conversions."
+msgstr ""
+
+#: .\templates\blog\home.html:457
+msgid "Length Converter - Distance & Dimension"
+msgstr ""
+
+#: .\templates\blog\home.html:458
+msgid ""
+"Convert between metric and imperial length units including millimeters, "
+"centimeters, meters, kilometers, inches, feet, yards, and miles. Perfect for "
+"construction projects, international shipping, travel planning, and "
+"scientific measurements requiring precise distance calculations."
+msgstr ""
+
+#: .\templates\blog\home.html:460
+msgid "Weight Converter - Mass & Force"
+msgstr ""
+
+#: .\templates\blog\home.html:461
+msgid ""
+"Accurate weight and mass conversions between grams, kilograms, pounds, "
+"ounces, stones, and tons for international commerce, shipping calculations, "
+"fitness tracking, and scientific applications. Support for both metric and "
+"imperial systems with precision decimal handling."
+msgstr ""
+
+#: .\templates\blog\home.html:463
+msgid "Temperature Converter - Climate & Science"
+msgstr ""
+
+#: .\templates\blog\home.html:464
+msgid ""
+"Convert temperatures between Celsius, Fahrenheit, and Kelvin for weather "
+"analysis, scientific research, cooking, and international communication. "
+"Essential for climate studies, industrial processes, and everyday "
+"temperature understanding across different measurement systems."
+msgstr ""
+
+#: .\templates\blog\home.html:466
+msgid "Volume & Area Converter - Space Calculations"
+msgstr ""
+
+#: .\templates\blog\home.html:467
+msgid ""
+"Convert volume units for liquids and gases including liters, gallons, cubic "
+"meters, and specialized measurements. Area conversions for real estate, land "
+"measurement, and construction projects using square meters, acres, hectares, "
+"and square feet with professional accuracy."
+msgstr ""
+
+#: .\templates\blog\home.html:471
+msgid "Conversion Tools"
+msgstr ""
+
+#: .\templates\blog\home.html:473
+msgid "Universal Converter Hub"
+msgstr ""
+
+#: .\templates\blog\home.html:474
+msgid "Measurement Converter"
+msgstr ""
+
+#: .\templates\blog\home.html:475
+msgid "International Unit Converter"
+msgstr ""
+
+#: .\templates\blog\home.html:479
+msgid "Measurement Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:480
+msgid ""
+"unit converter online, measurement converter, length converter, weight "
+"converter, temperature converter, metric imperial converter, international "
+"units, scientific calculator"
+msgstr ""
+
+#: .\templates\blog\home.html:497
+msgid "Professional Developer Toolkit"
+msgstr ""
+
+#: .\templates\blog\home.html:498
+msgid ""
+"Comprehensive development tools for programmers, software engineers, and web "
+"developers. Format code, generate hashes, test regular expressions, validate "
+"JSON, and optimize SQL queries with professional-grade tools designed to "
+"improve productivity and code quality in modern development workflows."
+msgstr ""
+
+#: .\templates\blog\home.html:500
+msgid "JSON Formatter - Data Structure Validation"
+msgstr ""
+
+#: .\templates\blog\home.html:501
+msgid ""
+"Format, validate, and beautify JSON data with syntax highlighting and error "
+"detection. Essential for API development, configuration files, and data "
+"exchange between applications. Support for minification, validation, and "
+"tree view for complex JSON structures and debugging."
+msgstr ""
+
+#: .\templates\blog\home.html:503
+msgid "Hash Generator - Cryptographic Security"
+msgstr ""
+
+#: .\templates\blog\home.html:504
+msgid ""
+"Generate MD5, SHA-1, SHA-256, and other cryptographic hashes for password "
+"security, file integrity verification, and data validation. Essential for "
+"security implementations, blockchain development, and ensuring data "
+"integrity in distributed systems and applications."
+msgstr ""
+
+#: .\templates\blog\home.html:506
+msgid "Regex Tester - Pattern Matching"
+msgstr ""
+
+#: .\templates\blog\home.html:507
+msgid ""
+"Test and debug regular expressions with real-time matching, explanation, and "
+"performance analysis. Perfect for form validation, data parsing, text "
+"processing, and search functionality development with support for multiple "
+"regex flavors and detailed match information."
+msgstr ""
+
+#: .\templates\blog\home.html:509
+msgid "SQL Formatter - Database Query Optimization"
+msgstr ""
+
+#: .\templates\blog\home.html:510
+msgid ""
+"Format, beautify, and optimize SQL queries for better readability and "
+"performance. Support for multiple database systems including MySQL, "
+"PostgreSQL, SQL Server, and Oracle with syntax highlighting, error "
+"detection, and query optimization suggestions for database development."
+msgstr ""
+
+#: .\templates\blog\home.html:514
+msgid "Development Tools"
+msgstr ""
+
+#: .\templates\blog\home.html:516
+msgid "Developer Toolkit Hub"
+msgstr ""
+
+#: .\templates\blog\home.html:517
+msgid "JSON Formatter Tool"
+msgstr ""
+
+#: .\templates\blog\home.html:518 .\templates\dev_tools\hash_generator.html:55
+msgid "Hash Generator"
+msgstr ""
+
+#: .\templates\blog\home.html:522
+msgid "Programming Keywords"
+msgstr ""
+
+#: .\templates\blog\home.html:523
+msgid ""
+"JSON formatter online, hash generator tool, regex tester, SQL formatter, "
+"developer tools online, code formatter, programming utilities, web "
+"development tools"
+msgstr ""
+
+#: .\templates\blog\home.html:540
+msgid "Advanced Network Diagnostic Suite"
+msgstr ""
+
+#: .\templates\blog\home.html:541
+msgid ""
+"Professional network analysis and diagnostic tools for system "
+"administrators, IT professionals, and cybersecurity experts. Monitor network "
+"performance, analyze IP addresses, check domain status, and perform security "
+"assessments with enterprise-grade tools for network management and "
+"troubleshooting."
+msgstr ""
+
+#: .\templates\blog\home.html:543
+msgid "IP Lookup - Geolocation & Analysis"
+msgstr ""
+
+#: .\templates\blog\home.html:544
+msgid ""
+"Analyze IP addresses with detailed geolocation data, ISP information, and "
+"security threat assessment. Essential for cybersecurity investigations, "
+"network troubleshooting, and understanding traffic sources with "
+"comprehensive IP intelligence and reputation checking capabilities."
+msgstr ""
+
+#: .\templates\blog\home.html:546
+msgid "Domain Checker - DNS Analysis"
+msgstr ""
+
+#: .\templates\blog\home.html:547
+msgid ""
+"Comprehensive domain analysis including DNS records, WHOIS information, SSL "
+"certificate status, and domain availability checking. Perfect for domain "
+"management, security audits, and competitive analysis with detailed "
+"technical information and historical data."
+msgstr ""
+
+#: .\templates\blog\home.html:549
+msgid "Port Scanner - Security Assessment"
+msgstr ""
+
+#: .\templates\blog\home.html:550
+msgid ""
+"Scan network ports for security vulnerabilities and service discovery with "
+"professional-grade scanning capabilities. Essential for penetration testing, "
+"security audits, and network inventory management with detailed service "
+"identification and vulnerability assessment."
+msgstr ""
+
+#: .\templates\blog\home.html:552
+msgid "Network Speed Test - Performance Monitoring"
+msgstr ""
+
+#: .\templates\blog\home.html:553
+msgid ""
+"Measure internet connection speed, latency, and network performance with "
+"accurate testing algorithms. Monitor bandwidth utilization, identify "
+"bottlenecks, and optimize network performance for business applications and "
+"user experience improvement."
+msgstr ""
+
+#: .\templates\blog\home.html:557
+#, fuzzy
+#| msgid "View Tools"
+msgid "Network Analysis Tools"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:559
+#, fuzzy
+#| msgid "View Tools"
+msgid "Network Tools Center"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:560
+msgid "IP Address Lookup"
+msgstr ""
+
+#: .\templates\blog\home.html:561
+msgid "Domain Analysis Tool"
+msgstr ""
+
+#: .\templates\blog\home.html:565
+#, fuzzy
+#| msgid "View Tools"
+msgid "Network Keywords"
+msgstr "Voir les outils"
+
+#: .\templates\blog\home.html:566
+msgid ""
+"IP lookup tool, domain checker, port scanner online, network diagnostic "
+"tools, DNS lookup, WHOIS checker, network security tools, system "
+"administrator tools"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:4
+msgid "Calculator Tools - BMI, Age, World Clock - AdreTools"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:18
+msgid "Free online calculators for daily use"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:19
+#: .\templates\dev_tools\base64_encoder.html:12
+#: .\templates\dev_tools\home.html:70
+#: .\templates\dev_tools\html_encoder.html:12
+#: .\templates\dev_tools\sql_formatter.html:12
+#: .\templates\dev_tools\timestamp_converter.html:12
+#: .\templates\dev_tools\url_encoder.html:12
+#: .\templates\image_tools\home.html:10 .\templates\network_tools\home.html:32
+#: .\templates\pdf_tools\home.html:45 .\templates\qr_tools\home.html:10
+#: .\templates\random_tools\home.html:153
+msgid "Home"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:32
+#: .\templates\calculator_tools\home.html:131
+msgid "Calculate"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:51
+msgid "Weight (kg)"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:55
+msgid "Height (cm)"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:60
+msgid "Calculate BMI"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:78
+#: .\templates\horoscope_tools\home.html:37
+msgid "Birth Date"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:82
+msgid "Calculate Age"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:118
+msgid "Number"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:122
+msgid "Percentage"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:126
+#: .\templates\converter_tools\home.html:79
+#: .\templates\dev_tools\base64_encoder.html:46
+#: .\templates\dev_tools\html_encoder.html:46
+#: .\templates\dev_tools\json_formatter.html:77
+#: .\templates\dev_tools\url_encoder.html:46
 msgid "Result"
 msgstr ""
 
+#: .\templates\calculator_tools\home.html:149
+msgid "Start Date"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:153
+msgid "End Date"
+msgstr ""
+
+#: .\templates\calculator_tools\home.html:158
+msgid "Calculate Days"
+msgstr ""
+
+#: .\templates\color_tools\home.html:27
+#: .\templates\converter_tools\home.html:23
+#: .\templates\horoscope_tools\home.html:22
+#: .\templates\password_tools\home.html:22 .\templates\svg_tools\home.html:19
+#: .\templates\text_tools\home.html:22 .\templates\url_tools\home.html:20
+msgid "Back to Home"
+msgstr ""
+
+#: .\templates\color_tools\home.html:30
+msgid "Pick colors from images and learn details"
+msgstr ""
+
+#: .\templates\color_tools\home.html:38 .\templates\color_tools\home.html:43
+#: .\templates\image_tools\resize.html:63
+msgid "Upload Image"
+msgstr ""
+
+#: .\templates\color_tools\home.html:44
+msgid "Click or drag and drop"
+msgstr ""
+
+#: .\templates\color_tools\home.html:44
+msgid "JPG, PNG, GIF, WEBP supported"
+msgstr ""
+
+#: .\templates\color_tools\home.html:53
+msgid "Remove Image"
+msgstr ""
+
+#: .\templates\color_tools\home.html:65
+msgid "Selected Color"
+msgstr ""
+
+#: .\templates\color_tools\home.html:71
+msgid "Coordinate"
+msgstr ""
+
+#: .\templates\color_tools\home.html:95
+msgid "Copy All Color Codes"
+msgstr ""
+
+#: .\templates\color_tools\home.html:103
+msgid "Color History"
+msgstr ""
+
+#: .\templates\color_tools\home.html:107
+msgid "No color selected yet"
+msgstr ""
+
+#: .\templates\color_tools\home.html:110
+msgid "Clear History"
+msgstr ""
+
+#: .\templates\converter_tools\home.html:26
+msgid "Convert length, weight, temperature and more"
+msgstr ""
+
+#: .\templates\converter_tools\home.html:39
+msgid "Length"
+msgstr ""
+
+#: .\templates\converter_tools\home.html:42
+msgid "Weight"
+msgstr ""
+
+#: .\templates\converter_tools\home.html:45
+msgid "Temperature"
+msgstr ""
+
+#: .\templates\converter_tools\home.html:48
+msgid "Area"
+msgstr ""
+
+#: .\templates\converter_tools\home.html:51
+msgid "Volume"
+msgstr ""
+
+#: .\templates\converter_tools\home.html:54
+msgid "Speed"
+msgstr ""
+
+#: .\templates\converter_tools\home.html:62
+msgid "Value"
+msgstr ""
+
+#: .\templates\converter_tools\home.html:66
+msgid "From Unit"
+msgstr ""
+
+#: .\templates\converter_tools\home.html:83
 msgid "To Unit"
 msgstr ""
 
+#: .\templates\converter_tools\home.html:91
 msgid "Quick Conversion"
 msgstr ""
 
+#: .\templates\core\home.html:4
 msgid "AdreTools - Free Online Tools: PDF, Image, QR Code, Network Tools"
 msgstr ""
 "AdreTools - Outils en ligne gratuits: PDF, Image, QR Code, Outils réseau"
 
+#: .\templates\core\home.html:49
 msgid "Daily tools to make your work easier"
 msgstr "Outils quotidiens pour faciliter votre travail"
 
+#: .\templates\core\home.html:61
 msgid "View Tools"
 msgstr "Voir les outils"
 
-msgid "Home"
-msgstr ""
-
+#: .\templates\dev_tools\base64_encoder.html:14
 msgid "Base64 Encoder"
 msgstr ""
 
+#: .\templates\dev_tools\base64_encoder.html:22
 msgid "Base64 Encoder/Decoder"
 msgstr ""
 
+#: .\templates\dev_tools\base64_encoder.html:23
 msgid "Encode and decode Base64 strings online for free"
 msgstr ""
 
+#: .\templates\dev_tools\base64_encoder.html:31
+#: .\templates\dev_tools\html_encoder.html:31
+#: .\templates\dev_tools\url_encoder.html:31
 msgid "Input Text"
 msgstr ""
 
+#: .\templates\dev_tools\base64_encoder.html:34
 msgid "Enter text to encode/decode..."
 msgstr ""
 
+#: .\templates\dev_tools\base64_encoder.html:36
+#: .\templates\dev_tools\html_encoder.html:36
+#: .\templates\dev_tools\url_encoder.html:36
 msgid "Encode"
 msgstr ""
 
+#: .\templates\dev_tools\base64_encoder.html:37
+#: .\templates\dev_tools\html_encoder.html:37
+#: .\templates\dev_tools\url_encoder.html:37
 msgid "Decode"
 msgstr ""
 
+#: .\templates\dev_tools\base64_encoder.html:51
+#: .\templates\dev_tools\html_encoder.html:51
+#: .\templates\dev_tools\json_formatter.html:83
+#: .\templates\dev_tools\sql_formatter.html:51
+#: .\templates\dev_tools\url_encoder.html:51
 msgid "Copy"
 msgstr ""
 
+#: .\templates\dev_tools\base64_encoder.html:70
+#: .\templates\dev_tools\hash_generator.html:148
+#: .\templates\dev_tools\html_encoder.html:70
+#: .\templates\dev_tools\url_encoder.html:70
 msgid "Please enter text!"
 msgstr ""
 
+#: .\templates\dev_tools\base64_encoder.html:91
+#: .\templates\dev_tools\html_encoder.html:91
+#: .\templates\dev_tools\sql_formatter.html:91
+#: .\templates\dev_tools\url_encoder.html:91
 msgid "An error occurred"
 msgstr ""
 
+#: .\templates\dev_tools\base64_encoder.html:94
+#: .\templates\dev_tools\hash_generator.html:173
+#: .\templates\dev_tools\html_encoder.html:94
+#: .\templates\dev_tools\json_formatter.html:141
+#: .\templates\dev_tools\sql_formatter.html:94
+#: .\templates\dev_tools\timestamp_converter.html:124
+#: .\templates\dev_tools\timestamp_converter.html:159
+#: .\templates\dev_tools\url_encoder.html:94
+#: .\templates\network_tools\domain_checker.html:77
+#: .\templates\network_tools\ip_lookup.html:134
+#: .\templates\network_tools\ping_test.html:89
+#: .\templates\network_tools\port_scanner.html:83
 msgid "Connection error"
 msgstr ""
 
+#: .\templates\dev_tools\base64_encoder.html:104
+#: .\templates\dev_tools\html_encoder.html:104
+#: .\templates\dev_tools\json_formatter.html:149
+#: .\templates\dev_tools\sql_formatter.html:104
+#: .\templates\dev_tools\url_encoder.html:104
 msgid "Copied!"
 msgstr ""
 
+#: .\templates\dev_tools\hash_generator.html:45
 msgid "Online Hash Generator - Free"
 msgstr ""
 
+#: .\templates\dev_tools\hash_generator.html:46
 msgid "Generate MD5, SHA1, SHA256 hash values"
 msgstr ""
 
-msgid "Hash Generator"
-msgstr ""
-
+#: .\templates\dev_tools\hash_generator.html:59
+#: .\templates\qr_tools\home.html:41
 msgid "Text"
 msgstr ""
 
+#: .\templates\dev_tools\hash_generator.html:60
 msgid "Enter the text you want to hash..."
 msgstr ""
 
+#: .\templates\dev_tools\hash_generator.html:65
 msgid "Generate Hash"
 msgstr ""
 
+#: .\templates\dev_tools\hash_generator.html:120
 msgid "About Hash Algorithms"
 msgstr ""
 
+#: .\templates\dev_tools\hash_generator.html:124
 msgid "128-bit hash value. Fast but weak in terms of security."
 msgstr ""
 
+#: .\templates\dev_tools\hash_generator.html:127
 msgid "160-bit hash value. More secure than MD5 but no longer recommended."
 msgstr ""
 
+#: .\templates\dev_tools\hash_generator.html:131
 msgid "256-bit hash value. The most widely used secure algorithm today."
 msgstr ""
 
+#: .\templates\dev_tools\hash_generator.html:134
 msgid "512-bit hash value. Highest security level."
 msgstr ""
 
+#: .\templates\dev_tools\hash_generator.html:168
 msgid "Hash values generated!"
 msgstr ""
 
+#: .\templates\dev_tools\hash_generator.html:181
 msgid "Hash copied!"
 msgstr ""
 
+#: .\templates\dev_tools\home.html:4
 msgid "Developer Tools - AdreTools"
 msgstr ""
 
+#: .\templates\dev_tools\home.html:69
 msgid "Professional tools for coding and development"
 msgstr ""
 
+#: .\templates\dev_tools\home.html:83 .\templates\dev_tools\home.html:85
+#: .\templates\dev_tools\home.html:87 .\templates\dev_tools\home.html:89
+#: .\templates\dev_tools\home.html:91 .\templates\dev_tools\home.html:93
+#: .\templates\dev_tools\home.html:95 .\templates\dev_tools\home.html:97
+#: .\templates\image_tools\home.html:22 .\templates\network_tools\home.html:43
+#: .\templates\network_tools\home.html:53
+#: .\templates\network_tools\home.html:63
+#: .\templates\network_tools\home.html:73
+#: .\templates\network_tools\home.html:83 .\templates\pdf_tools\home.html:57
+#: .\templates\qr_tools\home.html:22
 msgid "Use"
 msgstr ""
 
+#: .\templates\dev_tools\home.html:99
 msgid "Coming Soon"
 msgstr ""
 
+#: .\templates\dev_tools\home.html:111
 msgid "About Developer Tools"
 msgstr ""
 
+#: .\templates\dev_tools\home.html:112
 msgid ""
 "Speed up your coding process with AdreTools developer tools. Professional "
 "tools for all your needs from JSON formatting to hash generation."
 msgstr ""
 
+#: .\templates\dev_tools\home.html:117
 msgid "Validate, format and minify your JSON data."
 msgstr ""
 
+#: .\templates\dev_tools\home.html:120
 msgid "Generate MD5, SHA1, SHA256 hash values."
 msgstr ""
 
+#: .\templates\dev_tools\home.html:124
 msgid "Test your regular expression patterns."
 msgstr ""
 
+#: .\templates\dev_tools\home.html:127
 msgid "Encode/decode texts to Base64 format."
 msgstr ""
 
+#: .\templates\dev_tools\home.html:130
 msgid "Encode/decode HTML entities."
 msgstr ""
 
+#: .\templates\dev_tools\home.html:134
 msgid "Encode/decode URLs to safe format."
 msgstr ""
 
+#: .\templates\dev_tools\home.html:137
 msgid "Format and beautify SQL queries."
 msgstr ""
 
+#: .\templates\dev_tools\home.html:140
 msgid "Convert Unix timestamp values."
 msgstr ""
 
+#: .\templates\dev_tools\html_encoder.html:14
 msgid "HTML Encoder"
 msgstr ""
 
+#: .\templates\dev_tools\html_encoder.html:22
 msgid "HTML Encoder/Decoder"
 msgstr ""
 
+#: .\templates\dev_tools\html_encoder.html:23
 msgid "Encode and decode HTML entities online for free"
 msgstr ""
 
+#: .\templates\dev_tools\html_encoder.html:34
 msgid "Enter HTML to encode/decode..."
 msgstr ""
 
+#: .\templates\dev_tools\json_formatter.html:45
 msgid "Online JSON Formatter - Free"
 msgstr ""
 
+#: .\templates\dev_tools\json_formatter.html:46
 msgid "Validate, format and minify JSON"
 msgstr ""
 
+#: .\templates\dev_tools\json_formatter.html:55
 msgid "JSON Input"
 msgstr ""
 
+#: .\templates\dev_tools\json_formatter.html:61
+#: .\templates\dev_tools\sql_formatter.html:36
 msgid "Format"
 msgstr ""
 
+#: .\templates\dev_tools\json_formatter.html:64
+#: .\templates\dev_tools\sql_formatter.html:37
 msgid "Minify"
 msgstr ""
 
+#: .\templates\dev_tools\json_formatter.html:67
 msgid "Validate"
 msgstr ""
 
+#: .\templates\dev_tools\json_formatter.html:105
+#: .\templates\dev_tools\json_formatter.html:121
 msgid "Please enter JSON!"
 msgstr ""
 
+#: .\templates\dev_tools\json_formatter.html:111
 msgid "Valid JSON!"
 msgstr ""
 
+#: .\templates\dev_tools\json_formatter.html:113
 msgid "Invalid JSON"
 msgstr ""
 
+#: .\templates\dev_tools\json_formatter.html:136
 msgid "Operation successful!"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:52
 msgid "Online Regex Tester - Free"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:53
 msgid "Test your Regular Expression patterns"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:62
 msgid "Regex Pattern"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:66
 msgid "Pattern"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:71
 msgid "Flags"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:87
 msgid "Test Text"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:88
 msgid "Enter the text to be tested here..."
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:92
 msgid "Test"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:101
 msgid "Results"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:105
 msgid "Regex test results will appear here..."
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:112
 msgid "Visual Result"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:116
 msgid "Matches will be highlighted here..."
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:127
 msgid "Common Regex Examples"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:136
 msgid "Capital Letters"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:137
 msgid "Numbers"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:152
 msgid "Please enter regex pattern!"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:187
 msgid "matches found"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:194
 msgid "Match"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:195
+#: .\templates\pdf_tools\home.html:305
 msgid "Position"
 msgstr ""
 
+#: .\templates\dev_tools\regex_tester.html:221
 msgid "No matches found"
 msgstr ""
 
+#: .\templates\dev_tools\sql_formatter.html:14
+#: .\templates\dev_tools\sql_formatter.html:22
 msgid "SQL Formatter"
 msgstr ""
 
+#: .\templates\dev_tools\sql_formatter.html:23
 msgid "Format and beautify SQL queries online for free"
 msgstr ""
 
+#: .\templates\dev_tools\sql_formatter.html:31
 msgid "SQL Input"
 msgstr ""
 
+#: .\templates\dev_tools\sql_formatter.html:34
 msgid "Enter SQL query to format..."
 msgstr ""
 
+#: .\templates\dev_tools\sql_formatter.html:46
 msgid "Formatted SQL"
 msgstr ""
 
+#: .\templates\dev_tools\sql_formatter.html:70
 msgid "Please enter SQL query!"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:14
+#: .\templates\dev_tools\timestamp_converter.html:22
 msgid "Timestamp Converter"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:23
 msgid "Convert Unix timestamps to human readable dates and vice versa"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:31
 msgid "Timestamp to Date"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:34
 msgid "Enter Unix timestamp (e.g. 1640995200)"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:35
 msgid "Convert to Date"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:44
 msgid "Date to Timestamp"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:48
 msgid "Convert to Timestamp"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:59
 msgid "Current Timestamp"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:62
 msgid "Current Unix Timestamp:"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:63
 msgid "Current Date:"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:94
 msgid "Please enter timestamp!"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:115
 msgid "Local Time:"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:116
 msgid "UTC Time:"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:117
 msgid "ISO Format:"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:131
 msgid "Please select date!"
 msgstr ""
 
+#: .\templates\dev_tools\timestamp_converter.html:152
 msgid "Unix Timestamp:"
 msgstr ""
 
+#: .\templates\dev_tools\url_encoder.html:14
 msgid "URL Encoder"
 msgstr ""
 
+#: .\templates\dev_tools\url_encoder.html:22
 msgid "URL Encoder/Decoder"
 msgstr ""
 
+#: .\templates\dev_tools\url_encoder.html:23
 msgid "Encode and decode URLs online for free"
 msgstr ""
 
+#: .\templates\dev_tools\url_encoder.html:34
 msgid "Enter URL to encode/decode..."
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:25
 msgid ""
 "Discover your zodiac sign, ascendant and personality traits with your birth "
 "date"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:33
 msgid "Birth Information"
 msgstr ""
 
-msgid "Birth Date"
-msgstr ""
-
+#: .\templates\horoscope_tools\home.html:42
 msgid "Birth Time (Optional)"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:44
 msgid "Required to calculate ascendant"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:48
 msgid "Birth Place (Optional)"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:49
 msgid "Istanbul"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:53
 msgid "Calculate Horoscope"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:57
 msgid "Today"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:58
 msgid "Clear"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:68
 msgid "Horoscope Analysis"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:76
 msgid "Element"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:77
 msgid "Planet"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:80
 msgid "Personality Traits"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:92
 msgid "Traits"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:100
 msgid "Ascendant"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:101
 msgid "Age"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:102
 msgid "Life Number"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:103
 msgid "Season"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:104
 msgid "Day of Birth"
 msgstr ""
 
+#: .\templates\horoscope_tools\home.html:105
 msgid "Life Number Meaning"
 msgstr ""
 
+#: .\templates\image_tools\home.html:4
 #, fuzzy
 #| msgid "View Tools"
 msgid "Image Tools - AdreTools"
 msgstr "Voir les outils"
 
+#: .\templates\image_tools\home.html:33
 msgid "Image Resizing"
 msgstr ""
 
+#: .\templates\image_tools\home.html:37 .\templates\image_tools\home.html:88
+#: .\templates\image_tools\home.html:134 .\templates\image_tools\home.html:173
 msgid "Select Image"
 msgstr ""
 
+#: .\templates\image_tools\home.html:42
 msgid "Width (px)"
 msgstr ""
 
+#: .\templates\image_tools\home.html:46
 msgid "Height (px)"
 msgstr ""
 
+#: .\templates\image_tools\home.html:50
 #, python-format
 msgid "Percentage (%%)"
 msgstr ""
 
+#: .\templates\image_tools\home.html:54
 msgid "Preset Sizes"
 msgstr ""
 
+#: .\templates\image_tools\home.html:56
 msgid "Select"
 msgstr ""
 
+#: .\templates\image_tools\home.html:61
 msgid "Instagram Square"
 msgstr ""
 
+#: .\templates\image_tools\home.html:69
 msgid "Keep Aspect Ratio"
 msgstr ""
 
+#: .\templates\image_tools\home.html:74
 msgid "Resize and Download"
 msgstr ""
 
+#: .\templates\image_tools\home.html:84
 msgid "Image Cropping"
 msgstr ""
 
+#: .\templates\image_tools\home.html:93 .\templates\image_tools\resize.html:100
 msgid "Aspect Ratio"
 msgstr ""
 
+#: .\templates\image_tools\home.html:95
 msgid "Free"
 msgstr ""
 
+#: .\templates\image_tools\home.html:96
 msgid "Square"
 msgstr ""
 
+#: .\templates\image_tools\home.html:97
 msgid "Wide"
 msgstr ""
 
+#: .\templates\image_tools\home.html:98
 msgid "Standard"
 msgstr ""
 
+#: .\templates\image_tools\home.html:99
 msgid "Photo"
 msgstr ""
 
+#: .\templates\image_tools\home.html:111 .\templates\svg_tools\home.html:105
 msgid "Width"
 msgstr ""
 
+#: .\templates\image_tools\home.html:115 .\templates\svg_tools\home.html:111
 msgid "Height"
 msgstr ""
 
+#: .\templates\image_tools\home.html:120
 msgid "Crop and Download"
 msgstr ""
 
+#: .\templates\image_tools\home.html:130
 #, fuzzy
 #| msgid "View Tools"
 msgid "Image Rotation"
 msgstr "Voir les outils"
 
+#: .\templates\image_tools\home.html:139
 msgid "Rotation Angle"
 msgstr ""
 
+#: .\templates\image_tools\home.html:141
 msgid "Right"
 msgstr ""
 
+#: .\templates\image_tools\home.html:143
 msgid "Left"
 msgstr ""
 
+#: .\templates\image_tools\home.html:144
 msgid "Custom Angle"
 msgstr ""
 
+#: .\templates\image_tools\home.html:148
 msgid "Custom Angle (degrees)"
 msgstr ""
 
+#: .\templates\image_tools\home.html:154
 msgid "Flip Horizontal"
 msgstr ""
 
+#: .\templates\image_tools\home.html:155
 msgid "Flip Vertical"
 msgstr ""
 
+#: .\templates\image_tools\home.html:159
 msgid "Rotate and Download"
 msgstr ""
 
+#: .\templates\image_tools\home.html:169
 msgid "Format Conversion"
 msgstr ""
 
+#: .\templates\image_tools\home.html:178
 msgid "Target Format"
 msgstr ""
 
+#: .\templates\image_tools\home.html:188
 msgid "Quality (JPG/WEBP)"
 msgstr ""
 
+#: .\templates\image_tools\home.html:190
 msgid "Quality"
 msgstr ""
 
+#: .\templates\image_tools\home.html:196
 msgid "Keep Transparency (PNG)"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:4
 msgid "Free Image Resizer Online - Resize Photos - AdreTools"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:41
 msgid "Free Image Resizer Online - Resize Photos"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:42
 msgid "Resize images and photos online for free"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:51
 #, fuzzy
 #| msgid "View Tools"
 msgid "Image Resizer Tool"
 msgstr "Voir les outils"
 
+#: .\templates\image_tools\resize.html:55
 msgid "Choose Image to Resize"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:59
 msgid "How to Resize Images Online"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:64
 msgid "Select JPG, PNG or WEBP"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:68
 msgid "Set Dimensions"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:69
 msgid "Choose new width & height"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:73
+#: .\templates\network_tools\speed_test.html:66
 msgid "Download"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:74
 msgid "Get resized image"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:87
 msgid "Free Image Resizer Features"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:91
 msgid "Free Image Resize"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:91
 msgid "No watermarks"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:92
 msgid "Multiple Formats"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:93
 msgid "Batch Resize"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:93
 msgid "Multiple images"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:94
 msgid "Quality Control"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:94
 msgid "Maintain image quality"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:99
 msgid "Custom Dimensions"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:99
 msgid "Any size you want"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:100
 msgid "Keep proportions"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:101
 msgid "Instant Preview"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:101
 msgid "See before download"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:102
 msgid "No Registration"
 msgstr ""
 
+#: .\templates\image_tools\resize.html:102
 msgid "Use immediately"
 msgstr ""
 
+#: .\templates\network_tools\domain_checker.html:15
 msgid "Online Domain Checker - Free"
 msgstr ""
 
+#: .\templates\network_tools\domain_checker.html:16
+#: .\templates\network_tools\home.html:52
 msgid "Check domain information"
 msgstr ""
 
+#: .\templates\network_tools\domain_checker.html:25
 msgid "Domain Query"
 msgstr ""
 
+#: .\templates\network_tools\domain_checker.html:29
 msgid "Domain Address"
 msgstr ""
 
+#: .\templates\network_tools\domain_checker.html:30
+#: .\templates\network_tools\ping_test.html:30
+#: .\templates\network_tools\port_scanner.html:30
 msgid "e.g: google.com"
 msgstr ""
 
+#: .\templates\network_tools\domain_checker.html:35
 msgid "Check Domain"
 msgstr ""
 
+#: .\templates\network_tools\domain_checker.html:51
 msgid "Please enter a domain address!"
 msgstr ""
 
+#: .\templates\network_tools\domain_checker.html:67
 msgid "Domain"
 msgstr ""
 
+#: .\templates\network_tools\domain_checker.html:68
 msgid "Status"
 msgstr ""
 
+#: .\templates\network_tools\domain_checker.html:69
 msgid "Not found"
 msgstr ""
 
+#: .\templates\network_tools\domain_checker.html:74
+#: .\templates\network_tools\ip_lookup.html:131
+#: .\templates\network_tools\port_scanner.html:80
 msgid "Error"
 msgstr ""
 
+#: .\templates\network_tools\home.html:4
 msgid "Network Tools - Online Network Tools - AdreTools"
 msgstr ""
 
+#: .\templates\network_tools\home.html:31
 msgid "IP lookup, domain checking and network tests"
 msgstr ""
 
+#: .\templates\network_tools\home.html:41
+#: .\templates\network_tools\home.html:98
 msgid "IP Lookup"
 msgstr ""
 
+#: .\templates\network_tools\home.html:42
 msgid "Query IP address information"
 msgstr ""
 
+#: .\templates\network_tools\home.html:51
+#: .\templates\network_tools\home.html:101
 msgid "Domain Checker"
 msgstr ""
 
+#: .\templates\network_tools\home.html:61
+#: .\templates\network_tools\home.html:105
 msgid "Port Scanner"
 msgstr ""
 
+#: .\templates\network_tools\home.html:62
+#: .\templates\network_tools\port_scanner.html:16
 msgid "Scan open ports"
 msgstr ""
 
+#: .\templates\network_tools\home.html:71
+#: .\templates\network_tools\home.html:108
+#: .\templates\network_tools\ping_test.html:25
 msgid "Ping Test"
 msgstr ""
 
+#: .\templates\network_tools\home.html:72
+#: .\templates\network_tools\ping_test.html:16
 msgid "Test connection speed"
 msgstr ""
 
+#: .\templates\network_tools\home.html:81
 msgid "Speed Test"
 msgstr ""
 
+#: .\templates\network_tools\home.html:82
 msgid "Measure internet speed"
 msgstr ""
 
+#: .\templates\network_tools\home.html:93
 #, fuzzy
 #| msgid "View Tools"
 msgid "About Network Tools"
 msgstr "Voir les outils"
 
+#: .\templates\network_tools\home.html:94
 msgid ""
 "With AdreTools network tools, you can query IP addresses, check domain "
 "information, perform port scanning and conduct ping tests."
 msgstr ""
 
+#: .\templates\network_tools\home.html:99
 msgid ""
 "Learn the geographical location, ISP information and details of the IP "
 "address."
 msgstr ""
 
+#: .\templates\network_tools\home.html:102
 msgid "Check the DNS records and whois information of the domain address."
 msgstr ""
 
+#: .\templates\network_tools\home.html:106
 msgid "Perform security checks by scanning open ports of IP address."
 msgstr ""
 
+#: .\templates\network_tools\home.html:109
 msgid "Test connection quality by pinging website or IP address."
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:31
 msgid "Online IP Lookup - Free"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:32
 msgid "Query IP address location, ISP information and details"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:41
 msgid "Query IP Address"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:45
 msgid "IP Address"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:46
 msgid "e.g: 8.8.8.8"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:47
 msgid "Enter IP address in IPv4 format"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:52
 msgid "Lookup IP"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:58
 msgid "Querying..."
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:60
 msgid "Querying IP information..."
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:73
 msgid "What is IP Lookup?"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:74
 msgid ""
 "IP Lookup is a tool that allows you to learn the geographical location, "
 "internet service provider (ISP) and other technical information of an IP "
 "address."
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:76
 msgid "Features:"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:78
 msgid "Geographical location (country, city, region)"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:79
 msgid "ISP and organization information"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:80
 msgid "Time zone information"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:81
 msgid "Latitude and longitude coordinates"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:82
 msgid "Fast and reliable results"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:103
 msgid "Please enter an IP address!"
 msgstr ""
 
+#: .\templates\network_tools\ip_lookup.html:110
 msgid "Invalid IP address format!"
 msgstr ""
 
+#: .\templates\network_tools\ping_test.html:15
 msgid "Online Ping Test - Free"
 msgstr ""
 
+#: .\templates\network_tools\ping_test.html:29
+#: .\templates\network_tools\port_scanner.html:29
 msgid "Target IP/Domain"
 msgstr ""
 
+#: .\templates\network_tools\ping_test.html:34
 msgid "Packet Count"
 msgstr ""
 
+#: .\templates\network_tools\ping_test.html:36
+#: .\templates\network_tools\ping_test.html:37
+#: .\templates\network_tools\ping_test.html:38
 msgid "packets"
 msgstr ""
 
+#: .\templates\network_tools\ping_test.html:44
 msgid "Start Ping"
 msgstr ""
 
+#: .\templates\network_tools\ping_test.html:61
+#: .\templates\network_tools\port_scanner.html:57
 msgid "Please enter target IP/domain!"
 msgstr ""
 
+#: .\templates\network_tools\ping_test.html:86
 msgid "Ping failed"
 msgstr ""
 
+#: .\templates\network_tools\ping_test.html:86
 msgid "Unknown error"
 msgstr ""
 
+#: .\templates\network_tools\port_scanner.html:15
 msgid "Online Port Scanner - Free"
 msgstr ""
 
+#: .\templates\network_tools\port_scanner.html:25
 msgid "Port Scanning"
 msgstr ""
 
+#: .\templates\network_tools\port_scanner.html:34
 msgid "Ports"
 msgstr ""
 
+#: .\templates\network_tools\port_scanner.html:35
 msgid "80,443,22 or 80-100"
 msgstr ""
 
+#: .\templates\network_tools\port_scanner.html:40
 msgid "Scan Ports"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:41
 msgid "Online Speed Test - Free"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:42
 msgid "Test your internet connection speed"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:51
 msgid "Internet Speed Test"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:74
 msgid "Upload"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:82
+#: .\templates\network_tools\speed_test.html:124
 msgid "Ping"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:91
 msgid "Start Speed Test"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:96
 msgid "Testing..."
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:111
 msgid "About Speed Test"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:112
 msgid ""
 "Internet speed test measures your connection's download and upload speeds."
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:116
 msgid "Download Speed"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:117
 msgid ""
 "Your data download speed from internet. Important for video streaming, file "
 "downloads."
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:120
 msgid "Upload Speed"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:121
 msgid ""
 "Your data upload speed to internet. Important for video conferencing, file "
 "sharing."
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:125
 msgid "Time to reach server. Critical for online games and live streaming."
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:151
 msgid "Running ping test..."
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:158
 msgid "Measuring download speed..."
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:165
 msgid "Measuring upload speed..."
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:171
 msgid "Test completed!"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:179
 msgid "Test error"
 msgstr ""
 
+#: .\templates\network_tools\speed_test.html:194
 msgid "Test failed"
 msgstr ""
 
+#: .\templates\password_tools\home.html:25
 msgid "Generate strong passwords and perform security checks"
 msgstr ""
 
+#: .\templates\password_tools\home.html:33
+#: .\templates\password_tools\home.html:65
 msgid "Generate Password"
 msgstr ""
 
+#: .\templates\password_tools\home.html:37
 msgid "Password Length"
 msgstr ""
 
+#: .\templates\password_tools\home.html:44
 msgid "Uppercase Letters (A-Z)"
 msgstr ""
 
+#: .\templates\password_tools\home.html:48
 msgid "Lowercase Letters (a-z)"
 msgstr ""
 
+#: .\templates\password_tools\home.html:52
 msgid "Numbers (0-9)"
 msgstr ""
 
+#: .\templates\password_tools\home.html:56
 #, python-format
 msgid "Symbols (!@#$%%^&*)"
 msgstr ""
 
+#: .\templates\password_tools\home.html:60
 msgid "Exclude Similar Characters (il1Lo0O)"
 msgstr ""
 
+#: .\templates\password_tools\home.html:73
 msgid "Password Security Check"
 msgstr ""
 
+#: .\templates\password_tools\home.html:77
 msgid "Password to Check"
 msgstr ""
 
+#: .\templates\password_tools\home.html:78
 msgid "Enter your password"
 msgstr ""
 
+#: .\templates\password_tools\home.html:79
 msgid "Your password is not sent to server, only analyzed"
 msgstr ""
 
+#: .\templates\password_tools\home.html:82
 msgid "Perform Security Check"
 msgstr ""
 
+#: .\templates\password_tools\home.html:93
 msgid "Generated Password"
 msgstr ""
 
+#: .\templates\password_tools\home.html:97 .\templates\qr_tools\home.html:70
 msgid "Password"
 msgstr ""
 
+#: .\templates\password_tools\home.html:112
+#: .\templates\password_tools\home.html:135
 msgid "Security Score"
 msgstr ""
 
+#: .\templates\password_tools\home.html:123
 msgid "Generate New Password"
 msgstr ""
 
+#: .\templates\password_tools\home.html:131
 msgid "Security Analysis"
 msgstr ""
 
+#: .\templates\password_tools\home.html:146
 msgid "Password Details"
 msgstr ""
 
+#: .\templates\password_tools\home.html:151
 msgid "Suggestions"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:4
 #, fuzzy
 #| msgid "AdreTools - Free Online Tools: PDF, Image, QR Code, Network Tools"
 msgid "PDF Tools - Free Online PDF Split, Merge, Convert - AdreTools"
 msgstr ""
 "AdreTools - Outils en ligne gratuits: PDF, Image, QR Code, Outils réseau"
 
+#: .\templates\pdf_tools\home.html:69
 msgid "Split PDF"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:73
 msgid "Select and Split PDF"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:84
 msgid "Merge PDF"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:89
 msgid "Add PDF"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:90 .\templates\pdf_tools\home.html:132
 msgid "Merge"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:103
 msgid "Multi-Page Split"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:108 .\templates\pdf_tools\home.html:150
 msgid "Select PDF"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:113
 msgid "Add Range"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:114
 msgid "Split and Download"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:126
 msgid "Merge Folder"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:131
 msgid "Add Folder"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:145
 msgid "Interval Page Split"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:155
 msgid "How many pages to split?"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:156
 msgid "e.g: 3"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:159
 msgid "Start page"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:160
 msgid "e.g: 1"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:164
 msgid "Split by Interval"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:176
 msgid "Convert PDF"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:183 .\templates\pdf_tools\home.html:187
+#: .\templates\pdf_tools\home.html:191
 msgid "Convert"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:204
 msgid "PDF Security"
 msgstr ""
 
-msgid "QR & Barcode Tools - AdreTools"
+#: .\templates\pdf_tools\home.html:211
+msgid "Step 1: Select PDF File"
 msgstr ""
 
-msgid "QR & Barcode Tools"
+#: .\templates\pdf_tools\home.html:213
+msgid "Select PDF File"
 msgstr ""
 
-msgid "Generate QR Code"
+#: .\templates\pdf_tools\home.html:222
+msgid "Step 2: Choose Security Options"
 msgstr ""
 
-msgid "QR Type"
+#: .\templates\pdf_tools\home.html:231
+msgid "Password Protection"
 msgstr ""
 
-msgid "URL/Link"
+#: .\templates\pdf_tools\home.html:232
+msgid "Add password to protect your PDF"
 msgstr ""
 
-msgid "WiFi"
+#: .\templates\pdf_tools\home.html:234
+msgid "Add Password"
 msgstr ""
 
-msgid "SMS"
+#: .\templates\pdf_tools\home.html:245
+msgid "Watermark"
 msgstr ""
 
-msgid "Email"
+#: .\templates\pdf_tools\home.html:246
+msgid "Add text watermark to your PDF"
 msgstr ""
 
-msgid "Phone"
+#: .\templates\pdf_tools\home.html:248 .\templates\pdf_tools\home.html:335
+msgid "Add Watermark"
 msgstr ""
 
-msgid "vCard (Contact)"
+#: .\templates\pdf_tools\home.html:259
+msgid "Password Protection Settings"
 msgstr ""
 
-msgid "Content"
+#: .\templates\pdf_tools\home.html:261 .\templates\pdf_tools\home.html:292
+msgid "Back"
 msgstr ""
 
-msgid "Enter QR code content..."
+#: .\templates\pdf_tools\home.html:268
+msgid "Enter Password"
 msgstr ""
 
-msgid "Network Name (SSID)"
+#: .\templates\pdf_tools\home.html:269
+msgid "Enter a strong password"
 msgstr ""
 
-msgid "WiFi network name"
+#: .\templates\pdf_tools\home.html:274
+msgid "Confirm Password"
 msgstr ""
 
-msgid "WiFi password"
+#: .\templates\pdf_tools\home.html:275
+msgid "Confirm your password"
 msgstr ""
 
-msgid "Security Type"
+#: .\templates\pdf_tools\home.html:280
+msgid "Encrypt PDF"
 msgstr ""
 
-msgid "No Password"
+#: .\templates\pdf_tools\home.html:290
+msgid "Watermark Settings"
 msgstr ""
 
-msgid "Phone Number"
+#: .\templates\pdf_tools\home.html:299
+msgid "Watermark Text"
 msgstr ""
 
-msgid "Message"
+#: .\templates\pdf_tools\home.html:300
+msgid "e.g: CONFIDENTIAL, DRAFT, Company Name"
 msgstr ""
 
-msgid "SMS message"
+#: .\templates\pdf_tools\home.html:307
+msgid "Center"
 msgstr ""
 
-msgid "Email Address"
+#: .\templates\pdf_tools\home.html:308
+msgid "Top Left"
 msgstr ""
 
-msgid "example@email.com"
+#: .\templates\pdf_tools\home.html:309
+msgid "Top Right"
 msgstr ""
 
-msgid "Subject"
+#: .\templates\pdf_tools\home.html:310
+msgid "Bottom Left"
 msgstr ""
 
-msgid "Email subject"
+#: .\templates\pdf_tools\home.html:311
+msgid "Bottom Right"
 msgstr ""
 
-msgid "Email content"
+#: .\templates\pdf_tools\home.html:315
+msgid "Opacity"
 msgstr ""
 
-msgid "First Name"
+#: .\templates\pdf_tools\home.html:317
+msgid "Light"
 msgstr ""
 
-msgid "Last Name"
+#: .\templates\pdf_tools\home.html:318 .\templates\pdf_tools\home.html:326
+msgid "Medium"
 msgstr ""
 
-msgid "Company"
+#: .\templates\pdf_tools\home.html:319
+msgid "Dark"
 msgstr ""
 
-msgid "Company name"
-msgstr ""
-
+#: .\templates\pdf_tools\home.html:323 .\templates\qr_tools\home.html:156
 msgid "Size"
 msgstr ""
 
+#: .\templates\pdf_tools\home.html:325
+msgid "Small"
+msgstr ""
+
+#: .\templates\pdf_tools\home.html:327
+msgid "Large"
+msgstr ""
+
+#: .\templates\pdf_tools\home.html:328
+msgid "Extra Large"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:4
+msgid "QR & Barcode Tools - AdreTools"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:9
+msgid "QR & Barcode Tools"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:33
+msgid "Generate QR Code"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:39
+msgid "QR Type"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:42
+msgid "URL/Link"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:43
+msgid "WiFi"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:44
+msgid "SMS"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:45 .\templates\qr_tools\home.html:142
+msgid "Email"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:46 .\templates\qr_tools\home.html:138
+msgid "Phone"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:47
+msgid "vCard (Contact)"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:57
+msgid "Content"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:58
+msgid "Enter QR code content..."
+msgstr ""
+
+#: .\templates\qr_tools\home.html:66
+msgid "Network Name (SSID)"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:67
+msgid "WiFi network name"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:71
+msgid "WiFi password"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:75
+msgid "Security Type"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:79
+msgid "No Password"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:88 .\templates\qr_tools\home.html:119
+msgid "Phone Number"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:92 .\templates\qr_tools\home.html:110
+msgid "Message"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:93
+msgid "SMS message"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:101
+msgid "Email Address"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:102 .\templates\qr_tools\home.html:143
+msgid "example@email.com"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:106
+msgid "Subject"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:107
+msgid "Email subject"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:111
+msgid "Email content"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:128 .\templates\qr_tools\home.html:129
+msgid "First Name"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:132 .\templates\qr_tools\home.html:133
+msgid "Last Name"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:147
+msgid "Company"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:148
+msgid "Company name"
+msgstr ""
+
+#: .\templates\qr_tools\home.html:158
 msgid "Small (200px)"
 msgstr ""
 
+#: .\templates\qr_tools\home.html:159
 msgid "Medium (400px)"
 msgstr ""
 
+#: .\templates\qr_tools\home.html:160
 msgid "Large (600px)"
 msgstr ""
 
+#: .\templates\qr_tools\home.html:161
 msgid "Extra Large (800px)"
 msgstr ""
 
+#: .\templates\qr_tools\home.html:165
 msgid "Error Correction"
 msgstr ""
 
+#: .\templates\qr_tools\home.html:167
 #, python-format
 msgid "Low (7%%)"
 msgstr ""
 
+#: .\templates\qr_tools\home.html:168
 #, python-format
 msgid "Medium (15%%)"
 msgstr ""
 
+#: .\templates\qr_tools\home.html:169
 #, python-format
 msgid "High (25%%)"
 msgstr ""
 
+#: .\templates\qr_tools\home.html:170
 #, python-format
 msgid "Very High (30%%)"
 msgstr ""
 
+#: .\templates\qr_tools\home.html:174
 msgid "Foreground Color"
 msgstr ""
 
+#: .\templates\qr_tools\home.html:178
 msgid "Background Color"
 msgstr ""
 
+#: .\templates\qr_tools\home.html:186
 msgid "QR Shape"
 msgstr ""
 
+#: .\templates\random_tools\home.html:4
+msgid "Random Tools - Number Generator, Lucky Wheel, Name Picker - AdreTools"
+msgstr ""
+
+#: .\templates\random_tools\home.html:152
+msgid "Professional random generators and lottery systems"
+msgstr ""
+
+#: .\templates\random_tools\home.html:166
+#, fuzzy
+#| msgid "View Tools"
+msgid "Use Tool"
+msgstr "Voir les outils"
+
+#: .\templates\random_tools\home.html:185
+msgid "Minimum"
+msgstr ""
+
+#: .\templates\random_tools\home.html:189
+msgid "Maximum"
+msgstr ""
+
+#: .\templates\random_tools\home.html:194
+msgid "How many numbers?"
+msgstr ""
+
+#: .\templates\random_tools\home.html:199
+msgid "Generate"
+msgstr ""
+
+#: .\templates\random_tools\home.html:219
+msgid "Add Options"
+msgstr ""
+
+#: .\templates\random_tools\home.html:221
+msgid "Enter option"
+msgstr ""
+
+#: .\templates\random_tools\home.html:222
+#: .\templates\random_tools\home.html:304
+msgid "Add"
+msgstr ""
+
+#: .\templates\random_tools\home.html:226
+msgid "Spin Duration (seconds)"
+msgstr ""
+
+#: .\templates\random_tools\home.html:231
+#: .\templates\random_tools\home.html:311
+msgid "Clear All"
+msgstr ""
+
+#: .\templates\random_tools\home.html:240
+msgid "Spin Wheel"
+msgstr ""
+
+#: .\templates\random_tools\home.html:247
+msgid "Add options to see the wheel"
+msgstr ""
+
+#: .\templates\random_tools\home.html:250
+msgid "Show Wheel"
+msgstr ""
+
+#: .\templates\random_tools\home.html:270
+msgid "Number of dice"
+msgstr ""
+
+#: .\templates\random_tools\home.html:272
+#: .\templates\random_tools\home.html:273
+#: .\templates\random_tools\home.html:274
+#: .\templates\random_tools\home.html:275
+#: .\templates\random_tools\home.html:276
+#: .\templates\random_tools\home.html:277
+msgid "dice"
+msgstr ""
+
+#: .\templates\random_tools\home.html:282
+msgid "Roll Dice"
+msgstr ""
+
+#: .\templates\random_tools\home.html:295
+msgid "Professional Lottery System"
+msgstr ""
+
+#: .\templates\random_tools\home.html:301
+msgid "Add Participants"
+msgstr ""
+
+#: .\templates\random_tools\home.html:303
+msgid "Enter name"
+msgstr ""
+
+#: .\templates\random_tools\home.html:307
+msgid "Or paste multiple names (one per line)"
+msgstr ""
+
+#: .\templates\random_tools\home.html:308
+msgid "Add All"
+msgstr ""
+
+#: .\templates\random_tools\home.html:312
+msgid "Shuffle"
+msgstr ""
+
+#: .\templates\random_tools\home.html:315
+msgid "Total participants"
+msgstr ""
+
+#: .\templates\random_tools\home.html:319
+msgid "Participants List"
+msgstr ""
+
+#: .\templates\random_tools\home.html:323
+msgid "Lottery Settings"
+msgstr ""
+
+#: .\templates\random_tools\home.html:325
+msgid "Number of winners"
+msgstr ""
+
+#: .\templates\random_tools\home.html:331
+msgid "Allow same person to win multiple times"
+msgstr ""
+
+#: .\templates\random_tools\home.html:335
+msgid "Start Lottery"
+msgstr ""
+
+#: .\templates\svg_tools\home.html:22
 msgid "Edit and convert SVG files"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:43
 msgid "PNG/JPG → SVG Conversion"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:49 .\templates\svg_tools\home.html:140
 msgid "Select Image File"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:56
 msgid "Note"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:56
 msgid "This process embeds the image into SVG."
 msgstr ""
 
+#: .\templates\svg_tools\home.html:59
 msgid "Conversion Mode"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:61
 msgid "Simple (Embed image in SVG)"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:62
 msgid "Advanced (Real SVG Path)"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:67
 msgid "Convert to SVG"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:71 .\templates\svg_tools\home.html:121
 msgid "Converting..."
 msgstr ""
 
+#: .\templates\svg_tools\home.html:84
 msgid "SVG → PNG/JPG Conversion"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:90 .\templates\svg_tools\home.html:178
 msgid "Select SVG File"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:96
 msgid "Output Format"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:117
 msgid "Convert and Download"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:134
 msgid "Vector SVG Trace"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:147
 msgid "Warning"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:147
 msgid "This creates real vector SVG!"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:150
 msgid "Detail Level"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:152
 msgid "1: Very detailed, 10: Simple"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:155
 msgid "Create Vector SVG"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:159
 msgid "Processing..."
 msgstr ""
 
+#: .\templates\svg_tools\home.html:172
 msgid "SVG Editing"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:186
 msgid "New Width"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:187
 msgid "Change"
 msgstr ""
 
+#: .\templates\svg_tools\home.html:192
 msgid "New Height"
 msgstr ""
 
+#: .\templates\text_tools\home.html:25
 msgid "Analyze, transform and format texts"
 msgstr ""
 
+#: .\templates\text_tools\home.html:33
 msgid "Text Input"
 msgstr ""
 
+#: .\templates\text_tools\home.html:36
 msgid "Write your text here..."
 msgstr ""
 
+#: .\templates\text_tools\home.html:37
 msgid "Your text will be automatically analyzed"
 msgstr ""
 
+#: .\templates\text_tools\home.html:47
 msgid "Text Statistics"
 msgstr ""
 
+#: .\templates\text_tools\home.html:50
 msgid "Characters (with spaces)"
 msgstr ""
 
+#: .\templates\text_tools\home.html:51
 msgid "Characters (without spaces)"
 msgstr ""
 
+#: .\templates\text_tools\home.html:52
 msgid "Word count"
 msgstr ""
 
+#: .\templates\text_tools\home.html:53
 msgid "Line count"
 msgstr ""
 
+#: .\templates\text_tools\home.html:54
 msgid "Paragraph count"
 msgstr ""
 
+#: .\templates\text_tools\home.html:55
 msgid "Digit count"
 msgstr ""
 
+#: .\templates\text_tools\home.html:56
 msgid "Letter count"
 msgstr ""
 
+#: .\templates\text_tools\home.html:57
 msgid "Longest word"
 msgstr ""
 
+#: .\templates\text_tools\home.html:58
 msgid "Average word length"
 msgstr ""
 
+#: .\templates\text_tools\home.html:65
 msgid "Text Transformation"
 msgstr ""
 
+#: .\templates\text_tools\home.html:70
 msgid "UPPERCASE"
 msgstr ""
 
+#: .\templates\text_tools\home.html:73
 msgid "lowercase"
 msgstr ""
 
+#: .\templates\text_tools\home.html:76
 msgid "Title Case"
 msgstr ""
 
+#: .\templates\text_tools\home.html:79
 msgid "Reverse"
 msgstr ""
 
+#: .\templates\text_tools\home.html:82
 msgid "URL Slug"
 msgstr ""
 
+#: .\templates\text_tools\home.html:85
 msgid "Clean Spaces"
 msgstr ""
 
+#: .\templates\text_tools\home.html:88
 msgid "Remove Special Chars"
 msgstr ""
 
+#: .\templates\text_tools\home.html:91
 msgid "Clean HTML"
 msgstr ""
 
+#: .\templates\text_tools\home.html:100
 msgid "Encoding & Hash"
 msgstr ""
 
+#: .\templates\text_tools\home.html:105
 msgid "Base64 Encode"
 msgstr ""
 
+#: .\templates\text_tools\home.html:108
 msgid "Base64 Decode"
 msgstr ""
 
+#: .\templates\text_tools\home.html:111
 msgid "URL Encode"
 msgstr ""
 
+#: .\templates\text_tools\home.html:114
 msgid "URL Decode"
 msgstr ""
 
+#: .\templates\text_tools\home.html:129
 msgid "JSON Format"
 msgstr ""
 
+#: .\templates\text_tools\home.html:134
 msgid "JSON Beautify"
 msgstr ""
 
+#: .\templates\text_tools\home.html:137
 msgid "JSON Minify"
 msgstr ""
 
+#: .\templates\url_tools\home.html:23
 msgid "Shorten long links and generate QR codes"
 msgstr ""
 
+#: .\templates\url_tools\home.html:31
 msgid "Shorten URL"
 msgstr ""
 
+#: .\templates\url_tools\home.html:35
 msgid "Long URL"
 msgstr ""
 
+#: .\templates\url_tools\home.html:39
 msgid "Shorten"
 msgstr ""
 
+#: .\templates\url_tools\home.html:47
 msgid "Query Statistics"
 msgstr ""
 
+#: .\templates\url_tools\home.html:51
 msgid "Short Code"
 msgstr ""
 
+#: .\templates\url_tools\home.html:55
 msgid "Get Statistics"
 msgstr ""
 
+#: .\templates\url_tools\home.html:59 .\templates\url_tools\home.html:95
 msgid "Original URL"
 msgstr ""
 
+#: .\templates\url_tools\home.html:60 .\templates\url_tools\home.html:94
 msgid "Click Count"
 msgstr ""
 
+#: .\templates\url_tools\home.html:61
 msgid "Created"
 msgstr ""
 
+#: .\templates\url_tools\home.html:72
 msgid "Shortened URL"
 msgstr ""
 
+#: .\templates\url_tools\home.html:76
 msgid "Short URL"
 msgstr ""
 
+#: .\templates\url_tools\home.html:88 .\templates\url_tools\home.html:89
 msgid "QR Code"
 msgstr ""
 
+#: .\templates\url_tools\home.html:102
 msgid "Download QR"
 msgstr ""
 
+#: .\templates\url_tools\home.html:107
 msgid "Share"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-18 15:50+0300\n"
+"POT-Creation-Date: 2025-10-19 22:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,1494 +18,3724 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: .\calculator_tools\views.py:9 .\templates\calculator_tools\home.html:45
+#, fuzzy
+#| msgid "Horoscope Calculator"
+msgid "BMI Calculator"
+msgstr "Burç Hesaplayıcı"
+
+#: .\calculator_tools\views.py:9
+msgid "Calculate Body Mass Index"
+msgstr ""
+
+#: .\calculator_tools\views.py:10 .\templates\calculator_tools\home.html:73
+#, fuzzy
+#| msgid "Horoscope Calculator"
+msgid "Age Calculator"
+msgstr "Burç Hesaplayıcı"
+
+#: .\calculator_tools\views.py:10
+#, fuzzy
+#| msgid "Calculate zodiac sign and traits by birth date"
+msgid "Calculate age from birth date"
+msgstr "Doğum tarihi ile burç, yükselen ve özellikler"
+
+#: .\calculator_tools\views.py:11 .\templates\calculator_tools\home.html:95
+msgid "World Clock"
+msgstr ""
+
+#: .\calculator_tools\views.py:11
+msgid "World time zones"
+msgstr ""
+
+#: .\calculator_tools\views.py:12 .\templates\calculator_tools\home.html:112
+#, fuzzy
+#| msgid "Horoscope Calculator"
+msgid "Percentage Calculator"
+msgstr "Burç Hesaplayıcı"
+
+#: .\calculator_tools\views.py:12
+msgid "Calculate percentages"
+msgstr ""
+
+#: .\calculator_tools\views.py:13 .\templates\calculator_tools\home.html:143
+#, fuzzy
+#| msgid "Horoscope Calculator"
+msgid "Date Calculator"
+msgstr "Burç Hesaplayıcı"
+
+#: .\calculator_tools\views.py:13
+msgid "Calculate days between dates"
+msgstr ""
+
+#: .\core\views.py:6 .\templates\blog\home.html:20
+#: .\templates\pdf_tools\home.html:44
 msgid "PDF Tools"
 msgstr "PDF Araçları"
 
+#: .\core\views.py:6
 msgid "Split, merge, convert PDF files"
 msgstr "PDF böl, birleştir, dönüştür"
 
+#: .\core\views.py:7 .\templates\image_tools\home.html:9
+#: .\templates\image_tools\resize.html:43
 msgid "Image Tools"
 msgstr "Resim Araçları"
 
+#: .\core\views.py:7
 msgid "Resize images, change formats"
 msgstr "Resim boyutlandır, format değiştir"
 
+#: .\core\views.py:8
 msgid "QR & Barcode"
 msgstr "QR & Barkod"
 
+#: .\core\views.py:8
 msgid "Generate QR codes, read barcodes"
 msgstr "QR kod oluştur, barkod okut"
 
+#: .\core\views.py:9 .\templates\blog\home.html:407
+#: .\templates\svg_tools\home.html:5 .\templates\svg_tools\home.html:21
 msgid "SVG Tools"
 msgstr "SVG Araçları"
 
+#: .\core\views.py:9
 msgid "Edit SVG files"
 msgstr "SVG dosyalarını düzenle"
 
+#: .\core\views.py:10 .\templates\blog\home.html:236
+#: .\templates\text_tools\home.html:5 .\templates\text_tools\home.html:24
 msgid "Text Tools"
 msgstr "Metin Araçları"
 
+#: .\core\views.py:10
 msgid "Analyze and convert text"
 msgstr "Metin analiz et ve dönüştür"
 
+#: .\core\views.py:11 .\templates\color_tools\home.html:5
+#: .\templates\color_tools\home.html:29
 msgid "Color Picker"
 msgstr "Renk Bulucu"
 
+#: .\core\views.py:11
 msgid "Pick colors from images and analyze"
 msgstr "Görselden renk seç ve analiz et"
 
+#: .\core\views.py:12 .\templates\url_tools\home.html:5
+#: .\templates\url_tools\home.html:22
 msgid "URL Shortener"
 msgstr "URL Kısaltıcı"
 
+#: .\core\views.py:12
 msgid "Shorten long links and generate QR"
 msgstr "Uzun linkleri kısalt ve QR oluştur"
 
+#: .\core\views.py:13 .\templates\password_tools\home.html:5
+#: .\templates\password_tools\home.html:24
 msgid "Password Generator"
 msgstr "Şifre Üretici"
 
+#: .\core\views.py:13
 msgid "Generate strong passwords and security check"
 msgstr "Güçlü şifre oluştur ve güvenlik kontrolü"
 
+#: .\core\views.py:14 .\templates\converter_tools\home.html:5
+#: .\templates\converter_tools\home.html:25
+#: .\templates\converter_tools\home.html:33
 msgid "Unit Converter"
 msgstr "Birim Dönüştürücü"
 
+#: .\core\views.py:14
 msgid "Convert length, weight, temperature"
 msgstr "Uzunluk, ağırlık, sıcaklık dönüştür"
 
+#: .\core\views.py:15 .\templates\horoscope_tools\home.html:5
+#: .\templates\horoscope_tools\home.html:24
 msgid "Horoscope Calculator"
 msgstr "Burç Hesaplayıcı"
 
+#: .\core\views.py:15
 msgid "Calculate zodiac sign and traits by birth date"
 msgstr "Doğum tarihi ile burç, yükselen ve özellikler"
 
+#: .\core\views.py:16 .\templates\blog\home.html:535
+#: .\templates\network_tools\domain_checker.html:17
+#: .\templates\network_tools\home.html:30
+#: .\templates\network_tools\ip_lookup.html:33
+#: .\templates\network_tools\ping_test.html:17
+#: .\templates\network_tools\port_scanner.html:17
+#: .\templates\network_tools\speed_test.html:43
 msgid "Network Tools"
 msgstr "Ağ Araçları"
 
+#: .\core\views.py:16
 msgid "IP lookup, domain check, port scan"
 msgstr "IP sorgula, domain kontrol, port tara"
 
+#: .\core\views.py:17 .\templates\blog\home.html:492
+#: .\templates\dev_tools\base64_encoder.html:13
+#: .\templates\dev_tools\hash_generator.html:47
+#: .\templates\dev_tools\home.html:68
+#: .\templates\dev_tools\html_encoder.html:13
+#: .\templates\dev_tools\json_formatter.html:47
+#: .\templates\dev_tools\regex_tester.html:54
+#: .\templates\dev_tools\sql_formatter.html:13
+#: .\templates\dev_tools\timestamp_converter.html:13
+#: .\templates\dev_tools\url_encoder.html:13
 msgid "Developer Tools"
 msgstr "Geliştirici Araçları"
 
+#: .\core\views.py:17
 msgid "JSON, Hash, Regex, SQL tools"
 msgstr "JSON, Hash, Regex, SQL araçları"
 
+#: .\core\views.py:18 .\templates\blog\home.html:150
+#: .\templates\blog\home.html:172 .\templates\calculator_tools\home.html:17
+#, fuzzy
+#| msgid "Network Tools"
+msgid "Calculator Tools"
+msgstr "Ağ Araçları"
+
+#: .\core\views.py:18
+msgid "BMI, Age, World Clock calculators"
+msgstr ""
+
+#: .\core\views.py:19 .\templates\blog\home.html:107
+#: .\templates\blog\home.html:129 .\templates\random_tools\home.html:151
+#, fuzzy
+#| msgid "Image Tools"
+msgid "Random Tools"
+msgstr "Resim Araçları"
+
+#: .\core\views.py:19
+msgid "Random number, lucky wheel, lottery system"
+msgstr ""
+
+#: .\random_tools\views.py:6 .\templates\blog\home.html:132
+#: .\templates\random_tools\home.html:179
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Random Number Generator"
+msgstr "Şifre Üretici"
+
+#: .\random_tools\views.py:6
+msgid "Generate random numbers"
+msgstr "Rastgele sayılar üret"
+
+#: .\random_tools\views.py:7 .\templates\random_tools\home.html:213
+msgid "Lucky Wheel"
+msgstr "Şans Çarkı"
+
+#: .\random_tools\views.py:7
+msgid "Spin the wheel of fortune"
+msgstr "Şans çarkını çevir"
+
+#: .\random_tools\views.py:8 .\templates\random_tools\home.html:265
+msgid "Dice Roller"
+msgstr "Zar Atıcı"
+
+#: .\random_tools\views.py:8
+msgid "Roll virtual dice"
+msgstr "Sanal zar at"
+
+#: .\random_tools\views.py:9
+#, fuzzy
+#| msgid "Color Picker"
+msgid "Name Picker"
+msgstr "İsim Seçici"
+
+#: .\random_tools\views.py:9
+msgid "Professional lottery system"
+msgstr "Profesyonel piyango sistemi"
+
+#: .\templates\base.html:101
 msgid "All rights reserved."
 msgstr "Tüm hakları saklıdır."
 
-msgid "Back to Home"
-msgstr ""
+#: .\templates\base.html:102
+msgid "Terms of Service"
+msgstr "Hizmet Şartları"
 
+#: .\templates\base.html:103
+msgid "Cookie Policy"
+msgstr "Çerez Politikası"
+
+#: .\templates\base.html:104
+msgid "Contact"
+msgstr "İletişim"
+
+#: .\templates\base.html:105
+msgid "Statistics"
+msgstr "İstatistikler"
+
+#: .\templates\blog\home.html:4 .\templates\blog\home.html:11
+msgid "Blog"
+msgstr "Blog"
+
+#: .\templates\blog\home.html:5
+msgid ""
+"AdreTools blog - Online tools guides, tutorials and tips for PDF, QR code, "
+"image editing and more digital tools."
+msgstr "AdreTools blog - PDF, QR kodu, görüntü düzenleme ve daha fazla dijital araç için çevrimiçi araç kılavuzları, eğitimler ve ipuçları."
+
+#: .\templates\blog\home.html:12
+msgid ""
+"Comprehensive guides and tutorials for all AdreTools. Learn how to use our "
+"digital tools effectively with step-by-step instructions."
+msgstr "Tüm AdreTools için kapsamlı kılavuzlar ve eğitimler. Dijital araçlarımızı adım adım talimatlarla etkili bir şekilde kullanmayı öğrenin."
+
+#: .\templates\blog\home.html:25
+msgid "Complete PDF Management Solution"
+msgstr "Tam PDF Yönetim Çözümü"
+
+#: .\templates\blog\home.html:26
+msgid ""
+"Our comprehensive PDF tools suite provides everything you need for "
+"professional document management. Whether you're working with business "
+"reports, academic papers, or personal documents, these tools ensure "
+"efficient PDF processing with enterprise-level security and reliability."
+msgstr "Kapsamlı PDF araçları paketimiz, profesyonel belge yönetimi için ihtiyacınız olan her şeyi sağlar. İş raporları, akademik makaleler veya kişisel belgelerle çalışıyorsanız, bu araçlar kurumsal düzeyde güvenlik ve güvenilirlikle verimli PDF işleme sağlar."
+
+#: .\templates\blog\home.html:28
+msgid "PDF Merge - Combine Multiple Documents"
+msgstr "PDF Birleştirme - Birden Fazla Belgeyi Birleştir"
+
+#: .\templates\blog\home.html:29
+msgid ""
+"Merge PDF files online free without losing quality. Perfect for combining "
+"invoices, reports, presentations, and contracts into single documents. "
+"Supports unlimited file size and maintains original formatting, bookmarks, "
+"and metadata. Essential for business workflows and document organization."
+msgstr "PDF dosyalarını kalite kaybı olmadan çevrimiçi ücretsiz birleştirin. Faturalar, raporlar, sunumlar ve sözleşmeleri tek bir belgede birleştirmek için mükemmel. Sınırsız dosya boyutunu destekler ve orijinal biçimlendirme, yer imleri ve meta verileri korur. İş akışları ve belge organizasyonu için vazgeçilmez."
+
+#: .\templates\blog\home.html:31
+msgid "PDF Split - Extract Pages Efficiently"
+msgstr "PDF Bölme - Sayfaları Verimli Bir Şekilde Ayır"
+
+#: .\templates\blog\home.html:32
+msgid ""
+"Split large PDF documents into smaller files or extract specific pages. "
+"Ideal for separating chapters, removing confidential sections, or creating "
+"focused documents. Batch processing available for multiple files with custom "
+"page ranges and automatic naming conventions."
+msgstr "Büyük PDF belgelerini daha küçük dosyalara ayırın veya belirli sayfaları çıkarın. Bölümleri ayırmak, gizli bölümleri kaldırmak veya odaklanmış belgeler oluşturmak için idealdir. Çoklu dosyalar için toplu işleme, özel sayfa aralıkları ve otomatik adlandırma kurallarıyla kullanılabilir."
+
+#: .\templates\blog\home.html:34
+msgid "PDF Encryption - Secure Your Documents"
+msgstr "PDF Şifreleme - Belgelerinizi Güvence Altına Alın"
+
+#: .\templates\blog\home.html:35
+msgid ""
+"Protect sensitive documents with military-grade encryption. Set passwords "
+"for opening, printing, copying, and editing permissions. Perfect for legal "
+"documents, financial reports, and confidential business information. "
+"Complies with industry security standards and regulations."
+msgstr "Hassas belgeleri askeri düzeyde şifreleme ile koruyun. Açma, yazdırma, kopyalama ve düzenleme izinleri için şifreler belirleyin. Yasal belgeler, finansal raporlar ve gizli iş bilgileri için mükemmel. Endüstri güvenlik standartlarına ve düzenlemelerine uygundur."
+
+#: .\templates\blog\home.html:37
+msgid "PDF Watermark - Brand Protection"
+msgstr "PDF Filigran - Marka Koruması"
+
+#: .\templates\blog\home.html:38
+msgid ""
+"Add custom watermarks to protect intellectual property and establish "
+"document authenticity. Support for text and image watermarks with adjustable "
+"transparency, positioning, and rotation. Essential for copyright protection, "
+"draft marking, and brand identification."
+msgstr "Fikri mülkiyeti korumak ve belge özgünlüğünü sağlamak için özel filigranlar ekleyin. Metin ve görüntü filigranları için ayarlanabilir şeffaflık, konumlandırma ve döndürme desteği. Telif hakkı koruması, taslak işaretleme ve marka tanımlama için vazgeçilmez."
+
+#: .\templates\blog\home.html:42
+msgid "Quick Access Links"
+msgstr "Hızlı Erişim Bağlantıları"
+
+#: .\templates\blog\home.html:44
 #, fuzzy
-#| msgid "Pick colors from images and analyze"
-msgid "Pick colors from images and learn details"
-msgstr "Görselden renk seç ve analiz et"
+#| msgid "PDF Tools"
+msgid "PDF Tools Dashboard"
+msgstr "PDF Araçları Paneli"
 
-msgid "Upload Image"
-msgstr ""
+#: .\templates\blog\home.html:45
+msgid "Merge PDF Files Online"
+msgstr "PDF Dosyalarını Çevrimiçi Birleştir"
 
-msgid "Click or drag and drop"
-msgstr ""
+#: .\templates\blog\home.html:46
+msgid "Split PDF Documents"
+msgstr "PDF Belgelerini Böl"
 
-msgid "JPG, PNG, GIF, WEBP supported"
-msgstr ""
+#: .\templates\blog\home.html:47
+msgid "Encrypt PDF Security"
+msgstr "PDF Güvenliğini Şifrele"
 
-msgid "Remove Image"
-msgstr ""
+#: .\templates\blog\home.html:51
+msgid "Popular Keywords"
+msgstr "Popüler Anahtar Kelimeler"
 
-msgid "Selected Color"
-msgstr ""
+#: .\templates\blog\home.html:52
+msgid ""
+"PDF merge online, combine PDF files, split PDF pages, PDF password "
+"protection, secure PDF documents, PDF watermark generator, free PDF tools, "
+"document management, PDF editor online, business document processing"
+msgstr "Çevrimiçi PDF birleştirme, PDF dosyalarını birleştir, PDF sayfalarını böl, PDF şifre koruması, güvenli PDF belgeleri, PDF filigran üretici, ücretsiz PDF araçları, belge yönetimi, çevrimiçi PDF düzenleyici, iş belge işleme"
 
-msgid "Coordinate"
-msgstr ""
+#: .\templates\blog\home.html:64 .\templates\blog\home.html:86
+#, fuzzy
+#| msgid "QR & Barcode"
+msgid "QR Code Tools"
+msgstr "QR Kod Araçları"
 
-msgid "Copy All Color Codes"
-msgstr ""
+#: .\templates\blog\home.html:69
+msgid "Professional QR Code Generator Suite"
+msgstr "Profesyonel QR Kod Üretici Paketi"
 
+#: .\templates\blog\home.html:70
+msgid ""
+"Create high-quality QR codes for marketing campaigns, business cards, "
+"restaurant menus, and digital interactions. Our advanced QR code generator "
+"supports multiple data types with customizable designs and error correction "
+"levels for maximum scanning reliability."
+msgstr "Pazarlama kampanyaları, iş kartları, restoran menüleri ve dijital etkileşimler için yüksek kaliteli QR kodları oluşturun. Gelişmiş QR kod üreticimiz, özelleştirilebilir tasarımlar ve maksimum tarama güvenilirliği için hata düzeltme seviyeleri ile birden fazla veri türünü destekler."
+
+#: .\templates\blog\home.html:72
+msgid "URL QR Codes - Drive Traffic Instantly"
+msgstr "URL QR Kodları - Trafiği Anında Artır"
+
+#: .\templates\blog\home.html:73
+msgid ""
+"Generate QR codes for websites, landing pages, social media profiles, and "
+"online stores. Perfect for print advertising, business cards, flyers, and "
+"promotional materials. Track engagement and boost digital marketing ROI with "
+"scannable links that work on all smartphones."
+msgstr "Web siteleri, açılış sayfaları, sosyal medya profilleri ve çevrimiçi mağazalar için QR kodları oluşturun. Basılı reklamlar, iş kartları, broşürler ve promosyon malzemeleri için mükemmel. Tüm akıllı telefonlarda çalışan taranabilir bağlantılarla etkileşimi takip edin ve dijital pazarlama ROI'sini artırın."
+
+#: .\templates\blog\home.html:75
+msgid "WiFi QR Codes - Seamless Connection"
+msgstr "WiFi QR Kodları - Sorunsuz Bağlantı"
+
+#: .\templates\blog\home.html:76
+msgid ""
+"Create WiFi QR codes for restaurants, hotels, offices, and events. Guests "
+"can connect instantly without typing passwords. Supports WPA, WEP, and open "
+"networks with automatic configuration. Improve customer experience and "
+"reduce support requests."
+msgstr "Restoranlar, oteller, ofisler ve etkinlikler için WiFi QR kodları oluşturun. Misafirler şifre yazmadan anında bağlanabilir. WPA, WEP ve açık ağları otomatik yapılandırma ile destekler. Müşteri deneyimini geliştirin ve destek taleplerini azaltın."
+
+#: .\templates\blog\home.html:78
+msgid "vCard QR Codes - Digital Business Cards"
+msgstr "vCard QR Kodları - Dijital İş Kartları"
+
+#: .\templates\blog\home.html:79
+msgid ""
+"Transform traditional business cards into interactive digital experiences. "
+"Include contact information, social media links, company details, and "
+"profile photos. Eco-friendly networking solution that saves contacts "
+"directly to smartphones with one scan."
+msgstr "Geleneksel iş kartlarını interaktif dijital deneyimlere dönüştürün. İletişim bilgileri, sosyal medya bağlantıları, şirket detayları ve profil fotoğraflarını ekleyin. Tek bir tarama ile kişileri doğrudan akıllı telefonlara kaydeden çevre dostu bir ağ oluşturma çözümü."
+
+#: .\templates\blog\home.html:81
+msgid "Text & SMS QR Codes - Instant Communication"
+msgstr "Metin ve SMS QR Kodları - Anında İletişim"
+
+#: .\templates\blog\home.html:82
+msgid ""
+"Generate QR codes for plain text, SMS messages, phone numbers, and email "
+"addresses. Perfect for event information, product details, instructions, and "
+"customer support. Enable quick communication without manual typing or number "
+"memorization."
+msgstr "Düz metin, SMS mesajları, telefon numaraları ve e-posta adresleri için QR kodları oluşturun. Etkinlik bilgileri, ürün detayları, talimatlar ve müşteri desteği için mükemmel. Manuel yazma veya numara ezberlemeden hızlı iletişim sağlayın."
+
+#: .\templates\blog\home.html:88
+msgid "QR Code Generator Online"
+msgstr "Çevrimiçi QR Kod Üretici"
+
+#: .\templates\blog\home.html:89
+#, fuzzy
+#| msgid "Generate QR codes, read barcodes"
+msgid "Create Custom QR Code"
+msgstr "Özel QR Kod Oluştur"
+
+#: .\templates\blog\home.html:90
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Barcode Generator Tool"
+msgstr "Barkod Üretici Aracı"
+
+#: .\templates\blog\home.html:94
+msgid "Search Keywords"
+msgstr "Arama Anahtar Kelimeleri"
+
+#: .\templates\blog\home.html:95
+msgid ""
+"QR code generator free, create QR code online, WiFi QR code maker, vCard QR "
+"generator, business card QR code, URL to QR code, barcode generator, QR code "
+"scanner, marketing QR codes, restaurant menu QR code"
+msgstr "Ücretsiz QR kod üretici, çevrimiçi QR kod oluştur, WiFi QR kod yapıcı, vCard QR üretici, iş kartı QR kodu, URL'den QR koda, barkod üretici, QR kod tarayıcı, pazarlama QR kodları, restoran menüsü QR kodu"
+
+#: .\templates\blog\home.html:112
+msgid "Professional Random Generation Suite"
+msgstr "Profesyonel Rastgele Üretim Paketi"
+
+#: .\templates\blog\home.html:113
+msgid ""
+"Generate truly random numbers, conduct fair selections, and create engaging "
+"interactive experiences with our cryptographically secure random tools. "
+"Perfect for games, contests, decision making, statistical sampling, and "
+"educational activities with guaranteed fairness and transparency."
+msgstr "Kriptografik olarak güvenli rastgele araçlarımızla gerçekten rastgele sayılar üretin, adil seçimler yapın ve ilgi çekici interaktif deneyimler oluşturun. Oyunlar, yarışmalar, karar verme, istatistiksel örnekleme ve eğitim faaliyetleri için mükemmel, garantili adillik ve şeffaflık ile."
+
+#: .\templates\blog\home.html:115
+msgid "Random Number Generator - Cryptographic Security"
+msgstr "Rastgele Sayı Üretici - Kriptografik Güvenlik"
+
+#: .\templates\blog\home.html:116
+msgid ""
+"Generate random numbers with military-grade security using advanced "
+"algorithms. Perfect for lottery systems, statistical research, gaming "
+"applications, and scientific simulations. Supports custom ranges, multiple "
+"numbers, and various distributions for professional and academic use."
+msgstr "Gelişmiş algoritmalar kullanarak askeri düzeyde güvenlikle rastgele sayılar üretin. Piyango sistemleri, istatistiksel araştırmalar, oyun uygulamaları ve bilimsel simülasyonlar için mükemmel. Profesyonel ve akademik kullanım için özel aralıklar, çoklu sayılar ve çeşitli dağılımlar destekler."
+
+#: .\templates\blog\home.html:118
+msgid "Lucky Wheel Spinner - Interactive Decision Maker"
+msgstr "Şans Çarkı Döndürücü - İnteraktif Karar Verici"
+
+#: .\templates\blog\home.html:119
+msgid ""
+"Create customizable spinning wheels for contests, giveaways, classroom "
+"activities, and team building exercises. Add unlimited options, customize "
+"colors and animations, and ensure fair random selection. Perfect for social "
+"media contests, educational games, and business decision making."
+msgstr "Yarışmalar, hediye çekilişleri, sınıf etkinlikleri ve takım oluşturma egzersizleri için özelleştirilebilir şans çarkları oluşturun. Sınırsız seçenek ekleyin, renkleri ve animasyonları özelleştirin ve adil rastgele seçim sağlayın. Sosyal medya yarışmaları, eğitim oyunları ve iş kararları için mükemmel."
+
+#: .\templates\blog\home.html:121
+msgid "Dice Roller - Virtual Gaming Experience"
+msgstr "Zar Atıcı - Sanal Oyun Deneyimi"
+
+#: .\templates\blog\home.html:122
+msgid ""
+"Roll virtual dice for board games, tabletop RPGs, probability experiments, "
+"and educational demonstrations. Support for multiple dice types (D4, D6, D8, "
+"D10, D12, D20, D100) with realistic physics simulation and statistical "
+"tracking for gaming enthusiasts and educators."
+msgstr "Masa oyunları, masaüstü RPG'ler, olasılık deneyleri ve eğitim gösterileri için sanal zar atın. Çoklu zar türleri (D4, D6, D8, D10, D12, D20, D100) için gerçekçi fizik simülasyonu ve istatistiksel takip desteği, oyun tutkunları ve eğitimciler için."
+
+#: .\templates\blog\home.html:124
+msgid "Name Picker - Fair Selection System"
+msgstr "İsim Seçici - Adil Seçim Sistemi"
+
+#: .\templates\blog\home.html:125
+msgid ""
+"Randomly select names from lists for presentations, classroom activities, "
+"team assignments, and contest winners. Bulk import capabilities, duplicate "
+"prevention, and selection history tracking ensure transparent and unbiased "
+"selection processes for any group size."
+msgstr "Sunumlar, sınıf etkinlikleri, takım görevlendirmeleri ve yarışma kazananları için listelerden rastgele isim seçin. Toplu içe aktarma özellikleri, yinelenen seçim önleme ve seçim geçmişi takibi, her grup boyutu için şeffaf ve tarafsız seçim süreçleri sağlar."
+
+#: .\templates\blog\home.html:131
+msgid "Random Tools Dashboard"
+msgstr "Rastgele Araçlar Paneli"
+
+#: .\templates\blog\home.html:133
+msgid "Lucky Wheel Spinner"
+msgstr "Şans Çarkı Döndürücü"
+
+#: .\templates\blog\home.html:137
+msgid "Gaming Keywords"
+msgstr "Oyun Anahtar Kelimeleri"
+
+#: .\templates\blog\home.html:138
+msgid ""
+"random number generator online, lucky wheel spinner, dice roller virtual, "
+"name picker random, lottery number generator, fair selection tool, random "
+"picker wheel, online dice game, contest winner picker"
+msgstr "çevrimiçi rastgele sayı üretici, şans çarkı döndürücü, sanal zar atıcı, rastgele isim seçici, piyango numarası üretici, adil seçim aracı, rastgele seçim çarkı, çevrimiçi zar oyunu, yarışma kazananı seçici"
+
+#: .\templates\blog\home.html:155
+msgid "Advanced Calculator Suite for Health & Life"
+msgstr "Sağlık ve Yaşam için Gelişmiş Hesap Makinesi Paketi"
+
+#: .\templates\blog\home.html:156
+msgid ""
+"Comprehensive collection of specialized calculators for health monitoring, "
+"age calculations, financial planning, and daily mathematical needs. Accurate "
+"algorithms based on medical standards and international guidelines provide "
+"reliable results for personal and professional use."
+msgstr "Sağlık izleme, yaş hesaplamaları, finansal planlama ve günlük matematiksel ihtiyaçlar için özel hesap makineleri koleksiyonu. Tıbbi standartlara ve uluslararası yönergelere dayalı doğru algoritmalar, kişisel ve profesyonel kullanım için güvenilir sonuçlar sağlar."
+
+#: .\templates\blog\home.html:158
+msgid "BMI Calculator - Body Mass Index Health Assessment"
+msgstr "BKİ Hesaplayıcı - Vücut Kitle İndeksi Sağlık Değerlendirmesi"
+
+#: .\templates\blog\home.html:159
+msgid ""
+"Calculate Body Mass Index using WHO standards with detailed health category "
+"analysis. Track weight status, understand health risks, and get personalized "
+"recommendations for maintaining optimal health. Supports metric and imperial "
+"units with age and gender considerations for accurate assessment."
+msgstr "DSÖ standartlarını kullanarak Vücut Kitle İndeksi'ni detaylı sağlık kategorisi analiziyle hesaplayın. Kilo durumunu takip edin, sağlık risklerini anlayın ve optimal sağlığı korumak için kişiselleştirilmiş öneriler alın. Doğru değerlendirme için metrik ve İngiliz birimleri ile yaş ve cinsiyet dikkate alınır."
+
+#: .\templates\blog\home.html:161
+msgid "Age Calculator - Precise Life Timeline"
+msgstr "Yaş Hesaplayıcı - Hassas Yaşam Zaman Çizelgesi"
+
+#: .\templates\blog\home.html:162
+msgid ""
+"Calculate exact age in years, months, days, hours, and minutes from birth "
+"date. Perfect for legal documents, insurance applications, retirement "
+"planning, and milestone celebrations. Includes leap year calculations and "
+"timezone considerations for international accuracy."
+msgstr "Doğum tarihinden itibaren tam yaşı yıl, ay, gün, saat ve dakika cinsinden hesaplayın. Yasal belgeler, sigorta başvuruları, emeklilik planlaması ve kilometre taşı kutlamaları için mükemmel. Uluslararası doğruluk için artık yıl hesaplamaları ve saat dilimi dikkate alınır."
+
+#: .\templates\blog\home.html:164
+msgid "World Clock - Global Time Management"
+msgstr "Dünya Saati - Küresel Zaman Yönetimi"
+
+#: .\templates\blog\home.html:165
+msgid ""
+"Display current time across multiple time zones simultaneously for "
+"international business, travel planning, and global communication. Real-time "
+"updates with daylight saving time adjustments and major city presets for "
+"worldwide coordination and scheduling."
+msgstr "Uluslararası iş, seyahat planlama ve küresel iletişim için birden fazla saat diliminde geçerli saati aynı anda görüntüleyin. Gün ışığından yararlanma zamanı ayarlamaları ve büyük şehir ön ayarları ile gerçek zamanlı güncellemeler, dünya çapında koordinasyon ve planlama için."
+
+#: .\templates\blog\home.html:167
+msgid "Scientific Calculator - Advanced Mathematics"
+msgstr "Bilimsel Hesap Makinesi - Gelişmiş Matematik"
+
+#: .\templates\blog\home.html:168
+msgid ""
+"Perform complex mathematical operations including trigonometry, logarithms, "
+"exponentials, and statistical functions. Essential for students, engineers, "
+"scientists, and professionals requiring precise calculations with memory "
+"functions and operation history."
+msgstr "Trigonometri, logaritmalar, üstel fonksiyonlar ve istatistiksel işlemler dahil karmaşık matematiksel işlemler gerçekleştirin. Hafıza fonksiyonları ve işlem geçmişi ile hassas hesaplamalar gerektiren öğrenciler, mühendisler, bilim insanları ve profesyoneller için vazgeçilmez."
+
+#: .\templates\blog\home.html:174
+msgid "Calculator Tools Hub"
+msgstr "Hesap Makinesi Araçları Merkezi"
+
+#: .\templates\blog\home.html:175
+#, fuzzy
+#| msgid "Horoscope Calculator"
+msgid "BMI Health Calculator"
+msgstr "BKİ Sağlık Hesaplayıcı"
+
+#: .\templates\blog\home.html:176
+#, fuzzy
+#| msgid "Horoscope Calculator"
+msgid "Precise Age Calculator"
+msgstr "Hassas Yaş Hesaplayıcı"
+
+#: .\templates\blog\home.html:180
+msgid "Health Keywords"
+msgstr "Sağlık Anahtar Kelimeleri"
+
+#: .\templates\blog\home.html:181
+msgid ""
+"BMI calculator online, body mass index checker, age calculator exact, world "
+"clock time zones, scientific calculator advanced, health assessment tools, "
+"fitness calculator, time zone converter"
+msgstr "çevrimiçi BKİ hesaplayıcı, vücut kitle indeksi kontrolü, tam yaş hesaplayıcı, dünya saati dilimleri, gelişmiş bilimsel hesap makinesi, sağlık değerlendirme araçları, fitness hesaplayıcı, saat dilimi dönüştürücü"
+
+#: .\templates\blog\home.html:193
+#, fuzzy
+#| msgid "PDF Tools"
+msgid "URL Tools"
+msgstr "URL Araçları"
+
+#: .\templates\blog\home.html:198
+msgid "Professional URL Management Platform"
+msgstr "Profesyonel URL Yönetim Platformu"
+
+#: .\templates\blog\home.html:199
+msgid ""
+"Transform long, complex URLs into clean, shareable links perfect for social "
+"media marketing, email campaigns, and digital advertising. Advanced link "
+"management with analytics, custom domains, and branded short links for "
+"professional online presence and marketing success."
+msgstr "Uzun ve karmaşık URL'leri, sosyal medya pazarlaması, e-posta kampanyaları ve dijital reklamcılık için mükemmel, temiz ve paylaşılabilir bağlantılara dönüştürün. Profesyonel çevrimiçi varlık ve pazarlama başarısı için analitik, özel alan adları ve markalı kısa bağlantılarla gelişmiş bağlantı yönetimi."
+
+#: .\templates\blog\home.html:201
+msgid "URL Shortener - Clean Link Creation"
+msgstr "URL Kısaltıcı - Temiz Bağlantı Oluşturma"
+
+#: .\templates\blog\home.html:202
+msgid ""
+"Create short, memorable links from long URLs for social media posts, email "
+"newsletters, and marketing campaigns. Improve click-through rates with clean "
+"links that build trust and enhance user experience. Perfect for Twitter, "
+"Instagram, LinkedIn, and SMS marketing where character limits matter."
+msgstr "Sosyal medya gönderileri, e-posta bültenleri ve pazarlama kampanyaları için uzun URL'lerden kısa, akılda kalıcı bağlantılar oluşturun. Güven oluşturan ve kullanıcı deneyimini artıran temiz bağlantılarla tıklama oranlarını iyileştirin. Karakter sınırlarının önemli olduğu Twitter, Instagram, LinkedIn ve SMS pazarlaması için mükemmel."
+
+#: .\templates\blog\home.html:204
+msgid "Link Analytics - Track Performance"
+msgstr "Bağlantı Analitiği - Performansı Takip Et"
+
+#: .\templates\blog\home.html:205
+msgid ""
+"Monitor link performance with detailed analytics including click counts, "
+"geographic data, referrer sources, and device information. Optimize "
+"marketing campaigns with real-time insights and understand audience behavior "
+"for better targeting and engagement strategies."
+msgstr "Tıklama sayıları, coğrafi veriler, yönlendirme kaynakları ve cihaz bilgileri dahil detaylı analitiklerle bağlantı performansını izleyin. Gerçek zamanlı içgörülerle pazarlama kampanyalarını optimize edin ve daha iyi hedefleme ve etkileşim stratejileri için kitle davranışını anlayın."
+
+#: .\templates\blog\home.html:207
+msgid "Custom Branded Links - Professional Branding"
+msgstr "Özel Markalı Bağlantılar - Profesyonel Markalaşma"
+
+#: .\templates\blog\home.html:208
+msgid ""
+"Create branded short links using custom domains for enhanced brand "
+"recognition and trust. Professional appearance in marketing materials, "
+"business communications, and social media presence. Increase click-through "
+"rates with recognizable, trustworthy branded URLs."
+msgstr "Marka tanınırlığını ve güveni artırmak için özel alan adlarıyla markalı kısa bağlantılar oluşturun. Pazarlama materyalleri, iş iletişimleri ve sosyal medya varlığında profesyonel görünüm. Tanıdık ve güvenilir markalı URL'lerle tıklama oranlarını artırın."
+
+#: .\templates\blog\home.html:210
+msgid "Bulk URL Processing - Enterprise Solutions"
+msgstr "Toplu URL İşleme - Kurumsal Çözümler"
+
+#: .\templates\blog\home.html:211
+msgid ""
+"Process multiple URLs simultaneously for large-scale marketing campaigns and "
+"content management. Batch shortening capabilities with CSV import/export, "
+"API integration, and automated link generation for enterprise-level digital "
+"marketing and content distribution workflows."
+msgstr "Büyük ölçekli pazarlama kampanyaları ve içerik yönetimi için birden fazla URL'yi aynı anda işleyin. CSV içe/dışa aktarma, API entegrasyonu ve otomatik bağlantı oluşturma ile toplu kısaltma özellikleri, kurumsal düzeyde dijital pazarlama ve içerik dağıtım iş akışları için."
+
+#: .\templates\blog\home.html:215
+msgid "URL Management Tools"
+msgstr "URL Yönetim Araçları"
+
+#: .\templates\blog\home.html:217
+msgid "URL Tools Dashboard"
+msgstr "URL Araçları Paneli"
+
+#: .\templates\blog\home.html:218
+#, fuzzy
+#| msgid "URL Shortener"
+msgid "Professional URL Shortener"
+msgstr "Profesyonel URL Kısaltıcı"
+
+#: .\templates\blog\home.html:219
+msgid "Link Management System"
+msgstr "Bağlantı Yönetim Sistemi"
+
+#: .\templates\blog\home.html:223
+msgid "Marketing Keywords"
+msgstr "Pazarlama Anahtar Kelimeleri"
+
+#: .\templates\blog\home.html:224
+msgid ""
+"URL shortener free, link shortener online, custom short links, branded URL "
+"shortener, link analytics tracker, social media links, marketing link "
+"management, click tracking tools"
+msgstr "ücretsiz URL kısaltıcı, çevrimiçi bağlantı kısaltıcı, özel kısa bağlantılar, markalı URL kısaltıcı, bağlantı analitiği izleyici, sosyal medya bağlantıları, pazarlama bağlantı yönetimi, tıklama izleme araçları"
+
+#: .\templates\blog\home.html:241
+msgid "Advanced Text Analysis & Processing Suite"
+msgstr "Gelişmiş Metin Analizi ve İşleme Paketi"
+
+#: .\templates\blog\home.html:242
+msgid ""
+"Comprehensive text analysis tools for writers, content creators, students, "
+"and professionals. Analyze text statistics, optimize content for SEO, check "
+"readability scores, and format text for various platforms with precision and "
+"efficiency for better communication and engagement."
+msgstr "Yazarlar, içerik oluşturucular, öğrenciler ve profesyoneller için kapsamlı metin analizi araçları. Metin istatistiklerini analiz edin, SEO için içeriği optimize edin, okunabilirlik puanlarını kontrol edin ve daha iyi iletişim ve etkileşim için çeşitli platformlara hassas ve verimli bir şekilde metin formatlayın."
+
+#: .\templates\blog\home.html:244
+msgid "Word Counter - Detailed Text Statistics"
+msgstr "Kelime Sayacı - Detaylı Metin İstatistikleri"
+
+#: .\templates\blog\home.html:245
+msgid ""
+"Count words, characters, paragraphs, and sentences with real-time analysis "
+"for academic papers, blog posts, social media content, and professional "
+"documents. Track reading time, keyword density, and content length "
+"optimization for SEO and platform-specific requirements."
+msgstr "Akademik makaleler, blog gönderileri, sosyal medya içeriği ve profesyonel belgeler için gerçek zamanlı analizle kelime, karakter, paragraf ve cümle sayın. Okuma süresini, anahtar kelime yoğunluğunu ve SEO ile platforma özgü gereksinimler için içerik uzunluğu optimizasyonunu takip edin."
+
+#: .\templates\blog\home.html:247
+msgid "Character Counter - Precise Length Control"
+msgstr "Karakter Sayacı - Hassas Uzunluk Kontrolü"
+
+#: .\templates\blog\home.html:248
+msgid ""
+"Monitor character limits for social media posts, meta descriptions, SMS "
+"messages, and advertising copy. Real-time counting with platform-specific "
+"limits for Twitter, Instagram, Facebook, Google Ads, and email subject lines "
+"to maximize engagement and compliance."
+msgstr "Sosyal medya gönderileri, meta açıklamalar, SMS mesajları ve reklam metinleri için karakter sınırlarını izleyin. Twitter, Instagram, Facebook, Google Ads ve e-posta konu satırları için platforma özgü sınırlarla gerçek zamanlı sayım, etkileşimi ve uyumluluğu maksimize eder."
+
+#: .\templates\blog\home.html:250
+msgid "Text Formatter - Professional Styling"
+msgstr "Metin Biçimlendirici - Profesyonel Stil"
+
+#: .\templates\blog\home.html:251
+msgid ""
+"Transform text case, remove extra spaces, format paragraphs, and clean up "
+"copied content from various sources. Convert between uppercase, lowercase, "
+"title case, and sentence case for consistent formatting across documents, "
+"websites, and marketing materials."
+msgstr "Metin büyük-küçük harf dönüşümü yapın, fazla boşlukları kaldırın, paragrafları biçimlendirin ve çeşitli kaynaklardan kopyalanan içeriği temizleyin. Belgeler, web siteleri ve pazarlama materyalleri için tutarlı biçimlendirme sağlamak üzere büyük harf, küçük harf, başlık stili ve cümle stili arasında dönüşüm yapın."
+
+#: .\templates\blog\home.html:253
+msgid "Readability Analyzer - Content Optimization"
+msgstr "Okunabilirlik Analizörü - İçerik Optimizasyonu"
+
+#: .\templates\blog\home.html:254
+msgid ""
+"Analyze text readability using Flesch-Kincaid, Gunning Fog, and other "
+"standard metrics. Optimize content for target audiences, improve "
+"comprehension scores, and enhance user engagement with data-driven writing "
+"recommendations for better communication effectiveness."
+msgstr "Flesch-Kincaid, Gunning Fog ve diğer standart metrikleri kullanarak metin okunabilirliğini analiz edin. Hedef kitleler için içeriği optimize edin, anlama puanlarını iyileştirin ve daha iyi iletişim etkinliği için veri odaklı yazım önerileriyle kullanıcı etkileşimini artırın."
+
+#: .\templates\blog\home.html:258
+#, fuzzy
+#| msgid "Text Tools"
+msgid "Text Analysis Tools"
+msgstr "Metin Analizi Araçları"
+
+#: .\templates\blog\home.html:260
+#, fuzzy
+#| msgid "Text Tools"
+msgid "Text Tools Center"
+msgstr "Metin Araçları Merkezi"
+
+#: .\templates\blog\home.html:261
+msgid "Advanced Word Counter"
+msgstr "Gelişmiş Kelime Sayacı"
+
+#: .\templates\blog\home.html:262
+msgid "Text Statistics Analyzer"
+msgstr "Metin İstatistikleri Analizörü"
+
+#: .\templates\blog\home.html:266
+msgid "Content Keywords"
+msgstr "İçerik Anahtar Kelimeleri"
+
+#: .\templates\blog\home.html:267
+msgid ""
+"word counter online, character counter tool, text analyzer free, readability "
+"checker, content optimization, SEO text analysis, writing tools online, text "
+"formatter, document statistics"
+msgstr "çevrimiçi kelime sayacı, karakter sayacı aracı, ücretsiz metin analizörü, okunabilirlik kontrolü, içerik optimizasyonu, SEO metin analizi, çevrimiçi yazım araçları, metin biçimlendirici, belge istatistikleri"
+
+#: .\templates\blog\home.html:279 .\templates\blog\home.html:301
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Password Tools"
+msgstr "Şifre Araçları"
+
+#: .\templates\blog\home.html:284
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Advanced Password Security Generator"
+msgstr "Gelişmiş Şifre Güvenlik Üreticisi"
+
+#: .\templates\blog\home.html:285
+msgid ""
+"Generate cryptographically secure passwords that protect against brute force "
+"attacks, dictionary attacks, and social engineering. Our password generator "
+"uses industry-standard algorithms to create unbreakable passwords for "
+"personal and business security needs."
+msgstr "Kaba kuvvet saldırılarına, sözlük saldırılarına ve sosyal mühendisliğe karşı koruma sağlayan kriptografik olarak güvenli şifreler oluşturun. Şifre üreticimiz, kişisel ve iş güvenliği ihtiyaçları için kırılmaz şifreler oluşturmak üzere endüstri standardı algoritmalar kullanır."
+
+#: .\templates\blog\home.html:287
+msgid "Strong Password Generation - Military Grade Security"
+msgstr "Güçlü Şifre Oluşturma - Askeri Düzeyde Güvenlik"
+
+#: .\templates\blog\home.html:288
+msgid ""
+"Create passwords with customizable length (8-128 characters), character sets "
+"including uppercase, lowercase, numbers, and special symbols. Advanced "
+"entropy calculation ensures maximum security against modern hacking "
+"techniques. Perfect for banking, email, social media, and business accounts."
+msgstr "8-128 karakter uzunluğunda, büyük harf, küçük harf, rakamlar ve özel semboller içeren özelleştirilebilir şifreler oluşturun. Gelişmiş entropi hesaplama, modern hack tekniklerine karşı maksimum güvenlik sağlar. Bankacılık, e-posta, sosyal medya ve iş hesapları için mükemmel."
+
+#: .\templates\blog\home.html:290
+msgid "Password Security Best Practices"
+msgstr "Şifre Güvenliği En İyi Uygulamaları"
+
+#: .\templates\blog\home.html:291
+msgid ""
+"Learn essential password security guidelines including unique passwords for "
+"each account, regular password updates, two-factor authentication setup, and "
+"secure password storage methods. Protect against identity theft, financial "
+"fraud, and data breaches with proper password hygiene."
+msgstr "Her hesap için benzersiz şifreler, düzenli şifre güncellemeleri, iki faktörlü kimlik doğrulama kurulumu ve güvenli şifre saklama yöntemleri dahil temel şifre güvenliği yönergelerini öğrenin. Doğru şifre hijyeni ile kimlik hırsızlığına, finansal dolandırıcılığa ve veri ihlallerine karşı koruma sağlayın."
+
+#: .\templates\blog\home.html:293
+msgid "Business Password Policies"
+msgstr "İş Şifre Politikaları"
+
+#: .\templates\blog\home.html:294
+msgid ""
+"Implement enterprise-level password policies for organizations. Generate "
+"bulk passwords for employee accounts, service accounts, and system access. "
+"Compliance with security standards including NIST, ISO 27001, and industry-"
+"specific regulations for healthcare, finance, and government sectors."
+msgstr "Kuruluşlar için kurumsal düzeyde şifre politikaları uygulayın. Çalışan hesapları, hizmet hesapları ve sistem erişimi için toplu şifreler oluşturun. Sağlık, finans ve kamu sektörleri için NIST, ISO 27001 ve sektöre özgü düzenlemelere uygunluk."
+
+#: .\templates\blog\home.html:296
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Password Strength Analysis"
+msgstr "Şifre Gücü Analizi"
+
+#: .\templates\blog\home.html:297
+msgid ""
+"Real-time password strength evaluation with detailed feedback on character "
+"diversity, length adequacy, and vulnerability assessment. Visual strength "
+"indicators help users understand password quality and improve security "
+"posture across all digital accounts."
+msgstr "Karakter çeşitliliği, uzunluk yeterliliği ve güvenlik açığı değerlendirmesi hakkında detaylı geri bildirimle gerçek zamanlı şifre gücü değerlendirmesi. Görsel güç göstergeleri, kullanıcıların şifre kalitesini anlamalarına ve tüm dijital hesaplarda güvenlik duruşunu iyileştirmelerine yardımcı olur."
+
+#: .\templates\blog\home.html:303
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Secure Password Generator"
+msgstr "Güvenli Şifre Üreticisi"
+
+#: .\templates\blog\home.html:304
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Strong Password Creator"
+msgstr "Güçlü Şifre Oluşturucu"
+
+#: .\templates\blog\home.html:305
+msgid "Random Password Maker"
+msgstr "Rastgele Şifre Oluşturucu"
+
+#: .\templates\blog\home.html:309
+msgid "Security Keywords"
+msgstr "Güvenlik Anahtar Kelimeleri"
+
+#: .\templates\blog\home.html:310
+msgid ""
+"password generator online, strong password creator, secure password maker, "
+"random password generator, password security checker, business password "
+"policy, cybersecurity tools, account protection, identity theft prevention"
+msgstr "çevrimiçi şifre üreticisi, güçlü şifre oluşturucu, güvenli şifre yapıcı, rastgele şifre üreticisi, şifre güvenliği kontrolü, iş şifre politikası, siber güvenlik araçları, hesap koruması, kimlik hırsızlığı önleme"
+
+#: .\templates\blog\home.html:322
+#, fuzzy
+#| msgid "Developer Tools"
+msgid "Color Tools"
+msgstr "Renk Araçları"
+
+#: .\templates\blog\home.html:327
+msgid "Professional Color Design Studio"
+msgstr "Profesyonel Renk Tasarım Stüdyosu"
+
+#: .\templates\blog\home.html:328
+msgid ""
+"Complete color management solution for designers, developers, and creative "
+"professionals. Generate harmonious color palettes, extract colors from "
+"images, convert between color formats, and ensure accessibility compliance "
+"with advanced color theory tools and real-time preview capabilities."
+msgstr "Tasarımcılar, geliştiriciler ve yaratıcı profesyoneller için eksiksiz renk yönetimi çözümü. Uyumlu renk paletleri oluşturun, görsellerden renkler çıkarın, renk formatları arasında dönüşüm yapın ve gelişmiş renk teorisi araçları ve gerçek zamanlı önizleme yetenekleriyle erişilebilirlik uyumluluğunu sağlayın."
+
+#: .\templates\blog\home.html:330
+msgid "Color Picker - Precision Color Selection"
+msgstr "Renk Seçici - Hassas Renk Seçimi"
+
+#: .\templates\blog\home.html:331
+msgid ""
+"Select colors with pixel-perfect accuracy using advanced color picker tools. "
+"Support for HEX, RGB, HSL, CMYK, and LAB color spaces with real-time "
+"conversion and preview. Perfect for web design, graphic design, branding, "
+"and digital art projects requiring exact color matching."
+msgstr "Gelişmiş renk seçici araçlarla piksellik doğrulukta renk seçin. HEX, RGB, HSL, CMYK ve LAB renk uzayları için gerçek zamanlı dönüşüm ve önizleme desteği. Web tasarımı, grafik tasarımı, markalaşma ve tam renk eşleşmesi gerektiren dijital sanat projeleri için mükemmel."
+
+#: .\templates\blog\home.html:333
+msgid "Palette Generator - Harmonious Color Schemes"
+msgstr "Palet Üreticisi - Uyumlu Renk Şemaları"
+
+#: .\templates\blog\home.html:334
+msgid ""
+"Create professional color palettes using color theory principles including "
+"complementary, triadic, analogous, and monochromatic schemes. Generate brand "
+"colors, website themes, and design systems with scientifically balanced "
+"color relationships for visual harmony and impact."
+msgstr "Tamamlayıcı, üçlü, analog ve tek renkli şemalar dahil renk teorisi ilkelerini kullanarak profesyonel renk paletleri oluşturun. Görsel uyum ve etki için bilimsel olarak dengelenmiş renk ilişkileriyle marka renkleri, web sitesi temaları ve tasarım sistemleri üretin."
+
+#: .\templates\blog\home.html:336
+msgid "Image Color Extractor - Dominant Color Analysis"
+msgstr "Görüntü Renk Çıkarıcı - Baskın Renk Analizi"
+
+#: .\templates\blog\home.html:337
+msgid ""
+"Extract dominant colors from photographs and images for design inspiration "
+"and brand development. Analyze color distribution, identify trending colors, "
+"and create palettes from existing visual content for consistent brand "
+"identity and design cohesion across projects."
+msgstr "Tasarım ilhamı ve marka geliştirme için fotoğraflardan ve görsellerden baskın renkleri çıkarın. Renk dağılımını analiz edin, trend renkleri belirleyin ve mevcut görsel içerikten tutarlı marka kimliği ve projeler arasında tasarım bütünlüğü için paletler oluşturun."
+
+#: .\templates\blog\home.html:339
+msgid "Accessibility Checker - WCAG Compliance"
+msgstr "Erişilebilirlik Kontrolü - WCAG Uyumluluğu"
+
+#: .\templates\blog\home.html:340
+msgid ""
+"Ensure color accessibility compliance with WCAG guidelines for inclusive "
+"design. Test color contrast ratios, validate readability for visually "
+"impaired users, and optimize color choices for maximum accessibility without "
+"compromising aesthetic appeal in web and mobile applications."
+msgstr "Kapsayıcı tasarım için WCAG yönergelerine uygun renk erişilebilirliğini sağlayın. Renk kontrast oranlarını test edin, görme engelli kullanıcılar için okunabilirliği doğrulayın ve web ve mobil uygulamalarda estetik çekicilikten ödün vermeden maksimum erişilebilirlik için renk seçimlerini optimize edin."
+
+#: .\templates\blog\home.html:344
+msgid "Color Design Tools"
+msgstr "Renk Tasarım Araçları"
+
+#: .\templates\blog\home.html:346
+msgid "Color Studio Dashboard"
+msgstr "Renk Stüdyosu Paneli"
+
+#: .\templates\blog\home.html:347
 #, fuzzy
 #| msgid "Color Picker"
-msgid "Color History"
-msgstr "Renk Bulucu"
+msgid "Professional Color Picker"
+msgstr "Profesyonel Renk Seçici"
 
-msgid "No color selected yet"
-msgstr ""
+#: .\templates\blog\home.html:348
+msgid "Color Palette Generator"
+msgstr "Renk Paleti Üreticisi"
 
-msgid "Clear History"
-msgstr ""
+#: .\templates\blog\home.html:352
+msgid "Design Keywords"
+msgstr "Tasarım Anahtar Kelimeleri"
 
+#: .\templates\blog\home.html:353
+msgid ""
+"color picker online, hex color picker, color palette generator, color scheme "
+"creator, web design colors, brand color picker, accessibility color checker, "
+"color theory tools"
+msgstr "çevrimiçi renk seçici, hex renk seçici, renk paleti üreticisi, renk şeması oluşturucu, web tasarımı renkleri, marka renk seçici, erişilebilirlik renk kontrolü, renk teorisi araçları"
+
+#: .\templates\blog\home.html:365
 #, fuzzy
-#| msgid "Convert length, weight, temperature"
-msgid "Convert length, weight, temperature and more"
-msgstr "Uzunluk, ağırlık, sıcaklık dönüştür"
+#| msgid "Horoscope Calculator"
+msgid "Horoscope Tools"
+msgstr "Burç Araçları"
 
-msgid "Length"
-msgstr ""
+#: .\templates\blog\home.html:370
+msgid "Comprehensive Astrology & Zodiac Platform"
+msgstr "Kapsamlı Astroloji ve Burç Platformu"
 
-msgid "Weight"
-msgstr ""
+#: .\templates\blog\home.html:371
+msgid ""
+"Discover your astrological profile with detailed zodiac sign calculations, "
+"personality analysis, and compatibility insights. Based on traditional "
+"astrology principles and modern psychological interpretations for "
+"entertainment, self-reflection, and understanding personality traits and "
+"relationship dynamics."
+msgstr "Detaylı burç hesaplamaları, kişilik analizi ve uyumluluk içgörüleriyle astrolojik profilinizi keşfedin. Eğlence, öz-yansıtma, kişilik özellikleri ve ilişki dinamiklerini anlama için geleneksel astroloji ilkelerine ve modern psikolojik yorumlara dayanır."
 
-msgid "Temperature"
-msgstr ""
+#: .\templates\blog\home.html:373
+msgid "Zodiac Sign Calculator - Precise Astrological Determination"
+msgstr "Burç Hesaplayıcı - Hassas Astrolojik Belirleme"
 
-msgid "Area"
-msgstr ""
+#: .\templates\blog\home.html:374
+msgid ""
+"Calculate exact zodiac signs based on birth date and time with astronomical "
+"precision. Includes sun sign, moon sign, and rising sign calculations for "
+"comprehensive astrological profiles. Perfect for astrology enthusiasts, "
+"personality exploration, and understanding celestial influences on character "
+"traits."
+msgstr "Doğum tarihi ve saatine dayalı olarak astronomik hassasiyetle tam burç işaretlerini hesaplayın. Kapsamlı astrolojik profiller için güneş burcu, ay burcu ve yükselen burç hesaplamalarını içerir. Astroloji meraklıları, kişilik keşfi ve karakter özelliklerindeki göksel etkileri anlama için mükemmel."
 
-msgid "Volume"
-msgstr ""
+#: .\templates\blog\home.html:376
+msgid "Personality Analysis - Character Trait Insights"
+msgstr "Kişilik Analizi - Karakter Özellikleri İçgörüleri"
 
-msgid "Speed"
-msgstr ""
+#: .\templates\blog\home.html:377
+msgid ""
+"Detailed personality descriptions based on zodiac characteristics including "
+"strengths, weaknesses, career preferences, and relationship patterns. "
+"Comprehensive analysis combining traditional astrology with modern "
+"psychology for self-understanding and personal development guidance."
+msgstr "Burç özelliklerine dayalı detaylı kişilik açıklamaları; güçlü yönler, zayıf yönler, kariyer tercihleri ve ilişki kalıplarını içerir. Öz-anlayış ve kişisel gelişim rehberliği için geleneksel astroloji ile modern psikolojiyi birleştiren kapsamlı analiz."
 
-msgid "Value"
-msgstr ""
+#: .\templates\blog\home.html:379
+msgid "Compatibility Checker - Relationship Harmony"
+msgstr "Uyumluluk Kontrolü - İlişki Uyumu"
 
-msgid "From Unit"
-msgstr ""
+#: .\templates\blog\home.html:380
+msgid ""
+"Analyze zodiac compatibility between partners, friends, and colleagues using "
+"astrological principles. Understand relationship dynamics, communication "
+"styles, and potential challenges for better interpersonal connections and "
+"romantic compatibility assessment."
+msgstr "Astrolojik ilkeleri kullanarak ortaklar, arkadaşlar ve meslektaşlar arasındaki burç uyumluluğunu analiz edin. Daha iyi kişiler arası bağlantılar ve romantik uyumluluk değerlendirmesi için ilişki dinamiklerini, iletişim tarzlarını ve olası zorlukları anlayın."
 
-msgid "Result"
-msgstr ""
+#: .\templates\blog\home.html:382
+msgid "Daily Horoscope - Astrological Guidance"
+msgstr "Günlük Burç - Astrolojik Rehber"
 
-msgid "To Unit"
-msgstr ""
+#: .\templates\blog\home.html:383
+msgid ""
+"Personalized daily horoscope readings based on current planetary positions "
+"and zodiac influences. General guidance for decision making, mood insights, "
+"and awareness of favorable periods for various activities including career, "
+"relationships, and personal growth."
+msgstr "Geçerli gezegen konumlarına ve burç etkilerine dayalı kişiselleştirilmiş günlük burç yorumları. Karar verme, ruh hali içgörüleri ve kariyer, ilişkiler ve kişisel gelişim dahil çeşitli faaliyetler için uygun dönemlerin farkındalığı için genel rehber."
 
-msgid "Quick Conversion"
-msgstr ""
+#: .\templates\blog\home.html:387
+msgid "Astrology Tools"
+msgstr "Astroloji Araçları"
 
-msgid "AdreTools - Free Online Tools: PDF, Image, QR Code, Network Tools"
-msgstr "AdreTools - Ücretsiz Online Araçlar: PDF, Resim, QR Kod, Ağ Araçları"
+#: .\templates\blog\home.html:389
+msgid "Astrology Center"
+msgstr "Astroloji Merkezi"
 
-msgid "Daily tools to make your work easier"
-msgstr "Günlük işlerinizi kolaylaştıran araçlar"
+#: .\templates\blog\home.html:390
+#, fuzzy
+#| msgid "Horoscope Calculator"
+msgid "Zodiac Calculator"
+msgstr "Burç Hesaplayıcı"
 
-msgid "View Tools"
-msgstr "Araçları Gör"
+#: .\templates\blog\home.html:394
+msgid "Astrology Keywords"
+msgstr "Astroloji Anahtar Kelimeleri"
 
-msgid "Home"
-msgstr ""
+#: .\templates\blog\home.html:395
+msgid ""
+"zodiac sign calculator, horoscope calculator, astrology chart, personality "
+"traits zodiac, compatibility checker, daily horoscope, birth chart "
+"calculator, astrological analysis"
+msgstr "burç hesaplayıcı, astroloji tablosu, burç kişilik özellikleri, uyumluluk kontrolü, günlük burç, doğum haritası hesaplayıcı, astrolojik analiz"
 
-msgid "Base64 Encoder"
-msgstr ""
+#: .\templates\blog\home.html:412
+msgid "Professional SVG Design & Optimization Suite"
+msgstr "Profesyonel SVG Tasarım ve Optimizasyon Paketi"
 
-msgid "Base64 Encoder/Decoder"
-msgstr ""
+#: .\templates\blog\home.html:413
+msgid ""
+"Advanced SVG editing, optimization, and conversion tools for web developers, "
+"graphic designers, and digital artists. Create scalable vector graphics, "
+"optimize file sizes, convert formats, and edit SVG code with professional-"
+"grade tools for modern web development and responsive design."
+msgstr "Web geliştiricileri, grafik tasarımcıları ve dijital sanatçılar için gelişmiş SVG düzenleme, optimizasyon ve dönüşüm araçları. Ölçeklenebilir vektör grafikler oluşturun, dosya boyutlarını optimize edin, formatları dönüştürün ve modern web geliştirme ve duyarlı tasarım için profesyonel düzey araçlarla SVG kodunu düzenleyin."
 
-msgid "Encode and decode Base64 strings online for free"
-msgstr ""
+#: .\templates\blog\home.html:415
+msgid "SVG Editor - Visual Vector Design"
+msgstr "SVG Düzenleyici - Görsel Vektör Tasarımı"
 
-msgid "Input Text"
-msgstr ""
+#: .\templates\blog\home.html:416
+msgid ""
+"Create and edit SVG graphics with intuitive visual editor supporting shapes, "
+"paths, text, and complex illustrations. Perfect for icons, logos, "
+"illustrations, and web graphics that scale perfectly across all devices and "
+"screen resolutions without quality loss."
+msgstr "Şekiller, yollar, metin ve karmaşık illüstrasyonları destekleyen sezgisel görsel düzenleyici ile SVG grafikleri oluşturun ve düzenleyin. Tüm cihazlar ve ekran çözünürlüklerinde kalite kaybı olmadan mükemmel ölçeklenen simgeler, logolar, illüstrasyonlar ve web grafikleri için idealdir."
 
-msgid "Enter text to encode/decode..."
-msgstr ""
+#: .\templates\blog\home.html:418
+msgid "SVG Optimizer - File Size Reduction"
+msgstr "SVG Optimize Edici - Dosya Boyutu Azaltma"
 
-msgid "Encode"
-msgstr ""
+#: .\templates\blog\home.html:419
+msgid ""
+"Optimize SVG files for web performance by removing unnecessary code, "
+"compressing paths, and minimizing file sizes without visual quality loss. "
+"Essential for fast-loading websites, mobile applications, and bandwidth-"
+"conscious web development projects."
+msgstr "SVG dosyalarını, gereksiz kodları kaldırarak, yolları sıkıştırarak ve görsel kalite kaybı olmadan dosya boyutlarını en aza indirerek web performansı için optimize edin. Hızlı yüklenen web siteleri, mobil uygulamalar ve bant genişliğine duyarlı web geliştirme projeleri için vazgeçilmez."
 
-msgid "Decode"
-msgstr ""
+#: .\templates\blog\home.html:421
+msgid "Format Converter - Multi-Format Support"
+msgstr "Format Dönüştürücü - Çoklu Format Desteği"
 
-msgid "Copy"
-msgstr ""
+#: .\templates\blog\home.html:422
+msgid ""
+"Convert between SVG and other vector formats including AI, EPS, PDF, and "
+"raster formats like PNG, JPG for cross-platform compatibility. Maintain "
+"vector quality while ensuring compatibility with various design software and "
+"web browsers."
+msgstr "SVG ile AI, EPS, PDF gibi diğer vektör formatları ve PNG, JPG gibi raster formatlar arasında dönüşüm yapın, platformlar arası uyumluluk sağlayın. Çeşitli tasarım yazılımları ve web tarayıcılarıyla uyumluluğu sağlarken vektör kalitesini koruyun."
 
-msgid "Please enter text!"
-msgstr ""
+#: .\templates\blog\home.html:424
+msgid "Code Editor - Direct SVG Manipulation"
+msgstr "Kod Düzenleyici - Doğrudan SVG Düzenleme"
 
-msgid "An error occurred"
-msgstr ""
+#: .\templates\blog\home.html:425
+msgid ""
+"Edit SVG code directly with syntax highlighting, validation, and real-time "
+"preview for advanced users and developers. Perfect for fine-tuning "
+"animations, adding interactivity, and implementing custom SVG solutions for "
+"web applications and interactive graphics."
+msgstr "Gelişmiş kullanıcılar ve geliştiriciler için sözdizimi vurgulama, doğrulama ve gerçek zamanlı önizleme ile SVG kodunu doğrudan düzenleyin. Animasyonları ince ayar yapma, etkileşim ekleme ve web uygulamaları ile interaktif grafikler için özel SVG çözümleri uygulama için mükemmel."
 
-msgid "Connection error"
-msgstr ""
+#: .\templates\blog\home.html:429
+#, fuzzy
+#| msgid "Developer Tools"
+msgid "SVG Development Tools"
+msgstr "SVG Geliştirme Araçları"
 
-msgid "Copied!"
-msgstr ""
+#: .\templates\blog\home.html:431
+msgid "SVG Studio Dashboard"
+msgstr "SVG Stüdyo Paneli"
 
-msgid "Online Hash Generator - Free"
-msgstr ""
+#: .\templates\blog\home.html:432
+msgid "Professional SVG Editor"
+msgstr "Profesyonel SVG Düzenleyici"
 
-msgid "Generate MD5, SHA1, SHA256 hash values"
-msgstr ""
+#: .\templates\blog\home.html:436
+msgid "Vector Keywords"
+msgstr "Vektör Anahtar Kelimeleri"
 
+#: .\templates\blog\home.html:437
+msgid ""
+"SVG editor online, vector graphics editor, SVG optimizer, scalable vector "
+"graphics, web icons editor, SVG code editor, vector illustration tool, "
+"responsive graphics"
+msgstr "çevrimiçi SVG düzenleyici, vektör grafik düzenleyici, SVG optimize edici, ölçeklenebilir vektör grafikler, web simgeleri düzenleyici, SVG kod düzenleyici, vektör illüstrasyon aracı, duyarlı grafikler"
+
+#: .\templates\blog\home.html:449
+#, fuzzy
+#| msgid "Developer Tools"
+msgid "Converter Tools"
+msgstr "Dönüştürücü Araçlar"
+
+#: .\templates\blog\home.html:454
+msgid "Universal Unit Conversion Platform"
+msgstr "Evrensel Birim Dönüşüm Platformu"
+
+#: .\templates\blog\home.html:455
+msgid ""
+"Comprehensive measurement conversion tools supporting international "
+"standards for length, weight, temperature, volume, area, and specialized "
+"units. Essential for international business, scientific research, "
+"engineering projects, cooking, and everyday calculations requiring accurate "
+"unit conversions."
+msgstr "Uzunluk, ağırlık, sıcaklık, hacim, alan ve özel birimler için uluslararası standartları destekleyen kapsamlı ölçüm dönüşüm araçları. Uluslararası iş, bilimsel araştırma, mühendislik projeleri, yemek pişirme ve doğru birim dönüşümleri gerektiren günlük hesaplamalar için vazgeçilmez."
+
+#: .\templates\blog\home.html:457
+msgid "Length Converter - Distance & Dimension"
+msgstr "Uzunluk Dönüştürücü - Mesafe ve Boyut"
+
+#: .\templates\blog\home.html:458
+msgid ""
+"Convert between metric and imperial length units including millimeters, "
+"centimeters, meters, kilometers, inches, feet, yards, and miles. Perfect for "
+"construction projects, international shipping, travel planning, and "
+"scientific measurements requiring precise distance calculations."
+msgstr "Milimetre, santimetre, metre, kilometre, inç, fit, yarda ve mil dahil metrik ve İngiliz uzunluk birimleri arasında dönüşüm yapın. İnşaat projeleri, uluslararası nakliye, seyahat planlama ve hassas mesafe hesaplamaları gerektiren bilimsel ölçümler için mükemmel."
+
+#: .\templates\blog\home.html:460
+msgid "Weight Converter - Mass & Force"
+msgstr "Ağırlık Dönüştürücü - Kütle ve Kuvvet"
+
+#: .\templates\blog\home.html:461
+msgid ""
+"Accurate weight and mass conversions between grams, kilograms, pounds, "
+"ounces, stones, and tons for international commerce, shipping calculations, "
+"fitness tracking, and scientific applications. Support for both metric and "
+"imperial systems with precision decimal handling."
+msgstr "Uluslararası ticaret, nakliye hesaplamaları, fitness takibi ve bilimsel uygulamalar için gram, kilogram, pound, ons, stone ve ton arasında hassas ağırlık ve kütle dönüşümleri. Metrik ve İngiliz sistemleri için hassas ondalık işleme desteği."
+
+#: .\templates\blog\home.html:463
+msgid "Temperature Converter - Climate & Science"
+msgstr "Sıcaklık Dönüştürücü - İklim ve Bilim"
+
+#: .\templates\blog\home.html:464
+msgid ""
+"Convert temperatures between Celsius, Fahrenheit, and Kelvin for weather "
+"analysis, scientific research, cooking, and international communication. "
+"Essential for climate studies, industrial processes, and everyday "
+"temperature understanding across different measurement systems."
+msgstr "Hava durumu analizi, bilimsel araştırma, yemek pişirme ve uluslararası iletişim için Celsius, Fahrenheit ve Kelvin arasında sıcaklık dönüşümleri yapın. İklim çalışmaları, endüstriyel süreçler ve farklı ölçüm sistemlerinde günlük sıcaklık anlayışı için vazgeçilmez."
+
+#: .\templates\blog\home.html:466
+msgid "Volume & Area Converter - Space Calculations"
+msgstr "Hacim ve Alan Dönüştürücü - Uzay Hesaplamaları"
+
+#: .\templates\blog\home.html:467
+msgid ""
+"Convert volume units for liquids and gases including liters, gallons, cubic "
+"meters, and specialized measurements. Area conversions for real estate, land "
+"measurement, and construction projects using square meters, acres, hectares, "
+"and square feet with professional accuracy."
+msgstr "Sıvılar ve gazlar için litre, galon, metreküp ve özel ölçümler dahil hacim birimleri dönüşümü yapın. Emlak, arazi ölçümü ve inşaat projeleri için metrekare, dönüm, hektar ve kare fit kullanarak profesyonel doğrulukla alan dönüşümleri."
+
+#: .\templates\blog\home.html:471
+msgid "Conversion Tools"
+msgstr "Dönüşüm Araçları"
+
+#: .\templates\blog\home.html:473
+#, fuzzy
+#| msgid "Unit Converter"
+msgid "Universal Converter Hub"
+msgstr "Evrensel Dönüştürücü Merkezi"
+
+#: .\templates\blog\home.html:474
+#, fuzzy
+#| msgid "Unit Converter"
+msgid "Measurement Converter"
+msgstr "Ölçüm Dönüştürücü"
+
+#: .\templates\blog\home.html:475
+#, fuzzy
+#| msgid "Unit Converter"
+msgid "International Unit Converter"
+msgstr "Uluslararası Birim Dönüştürücü"
+
+#: .\templates\blog\home.html:479
+msgid "Measurement Keywords"
+msgstr "Ölçüm Anahtar Kelimeleri"
+
+#: .\templates\blog\home.html:480
+msgid ""
+"unit converter online, measurement converter, length converter, weight "
+"converter, temperature converter, metric imperial converter, international "
+"units, scientific calculator"
+msgstr "çevrimiçi birim dönüştürücü, ölçüm dönüştürücü, uzunluk dönüştürücü, ağırlık dönüştürücü, sıcaklık dönüştürücü, metrik İngiliz dönüştürücü, uluslararası birimler, bilimsel hesap makinesi"
+
+#: .\templates\blog\home.html:497
+#, fuzzy
+#| msgid "Developer Tools"
+msgid "Professional Developer Toolkit"
+msgstr "Profesyonel Geliştirici Araç Seti"
+
+#: .\templates\blog\home.html:498
+msgid ""
+"Comprehensive development tools for programmers, software engineers, and web "
+"developers. Format code, generate hashes, test regular expressions, validate "
+"JSON, and optimize SQL queries with professional-grade tools designed to "
+"improve productivity and code quality in modern development workflows."
+msgstr "Programcılar, yazılım mühendisleri ve web geliştiricileri için kapsamlı geliştirme araçları. Kod formatlama, hash oluşturma, düzenli ifadeleri test etme, JSON doğrulama ve SQL sorgularını optimize etme için modern geliştirme iş akışlarında üretkenliği ve kod kalitesini artırmak için tasarlanmış profesyonel düzey araçlar."
+
+#: .\templates\blog\home.html:500
+msgid "JSON Formatter - Data Structure Validation"
+msgstr "JSON Biçimlendirici - Veri Yapısı Doğrulama"
+
+#: .\templates\blog\home.html:501
+msgid ""
+"Format, validate, and beautify JSON data with syntax highlighting and error "
+"detection. Essential for API development, configuration files, and data "
+"exchange between applications. Support for minification, validation, and "
+"tree view for complex JSON structures and debugging."
+msgstr "Sözdizimi vurgulama ve hata algılama ile JSON verilerini biçimlendirin, doğrulayın ve güzelleştirin. API geliştirme, yapılandırma dosyaları ve uygulamalar arası veri alışverişi için vazgeçilmez. Karmaşık JSON yapıları ve hata ayıklama için küçültme, doğrulama ve ağaç görünümü desteği."
+
+#: .\templates\blog\home.html:503
+msgid "Hash Generator - Cryptographic Security"
+msgstr "Hash Üreticisi - Kriptografik Güvenlik"
+
+#: .\templates\blog\home.html:504
+msgid ""
+"Generate MD5, SHA-1, SHA-256, and other cryptographic hashes for password "
+"security, file integrity verification, and data validation. Essential for "
+"security implementations, blockchain development, and ensuring data "
+"integrity in distributed systems and applications."
+msgstr "Şifre güvenliği, dosya bütünlüğü doğrulama ve veri doğrulama için MD5, SHA-1, SHA-256 ve diğer kriptografik hash'ler oluşturun. Güvenlik uygulamaları, blok zinciri geliştirme ve dağıtık sistemler ile uygulamalarda veri bütünlüğünü sağlamak için vazgeçilmez."
+
+#: .\templates\blog\home.html:506
+msgid "Regex Tester - Pattern Matching"
+msgstr "Düzenli İfade Test Edici - Desen Eşleştirme"
+
+#: .\templates\blog\home.html:507
+msgid ""
+"Test and debug regular expressions with real-time matching, explanation, and "
+"performance analysis. Perfect for form validation, data parsing, text "
+"processing, and search functionality development with support for multiple "
+"regex flavors and detailed match information."
+msgstr "Gerçek zamanlı eşleştirme, açıklama ve performans analizi ile düzenli ifadeleri test edin ve hata ayıklayın. Form doğrulama, veri ayrıştırma, metin işleme ve arama işlevselliği geliştirme için birden fazla regex türü ve detaylı eşleşme bilgisi desteğiyle mükemmel."
+
+#: .\templates\blog\home.html:509
+msgid "SQL Formatter - Database Query Optimization"
+msgstr "SQL Biçimlendirici - Veritabanı Sorgu Optimizasyonu"
+
+#: .\templates\blog\home.html:510
+msgid ""
+"Format, beautify, and optimize SQL queries for better readability and "
+"performance. Support for multiple database systems including MySQL, "
+"PostgreSQL, SQL Server, and Oracle with syntax highlighting, error "
+"detection, and query optimization suggestions for database development."
+msgstr "Daha iyi okunabilirlik ve performans için SQL sorgularını biçimlendirin, güzelleştirin ve optimize edin. MySQL, PostgreSQL, SQL Server ve Oracle dahil birden fazla veritabanı sistemi için sözdizimi vurgulama, hata algılama ve veritabanı geliştirme için sorgu optimizasyon önerileri desteği."
+
+#: .\templates\blog\home.html:514
+#, fuzzy
+#| msgid "Developer Tools"
+msgid "Development Tools"
+msgstr "Geliştirme Araçları"
+
+#: .\templates\blog\home.html:516
+#, fuzzy
+#| msgid "Developer Tools"
+msgid "Developer Toolkit Hub"
+msgstr "Geliştirici Araç Seti Merkezi"
+
+#: .\templates\blog\home.html:517
+msgid "JSON Formatter Tool"
+msgstr "JSON Biçimlendirici Aracı"
+
+#: .\templates\blog\home.html:518 .\templates\dev_tools\hash_generator.html:55
 #, fuzzy
 #| msgid "Password Generator"
 msgid "Hash Generator"
-msgstr "Şifre Üretici"
+msgstr "Hash Üreticisi"
 
+#: .\templates\blog\home.html:522
+msgid "Programming Keywords"
+msgstr "Programlama Anahtar Kelimeleri"
+
+#: .\templates\blog\home.html:523
+msgid ""
+"JSON formatter online, hash generator tool, regex tester, SQL formatter, "
+"developer tools online, code formatter, programming utilities, web "
+"development tools"
+msgstr "çevrimiçi JSON biçimlendirici, hash üretici aracı, düzenli ifade test edici, SQL biçimlendirici, çevrimiçi geliştirici araçları, kod biçimlendirici, programlama yardımcı programları, web geliştirme araçları"
+
+#: .\templates\blog\home.html:540
+msgid "Advanced Network Diagnostic Suite"
+msgstr "Gelişmiş Ağ Teşhis Paketi"
+
+#: .\templates\blog\home.html:541
+msgid ""
+"Professional network analysis and diagnostic tools for system "
+"administrators, IT professionals, and cybersecurity experts. Monitor network "
+"performance, analyze IP addresses, check domain status, and perform security "
+"assessments with enterprise-grade tools for network management and "
+"troubleshooting."
+msgstr "Sistem yöneticileri, BT profesyonelleri ve siber güvenlik uzmanları için profesyonel ağ analizi ve teşhis araçları. Ağ performansını izleyin, IP adreslerini analiz edin, alan adı durumunu kontrol edin ve ağ yönetimi ve sorun giderme için kurumsal düzey araçlarla güvenlik değerlendirmeleri yapın."
+
+#: .\templates\blog\home.html:543
+msgid "IP Lookup - Geolocation & Analysis"
+msgstr "IP Sorgulama - Coğrafi Konum ve Analiz"
+
+#: .\templates\blog\home.html:544
+msgid ""
+"Analyze IP addresses with detailed geolocation data, ISP information, and "
+"security threat assessment. Essential for cybersecurity investigations, "
+"network troubleshooting, and understanding traffic sources with "
+"comprehensive IP intelligence and reputation checking capabilities."
+msgstr "Detaylı coğrafi konum verileri, ISS bilgileri ve güvenlik tehdidi değerlendirmesi ile IP adreslerini analiz edin. Siber güvenlik araştırmaları, ağ sorun giderme ve kapsamlı IP istihbaratı ve itibar kontrol yetenekleriyle trafik kaynaklarını anlama için vazgeçilmez."
+
+#: .\templates\blog\home.html:546
+msgid "Domain Checker - DNS Analysis"
+msgstr "Alan Adı Kontrolü - DNS Analizi"
+
+#: .\templates\blog\home.html:547
+msgid ""
+"Comprehensive domain analysis including DNS records, WHOIS information, SSL "
+"certificate status, and domain availability checking. Perfect for domain "
+"management, security audits, and competitive analysis with detailed "
+"technical information and historical data."
+msgstr "DNS kayıtları, WHOIS bilgileri, SSL sertifikası durumu ve alan adı kullanılabilirlik kontrolü dahil kapsamlı alan adı analizi. Alan adı yönetimi, güvenlik denetimleri ve detaylı teknik bilgiler ve geçmiş verilerle rekabet analizi için mükemmel."
+
+#: .\templates\blog\home.html:549
+msgid "Port Scanner - Security Assessment"
+msgstr "Port Tarayıcı - Güvenlik Değerlendirmesi"
+
+#: .\templates\blog\home.html:550
+msgid ""
+"Scan network ports for security vulnerabilities and service discovery with "
+"professional-grade scanning capabilities. Essential for penetration testing, "
+"security audits, and network inventory management with detailed service "
+"identification and vulnerability assessment."
+msgstr "Profesyonel düzey tarama yetenekleriyle güvenlik açıkları ve hizmet keşfi için ağ portlarını tarayın. Penetrasyon testleri, güvenlik denetimleri ve detaylı hizmet tanımlama ve güvenlik açığı değerlendirmesi ile ağ envanter yönetimi için vazgeçilmez."
+
+#: .\templates\blog\home.html:552
+msgid "Network Speed Test - Performance Monitoring"
+msgstr "Ağ Hız Testi - Performans İzleme"
+
+#: .\templates\blog\home.html:553
+msgid ""
+"Measure internet connection speed, latency, and network performance with "
+"accurate testing algorithms. Monitor bandwidth utilization, identify "
+"bottlenecks, and optimize network performance for business applications and "
+"user experience improvement."
+msgstr "Doğru test algoritmalarıyla internet bağlantı hızını, gecikmeyi ve ağ performansını ölçün. Bant genişliği kullanımını izleyin, darboğazları belirleyin ve iş uygulamaları ve kullanıcı deneyimi iyileştirmesi için ağ performansını optimize edin."
+
+#: .\templates\blog\home.html:557
+#, fuzzy
+#| msgid "Network Tools"
+msgid "Network Analysis Tools"
+msgstr "Ağ Analiz Araçları"
+
+#: .\templates\blog\home.html:559
+#, fuzzy
+#| msgid "Network Tools"
+msgid "Network Tools Center"
+msgstr "Ağ Araçları Merkezi"
+
+#: .\templates\blog\home.html:560
+msgid "IP Address Lookup"
+msgstr "IP Adresi Sorgulama"
+
+#: .\templates\blog\home.html:561
+msgid "Domain Analysis Tool"
+msgstr "Alan Adı Analiz Aracı"
+
+#: .\templates\blog\home.html:565
+#, fuzzy
+#| msgid "Network Tools"
+msgid "Network Keywords"
+msgstr "Ağ Anahtar Kelimeleri"
+
+#: .\templates\blog\home.html:566
+msgid ""
+"IP lookup tool, domain checker, port scanner online, network diagnostic "
+"tools, DNS lookup, WHOIS checker, network security tools, system "
+"administrator tools"
+msgstr "IP sorgulama aracı, alan adı kontrolü, çevrimiçi port tarayıcı, ağ teşhis araçları, DNS sorgulama, WHOIS kontrolü, ağ güvenlik araçları, sistem yöneticisi araçları"
+
+#: .\templates\calculator_tools\home.html:4
+msgid "Calculator Tools - BMI, Age, World Clock - AdreTools"
+msgstr "Hesap Makinesi Araçları - BKİ, Yaş, Dünya Saati - AdreTools"
+
+#: .\templates\calculator_tools\home.html:18
+msgid "Free online calculators for daily use"
+msgstr "Günlük kullanım için ücretsiz çevrimiçi hesap makineleri"
+
+#: .\templates\calculator_tools\home.html:19
+#: .\templates\dev_tools\base64_encoder.html:12
+#: .\templates\dev_tools\home.html:70
+#: .\templates\dev_tools\html_encoder.html:12
+#: .\templates\dev_tools\sql_formatter.html:12
+#: .\templates\dev_tools\timestamp_converter.html:12
+#: .\templates\dev_tools\url_encoder.html:12
+#: .\templates\image_tools\home.html:10 .\templates\network_tools\home.html:32
+#: .\templates\pdf_tools\home.html:45 .\templates\qr_tools\home.html:10
+#: .\templates\random_tools\home.html:153
+msgid "Home"
+msgstr "Ana Sayfa"
+
+#: .\templates\calculator_tools\home.html:32
+#: .\templates\calculator_tools\home.html:131
+msgid "Calculate"
+msgstr "Hesapla"
+
+#: .\templates\calculator_tools\home.html:51
+msgid "Weight (kg)"
+msgstr "Ağırlık (kg)"
+
+#: .\templates\calculator_tools\home.html:55
+msgid "Height (cm)"
+msgstr "Boy (cm)"
+
+#: .\templates\calculator_tools\home.html:60
+msgid "Calculate BMI"
+msgstr "BKİ Hesapla"
+
+#: .\templates\calculator_tools\home.html:78
+#: .\templates\horoscope_tools\home.html:37
+msgid "Birth Date"
+msgstr "Doğum Tarihi"
+
+#: .\templates\calculator_tools\home.html:82
+msgid "Calculate Age"
+msgstr "Yaş Hesapla"
+
+#: .\templates\calculator_tools\home.html:118
+msgid "Number"
+msgstr "Sayı"
+
+#: .\templates\calculator_tools\home.html:122
+msgid "Percentage"
+msgstr "Yüzde"
+
+#: .\templates\calculator_tools\home.html:126
+#: .\templates\converter_tools\home.html:79
+#: .\templates\dev_tools\base64_encoder.html:46
+#: .\templates\dev_tools\html_encoder.html:46
+#: .\templates\dev_tools\json_formatter.html:77
+#: .\templates\dev_tools\url_encoder.html:46
+msgid "Result"
+msgstr "Sonuç"
+
+#: .\templates\calculator_tools\home.html:149
+msgid "Start Date"
+msgstr "Başlangıç Tarihi"
+
+#: .\templates\calculator_tools\home.html:153
+msgid "End Date"
+msgstr "Bitiş Tarihi"
+
+#: .\templates\calculator_tools\home.html:158
+msgid "Calculate Days"
+msgstr "Gün Hesapla"
+
+#: .\templates\color_tools\home.html:27
+#: .\templates\converter_tools\home.html:23
+#: .\templates\horoscope_tools\home.html:22
+#: .\templates\password_tools\home.html:22 .\templates\svg_tools\home.html:19
+#: .\templates\text_tools\home.html:22 .\templates\url_tools\home.html:20
+msgid "Back to Home"
+msgstr "Ana Sayfaya Geri Dön"
+
+#: .\templates\color_tools\home.html:30
+#, fuzzy
+#| msgid "Pick colors from images and analyze"
+msgid "Pick colors from images and learn details"
+msgstr "Görsellerden renk seç ve detayları öğren"
+
+#: .\templates\color_tools\home.html:38 .\templates\color_tools\home.html:43
+#: .\templates\image_tools\resize.html:63
+msgid "Upload Image"
+msgstr "Görsel Yükle"
+
+#: .\templates\color_tools\home.html:44
+msgid "Click or drag and drop"
+msgstr "Tıkla veya sürükle ve bırak"
+
+#: .\templates\color_tools\home.html:44
+msgid "JPG, PNG, GIF, WEBP supported"
+msgstr "JPG, PNG, GIF, WEBP desteklenir"
+
+#: .\templates\color_tools\home.html:53
+msgid "Remove Image"
+msgstr "Görseli Kaldır"
+
+#: .\templates\color_tools\home.html:65
+msgid "Selected Color"
+msgstr "Seçilen Renk"
+
+#: .\templates\color_tools\home.html:71
+msgid "Coordinate"
+msgstr "Koordinat"
+
+#: .\templates\color_tools\home.html:95
+msgid "Copy All Color Codes"
+msgstr "Tüm Renk Kodlarını Kopyala"
+
+#: .\templates\color_tools\home.html:103
+#, fuzzy
+#| msgid "Color Picker"
+msgid "Color History"
+msgstr "Renk Geçmişi"
+
+#: .\templates\color_tools\home.html:107
+msgid "No color selected yet"
+msgstr "Henüz renk seçilmedi"
+
+#: .\templates\color_tools\home.html:110
+msgid "Clear History"
+msgstr "Geçmişi Temizle"
+
+#: .\templates\converter_tools\home.html:26
+#, fuzzy
+#| msgid "Convert length, weight, temperature"
+msgid "Convert length, weight, temperature and more"
+msgstr "Uzunluk, ağırlık, sıcaklık ve daha fazlasını dönüştür"
+
+#: .\templates\converter_tools\home.html:39
+msgid "Length"
+msgstr "Uzunluk"
+
+#: .\templates\converter_tools\home.html:42
+msgid "Weight"
+msgstr "Ağırlık"
+
+#: .\templates\converter_tools\home.html:45
+msgid "Temperature"
+msgstr "Sıcaklık"
+
+#: .\templates\converter_tools\home.html:48
+msgid "Area"
+msgstr "Alan"
+
+#: .\templates\converter_tools\home.html:51
+msgid "Volume"
+msgstr "Hacim"
+
+#: .\templates\converter_tools\home.html:54
+msgid "Speed"
+msgstr "Hız"
+
+#: .\templates\converter_tools\home.html:62
+msgid "Value"
+msgstr "Değer"
+
+#: .\templates\converter_tools\home.html:66
+msgid "From Unit"
+msgstr "Birimden"
+
+#: .\templates\converter_tools\home.html:83
+msgid "To Unit"
+msgstr "Birime"
+
+#: .\templates\converter_tools\home.html:91
+msgid "Quick Conversion"
+msgstr "Hızlı Dönüşüm"
+
+#: .\templates\core\home.html:4
+msgid "AdreTools - Free Online Tools: PDF, Image, QR Code, Network Tools"
+msgstr "AdreTools - Ücretsiz Çevrimiçi Araçlar: PDF, Resim, QR Kod, Ağ Araçları"
+
+#: .\templates\core\home.html:49
+msgid "Daily tools to make your work easier"
+msgstr "Günlük işlerinizi kolaylaştıran araçlar"
+
+#: .\templates\core\home.html:61
+msgid "View Tools"
+msgstr "Araçları Gör"
+
+#: .\templates\dev_tools\base64_encoder.html:14
+msgid "Base64 Encoder"
+msgstr "Base64 Kodlayıcı"
+
+#: .\templates\dev_tools\base64_encoder.html:22
+msgid "Base64 Encoder/Decoder"
+msgstr "Base64 Kodlayıcı/Çözücü"
+
+#: .\templates\dev_tools\base64_encoder.html:23
+msgid "Encode and decode Base64 strings online for free"
+msgstr "Base64 dizelerini çevrimiçi olarak ücretsiz kodla ve çöz"
+
+#: .\templates\dev_tools\base64_encoder.html:31
+#: .\templates\dev_tools\html_encoder.html:31
+#: .\templates\dev_tools\url_encoder.html:31
+msgid "Input Text"
+msgstr "Giriş Metni"
+
+#: .\templates\dev_tools\base64_encoder.html:34
+msgid "Enter text to encode/decode..."
+msgstr "Kodlamak/çözmek için metin girin..."
+
+#: .\templates\dev_tools\base64_encoder.html:36
+#: .\templates\dev_tools\html_encoder.html:36
+#: .\templates\dev_tools\url_encoder.html:36
+msgid "Encode"
+msgstr "Kodla"
+
+#: .\templates\dev_tools\base64_encoder.html:37
+#: .\templates\dev_tools\html_encoder.html:37
+#: .\templates\dev_tools\url_encoder.html:37
+msgid "Decode"
+msgstr "Çöz"
+
+#: .\templates\dev_tools\base64_encoder.html:51
+#: .\templates\dev_tools\html_encoder.html:51
+#: .\templates\dev_tools\json_formatter.html:83
+#: .\templates\dev_tools\sql_formatter.html:51
+#: .\templates\dev_tools\url_encoder.html:51
+msgid "Copy"
+msgstr "Kopyala"
+
+#: .\templates\dev_tools\base64_encoder.html:70
+#: .\templates\dev_tools\hash_generator.html:148
+#: .\templates\dev_tools\html_encoder.html:70
+#: .\templates\dev_tools\url_encoder.html:70
+msgid "Please enter text!"
+msgstr "Lütfen metin girin!"
+
+#: .\templates\dev_tools\base64_encoder.html:91
+#: .\templates\dev_tools\html_encoder.html:91
+#: .\templates\dev_tools\sql_formatter.html:91
+#: .\templates\dev_tools\url_encoder.html:91
+msgid "An error occurred"
+msgstr "Bir hata oluştu"
+
+#: .\templates\dev_tools\base64_encoder.html:94
+#: .\templates\dev_tools\hash_generator.html:173
+#: .\templates\dev_tools\html_encoder.html:94
+#: .\templates\dev_tools\json_formatter.html:141
+#: .\templates\dev_tools\sql_formatter.html:94
+#: .\templates\dev_tools\timestamp_converter.html:124
+#: .\templates\dev_tools\timestamp_converter.html:159
+#: .\templates\dev_tools\url_encoder.html:94
+#: .\templates\network_tools\domain_checker.html:77
+#: .\templates\network_tools\ip_lookup.html:134
+#: .\templates\network_tools\ping_test.html:89
+#: .\templates\network_tools\port_scanner.html:83
+msgid "Connection error"
+msgstr "Bağlantı hatası"
+
+#: .\templates\dev_tools\base64_encoder.html:104
+#: .\templates\dev_tools\html_encoder.html:104
+#: .\templates\dev_tools\json_formatter.html:149
+#: .\templates\dev_tools\sql_formatter.html:104
+#: .\templates\dev_tools\url_encoder.html:104
+msgid "Copied!"
+msgstr "Kopyalandı!"
+
+#: .\templates\dev_tools\hash_generator.html:45
+msgid "Online Hash Generator - Free"
+msgstr "Çevrimiçi Hash Üreticisi - Ücretsiz"
+
+#: .\templates\dev_tools\hash_generator.html:46
+msgid "Generate MD5, SHA1, SHA256 hash values"
+msgstr "MD5, SHA1, SHA256 hash değerleri oluştur"
+
+#: .\templates\dev_tools\hash_generator.html:59
+#: .\templates\qr_tools\home.html:41
 msgid "Text"
-msgstr ""
+msgstr "Metin"
 
+#: .\templates\dev_tools\hash_generator.html:60
 msgid "Enter the text you want to hash..."
-msgstr ""
+msgstr "Hash etmek istediğiniz metni girin..."
 
+#: .\templates\dev_tools\hash_generator.html:65
 msgid "Generate Hash"
-msgstr ""
+msgstr "Hash Oluştur"
 
+#: .\templates\dev_tools\hash_generator.html:120
 msgid "About Hash Algorithms"
-msgstr ""
+msgstr "Hash Algoritmaları Hakkında"
 
+#: .\templates\dev_tools\hash_generator.html:124
 msgid "128-bit hash value. Fast but weak in terms of security."
-msgstr ""
+msgstr "128 bit hash değeri. Hızlı ancak güvenlik açısından zayıf."
 
+#: .\templates\dev_tools\hash_generator.html:127
 msgid "160-bit hash value. More secure than MD5 but no longer recommended."
-msgstr ""
+msgstr "160 bit hash değeri. MD5'ten daha güvenli ancak artık önerilmiyor."
 
+#: .\templates\dev_tools\hash_generator.html:131
 msgid "256-bit hash value. The most widely used secure algorithm today."
-msgstr ""
+msgstr "256 bit hash değeri. Günümüzde en yaygın kullanılan güvenli algoritma."
 
+#: .\templates\dev_tools\hash_generator.html:134
 msgid "512-bit hash value. Highest security level."
-msgstr ""
+msgstr "512 bit hash değeri. En yüksek güvenlik seviyesi."
 
+#: .\templates\dev_tools\hash_generator.html:168
 msgid "Hash values generated!"
-msgstr ""
+msgstr "Hash değerleri oluşturuldu!"
 
+#: .\templates\dev_tools\hash_generator.html:181
 msgid "Hash copied!"
-msgstr ""
+msgstr "Hash kopyalandı!"
 
+#: .\templates\dev_tools\home.html:4
 #, fuzzy
 #| msgid "Developer Tools"
 msgid "Developer Tools - AdreTools"
-msgstr "Geliştirici Araçları"
+msgstr "Geliştirici Araçları - AdreTools"
 
+#: .\templates\dev_tools\home.html:69
 msgid "Professional tools for coding and development"
-msgstr ""
+msgstr "Kodlama ve geliştirme için profesyonel araçlar"
 
+#: .\templates\dev_tools\home.html:83 .\templates\dev_tools\home.html:85
+#: .\templates\dev_tools\home.html:87 .\templates\dev_tools\home.html:89
+#: .\templates\dev_tools\home.html:91 .\templates\dev_tools\home.html:93
+#: .\templates\dev_tools\home.html:95 .\templates\dev_tools\home.html:97
+#: .\templates\image_tools\home.html:22 .\templates\network_tools\home.html:43
+#: .\templates\network_tools\home.html:53
+#: .\templates\network_tools\home.html:63
+#: .\templates\network_tools\home.html:73
+#: .\templates\network_tools\home.html:83 .\templates\pdf_tools\home.html:57
+#: .\templates\qr_tools\home.html:22
 msgid "Use"
-msgstr ""
+msgstr "Kullan"
 
+#: .\templates\dev_tools\home.html:99
 msgid "Coming Soon"
-msgstr ""
+msgstr "Yakında"
 
+#: .\templates\dev_tools\home.html:111
 #, fuzzy
 #| msgid "Developer Tools"
 msgid "About Developer Tools"
-msgstr "Geliştirici Araçları"
+msgstr "Geliştirici Araçları Hakkında"
 
+#: .\templates\dev_tools\home.html:112
 msgid ""
 "Speed up your coding process with AdreTools developer tools. Professional "
 "tools for all your needs from JSON formatting to hash generation."
-msgstr ""
+msgstr "AdreTools geliştirici araçlarıyla kodlama sürecinizi hızlandırın. JSON biçimlendirmeden hash oluşturmaya kadar tüm ihtiyaçlarınız için profesyonel araçlar."
 
+#: .\templates\dev_tools\home.html:117
 msgid "Validate, format and minify your JSON data."
-msgstr ""
+msgstr "JSON verilerinizi doğrulayın, biçimlendirin ve küçültün."
 
+#: .\templates\dev_tools\home.html:120
 msgid "Generate MD5, SHA1, SHA256 hash values."
-msgstr ""
+msgstr "MD5, SHA1, SHA256 hash değerleri oluşturun."
 
+#: .\templates\dev_tools\home.html:124
 msgid "Test your regular expression patterns."
-msgstr ""
+msgstr "Düzenli ifade desenlerinizi test edin."
 
+#: .\templates\dev_tools\home.html:127
 msgid "Encode/decode texts to Base64 format."
-msgstr ""
+msgstr "Metinleri Base64 formatına kodlayın/çözün."
 
+#: .\templates\dev_tools\home.html:130
 msgid "Encode/decode HTML entities."
-msgstr ""
+msgstr "HTML varlıklarını kodlayın/çözün."
 
+#: .\templates\dev_tools\home.html:134
 msgid "Encode/decode URLs to safe format."
-msgstr ""
+msgstr "URL'leri güvenli formata kodlayın/çözün."
 
+#: .\templates\dev_tools\home.html:137
 msgid "Format and beautify SQL queries."
-msgstr ""
+msgstr "SQL sorgularını biçimlendirin ve güzelleştirin."
 
+#: .\templates\dev_tools\home.html:140
 msgid "Convert Unix timestamp values."
-msgstr ""
+msgstr "Unix zaman damgası değerlerini dönüştürün."
 
+#: .\templates\dev_tools\html_encoder.html:14
 msgid "HTML Encoder"
-msgstr ""
+msgstr "HTML Kodlayıcı"
 
+#: .\templates\dev_tools\html_encoder.html:22
 msgid "HTML Encoder/Decoder"
-msgstr ""
+msgstr "HTML Kodlayıcı/Çözücü"
 
+#: .\templates\dev_tools\html_encoder.html:23
 msgid "Encode and decode HTML entities online for free"
-msgstr ""
+msgstr "HTML varlıklarını çevrimiçi olarak ücretsiz kodlayın ve çözün"
 
+#: .\templates\dev_tools\html_encoder.html:34
 msgid "Enter HTML to encode/decode..."
-msgstr ""
+msgstr "Kodlamak/çözmek için HTML girin..."
 
+#: .\templates\dev_tools\json_formatter.html:45
 msgid "Online JSON Formatter - Free"
-msgstr ""
+msgstr "Çevrimiçi JSON Biçimlendirici - Ücretsiz"
 
+#: .\templates\dev_tools\json_formatter.html:46
 msgid "Validate, format and minify JSON"
-msgstr ""
+msgstr "JSON'ı doğrulayın, biçimlendirin ve küçültün"
 
+#: .\templates\dev_tools\json_formatter.html:55
 msgid "JSON Input"
-msgstr ""
+msgstr "JSON Girişi"
 
+#: .\templates\dev_tools\json_formatter.html:61
+#: .\templates\dev_tools\sql_formatter.html:36
 msgid "Format"
-msgstr ""
+msgstr "Biçimlendir"
 
+#: .\templates\dev_tools\json_formatter.html:64
+#: .\templates\dev_tools\sql_formatter.html:37
 msgid "Minify"
-msgstr ""
+msgstr "Küçült"
 
+#: .\templates\dev_tools\json_formatter.html:67
 msgid "Validate"
-msgstr ""
+msgstr "Doğrula"
 
+#: .\templates\dev_tools\json_formatter.html:105
+#: .\templates\dev_tools\json_formatter.html:121
 msgid "Please enter JSON!"
-msgstr ""
+msgstr "Lütfen JSON girin!"
 
+#: .\templates\dev_tools\json_formatter.html:111
 msgid "Valid JSON!"
-msgstr ""
+msgstr "Geçerli JSON!"
 
+#: .\templates\dev_tools\json_formatter.html:113
 msgid "Invalid JSON"
-msgstr ""
+msgstr "Geçersiz JSON"
 
+#: .\templates\dev_tools\json_formatter.html:136
 msgid "Operation successful!"
-msgstr ""
+msgstr "İşlem başarılı!"
 
+#: .\templates\dev_tools\regex_tester.html:52
 msgid "Online Regex Tester - Free"
-msgstr ""
+msgstr "Çevrimiçi Regex Test Edici - Ücretsiz"
 
+#: .\templates\dev_tools\regex_tester.html:53
 msgid "Test your Regular Expression patterns"
-msgstr ""
+msgstr "Düzenli ifade desenlerinizi test edin"
 
+#: .\templates\dev_tools\regex_tester.html:62
 msgid "Regex Pattern"
-msgstr ""
+msgstr "Regex Deseni"
 
+#: .\templates\dev_tools\regex_tester.html:66
 msgid "Pattern"
-msgstr ""
+msgstr "Desen"
 
+#: .\templates\dev_tools\regex_tester.html:71
 msgid "Flags"
-msgstr ""
+msgstr "Bayraklar"
 
+#: .\templates\dev_tools\regex_tester.html:87
 msgid "Test Text"
-msgstr ""
+msgstr "Test Metni"
 
+#: .\templates\dev_tools\regex_tester.html:88
 msgid "Enter the text to be tested here..."
-msgstr ""
+msgstr "Test edilecek metni buraya girin..."
 
+#: .\templates\dev_tools\regex_tester.html:92
 msgid "Test"
-msgstr ""
+msgstr "Test Et"
 
+#: .\templates\dev_tools\regex_tester.html:101
 msgid "Results"
-msgstr ""
+msgstr "Sonuçlar"
 
+#: .\templates\dev_tools\regex_tester.html:105
 msgid "Regex test results will appear here..."
-msgstr ""
+msgstr "Regex test sonuçları burada görünecek..."
 
+#: .\templates\dev_tools\regex_tester.html:112
 msgid "Visual Result"
-msgstr ""
+msgstr "Görsel Sonuç"
 
+#: .\templates\dev_tools\regex_tester.html:116
 msgid "Matches will be highlighted here..."
-msgstr ""
+msgstr "Eşleşmeler burada vurgulanacak..."
 
+#: .\templates\dev_tools\regex_tester.html:127
 msgid "Common Regex Examples"
-msgstr ""
+msgstr "Yaygın Regex Örnekleri"
 
+#: .\templates\dev_tools\regex_tester.html:136
 msgid "Capital Letters"
-msgstr ""
+msgstr "Büyük Harfler"
 
+#: .\templates\dev_tools\regex_tester.html:137
 msgid "Numbers"
-msgstr ""
+msgstr "Sayılar"
 
+#: .\templates\dev_tools\regex_tester.html:152
 msgid "Please enter regex pattern!"
-msgstr ""
+msgstr "Lütfen regex deseni girin!"
 
+#: .\templates\dev_tools\regex_tester.html:187
 msgid "matches found"
-msgstr ""
+msgstr "eşleşme bulundu"
 
+#: .\templates\dev_tools\regex_tester.html:194
 msgid "Match"
-msgstr ""
+msgstr "Eşleşme"
 
+#: .\templates\dev_tools\regex_tester.html:195
+#: .\templates\pdf_tools\home.html:305
 msgid "Position"
-msgstr ""
+msgstr "Konum"
 
+#: .\templates\dev_tools\regex_tester.html:221
 msgid "No matches found"
-msgstr ""
+msgstr "Eşleşme bulunamadı"
 
+#: .\templates\dev_tools\sql_formatter.html:14
+#: .\templates\dev_tools\sql_formatter.html:22
 msgid "SQL Formatter"
-msgstr ""
+msgstr "SQL Biçimlendirici"
 
+#: .\templates\dev_tools\sql_formatter.html:23
 msgid "Format and beautify SQL queries online for free"
-msgstr ""
+msgstr "SQL sorgularını çevrimiçi olarak ücretsiz biçimlendirin ve güzelleştirin"
 
+#: .\templates\dev_tools\sql_formatter.html:31
 msgid "SQL Input"
-msgstr ""
+msgstr "SQL Girişi"
 
+#: .\templates\dev_tools\sql_formatter.html:34
 msgid "Enter SQL query to format..."
-msgstr ""
+msgstr "Biçimlendirmek için SQL sorgusu girin..."
 
+#: .\templates\dev_tools\sql_formatter.html:46
 msgid "Formatted SQL"
-msgstr ""
+msgstr "Biçimlendirilmiş SQL"
 
+#: .\templates\dev_tools\sql_formatter.html:70
 msgid "Please enter SQL query!"
-msgstr ""
+msgstr "Lütfen SQL sorgusu girin!"
 
+#: .\templates\dev_tools\timestamp_converter.html:14
+#: .\templates\dev_tools\timestamp_converter.html:22
 #, fuzzy
 #| msgid "Unit Converter"
 msgid "Timestamp Converter"
-msgstr "Birim Dönüştürücü"
+msgstr "Zaman Damgası Dönüştürücü"
 
+#: .\templates\dev_tools\timestamp_converter.html:23
 msgid "Convert Unix timestamps to human readable dates and vice versa"
-msgstr ""
+msgstr "Unix zaman damgalarını insan tarafından okunabilir tarihlere ve tersine dönüştürün"
 
+#: .\templates\dev_tools\timestamp_converter.html:31
 msgid "Timestamp to Date"
-msgstr ""
+msgstr "Zaman Damgasından Tarihe"
 
+#: .\templates\dev_tools\timestamp_converter.html:34
 msgid "Enter Unix timestamp (e.g. 1640995200)"
-msgstr ""
+msgstr "Unix zaman damgasını girin (ör. 1640995200)"
 
+#: .\templates\dev_tools\timestamp_converter.html:35
 #, fuzzy
 #| msgid "Unit Converter"
 msgid "Convert to Date"
-msgstr "Birim Dönüştürücü"
+msgstr "Tarihe Dönüştür"
 
+#: .\templates\dev_tools\timestamp_converter.html:44
 msgid "Date to Timestamp"
-msgstr ""
+msgstr "Tarihten Zaman Damgasına"
 
+#: .\templates\dev_tools\timestamp_converter.html:48
 msgid "Convert to Timestamp"
-msgstr ""
+msgstr "Zaman Damgasına Dönüştür"
 
+#: .\templates\dev_tools\timestamp_converter.html:59
 msgid "Current Timestamp"
-msgstr ""
+msgstr "Geçerli Zaman Damgası"
 
+#: .\templates\dev_tools\timestamp_converter.html:62
 msgid "Current Unix Timestamp:"
-msgstr ""
+msgstr "Geçerli Unix Zaman Damgası:"
 
+#: .\templates\dev_tools\timestamp_converter.html:63
 msgid "Current Date:"
-msgstr ""
+msgstr "Geçerli Tarih:"
 
+#: .\templates\dev_tools\timestamp_converter.html:94
 msgid "Please enter timestamp!"
-msgstr ""
+msgstr "Lütfen zaman damgası girin!"
 
+#: .\templates\dev_tools\timestamp_converter.html:115
 msgid "Local Time:"
-msgstr ""
+msgstr "Yerel Saat:"
 
+#: .\templates\dev_tools\timestamp_converter.html:116
 msgid "UTC Time:"
-msgstr ""
+msgstr "UTC Saati:"
 
+#: .\templates\dev_tools\timestamp_converter.html:117
 msgid "ISO Format:"
-msgstr ""
+msgstr "ISO Formatı:"
 
+#: .\templates\dev_tools\timestamp_converter.html:131
 msgid "Please select date!"
-msgstr ""
+msgstr "Lütfen tarih seçin!"
 
+#: .\templates\dev_tools\timestamp_converter.html:152
 msgid "Unix Timestamp:"
-msgstr ""
+msgstr "Unix Zaman Damgası:"
 
+#: .\templates\dev_tools\url_encoder.html:14
 msgid "URL Encoder"
-msgstr ""
+msgstr "URL Kodlayıcı"
 
+#: .\templates\dev_tools\url_encoder.html:22
 msgid "URL Encoder/Decoder"
-msgstr ""
+msgstr "URL Kodlayıcı/Çözücü"
 
+#: .\templates\dev_tools\url_encoder.html:23
 #, fuzzy
 #| msgid "Resize images, change formats"
 msgid "Encode and decode URLs online for free"
-msgstr "Resim boyutlandır, format değiştir"
+msgstr "URL'leri çevrimiçi olarak ücretsiz kodlayın ve çözün"
 
+#: .\templates\dev_tools\url_encoder.html:34
 msgid "Enter URL to encode/decode..."
-msgstr ""
+msgstr "Kodlamak/çözmek için URL girin..."
 
+#: .\templates\horoscope_tools\home.html:25
 #, fuzzy
 #| msgid "Calculate zodiac sign and traits by birth date"
 msgid ""
 "Discover your zodiac sign, ascendant and personality traits with your birth "
 "date"
-msgstr "Doğum tarihi ile burç, yükselen ve özellikler"
+msgstr "Doğum tarihinizle burcunuzu, yükseleninizi ve kişilik özelliklerinizi keşfedin"
 
+#: .\templates\horoscope_tools\home.html:33
 msgid "Birth Information"
-msgstr ""
+msgstr "Doğum Bilgileri"
 
-msgid "Birth Date"
-msgstr ""
-
+#: .\templates\horoscope_tools\home.html:42
 msgid "Birth Time (Optional)"
-msgstr ""
+msgstr "Doğum Saati (İsteğe Bağlı)"
 
+#: .\templates\horoscope_tools\home.html:44
 msgid "Required to calculate ascendant"
-msgstr ""
+msgstr "Yükseleni hesaplamak için gerekli"
 
+#: .\templates\horoscope_tools\home.html:48
 msgid "Birth Place (Optional)"
-msgstr ""
+msgstr "Doğum Yeri (İsteğe Bağlı)"
 
+#: .\templates\horoscope_tools\home.html:49
 msgid "Istanbul"
-msgstr ""
+msgstr "İstanbul"
 
+#: .\templates\horoscope_tools\home.html:53
 msgid "Calculate Horoscope"
-msgstr ""
+msgstr "Burç Hesapla"
 
+#: .\templates\horoscope_tools\home.html:57
 msgid "Today"
-msgstr ""
+msgstr "Bugün"
 
+#: .\templates\horoscope_tools\home.html:58
 msgid "Clear"
-msgstr ""
+msgstr "Temizle"
 
+#: .\templates\horoscope_tools\home.html:68
 #, fuzzy
 #| msgid "Horoscope Calculator"
 msgid "Horoscope Analysis"
-msgstr "Burç Hesaplayıcı"
+msgstr "Burç Analizi"
 
+#: .\templates\horoscope_tools\home.html:76
 msgid "Element"
-msgstr ""
+msgstr "Element"
 
+#: .\templates\horoscope_tools\home.html:77
 msgid "Planet"
-msgstr ""
+msgstr "Gezegen"
 
+#: .\templates\horoscope_tools\home.html:80
 msgid "Personality Traits"
-msgstr ""
+msgstr "Kişilik Özellikleri"
 
+#: .\templates\horoscope_tools\home.html:92
 msgid "Traits"
-msgstr ""
+msgstr "Özellikler"
 
+#: .\templates\horoscope_tools\home.html:100
 msgid "Ascendant"
-msgstr ""
+msgstr "Yükselen"
 
+#: .\templates\horoscope_tools\home.html:101
 msgid "Age"
-msgstr ""
+msgstr "Yaş"
 
+#: .\templates\horoscope_tools\home.html:102
 msgid "Life Number"
-msgstr ""
+msgstr "Yaşam Numarası"
 
+#: .\templates\horoscope_tools\home.html:103
 msgid "Season"
-msgstr ""
+msgstr "Mevsim"
 
+#: .\templates\horoscope_tools\home.html:104
 msgid "Day of Birth"
-msgstr ""
+msgstr "Doğum Günü"
 
+#: .\templates\horoscope_tools\home.html:105
 msgid "Life Number Meaning"
-msgstr ""
+msgstr "Yaşam Numarası Anlamı"
 
+#: .\templates\image_tools\home.html:4
 #, fuzzy
 #| msgid "Developer Tools"
 msgid "Image Tools - AdreTools"
-msgstr "Geliştirici Araçları"
+msgstr "Görüntü Araçları - AdreTools"
 
+#: .\templates\image_tools\home.html:33
 msgid "Image Resizing"
-msgstr ""
+msgstr "Görüntü Yeniden Boyutlandırma"
 
+#: .\templates\image_tools\home.html:37 .\templates\image_tools\home.html:88
+#: .\templates\image_tools\home.html:134 .\templates\image_tools\home.html:173
 msgid "Select Image"
-msgstr ""
+msgstr "Görüntü Seç"
 
+#: .\templates\image_tools\home.html:42
 msgid "Width (px)"
-msgstr ""
+msgstr "Genişlik (px)"
 
+#: .\templates\image_tools\home.html:46
 msgid "Height (px)"
-msgstr ""
+msgstr "Yükseklik (px)"
 
+#: .\templates\image_tools\home.html:50
 #, python-format
 msgid "Percentage (%%)"
-msgstr ""
+msgstr "Yüzde (%%%%)"
 
+#: .\templates\image_tools\home.html:54
 msgid "Preset Sizes"
-msgstr ""
+msgstr "Ön Ayar Boyutlar"
 
+#: .\templates\image_tools\home.html:56
 msgid "Select"
-msgstr ""
+msgstr "Seç"
 
+#: .\templates\image_tools\home.html:61
 msgid "Instagram Square"
-msgstr ""
+msgstr "Instagram Kare"
 
+#: .\templates\image_tools\home.html:69
 msgid "Keep Aspect Ratio"
-msgstr ""
+msgstr "En-Boy Oranını Koru"
 
+#: .\templates\image_tools\home.html:74
 msgid "Resize and Download"
-msgstr ""
+msgstr "Yeniden Boyutlandır ve İndir"
 
+#: .\templates\image_tools\home.html:84
 msgid "Image Cropping"
-msgstr ""
+msgstr "Görüntü Kırpma"
 
+#: .\templates\image_tools\home.html:93 .\templates\image_tools\resize.html:100
 msgid "Aspect Ratio"
-msgstr ""
+msgstr "En-Boy Oranı"
 
+#: .\templates\image_tools\home.html:95
 msgid "Free"
-msgstr ""
+msgstr "Serbest"
 
+#: .\templates\image_tools\home.html:96
 msgid "Square"
-msgstr ""
+msgstr "Kare"
 
+#: .\templates\image_tools\home.html:97
 msgid "Wide"
-msgstr ""
+msgstr "Geniş"
 
+#: .\templates\image_tools\home.html:98
 msgid "Standard"
-msgstr ""
+msgstr "Standart"
 
+#: .\templates\image_tools\home.html:99
 msgid "Photo"
-msgstr ""
+msgstr "Fotoğraf"
 
+#: .\templates\image_tools\home.html:111 .\templates\svg_tools\home.html:105
 msgid "Width"
-msgstr ""
+msgstr "Genişlik"
 
+#: .\templates\image_tools\home.html:115 .\templates\svg_tools\home.html:111
 msgid "Height"
-msgstr ""
+msgstr "Yükseklik"
 
+#: .\templates\image_tools\home.html:120
 msgid "Crop and Download"
-msgstr ""
+msgstr "Kırp ve İndir"
 
+#: .\templates\image_tools\home.html:130
 #, fuzzy
 #| msgid "Image Tools"
 msgid "Image Rotation"
-msgstr "Resim Araçları"
+msgstr "Görüntü Döndürme"
 
+#: .\templates\image_tools\home.html:139
 msgid "Rotation Angle"
-msgstr ""
+msgstr "Döndürme Açısı"
 
+#: .\templates\image_tools\home.html:141
 msgid "Right"
-msgstr ""
+msgstr "Sağ"
 
+#: .\templates\image_tools\home.html:143
 msgid "Left"
-msgstr ""
+msgstr "Sol"
 
+#: .\templates\image_tools\home.html:144
 msgid "Custom Angle"
-msgstr ""
+msgstr "Özel Açı"
 
+#: .\templates\image_tools\home.html:148
 msgid "Custom Angle (degrees)"
-msgstr ""
+msgstr "Özel Açı (derece)"
 
+#: .\templates\image_tools\home.html:154
 msgid "Flip Horizontal"
-msgstr ""
+msgstr "Yatay Çevir"
 
+#: .\templates\image_tools\home.html:155
 msgid "Flip Vertical"
-msgstr ""
+msgstr "Dikey Çevir"
 
+#: .\templates\image_tools\home.html:159
 msgid "Rotate and Download"
-msgstr ""
+msgstr "Döndür ve İndir"
 
+#: .\templates\image_tools\home.html:169
 msgid "Format Conversion"
-msgstr ""
+msgstr "Format Dönüşümü"
 
+#: .\templates\image_tools\home.html:178
 msgid "Target Format"
-msgstr ""
+msgstr "Hedef Format"
 
+#: .\templates\image_tools\home.html:188
 msgid "Quality (JPG/WEBP)"
-msgstr ""
+msgstr "Kalite (JPG/WEBP)"
 
+#: .\templates\image_tools\home.html:190
 msgid "Quality"
-msgstr ""
+msgstr "Kalite"
 
+#: .\templates\image_tools\home.html:196
 msgid "Keep Transparency (PNG)"
-msgstr ""
+msgstr "Şeffaflığı Koru (PNG)"
 
+#: .\templates\image_tools\resize.html:4
 msgid "Free Image Resizer Online - Resize Photos - AdreTools"
-msgstr ""
+msgstr "Ücretsiz Çevrimiçi Görüntü Yeniden Boyutlandırıcı - Fotoğrafları Yeniden Boyutlandır - AdreTools"
 
+#: .\templates\image_tools\resize.html:41
 msgid "Free Image Resizer Online - Resize Photos"
-msgstr ""
+msgstr "Ücretsiz Çevrimiçi Görüntü Yeniden Boyutlandırıcı - Fotoğrafları Yeniden Boyutlandır"
 
+#: .\templates\image_tools\resize.html:42
 #, fuzzy
 #| msgid "Resize images, change formats"
 msgid "Resize images and photos online for free"
-msgstr "Resim boyutlandır, format değiştir"
+msgstr "Görüntüleri ve fotoğrafları çevrimiçi olarak ücretsiz yeniden boyutlandır"
 
+#: .\templates\image_tools\resize.html:51
 #, fuzzy
 #| msgid "Image Tools"
 msgid "Image Resizer Tool"
-msgstr "Resim Araçları"
+msgstr "Görüntü Yeniden Boyutlandırma Aracı"
 
+#: .\templates\image_tools\resize.html:55
 msgid "Choose Image to Resize"
-msgstr ""
+msgstr "Yeniden Boyutlandırılacak Görüntüyü Seç"
 
+#: .\templates\image_tools\resize.html:59
 msgid "How to Resize Images Online"
-msgstr ""
+msgstr "Görüntüler Çevrimiçi Olarak Nasıl Yeniden Boyutlandırılır"
 
+#: .\templates\image_tools\resize.html:64
 msgid "Select JPG, PNG or WEBP"
-msgstr ""
+msgstr "JPG, PNG veya WEBP Seç"
 
+#: .\templates\image_tools\resize.html:68
 msgid "Set Dimensions"
-msgstr ""
+msgstr "Boyutları Ayarla"
 
+#: .\templates\image_tools\resize.html:69
 msgid "Choose new width & height"
-msgstr ""
+msgstr "Yeni genişlik ve yüksekliği seç"
 
+#: .\templates\image_tools\resize.html:73
+#: .\templates\network_tools\speed_test.html:66
 msgid "Download"
-msgstr ""
+msgstr "İndir"
 
+#: .\templates\image_tools\resize.html:74
 msgid "Get resized image"
-msgstr ""
+msgstr "Yeniden boyutlandırılmış görüntüyü al"
 
+#: .\templates\image_tools\resize.html:87
 msgid "Free Image Resizer Features"
-msgstr ""
+msgstr "Ücretsiz Görüntü Yeniden Boyutlandırma Özellikleri"
 
+#: .\templates\image_tools\resize.html:91
 msgid "Free Image Resize"
-msgstr ""
+msgstr "Ücretsiz Görüntü Yeniden Boyutlandırma"
 
+#: .\templates\image_tools\resize.html:91
 msgid "No watermarks"
-msgstr ""
+msgstr "Filigran yok"
 
+#: .\templates\image_tools\resize.html:92
 msgid "Multiple Formats"
-msgstr ""
+msgstr "Çoklu Formatlar"
 
+#: .\templates\image_tools\resize.html:93
 msgid "Batch Resize"
-msgstr ""
+msgstr "Toplu Yeniden Boyutlandırma"
 
+#: .\templates\image_tools\resize.html:93
 msgid "Multiple images"
-msgstr ""
+msgstr "Birden fazla görüntü"
 
+#: .\templates\image_tools\resize.html:94
 msgid "Quality Control"
-msgstr ""
+msgstr "Kalite Kontrolü"
 
+#: .\templates\image_tools\resize.html:94
 msgid "Maintain image quality"
-msgstr ""
+msgstr "Görüntü kalitesini koru"
 
+#: .\templates\image_tools\resize.html:99
 msgid "Custom Dimensions"
-msgstr ""
+msgstr "Özel Boyutlar"
 
+#: .\templates\image_tools\resize.html:99
 msgid "Any size you want"
-msgstr ""
+msgstr "İstediğiniz herhangi bir boyut"
 
+#: .\templates\image_tools\resize.html:100
 msgid "Keep proportions"
-msgstr ""
+msgstr "Oranları koru"
 
+#: .\templates\image_tools\resize.html:101
 msgid "Instant Preview"
-msgstr ""
+msgstr "Anında Önizleme"
 
+#: .\templates\image_tools\resize.html:101
 msgid "See before download"
-msgstr ""
+msgstr "İndirmeden önce gör"
 
+#: .\templates\image_tools\resize.html:102
 msgid "No Registration"
-msgstr ""
+msgstr "Kayıt Gerekmez"
 
+#: .\templates\image_tools\resize.html:102
 msgid "Use immediately"
-msgstr ""
+msgstr "Hemen kullan"
 
+#: .\templates\network_tools\domain_checker.html:15
 msgid "Online Domain Checker - Free"
-msgstr ""
+msgstr "Çevrimiçi Alan Adı Kontrol Aracı - Ücretsiz"
 
+#: .\templates\network_tools\domain_checker.html:16
+#: .\templates\network_tools\home.html:52
 msgid "Check domain information"
-msgstr ""
+msgstr "Alan adı bilgilerini kontrol et"
 
+#: .\templates\network_tools\domain_checker.html:25
 msgid "Domain Query"
-msgstr ""
+msgstr "Alan Adı Sorgusu"
 
+#: .\templates\network_tools\domain_checker.html:29
 msgid "Domain Address"
-msgstr ""
+msgstr "Alan Adı Adresi"
 
+#: .\templates\network_tools\domain_checker.html:30
+#: .\templates\network_tools\ping_test.html:30
+#: .\templates\network_tools\port_scanner.html:30
 msgid "e.g: google.com"
-msgstr ""
+msgstr "ör. google.com"
 
+#: .\templates\network_tools\domain_checker.html:35
 msgid "Check Domain"
-msgstr ""
+msgstr "Alan Adını Kontrol Et"
 
+#: .\templates\network_tools\domain_checker.html:51
 msgid "Please enter a domain address!"
-msgstr ""
+msgstr "Lütfen bir alan adı adresi girin!"
 
+#: .\templates\network_tools\domain_checker.html:67
 msgid "Domain"
-msgstr ""
+msgstr "Alan Adı"
 
+#: .\templates\network_tools\domain_checker.html:68
 msgid "Status"
-msgstr ""
+msgstr "Durum"
 
+#: .\templates\network_tools\domain_checker.html:69
 msgid "Not found"
-msgstr ""
+msgstr "Bulunamadı"
 
+#: .\templates\network_tools\domain_checker.html:74
+#: .\templates\network_tools\ip_lookup.html:131
+#: .\templates\network_tools\port_scanner.html:80
 msgid "Error"
-msgstr ""
+msgstr "Hata"
 
+#: .\templates\network_tools\home.html:4
 msgid "Network Tools - Online Network Tools - AdreTools"
-msgstr ""
+msgstr "Ağ Araçları - Çevrimiçi Ağ Araçları - AdreTools"
 
+#: .\templates\network_tools\home.html:31
 #, fuzzy
 #| msgid "IP lookup, domain check, port scan"
 msgid "IP lookup, domain checking and network tests"
-msgstr "IP sorgula, domain kontrol, port tara"
+msgstr "IP sorgulama, alan adı kontrolü ve ağ testleri"
 
+#: .\templates\network_tools\home.html:41
+#: .\templates\network_tools\home.html:98
 msgid "IP Lookup"
-msgstr ""
+msgstr "IP Sorgulama"
 
+#: .\templates\network_tools\home.html:42
 msgid "Query IP address information"
-msgstr ""
+msgstr "IP adresi bilgilerini sorgula"
 
+#: .\templates\network_tools\home.html:51
+#: .\templates\network_tools\home.html:101
 msgid "Domain Checker"
-msgstr ""
+msgstr "Alan Adı Kontrol Aracı"
 
+#: .\templates\network_tools\home.html:61
+#: .\templates\network_tools\home.html:105
 msgid "Port Scanner"
-msgstr ""
+msgstr "Port Tarayıcı"
 
+#: .\templates\network_tools\home.html:62
+#: .\templates\network_tools\port_scanner.html:16
 msgid "Scan open ports"
-msgstr ""
+msgstr "Açık portları tara"
 
+#: .\templates\network_tools\home.html:71
+#: .\templates\network_tools\home.html:108
+#: .\templates\network_tools\ping_test.html:25
 msgid "Ping Test"
-msgstr ""
+msgstr "Ping Testi"
 
+#: .\templates\network_tools\home.html:72
+#: .\templates\network_tools\ping_test.html:16
 msgid "Test connection speed"
-msgstr ""
+msgstr "Bağlantı hızını test et"
 
+#: .\templates\network_tools\home.html:81
 msgid "Speed Test"
-msgstr ""
+msgstr "Hız Testi"
 
+#: .\templates\network_tools\home.html:82
 msgid "Measure internet speed"
-msgstr ""
+msgstr "İnternet hızını ölç"
 
+#: .\templates\network_tools\home.html:93
 #, fuzzy
 #| msgid "Network Tools"
 msgid "About Network Tools"
-msgstr "Ağ Araçları"
+msgstr "Ağ Araçları Hakkında"
 
+#: .\templates\network_tools\home.html:94
 msgid ""
 "With AdreTools network tools, you can query IP addresses, check domain "
 "information, perform port scanning and conduct ping tests."
-msgstr ""
+msgstr "AdreTools ağ araçlarıyla IP adreslerini sorgulayabilir, alan adı bilgilerini kontrol edebilir, port tarama yapabilir ve ping testleri gerçekleştirebilirsiniz."
 
+#: .\templates\network_tools\home.html:99
 msgid ""
 "Learn the geographical location, ISP information and details of the IP "
 "address."
-msgstr ""
+msgstr "IP adresinin coğrafi konumunu, ISS bilgilerini ve detaylarını öğrenin."
 
+#: .\templates\network_tools\home.html:102
 msgid "Check the DNS records and whois information of the domain address."
-msgstr ""
+msgstr "Alan adı adresinin DNS kayıtlarını ve whois bilgilerini kontrol edin."
 
+#: .\templates\network_tools\home.html:106
 msgid "Perform security checks by scanning open ports of IP address."
-msgstr ""
+msgstr "IP adresinin açık portlarını tarayarak güvenlik kontrolleri gerçekleştirin."
 
+#: .\templates\network_tools\home.html:109
 msgid "Test connection quality by pinging website or IP address."
-msgstr ""
+msgstr "Web sitesine veya IP adresine ping atarak bağlantı kalitesini test edin."
 
+#: .\templates\network_tools\ip_lookup.html:31
 msgid "Online IP Lookup - Free"
-msgstr ""
+msgstr "Çevrimiçi IP Sorgulama - Ücretsiz"
 
+#: .\templates\network_tools\ip_lookup.html:32
 msgid "Query IP address location, ISP information and details"
-msgstr ""
+msgstr "IP adresi konumunu, ISS bilgilerini ve detaylarını sorgula"
 
+#: .\templates\network_tools\ip_lookup.html:41
 msgid "Query IP Address"
-msgstr ""
+msgstr "IP Adresi Sorgula"
 
+#: .\templates\network_tools\ip_lookup.html:45
 msgid "IP Address"
-msgstr ""
+msgstr "IP Adresi"
 
+#: .\templates\network_tools\ip_lookup.html:46
 msgid "e.g: 8.8.8.8"
-msgstr ""
+msgstr "ör. 8.8.8.8"
 
+#: .\templates\network_tools\ip_lookup.html:47
 msgid "Enter IP address in IPv4 format"
-msgstr ""
+msgstr "IP adresini IPv4 formatında girin"
 
+#: .\templates\network_tools\ip_lookup.html:52
 msgid "Lookup IP"
-msgstr ""
+msgstr "IP Sorgula"
 
+#: .\templates\network_tools\ip_lookup.html:58
 msgid "Querying..."
-msgstr ""
+msgstr "Sorgulanıyor..."
 
+#: .\templates\network_tools\ip_lookup.html:60
 msgid "Querying IP information..."
-msgstr ""
+msgstr "IP bilgileri sorgulanıyor..."
 
+#: .\templates\network_tools\ip_lookup.html:73
 msgid "What is IP Lookup?"
-msgstr ""
+msgstr "IP Sorgulama Nedir?"
 
+#: .\templates\network_tools\ip_lookup.html:74
 msgid ""
 "IP Lookup is a tool that allows you to learn the geographical location, "
 "internet service provider (ISP) and other technical information of an IP "
 "address."
-msgstr ""
+msgstr "IP Sorgulama, bir IP adresinin coğrafi konumunu, internet servis sağlayıcısını (ISS) ve diğer teknik bilgilerini öğrenmenizi sağlayan bir araçtır."
 
+#: .\templates\network_tools\ip_lookup.html:76
 msgid "Features:"
-msgstr ""
+msgstr "Özellikler:"
 
+#: .\templates\network_tools\ip_lookup.html:78
 msgid "Geographical location (country, city, region)"
-msgstr ""
+msgstr "Coğrafi konum (ülke, şehir, bölge)"
 
+#: .\templates\network_tools\ip_lookup.html:79
 msgid "ISP and organization information"
-msgstr ""
+msgstr "ISS ve organizasyon bilgileri"
 
+#: .\templates\network_tools\ip_lookup.html:80
 msgid "Time zone information"
-msgstr ""
+msgstr "Zaman dilimi bilgileri"
 
+#: .\templates\network_tools\ip_lookup.html:81
 msgid "Latitude and longitude coordinates"
-msgstr ""
+msgstr "Enlem ve boylam koordinatları"
 
+#: .\templates\network_tools\ip_lookup.html:82
 msgid "Fast and reliable results"
-msgstr ""
+msgstr "Hızlı ve güvenilir sonuçlar"
 
+#: .\templates\network_tools\ip_lookup.html:103
 msgid "Please enter an IP address!"
-msgstr ""
+msgstr "Lütfen bir IP adresi girin!"
 
+#: .\templates\network_tools\ip_lookup.html:110
 msgid "Invalid IP address format!"
-msgstr ""
+msgstr "Geçersiz IP adresi formatı!"
 
+#: .\templates\network_tools\ping_test.html:15
 msgid "Online Ping Test - Free"
-msgstr ""
+msgstr "Çevrimiçi Ping Testi - Ücretsiz"
 
+#: .\templates\network_tools\ping_test.html:29
+#: .\templates\network_tools\port_scanner.html:29
 msgid "Target IP/Domain"
-msgstr ""
+msgstr "Hedef IP/Alan Adı"
 
+#: .\templates\network_tools\ping_test.html:34
 msgid "Packet Count"
-msgstr ""
+msgstr "Paket Sayısı"
 
+#: .\templates\network_tools\ping_test.html:36
+#: .\templates\network_tools\ping_test.html:37
+#: .\templates\network_tools\ping_test.html:38
 msgid "packets"
-msgstr ""
+msgstr "paket"
 
+#: .\templates\network_tools\ping_test.html:44
 msgid "Start Ping"
-msgstr ""
+msgstr "Ping Başlat"
 
+#: .\templates\network_tools\ping_test.html:61
+#: .\templates\network_tools\port_scanner.html:57
 msgid "Please enter target IP/domain!"
-msgstr ""
+msgstr "Lütfen hedef IP/alan adı girin!"
 
+#: .\templates\network_tools\ping_test.html:86
 msgid "Ping failed"
-msgstr ""
+msgstr "Ping başarısız"
 
+#: .\templates\network_tools\ping_test.html:86
 msgid "Unknown error"
-msgstr ""
+msgstr "Bilinmeyen hata"
 
+#: .\templates\network_tools\port_scanner.html:15
 msgid "Online Port Scanner - Free"
-msgstr ""
+msgstr "Çevrimiçi Port Tarayıcı - Ücretsiz"
 
+#: .\templates\network_tools\port_scanner.html:25
 msgid "Port Scanning"
-msgstr ""
+msgstr "Port Tarama"
 
+#: .\templates\network_tools\port_scanner.html:34
 msgid "Ports"
-msgstr ""
+msgstr "Portlar"
 
+#: .\templates\network_tools\port_scanner.html:35
 msgid "80,443,22 or 80-100"
-msgstr ""
+msgstr "80,443,22 veya 80-100"
 
+#: .\templates\network_tools\port_scanner.html:40
 msgid "Scan Ports"
-msgstr ""
+msgstr "Portları Tara"
 
+#: .\templates\network_tools\speed_test.html:41
 msgid "Online Speed Test - Free"
-msgstr ""
+msgstr "Çevrimiçi Hız Testi - Ücretsiz"
 
+#: .\templates\network_tools\speed_test.html:42
 msgid "Test your internet connection speed"
-msgstr ""
+msgstr "İnternet bağlantı hızınızı test edin"
 
+#: .\templates\network_tools\speed_test.html:51
 msgid "Internet Speed Test"
-msgstr ""
+msgstr "İnternet Hız Testi"
 
+#: .\templates\network_tools\speed_test.html:74
 msgid "Upload"
-msgstr ""
+msgstr "Yükleme"
 
+#: .\templates\network_tools\speed_test.html:82
+#: .\templates\network_tools\speed_test.html:124
 msgid "Ping"
-msgstr ""
+msgstr "Ping"
 
+#: .\templates\network_tools\speed_test.html:91
 msgid "Start Speed Test"
-msgstr ""
+msgstr "Hız Testini Başlat"
 
+#: .\templates\network_tools\speed_test.html:96
 msgid "Testing..."
-msgstr ""
+msgstr "Test ediliyor..."
 
+#: .\templates\network_tools\speed_test.html:111
 msgid "About Speed Test"
-msgstr ""
+msgstr "Hız Testi Hakkında"
 
+#: .\templates\network_tools\speed_test.html:112
 msgid ""
 "Internet speed test measures your connection's download and upload speeds."
-msgstr ""
+msgstr "İnternet hız testi, bağlantınızın indirme ve yükleme hızlarını ölçer."
 
+#: .\templates\network_tools\speed_test.html:116
 msgid "Download Speed"
-msgstr ""
+msgstr "İndirme Hızı"
 
+#: .\templates\network_tools\speed_test.html:117
 msgid ""
 "Your data download speed from internet. Important for video streaming, file "
 "downloads."
-msgstr ""
+msgstr "İnternetten veri indirme hızınız. Video akışı ve dosya indirmeleri için önemli."
 
+#: .\templates\network_tools\speed_test.html:120
 msgid "Upload Speed"
-msgstr ""
+msgstr "Yükleme Hızı"
 
+#: .\templates\network_tools\speed_test.html:121
 msgid ""
 "Your data upload speed to internet. Important for video conferencing, file "
 "sharing."
-msgstr ""
+msgstr "İnternete veri yükleme hızınız. Video konferans ve dosya paylaşımı için önemli."
 
+#: .\templates\network_tools\speed_test.html:125
 msgid "Time to reach server. Critical for online games and live streaming."
-msgstr ""
+msgstr "Sunucuya ulaşma süresi. Çevrimiçi oyunlar ve canlı yayın için kritik."
 
+#: .\templates\network_tools\speed_test.html:151
 msgid "Running ping test..."
-msgstr ""
+msgstr "Ping testi çalıştırılıyor..."
 
+#: .\templates\network_tools\speed_test.html:158
 msgid "Measuring download speed..."
-msgstr ""
+msgstr "İndirme hızı ölçülüyor..."
 
+#: .\templates\network_tools\speed_test.html:165
 msgid "Measuring upload speed..."
-msgstr ""
+msgstr "Yükleme hızı ölçülüyor..."
 
+#: .\templates\network_tools\speed_test.html:171
 msgid "Test completed!"
-msgstr ""
+msgstr "Test tamamlandı!"
 
+#: .\templates\network_tools\speed_test.html:179
 msgid "Test error"
-msgstr ""
+msgstr "Test hatası"
 
+#: .\templates\network_tools\speed_test.html:194
 msgid "Test failed"
-msgstr ""
+msgstr "Test başarısız"
 
+#: .\templates\password_tools\home.html:25
 #, fuzzy
 #| msgid "Generate strong passwords and security check"
 msgid "Generate strong passwords and perform security checks"
-msgstr "Güçlü şifre oluştur ve güvenlik kontrolü"
+msgstr "Güçlü şifreler oluştur ve güvenlik kontrolleri yap"
 
+#: .\templates\password_tools\home.html:33
+#: .\templates\password_tools\home.html:65
 msgid "Generate Password"
-msgstr ""
+msgstr "Şifre Oluştur"
 
+#: .\templates\password_tools\home.html:37
 #, fuzzy
 #| msgid "Password Generator"
 msgid "Password Length"
-msgstr "Şifre Üretici"
+msgstr "Şifre Uzunluğu"
 
+#: .\templates\password_tools\home.html:44
 msgid "Uppercase Letters (A-Z)"
-msgstr ""
+msgstr "Büyük Harfler (A-Z)"
 
+#: .\templates\password_tools\home.html:48
 msgid "Lowercase Letters (a-z)"
-msgstr ""
+msgstr "Küçük Harfler (a-z)"
 
+#: .\templates\password_tools\home.html:52
 msgid "Numbers (0-9)"
-msgstr ""
+msgstr "Sayılar (0-9)"
 
+#: .\templates\password_tools\home.html:56
 #, python-format
 msgid "Symbols (!@#$%%^&*)"
-msgstr ""
+msgstr "Semboller (!@#$%%%%^&*)"
 
+#: .\templates\password_tools\home.html:60
 msgid "Exclude Similar Characters (il1Lo0O)"
-msgstr ""
+msgstr "Benzer Karakterleri Hariç Tut (il1Lo0O)"
 
+#: .\templates\password_tools\home.html:73
 msgid "Password Security Check"
-msgstr ""
+msgstr "Şifre Güvenlik Kontrolü"
 
+#: .\templates\password_tools\home.html:77
 #, fuzzy
 #| msgid "Password Generator"
 msgid "Password to Check"
-msgstr "Şifre Üretici"
+msgstr "Kontrol Edilecek Şifre"
 
+#: .\templates\password_tools\home.html:78
 msgid "Enter your password"
-msgstr ""
+msgstr "Şifrenizi girin"
 
+#: .\templates\password_tools\home.html:79
 msgid "Your password is not sent to server, only analyzed"
-msgstr ""
+msgstr "Şifreniz sunucuya gönderilmez, yalnızca analiz edilir"
 
+#: .\templates\password_tools\home.html:82
 msgid "Perform Security Check"
-msgstr ""
+msgstr "Güvenlik Kontrolü Yap"
 
+#: .\templates\password_tools\home.html:93
 msgid "Generated Password"
-msgstr ""
+msgstr "Oluşturulan Şifre"
 
+#: .\templates\password_tools\home.html:97 .\templates\qr_tools\home.html:70
 #, fuzzy
 #| msgid "Password Generator"
 msgid "Password"
-msgstr "Şifre Üretici"
+msgstr "Şifre"
 
+#: .\templates\password_tools\home.html:112
+#: .\templates\password_tools\home.html:135
 msgid "Security Score"
-msgstr ""
+msgstr "Güvenlik Puanı"
 
+#: .\templates\password_tools\home.html:123
 msgid "Generate New Password"
-msgstr ""
+msgstr "Yeni Şifre Oluştur"
 
+#: .\templates\password_tools\home.html:131
 msgid "Security Analysis"
-msgstr ""
+msgstr "Güvenlik Analizi"
 
+#: .\templates\password_tools\home.html:146
 #, fuzzy
 #| msgid "Password Generator"
 msgid "Password Details"
-msgstr "Şifre Üretici"
+msgstr "Şifre Detayları"
 
+#: .\templates\password_tools\home.html:151
 msgid "Suggestions"
-msgstr ""
+msgstr "Öneriler"
 
+#: .\templates\pdf_tools\home.html:4
 #, fuzzy
 #| msgid "AdreTools - Free Online Tools: PDF, Image, QR Code, Network Tools"
 msgid "PDF Tools - Free Online PDF Split, Merge, Convert - AdreTools"
-msgstr "AdreTools - Ücretsiz Online Araçlar: PDF, Resim, QR Kod, Ağ Araçları"
+msgstr "PDF Araçları - Ücretsiz Çevrimiçi PDF Ayırma, Birleştirme, Dönüştürme - AdreTools"
 
+#: .\templates\pdf_tools\home.html:69
 msgid "Split PDF"
-msgstr ""
+msgstr "PDF'yi Ayır"
 
+#: .\templates\pdf_tools\home.html:73
 msgid "Select and Split PDF"
-msgstr ""
+msgstr "PDF Seç ve Ayır"
 
+#: .\templates\pdf_tools\home.html:84
 msgid "Merge PDF"
-msgstr ""
+msgstr "PDF Birleştir"
 
+#: .\templates\pdf_tools\home.html:89
 msgid "Add PDF"
-msgstr ""
+msgstr "PDF Ekle"
 
+#: .\templates\pdf_tools\home.html:90 .\templates\pdf_tools\home.html:132
 msgid "Merge"
-msgstr ""
+msgstr "Birleştir"
 
+#: .\templates\pdf_tools\home.html:103
 msgid "Multi-Page Split"
-msgstr ""
+msgstr "Çok Sayfalı Ayırma"
 
+#: .\templates\pdf_tools\home.html:108 .\templates\pdf_tools\home.html:150
 msgid "Select PDF"
-msgstr ""
+msgstr "PDF Seç"
 
+#: .\templates\pdf_tools\home.html:113
 msgid "Add Range"
-msgstr ""
+msgstr "Aralık Ekle"
 
+#: .\templates\pdf_tools\home.html:114
 msgid "Split and Download"
-msgstr ""
+msgstr "Ayır ve İndir"
 
+#: .\templates\pdf_tools\home.html:126
 msgid "Merge Folder"
-msgstr ""
+msgstr "Klasör Birleştir"
 
+#: .\templates\pdf_tools\home.html:131
 msgid "Add Folder"
-msgstr ""
+msgstr "Klasör Ekle"
 
+#: .\templates\pdf_tools\home.html:145
 msgid "Interval Page Split"
-msgstr ""
+msgstr "Aralıklı Sayfa Ayırma"
 
+#: .\templates\pdf_tools\home.html:155
 msgid "How many pages to split?"
-msgstr ""
+msgstr "Kaç sayfa ayrılacak?"
 
+#: .\templates\pdf_tools\home.html:156
 msgid "e.g: 3"
-msgstr ""
+msgstr "ör. 3"
 
+#: .\templates\pdf_tools\home.html:159
 msgid "Start page"
-msgstr ""
+msgstr "Başlangıç sayfası"
 
+#: .\templates\pdf_tools\home.html:160
 msgid "e.g: 1"
-msgstr ""
+msgstr "ör. 1"
 
+#: .\templates\pdf_tools\home.html:164
 msgid "Split by Interval"
-msgstr ""
+msgstr "Aralıklarla Ayır"
 
+#: .\templates\pdf_tools\home.html:176
 msgid "Convert PDF"
-msgstr ""
+msgstr "PDF Dönüştür"
 
+#: .\templates\pdf_tools\home.html:183 .\templates\pdf_tools\home.html:187
+#: .\templates\pdf_tools\home.html:191
 #, fuzzy
 #| msgid "Unit Converter"
 msgid "Convert"
-msgstr "Birim Dönüştürücü"
+msgstr "Dönüştür"
 
+#: .\templates\pdf_tools\home.html:204
 msgid "PDF Security"
-msgstr ""
+msgstr "PDF Güvenliği"
 
+#: .\templates\pdf_tools\home.html:211
+#, fuzzy
+#| msgid "Edit SVG files"
+msgid "Step 1: Select PDF File"
+msgstr "Adım 1: PDF Dosyası Seç"
+
+#: .\templates\pdf_tools\home.html:213
+#, fuzzy
+#| msgid "Edit SVG files"
+msgid "Select PDF File"
+msgstr "PDF Dosyası Seç"
+
+#: .\templates\pdf_tools\home.html:222
+msgid "Step 2: Choose Security Options"
+msgstr "Adım 2: Güvenlik Seçeneklerini Seç"
+
+#: .\templates\pdf_tools\home.html:231
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Password Protection"
+msgstr "Şifre Koruması"
+
+#: .\templates\pdf_tools\home.html:232
+msgid "Add password to protect your PDF"
+msgstr "PDF'nizi korumak için şifre ekleyin"
+
+#: .\templates\pdf_tools\home.html:234
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Add Password"
+msgstr "Şifre Ekle"
+
+#: .\templates\pdf_tools\home.html:245
+msgid "Watermark"
+msgstr "Filigran"
+
+#: .\templates\pdf_tools\home.html:246
+msgid "Add text watermark to your PDF"
+msgstr "PDF'nize metin filigranı ekleyin"
+
+#: .\templates\pdf_tools\home.html:248 .\templates\pdf_tools\home.html:335
+msgid "Add Watermark"
+msgstr "Filigran Ekle"
+
+#: .\templates\pdf_tools\home.html:259
+msgid "Password Protection Settings"
+msgstr "Şifre Koruması Ayarları"
+
+#: .\templates\pdf_tools\home.html:261 .\templates\pdf_tools\home.html:292
+msgid "Back"
+msgstr "Geri"
+
+#: .\templates\pdf_tools\home.html:268
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Enter Password"
+msgstr "Şifre Gir"
+
+#: .\templates\pdf_tools\home.html:269
+msgid "Enter a strong password"
+msgstr "Güçlü bir şifre girin"
+
+#: .\templates\pdf_tools\home.html:274
+#, fuzzy
+#| msgid "Password Generator"
+msgid "Confirm Password"
+msgstr "Şifreyi Onayla"
+
+#: .\templates\pdf_tools\home.html:275
+msgid "Confirm your password"
+msgstr "Şifrenizi onaylayın"
+
+#: .\templates\pdf_tools\home.html:280
+msgid "Encrypt PDF"
+msgstr "PDF Şifrele"
+
+#: .\templates\pdf_tools\home.html:290
+msgid "Watermark Settings"
+msgstr "Filigran Ayarları"
+
+#: .\templates\pdf_tools\home.html:299
+msgid "Watermark Text"
+msgstr "Filigran Metni"
+
+#: .\templates\pdf_tools\home.html:300
+msgid "e.g: CONFIDENTIAL, DRAFT, Company Name"
+msgstr "ör. GİZLİ, TASLAK, Şirket Adı"
+
+#: .\templates\pdf_tools\home.html:307
+msgid "Center"
+msgstr "Merkez"
+
+#: .\templates\pdf_tools\home.html:308
+msgid "Top Left"
+msgstr "Sol Üst"
+
+#: .\templates\pdf_tools\home.html:309
+msgid "Top Right"
+msgstr "Sağ Üst"
+
+#: .\templates\pdf_tools\home.html:310
+msgid "Bottom Left"
+msgstr "Sol Alt"
+
+#: .\templates\pdf_tools\home.html:311
+msgid "Bottom Right"
+msgstr "Sağ Alt"
+
+#: .\templates\pdf_tools\home.html:315
+msgid "Opacity"
+msgstr "Opaklık"
+
+#: .\templates\pdf_tools\home.html:317
+msgid "Light"
+msgstr "Hafif"
+
+#: .\templates\pdf_tools\home.html:318 .\templates\pdf_tools\home.html:326
+msgid "Medium"
+msgstr "Orta"
+
+#: .\templates\pdf_tools\home.html:319
+msgid "Dark"
+msgstr "Koyu"
+
+#: .\templates\pdf_tools\home.html:323 .\templates\qr_tools\home.html:156
+msgid "Size"
+msgstr "Boyut"
+
+#: .\templates\pdf_tools\home.html:325
+msgid "Small"
+msgstr "Küçük"
+
+#: .\templates\pdf_tools\home.html:327
+msgid "Large"
+msgstr "Büyük"
+
+#: .\templates\pdf_tools\home.html:328
+msgid "Extra Large"
+msgstr "Ekstra Büyük"
+
+#: .\templates\qr_tools\home.html:4
 #, fuzzy
 #| msgid "Developer Tools"
 msgid "QR & Barcode Tools - AdreTools"
-msgstr "Geliştirici Araçları"
+msgstr "QR ve Barkod Araçları - AdreTools"
 
+#: .\templates\qr_tools\home.html:9
 #, fuzzy
 #| msgid "QR & Barcode"
 msgid "QR & Barcode Tools"
-msgstr "QR & Barkod"
+msgstr "QR ve Barkod Araçları"
 
+#: .\templates\qr_tools\home.html:33
 #, fuzzy
 #| msgid "Generate QR codes, read barcodes"
 msgid "Generate QR Code"
-msgstr "QR kod oluştur, barkod okut"
+msgstr "QR Kod Oluştur"
 
+#: .\templates\qr_tools\home.html:39
 msgid "QR Type"
-msgstr ""
+msgstr "QR Türü"
 
+#: .\templates\qr_tools\home.html:42
 msgid "URL/Link"
-msgstr ""
+msgstr "URL/Bağlantı"
 
+#: .\templates\qr_tools\home.html:43
 msgid "WiFi"
-msgstr ""
+msgstr "WiFi"
 
+#: .\templates\qr_tools\home.html:44
 msgid "SMS"
-msgstr ""
+msgstr "SMS"
 
+#: .\templates\qr_tools\home.html:45 .\templates\qr_tools\home.html:142
 msgid "Email"
-msgstr ""
+msgstr "E-posta"
 
+#: .\templates\qr_tools\home.html:46 .\templates\qr_tools\home.html:138
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
+#: .\templates\qr_tools\home.html:47
 msgid "vCard (Contact)"
-msgstr ""
+msgstr "vCard (Kişi)"
 
+#: .\templates\qr_tools\home.html:57
 msgid "Content"
-msgstr ""
+msgstr "İçerik"
 
+#: .\templates\qr_tools\home.html:58
 msgid "Enter QR code content..."
-msgstr ""
+msgstr "QR kod içeriğini girin..."
 
+#: .\templates\qr_tools\home.html:66
 msgid "Network Name (SSID)"
-msgstr ""
+msgstr "Ağ Adı (SSID)"
 
+#: .\templates\qr_tools\home.html:67
 msgid "WiFi network name"
-msgstr ""
+msgstr "WiFi ağ adı"
 
+#: .\templates\qr_tools\home.html:71
 msgid "WiFi password"
-msgstr ""
+msgstr "WiFi şifresi"
 
+#: .\templates\qr_tools\home.html:75
 msgid "Security Type"
-msgstr ""
+msgstr "Güvenlik Türü"
 
+#: .\templates\qr_tools\home.html:79
 msgid "No Password"
-msgstr ""
+msgstr "Şifre Yok"
 
+#: .\templates\qr_tools\home.html:88 .\templates\qr_tools\home.html:119
 msgid "Phone Number"
-msgstr ""
+msgstr "Telefon Numarası"
 
+#: .\templates\qr_tools\home.html:92 .\templates\qr_tools\home.html:110
 msgid "Message"
-msgstr ""
+msgstr "Mesaj"
 
+#: .\templates\qr_tools\home.html:93
 msgid "SMS message"
-msgstr ""
+msgstr "SMS mesajı"
 
+#: .\templates\qr_tools\home.html:101
 msgid "Email Address"
-msgstr ""
+msgstr "E-posta Adresi"
 
+#: .\templates\qr_tools\home.html:102 .\templates\qr_tools\home.html:143
 msgid "example@email.com"
-msgstr ""
+msgstr "ornek@email.com"
 
+#: .\templates\qr_tools\home.html:106
 msgid "Subject"
-msgstr ""
+msgstr "Konu"
 
+#: .\templates\qr_tools\home.html:107
 msgid "Email subject"
-msgstr ""
+msgstr "E-posta konusu"
 
+#: .\templates\qr_tools\home.html:111
 msgid "Email content"
-msgstr ""
+msgstr "E-posta içeriği"
 
+#: .\templates\qr_tools\home.html:128 .\templates\qr_tools\home.html:129
 msgid "First Name"
-msgstr ""
+msgstr "Ad"
 
+#: .\templates\qr_tools\home.html:132 .\templates\qr_tools\home.html:133
 msgid "Last Name"
-msgstr ""
+msgstr "Soyad"
 
+#: .\templates\qr_tools\home.html:147
 msgid "Company"
-msgstr ""
+msgstr "Şirket"
 
+#: .\templates\qr_tools\home.html:148
 msgid "Company name"
-msgstr ""
+msgstr "Şirket adı"
 
-msgid "Size"
-msgstr ""
-
+#: .\templates\qr_tools\home.html:158
 msgid "Small (200px)"
-msgstr ""
+msgstr "Küçük (200px)"
 
+#: .\templates\qr_tools\home.html:159
 msgid "Medium (400px)"
-msgstr ""
+msgstr "Orta (400px)"
 
+#: .\templates\qr_tools\home.html:160
 msgid "Large (600px)"
-msgstr ""
+msgstr "Büyük (600px)"
 
+#: .\templates\qr_tools\home.html:161
 msgid "Extra Large (800px)"
-msgstr ""
+msgstr "Ekstra Büyük (800px)"
 
+#: .\templates\qr_tools\home.html:165
 msgid "Error Correction"
-msgstr ""
+msgstr "Hata Düzeltme"
 
+#: .\templates\qr_tools\home.html:167
 #, python-format
 msgid "Low (7%%)"
-msgstr ""
+msgstr "Düşük (%%7)"
 
+#: .\templates\qr_tools\home.html:168
 #, python-format
-msgid "Medium (15%%)"
-msgstr ""
+msgid "Medium (15%)"
+msgstr "Orta (%15)"
 
+#: .\templates\qr_tools\home.html:169
 #, python-format
-msgid "High (25%%)"
-msgstr ""
+msgid "High (25%)"
+msgstr "Yüksek (%25)"
 
+#: .\templates\qr_tools\home.html:170
 #, python-format
-msgid "Very High (30%%)"
-msgstr ""
+msgid "Very High (30%)"
+msgstr "Çok Yüksek (%30)"
 
+#: .\templates\qr_tools\home.html:174
 msgid "Foreground Color"
-msgstr ""
+msgstr "Ön Plan Rengi"
 
+#: .\templates\qr_tools\home.html:178
 msgid "Background Color"
-msgstr ""
+msgstr "Arka Plan Rengi"
 
+#: .\templates\qr_tools\home.html:186
 msgid "QR Shape"
-msgstr ""
+msgstr "QR Şekli"
 
+#: .\templates\random_tools\home.html:4
+msgid "Random Tools - Number Generator, Lucky Wheel, Name Picker - AdreTools"
+msgstr "Rastgele Araçlar - Sayı Üretici, Şans Çarkı, İsim Seçici - AdreTools"
+
+#: .\templates\random_tools\home.html:152
+msgid "Professional random generators and lottery systems"
+msgstr "Profesyonel rastgele üreticiler ve çekiliş sistemleri"
+
+#: .\templates\random_tools\home.html:166
+#, fuzzy
+#| msgid "Text Tools"
+msgid "Use Tool"
+msgstr "Aracı Kullan"
+
+#: .\templates\random_tools\home.html:185
+msgid "Minimum"
+msgstr "Minimum"
+
+#: .\templates\random_tools\home.html:189
+msgid "Maximum"
+msgstr "Maksimum"
+
+#: .\templates\random_tools\home.html:194
+msgid "How many numbers?"
+msgstr "Kaç sayı?"
+
+#: .\templates\random_tools\home.html:199
+#, fuzzy
+#| msgid "Generate QR codes, read barcodes"
+msgid "Generate"
+msgstr "Oluştur"
+
+#: .\templates\random_tools\home.html:219
+msgid "Add Options"
+msgstr "Seçenek Ekle"
+
+#: .\templates\random_tools\home.html:221
+msgid "Enter option"
+msgstr "Seçenek gir"
+
+#: .\templates\random_tools\home.html:222
+#: .\templates\random_tools\home.html:304
+msgid "Add"
+msgstr "Ekle"
+
+#: .\templates\random_tools\home.html:226
+msgid "Spin Duration (seconds)"
+msgstr "Dönüş Süresi (saniye)"
+
+#: .\templates\random_tools\home.html:231
+#: .\templates\random_tools\home.html:311
+msgid "Clear All"
+msgstr "Tümünü Temizle"
+
+#: .\templates\random_tools\home.html:240
+msgid "Spin Wheel"
+msgstr "Çarkı Çevir"
+
+#: .\templates\random_tools\home.html:247
+msgid "Add options to see the wheel"
+msgstr "Çarkı görmek için seçenek ekle"
+
+#: .\templates\random_tools\home.html:250
+msgid "Show Wheel"
+msgstr "Çarkı Göster"
+
+#: .\templates\random_tools\home.html:270
+msgid "Number of dice"
+msgstr "Zar sayısı"
+
+#: .\templates\random_tools\home.html:272
+#: .\templates\random_tools\home.html:273
+#: .\templates\random_tools\home.html:274
+#: .\templates\random_tools\home.html:275
+#: .\templates\random_tools\home.html:276
+#: .\templates\random_tools\home.html:277
+msgid "dice"
+msgstr "zar"
+
+#: .\templates\random_tools\home.html:282
+msgid "Roll Dice"
+msgstr "Zarı At"
+
+#: .\templates\random_tools\home.html:295
+msgid "Professional Lottery System"
+msgstr "Profesyonel Çekiliş Sistemi"
+
+#: .\templates\random_tools\home.html:301
+msgid "Add Participants"
+msgstr "Katılımcı Ekle"
+
+#: .\templates\random_tools\home.html:303
+msgid "Enter name"
+msgstr "İsim gir"
+
+#: .\templates\random_tools\home.html:307
+msgid "Or paste multiple names (one per line)"
+msgstr "Veya birden fazla ismi yapıştır (her satırda bir isim)"
+
+#: .\templates\random_tools\home.html:308
+msgid "Add All"
+msgstr "Tümünü Ekle"
+
+#: .\templates\random_tools\home.html:312
+msgid "Shuffle"
+msgstr "Karıştır"
+
+#: .\templates\random_tools\home.html:315
+msgid "Total participants"
+msgstr "Toplam katılımcı"
+
+#: .\templates\random_tools\home.html:319
+msgid "Participants List"
+msgstr "Katılımcı Listesi"
+
+#: .\templates\random_tools\home.html:323
+msgid "Lottery Settings"
+msgstr "Çekiliş Ayarları"
+
+#: .\templates\random_tools\home.html:325
+msgid "Number of winners"
+msgstr "Kazanan sayısı"
+
+#: .\templates\random_tools\home.html:331
+msgid "Allow same person to win multiple times"
+msgstr "Aynı kişinin birden fazla kez kazanmasına izin ver"
+
+#: .\templates\random_tools\home.html:335
+msgid "Start Lottery"
+msgstr "Çekilişi Başlat"
+
+#: .\templates\svg_tools\home.html:22
 #, fuzzy
 #| msgid "Edit SVG files"
 msgid "Edit and convert SVG files"
-msgstr "SVG dosyalarını düzenle"
+msgstr "SVG dosyalarını düzenle ve dönüştür"
 
+#: .\templates\svg_tools\home.html:43
 msgid "PNG/JPG → SVG Conversion"
-msgstr ""
+msgstr "PNG/JPG → SVG Dönüşümü"
 
+#: .\templates\svg_tools\home.html:49 .\templates\svg_tools\home.html:140
 msgid "Select Image File"
-msgstr ""
+msgstr "Görüntü Dosyası Seç"
 
+#: .\templates\svg_tools\home.html:56
 msgid "Note"
-msgstr ""
+msgstr "Not"
 
+#: .\templates\svg_tools\home.html:56
 msgid "This process embeds the image into SVG."
-msgstr ""
+msgstr "Bu işlem, görüntüyü SVG içine gömer."
 
+#: .\templates\svg_tools\home.html:59
 msgid "Conversion Mode"
-msgstr ""
+msgstr "Dönüşüm Modu"
 
+#: .\templates\svg_tools\home.html:61
 msgid "Simple (Embed image in SVG)"
-msgstr ""
+msgstr "Basit (Görüntüyü SVG içine göm)"
 
+#: .\templates\svg_tools\home.html:62
 msgid "Advanced (Real SVG Path)"
-msgstr ""
+msgstr "Gelişmiş (Gerçek SVG Yolu)"
 
+#: .\templates\svg_tools\home.html:67
 msgid "Convert to SVG"
-msgstr ""
+msgstr "SVG'ye Dönüştür"
 
+#: .\templates\svg_tools\home.html:71 .\templates\svg_tools\home.html:121
 msgid "Converting..."
-msgstr ""
+msgstr "Dönüştürülüyor..."
 
+#: .\templates\svg_tools\home.html:84
 msgid "SVG → PNG/JPG Conversion"
-msgstr ""
+msgstr "SVG → PNG/JPG Dönüşümü"
 
+#: .\templates\svg_tools\home.html:90 .\templates\svg_tools\home.html:178
 #, fuzzy
 #| msgid "Edit SVG files"
 msgid "Select SVG File"
-msgstr "SVG dosyalarını düzenle"
+msgstr "SVG Dosyası Seç"
 
+#: .\templates\svg_tools\home.html:96
 msgid "Output Format"
-msgstr ""
+msgstr "Çıkış Formatı"
 
+#: .\templates\svg_tools\home.html:117
 msgid "Convert and Download"
-msgstr ""
+msgstr "Dönüştür ve İndir"
 
+#: .\templates\svg_tools\home.html:134
 msgid "Vector SVG Trace"
-msgstr ""
+msgstr "Vektör SVG İzleme"
 
+#: .\templates\svg_tools\home.html:147
 msgid "Warning"
-msgstr ""
+msgstr "Uyarı"
 
+#: .\templates\svg_tools\home.html:147
 msgid "This creates real vector SVG!"
-msgstr ""
+msgstr "Bu, gerçek vektör SVG oluşturur!"
 
+#: .\templates\svg_tools\home.html:150
 msgid "Detail Level"
-msgstr ""
+msgstr "Detay Seviyesi"
 
+#: .\templates\svg_tools\home.html:152
 msgid "1: Very detailed, 10: Simple"
-msgstr ""
+msgstr "1: Çok detaylı, 10: Basit"
 
+#: .\templates\svg_tools\home.html:155
 msgid "Create Vector SVG"
-msgstr ""
+msgstr "Vektör SVG Oluştur"
 
+#: .\templates\svg_tools\home.html:159
 msgid "Processing..."
-msgstr ""
+msgstr "İşleniyor..."
 
+#: .\templates\svg_tools\home.html:172
 msgid "SVG Editing"
-msgstr ""
+msgstr "SVG Düzenleme"
 
+#: .\templates\svg_tools\home.html:186
 msgid "New Width"
-msgstr ""
+msgstr "Yeni Genişlik"
 
+#: .\templates\svg_tools\home.html:187
 msgid "Change"
-msgstr ""
+msgstr "Değiştir"
 
+#: .\templates\svg_tools\home.html:192
 msgid "New Height"
-msgstr ""
+msgstr "Yeni Yükseklik"
 
+#: .\templates\text_tools\home.html:25
 #, fuzzy
 #| msgid "Analyze and convert text"
 msgid "Analyze, transform and format texts"
-msgstr "Metin analiz et ve dönüştür"
+msgstr "Metinleri analiz et, dönüştür ve biçimlendir"
 
+#: .\templates\text_tools\home.html:33
 msgid "Text Input"
-msgstr ""
+msgstr "Metin Girişi"
 
+#: .\templates\text_tools\home.html:36
 msgid "Write your text here..."
-msgstr ""
+msgstr "Metninizi buraya yazın..."
 
+#: .\templates\text_tools\home.html:37
 msgid "Your text will be automatically analyzed"
-msgstr ""
+msgstr "Metniniz otomatik olarak analiz edilecek"
 
+#: .\templates\text_tools\home.html:47
 msgid "Text Statistics"
-msgstr ""
+msgstr "Metin İstatistikleri"
 
+#: .\templates\text_tools\home.html:50
 msgid "Characters (with spaces)"
-msgstr ""
+msgstr "Karakterler (boşluklarla)"
 
+#: .\templates\text_tools\home.html:51
 msgid "Characters (without spaces)"
-msgstr ""
+msgstr "Karakterler (boşluksuz)"
 
+#: .\templates\text_tools\home.html:52
 msgid "Word count"
-msgstr ""
+msgstr "Kelime sayısı"
 
+#: .\templates\text_tools\home.html:53
 msgid "Line count"
-msgstr ""
+msgstr "Satır sayısı"
 
+#: .\templates\text_tools\home.html:54
 msgid "Paragraph count"
-msgstr ""
+msgstr "Paragraf sayısı"
 
+#: .\templates\text_tools\home.html:55
 msgid "Digit count"
-msgstr ""
+msgstr "Rakam sayısı"
 
+#: .\templates\text_tools\home.html:56
 msgid "Letter count"
-msgstr ""
+msgstr "Harf sayısı"
 
+#: .\templates\text_tools\home.html:57
 msgid "Longest word"
-msgstr ""
+msgstr "En uzun kelime"
 
+#: .\templates\text_tools\home.html:58
 msgid "Average word length"
-msgstr ""
+msgstr "Ortalama kelime uzunluğu"
 
+#: .\templates\text_tools\home.html:65
 msgid "Text Transformation"
-msgstr ""
+msgstr "Metin Dönüşümü"
 
+#: .\templates\text_tools\home.html:70
 msgid "UPPERCASE"
-msgstr ""
+msgstr "BÜYÜK HARF"
 
+#: .\templates\text_tools\home.html:73
 msgid "lowercase"
-msgstr ""
+msgstr "küçük harf"
 
+#: .\templates\text_tools\home.html:76
 msgid "Title Case"
-msgstr ""
+msgstr "Başlık Stili"
 
+#: .\templates\text_tools\home.html:79
 msgid "Reverse"
-msgstr ""
+msgstr "Ters Çevir"
 
+#: .\templates\text_tools\home.html:82
 msgid "URL Slug"
-msgstr ""
+msgstr "URL Slug"
 
+#: .\templates\text_tools\home.html:85
 msgid "Clean Spaces"
-msgstr ""
+msgstr "Boşlukları Temizle"
 
+#: .\templates\text_tools\home.html:88
 msgid "Remove Special Chars"
-msgstr ""
+msgstr "Özel Karakterleri Kaldır"
 
+#: .\templates\text_tools\home.html:91
 msgid "Clean HTML"
-msgstr ""
+msgstr "HTML'i Temizle"
 
+#: .\templates\text_tools\home.html:100
 msgid "Encoding & Hash"
-msgstr ""
+msgstr "Kodlama ve Hash"
 
+#: .\templates\text_tools\home.html:105
 msgid "Base64 Encode"
-msgstr ""
+msgstr "Base64 Kodla"
 
+#: .\templates\text_tools\home.html:108
 msgid "Base64 Decode"
-msgstr ""
+msgstr "Base64 Çöz"
 
+#: .\templates\text_tools\home.html:111
 msgid "URL Encode"
-msgstr ""
+msgstr "URL Kodla"
 
+#: .\templates\text_tools\home.html:114
 msgid "URL Decode"
-msgstr ""
+msgstr "URL Çöz"
 
+#: .\templates\text_tools\home.html:129
 msgid "JSON Format"
-msgstr ""
+msgstr "JSON Biçimlendir"
 
+#: .\templates\text_tools\home.html:134
 msgid "JSON Beautify"
-msgstr ""
+msgstr "JSON Güzelleştir"
 
+#: .\templates\text_tools\home.html:137
 msgid "JSON Minify"
-msgstr ""
+msgstr "JSON Küçült"
 
+#: .\templates\url_tools\home.html:23
 #, fuzzy
 #| msgid "Shorten long links and generate QR"
 msgid "Shorten long links and generate QR codes"
-msgstr "Uzun linkleri kısalt ve QR oluştur"
+msgstr "Uzun linkleri kısalt ve QR kodları oluştur"
 
+#: .\templates\url_tools\home.html:31
 msgid "Shorten URL"
-msgstr ""
+msgstr "URL Kısalt"
 
+#: .\templates\url_tools\home.html:35
 msgid "Long URL"
-msgstr ""
+msgstr "Uzun URL"
 
+#: .\templates\url_tools\home.html:39
 #, fuzzy
 #| msgid "URL Shortener"
 msgid "Shorten"
-msgstr "URL Kısaltıcı"
+msgstr "Kısalt"
 
+#: .\templates\url_tools\home.html:47
 msgid "Query Statistics"
-msgstr ""
+msgstr "Sorgu İstatistikleri"
 
+#: .\templates\url_tools\home.html:51
 msgid "Short Code"
-msgstr ""
+msgstr "Kısa Kod"
 
+#: .\templates\url_tools\home.html:55
 msgid "Get Statistics"
-msgstr ""
+msgstr "İstatistikleri Al"
 
+#: .\templates\url_tools\home.html:59 .\templates\url_tools\home.html:95
 msgid "Original URL"
-msgstr ""
+msgstr "Orijinal URL"
 
+#: .\templates\url_tools\home.html:60 .\templates\url_tools\home.html:94
 msgid "Click Count"
-msgstr ""
+msgstr "Tıklama Sayısı"
 
+#: .\templates\url_tools\home.html:61
 msgid "Created"
-msgstr ""
+msgstr "Oluşturuldu"
 
+#: .\templates\url_tools\home.html:72
 #, fuzzy
 #| msgid "URL Shortener"
 msgid "Shortened URL"
-msgstr "URL Kısaltıcı"
+msgstr "Kısaltılmış URL"
 
+#: .\templates\url_tools\home.html:76
 msgid "Short URL"
-msgstr ""
+msgstr "Kısa URL"
 
+#: .\templates\url_tools\home.html:88 .\templates\url_tools\home.html:89
 msgid "QR Code"
-msgstr ""
+msgstr "QR Kod"
 
+#: .\templates\url_tools\home.html:102
 msgid "Download QR"
-msgstr ""
+msgstr "QR İndir"
 
+#: .\templates\url_tools\home.html:107
 msgid "Share"
-msgstr ""
+msgstr "Paylaş"
