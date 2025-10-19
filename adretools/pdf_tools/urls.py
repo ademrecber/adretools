@@ -15,6 +15,25 @@ urlpatterns = [
     path('merge/', views.merge_pdf, name='merge_pdf'),
     path('compress/', views.compress_pdf, name='compress_pdf'),
     
-    # SEO optimized English pages
-    path('split-pdf-online/', TemplateView.as_view(template_name='pdf_tools/split.html'), name='split_pdf_seo'),
+    # SEO optimized URLs
+    path('pdf-birlestir/', views.pdf_home, name='merge_pdf_tr'),
+    path('merge-pdf/', views.pdf_home, name='merge_pdf_en'),
+    path('pdf-bol/', views.pdf_home, name='split_pdf_tr'),
+    path('split-pdf/', views.pdf_home, name='split_pdf_en'),
+    path('pdf-sifrele/', views.pdf_home, name='encrypt_pdf_tr'),
+    path('encrypt-pdf/', views.pdf_home, name='encrypt_pdf_en'),
+    path('pdf-filigran/', views.pdf_home, name='watermark_pdf_tr'),
+    path('watermark-pdf/', views.pdf_home, name='watermark_pdf_en'),
+    path('pdf-sikistir/', views.pdf_home, name='compress_pdf_tr'),
+    path('compress-pdf/', views.pdf_home, name='compress_pdf_en'),
+    path('pdf-word-donustur/', views.pdf_home, name='pdf_to_word_tr'),
+    path('pdf-to-word/', views.pdf_home, name='pdf_to_word_en'),
+    path('pdf-excel-donustur/', views.pdf_home, name='pdf_to_excel_tr'),
+    path('pdf-to-excel/', views.pdf_home, name='pdf_to_excel_en'),
+    
+    # Popüler arama terimleri
+    path('ucretsiz-pdf-birlestir/', views.pdf_home, name='free_merge_pdf_tr'),
+    path('free-pdf-merger/', views.pdf_home, name='free_merge_pdf_en'),
+    path('online-pdf-duzenle/', views.pdf_home, name='online_pdf_editor_tr'),
+    path('online-pdf-editor/', views.pdf_home, name='online_pdf_editor_en'),
 ]
