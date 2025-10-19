@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Cookie Policy" %} - AdreTools{% endblock %}
+{% block meta_description %}{% trans "AdreTools cookie policy. Learn how we use cookies to improve your experience and comply with GDPR regulations." %}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h1 class="display-5 fw-bold mb-4">{% trans "Cookie Policy" %}</h1>
+            <p class="text-muted mb-4">{% trans "Last updated" %}: {% now "F d, Y" %}</p>
+            
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h3 class="h4 mb-3">{% trans "What Are Cookies" %}</h3>
+                    <p>{% trans "Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently and provide information to website owners." %}</p>
+                    
+                    <h3 class="h4 mb-3 mt-4">{% trans "How We Use Cookies" %}</h3>
+                    <p>{% trans "AdreTools uses cookies for the following purposes:" %}</p>
+                    <ul>
+                        <li>{% trans "Essential cookies: Required for the website to function properly" %}</li>
+                        <li>{% trans "Analytics cookies: Help us understand how visitors use our website (Google Analytics)" %}</li>
+                        <li>{% trans "Advertising cookies: Used to display relevant advertisements (Google AdSense)" %}</li>
+                        <li>{% trans "Preference cookies: Remember your language and other preferences" %}</li>
+                    </ul>
+                    
+                    <h3 class="h4 mb-3 mt-4">{% trans "Types of Cookies We Use" %}</h3>
+                    
+                    <h5 class="h6 mb-2">{% trans "Essential Cookies" %}</h5>
+                    <p>{% trans "These cookies are necessary for the website to function and cannot be switched off. They include session cookies, CSRF protection, and language preferences." %}</p>
+                    
+                    <h5 class="h6 mb-2 mt-3">{% trans "Google Analytics Cookies" %}</h5>
+                    <p>{% trans "We use Google Analytics to analyze website usage. These cookies collect information about how visitors use our site, which pages are visited most often, and if users get error messages." %}</p>
+                    
+                    <h5 class="h6 mb-2 mt-3">{% trans "Google AdSense Cookies" %}</h5>
+                    <p>{% trans "Google AdSense uses cookies to serve advertisements based on your interests and previous visits to our website and other websites." %}</p>
+                    
+                    <h3 class="h4 mb-3 mt-4">{% trans "Managing Cookies" %}</h3>
+                    <p>{% trans "You can control and manage cookies in various ways:" %}</p>
+                    <ul>
+                        <li>{% trans "Browser settings: Most browsers allow you to refuse cookies or delete existing ones" %}</li>
+                        <li>{% trans "Google Analytics opt-out: Use the Google Analytics opt-out browser add-on" %}</li>
+                        <li>{% trans "Google Ads settings: Manage your ad preferences through Google Ads Settings" %}</li>
+                    </ul>
+                    
+                    <h3 class="h4 mb-3 mt-4">{% trans "Third-Party Cookies" %}</h3>
+                    <p>{% trans "Some cookies are placed by third-party services that appear on our pages:" %}</p>
+                    <ul>
+                        <li>{% trans "Google Analytics for website analytics" %}</li>
+                        <li>{% trans "Google AdSense for advertising" %}</li>
+                        <li>{% trans "Bootstrap CDN for styling" %}</li>
+                        <li>{% trans "Font Awesome for icons" %}</li>
+                    </ul>
+                    
+                    <h3 class="h4 mb-3 mt-4">{% trans "Your Consent" %}</h3>
+                    <p>{% trans "By using our website, you consent to our use of cookies as described in this policy. If you do not agree to our use of cookies, you should set your browser settings accordingly or stop using our website." %}</p>
+                    
+                    <h3 class="h4 mb-3 mt-4">{% trans "Changes to This Policy" %}</h3>
+                    <p>{% trans "We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated revision date." %}</p>
+                    
+                    <h3 class="h4 mb-3 mt-4">{% trans "Contact Us" %}</h3>
+                    <p>{% trans "If you have any questions about our Cookie Policy, please contact us through our contact page." %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
