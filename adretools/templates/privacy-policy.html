@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Gizlilik Politikası" %} - AdreTools{% endblock %}
+{% block meta_description %}{% trans "AdreTools gizlilik politikası. Kişisel verilerinizin nasıl korunduğu ve kullanıldığı hakkında detaylı bilgi." %}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <h1 class="mb-4">{% trans "Gizlilik Politikası" %}</h1>
+            <p class="text-muted">{% trans "Son güncelleme" %}: {% now "d F Y" %}</p>
+            
+            <div class="card">
+                <div class="card-body">
+                    <h3>{% trans "1. Toplanan Bilgiler" %}</h3>
+                    <p>{% trans "AdreTools olarak, hizmetlerimizi geliştirmek için aşağıdaki bilgileri toplayabiliriz:" %}</p>
+                    <ul>
+                        <li>{% trans "Kullanım istatistikleri (Google Analytics)" %}</li>
+                        <li>{% trans "Çerez bilgileri" %}</li>
+                        <li>{% trans "IP adresi ve tarayıcı bilgileri" %}</li>
+                    </ul>
+                    
+                    <h3 class="mt-4">{% trans "2. Bilgilerin Kullanımı" %}</h3>
+                    <p>{% trans "Toplanan bilgiler şu amaçlarla kullanılır:" %}</p>
+                    <ul>
+                        <li>{% trans "Hizmet kalitesini artırmak" %}</li>
+                        <li>{% trans "Kullanıcı deneyimini geliştirmek" %}</li>
+                        <li>{% trans "Teknik sorunları çözmek" %}</li>
+                        <li>{% trans "Reklam gösterimleri (Google AdSense)" %}</li>
+                    </ul>
+                    
+                    <h3 class="mt-4">{% trans "3. Çerezler" %}</h3>
+                    <p>{% trans "Sitemizde çerezler kullanılmaktadır. Çerezler hakkında daha fazla bilgi için tarayıcınızın ayarlarını kontrol edebilirsiniz." %}</p>
+                    
+                    <h3 class="mt-4">{% trans "4. Üçüncü Taraf Hizmetler" %}</h3>
+                    <p>{% trans "Sitemizde aşağıdaki üçüncü taraf hizmetler kullanılmaktadır:" %}</p>
+                    <ul>
+                        <li>{% trans "Google Analytics - Kullanım analizi" %}</li>
+                        <li>{% trans "Google AdSense - Reklam gösterimleri" %}</li>
+                    </ul>
+                    
+                    <h3 class="mt-4">{% trans "5. Veri Güvenliği" %}</h3>
+                    <p>{% trans "Verilerinizin güvenliği bizim için önemlidir. Gerekli güvenlik önlemlerini almaktayız." %}</p>
+                    
+                    <h3 class="mt-4">{% trans "6. İletişim" %}</h3>
+                    <p>{% trans "Gizlilik politikası hakkında sorularınız için bizimle iletişime geçebilirsiniz." %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
