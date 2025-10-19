@@ -19,3 +19,9 @@ def home(request):
         {'name': _('Random Tools'), 'url': '/random/', 'icon': 'fas fa-dice', 'desc': _('Random number, lucky wheel, lottery system')},
     ]
     return render(request, 'core/home.html', {'tools': tools})
+
+def terms_of_service(request):
+    return render(request, 'terms-of-service.html')
+
+def cookie_policy(request):
+    return render(request, 'cookie-policy.html')
