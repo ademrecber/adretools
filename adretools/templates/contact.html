@@ -37,4 +37,137 @@
             
             <div class="card shadow-sm">
                 <div class="card-body p-4">
-                    <form id=\"contactForm\" method=\"post\">\n                        {% csrf_token %}\n                        <div class=\"row g-3\">\n                            <div class=\"col-md-6\">\n                                <label for=\"name\" class=\"form-label\">Full Name *</label>\n                                <input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" required>\n                            </div>\n                            <div class=\"col-md-6\">\n                                <label for=\"email\" class=\"form-label\">Email Address *</label>\n                                <input type=\"email\" class=\"form-control\" id=\"email\" name=\"email\" required>\n                            </div>\n                            <div class=\"col-12\">\n                                <label for=\"subject\" class=\"form-label\">Subject *</label>\n                                <select class=\"form-select\" id=\"subject\" name=\"subject\" required>\n                                    <option value=\"\">Choose a subject...</option>\n                                    <option value=\"technical-support\">Technical Support</option>\n                                    <option value=\"feature-request\">Feature Request</option>\n                                    <option value=\"bug-report\">Bug Report</option>\n                                    <option value=\"business-inquiry\">Business Inquiry</option>\n                                    <option value=\"general-feedback\">General Feedback</option>\n                                    <option value=\"other\">Other</option>\n                                </select>\n                            </div>\n                            <div class=\"col-12\">\n                                <label for=\"message\" class=\"form-label\">Message *</label>\n                                <textarea class=\"form-control\" id=\"message\" name=\"message\" rows=\"5\" placeholder=\"Please describe your inquiry in detail...\" required></textarea>\n                            </div>\n                            <div class=\"col-12\">\n                                <div class=\"form-check\">\n                                    <input class=\"form-check-input\" type=\"checkbox\" id=\"privacy\" name=\"privacy\" required>\n                                    <label class=\"form-check-label\" for=\"privacy\">\n                                        I agree to the <a href=\"{% url 'core:terms_of_service' %}\" target=\"_blank\">Terms of Service</a> and <a href=\"{% url 'core:cookie_policy' %}\" target=\"_blank\">Privacy Policy</a> *\n                                    </label>\n                                </div>\n                            </div>\n                            <div class=\"col-12\">\n                                <button type=\"submit\" class=\"btn btn-primary btn-lg w-100\">\n                                    <i class=\"fas fa-paper-plane me-2\"></i>Send Message\n                                </button>\n                            </div>\n                        </div>\n                    </form>\n                </div>\n            </div>\n            \n            <div class=\"mt-5\">\n                <h3 class=\"h4 mb-4 text-center\">Frequently Asked Questions</h3>\n                <div class=\"accordion\" id=\"faqAccordion\">\n                    <div class=\"accordion-item\">\n                        <h2 class=\"accordion-header\">\n                            <button class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#faq1\">\n                                Are your tools completely free to use?\n                            </button>\n                        </h2>\n                        <div id=\"faq1\" class=\"accordion-collapse collapse\" data-bs-parent=\"#faqAccordion\">\n                            <div class=\"accordion-body\">\n                                Yes, all AdreTools are completely free to use. We support our service through advertising to keep it free for everyone.\n                            </div>\n                        </div>\n                    </div>\n                    \n                    <div class=\"accordion-item\">\n                        <h2 class=\"accordion-header\">\n                            <button class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#faq2\">\n                                Do you store my uploaded files?\n                            </button>\n                        </h2>\n                        <div id=\"faq2\" class=\"accordion-collapse collapse\" data-bs-parent=\"#faqAccordion\">\n                            <div class=\"accordion-body\">\n                                No, we do not permanently store any files you upload. All processing is done in real-time and files are automatically deleted after processing for your privacy and security.\n                            </div>\n                        </div>\n                    </div>\n                    \n                    <div class=\"accordion-item\">\n                        <h2 class=\"accordion-header\">\n                            <button class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#faq3\">\n                                Is there a file size limit?\n                            </button>\n                        </h2>\n                        <div id=\"faq3\" class=\"accordion-collapse collapse\" data-bs-parent=\"#faqAccordion\">\n                            <div class=\"accordion-body\">\n                                Yes, we have reasonable file size limits to ensure good performance for all users. Most tools support files up to 50MB. Larger files may require splitting or compression.\n                            </div>\n                        </div>\n                    </div>\n                    \n                    <div class=\"accordion-item\">\n                        <h2 class=\"accordion-header\">\n                            <button class=\"accordion-button collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#faq4\">\n                                Can I use these tools for commercial purposes?\n                            </button>\n                        </h2>\n                        <div id=\"faq4\" class=\"accordion-collapse collapse\" data-bs-parent=\"#faqAccordion\">\n                            <div class=\"accordion-body\">\n                                Yes, you can use our tools for both personal and commercial purposes. Please review our Terms of Service for more details about usage rights and restrictions.\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n\n<script>\ndocument.getElementById('contactForm').addEventListener('submit', function(e) {\n    e.preventDefault();\n    \n    // Show success message\n    const form = this;\n    const button = form.querySelector('button[type=\"submit\"]');\n    const originalText = button.innerHTML;\n    \n    button.innerHTML = '<i class=\"fas fa-spinner fa-spin me-2\"></i>Sending...';\n    button.disabled = true;\n    \n    // Simulate form submission (replace with actual form handling)\n    setTimeout(() => {\n        button.innerHTML = '<i class=\"fas fa-check me-2\"></i>Message Sent!';\n        button.classList.remove('btn-primary');\n        button.classList.add('btn-success');\n        \n        // Reset form\n        setTimeout(() => {\n            form.reset();\n            button.innerHTML = originalText;\n            button.classList.remove('btn-success');\n            button.classList.add('btn-primary');\n            button.disabled = false;\n        }, 3000);\n    }, 2000);\n});\n</script>\n{% endblock %}
+                    <form id="contactForm" method="post">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" class="form-control" id="name" name="name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <select class="form-select" id="subject" name="subject" required>
+                                    <option value="">Choose a subject...</option>
+                                    <option value="technical-support">Technical Support</option>
+                                    <option value="feature-request">Feature Request</option>
+                                    <option value="bug-report">Bug Report</option>
+                                    <option value="business-inquiry">Business Inquiry</option>
+                                    <option value="general-feedback">General Feedback</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Please describe your inquiry in detail..." required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="privacy" name="privacy" required>
+                                    <label class="form-check-label" for="privacy">
+                                        I agree to the <a href="{% url 'core:terms_of_service' %}" target="_blank">Terms of Service</a> and <a href="{% url 'core:cookie_policy' %}" target="_blank">Privacy Policy</a> *
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-lg w-100">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-5">
+                <h3 class="h4 mb-4 text-center">Frequently Asked Questions</h3>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                Are your tools completely free to use?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, all AdreTools are completely free to use. We support our service through advertising to keep it free for everyone.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                Do you store my uploaded files?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                No, we do not permanently store any files you upload. All processing is done in real-time and files are automatically deleted after processing for your privacy and security.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Is there a file size limit?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, we have reasonable file size limits to ensure good performance for all users. Most tools support files up to 50MB. Larger files may require splitting or compression.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                Can I use these tools for commercial purposes?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes, you can use our tools for both personal and commercial purposes. Please review our Terms of Service for more details about usage rights and restrictions.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Show success message
+    const form = this;
+    const button = form.querySelector('button[type="submit"]');
+    const originalText = button.innerHTML;
+    
+    button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+    button.disabled = true;
+    
+    // Simulate form submission (replace with actual form handling)
+    setTimeout(() => {
+        button.innerHTML = '<i class="fas fa-check me-2"></i>Message Sent!';
+        button.classList.remove('btn-primary');
+        button.classList.add('btn-success');
+        
+        // Reset form
+        setTimeout(() => {
+            form.reset();
+            button.innerHTML = originalText;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-primary');
+            button.disabled = false;
+        }, 3000);
+    }, 2000);
+});
+</script>\n{% endblock %}
