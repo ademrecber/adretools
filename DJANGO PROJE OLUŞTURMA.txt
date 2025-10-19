@@ -37,6 +37,10 @@ git add .
 git commit -m "Tüm proje güncellemeleri commit edildi"
 git push origin master
 
+git add .
+git commit -m "Tüm proje güncellemeleri commit edildi"
+git push origin main
+
 
 django-admin compilemessages
 

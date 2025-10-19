@@ -11,20 +11,6 @@
     <link href="{% static 'css/custom.css' %}" rel="stylesheet">
     <link href="{% static 'css/minimal-modern.css' %}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- AdSense Meta Tags -->
-    <meta name="description" content="{% block meta_description %}{% trans 'Ücretsiz online araçlar - PDF birleştir, QR kod oluştur, resim düzenle, şifre oluştur ve daha fazlası. AdreTools ile tüm ihtiyaçlarınızı karşılayın.' %}{% endblock %}">
-    <meta name="keywords" content="{% block meta_keywords %}pdf birleştir, qr kod oluştur, resim boyutlandır, şifre oluşturucu, online araçlar, ücretsiz araçlar{% endblock %}">
-    <meta name="author" content="AdreTools">
-    <meta property="og:title" content="{% block og_title %}{% block title %}AdreTools{% endblock %}{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}{% block meta_description %}{% trans 'Ücretsiz online araçlar - PDF birleştir, QR kod oluştur, resim düzenle, şifre oluştur ve daha fazlası.' %}{% endblock %}{% endblock %}">
-    <meta property="og:url" content="https://adretools.com{{ request.get_full_path }}">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="AdreTools">
-    
-    <!-- AdSense Auto Ads - Buraya kodunuzu ekleyeceksiniz -->
-    {% block adsense_head %}{% endblock %}
-    
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -38,11 +24,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'blog:blog_home' %}">{% trans "Rehberler" %}</a>
+                    </li>
+                </ul>
+            </div>
+            
             <div class="navbar-nav ms-auto">
-                <a class="nav-link text-white" href="{% url 'blog:blog_home' %}">
-                    <i class="fas fa-book"></i> {% trans "Rehberler" %}
-                </a>
-                <div class="nav-item dropdown ms-2">
+                <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="fas fa-globe"></i> 
                         {% get_current_language as LANGUAGE_CODE %}
@@ -81,60 +72,14 @@
         </div>
     </nav>
 
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sol AdSense Alanı -->
-            <div class="col-lg-2 d-none d-lg-block">
-                <div class="sticky-top" style="top: 20px;">
-                    {% block left_sidebar_ads %}
-                    <!-- Sol taraf AdSense reklamları buraya gelecek -->
-                    <div class="ad-placeholder" style="width: 160px; height: 600px; background: #f8f9fa; border: 1px dashed #dee2e6; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #6c757d; text-align: center;">
-                        AdSense<br>160x600<br>Skyscraper
-                    </div>
-                    {% endblock %}
-                </div>
-            </div>
-            
-            <!-- Ana İçerik -->
-            <div class="col-lg-8">
-                <main class="mt-4">
-                    <!-- Üst Banner AdSense -->
-                    {% block top_banner_ads %}
-                    <div class="ad-placeholder mb-4" style="width: 100%; height: 90px; background: #f8f9fa; border: 1px dashed #dee2e6; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #6c757d;">
-                        AdSense 728x90 Leaderboard
-                    </div>
-                    {% endblock %}
-                    
-                    {% block content %}{% endblock %}
-                    
-                    <!-- Alt Banner AdSense -->
-                    {% block bottom_banner_ads %}
-                    <div class="ad-placeholder mt-4" style="width: 100%; height: 90px; background: #f8f9fa; border: 1px dashed #dee2e6; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #6c757d;">
-                        AdSense 728x90 Leaderboard
-                    </div>
-                    {% endblock %}
-                </main>
-            </div>
-            
-            <!-- Sağ AdSense Alanı -->
-            <div class="col-lg-2 d-none d-lg-block">
-                <div class="sticky-top" style="top: 20px;">
-                    {% block right_sidebar_ads %}
-                    <!-- Sağ taraf AdSense reklamları buraya gelecek -->
-                    <div class="ad-placeholder" style="width: 160px; height: 600px; background: #f8f9fa; border: 1px dashed #dee2e6; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #6c757d; text-align: center;">
-                        AdSense<br>160x600<br>Skyscraper
-                    </div>
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
-    </div>
+    <main class="container mt-4">
+        {% block content %}{% endblock %}
+    </main>
 
     <footer class="bg-light mt-5 py-3">
         <div class="container text-center">
             <p class="mb-0 text-muted">
-                &copy; {% now "Y" %} AdreTools. {% trans "All rights reserved." %} | 
-                <a href="{% url 'core:privacy_policy' %}" class="text-muted">{% trans "Gizlilik Politikası" %}</a>
+                &copy; {% now "Y" %} AdreTools. {% trans "All rights reserved." %}
             </p>
         </div>
     </footer>
