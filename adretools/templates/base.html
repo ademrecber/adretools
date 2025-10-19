@@ -26,19 +26,6 @@
          crossorigin="anonymous"></script>
     <meta name="google-adsense-account" content="ca-pub-4275159020382475">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
-    
-    <!-- Open Graph -->
-    <meta property="og:image" content="https://adretools.com{% static 'images/og-image.png' %}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://adretools.com{% static 'images/og-image.png' %}">
-    
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -101,11 +88,7 @@
     <footer class="bg-light mt-5 py-3">
         <div class="container text-center">
             <p class="mb-0 text-muted">
-                &copy; {% now "Y" %} AdreTools. {% trans "All rights reserved." %} | 
-                <a href="{% url 'core:privacy_policy' %}" class="text-muted">{% trans "Privacy Policy" %}</a> | 
-                <a href="{% url 'core:terms_of_service' %}" class="text-muted">{% trans "Terms of Service" %}</a> | 
-                <a href="{% url 'core:cookie_policy' %}" class="text-muted">{% trans "Cookie Policy" %}</a> | 
-                <a href="{% url 'core:contact' %}" class="text-muted">{% trans "Contact" %}</a>
+                &copy; {% now "Y" %} AdreTools. {% trans "All rights reserved." %}
             </p>
         </div>
     </footer>
