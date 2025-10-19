@@ -50,4 +50,113 @@
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
     </url>
+    
+    <!-- QR SEO URLs -->
+    <url>
+        <loc>https://adretools.com/qr/qr-kod-olustur/</loc>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/qr/qr-code-generator/</loc>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/qr/barkod-olustur/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+    <!-- Image SEO URLs -->
+    <url>
+        <loc>https://adretools.com/image/resim-boyutlandir/</loc>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/image/image-resize/</loc>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/image/resim-sikistir/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/image/ico-olustur/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+    <!-- Password SEO URLs -->
+    <url>
+        <loc>https://adretools.com/password/sifre-olusturucu/</loc>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/password/password-generator/</loc>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/password/guclu-sifre-olustur/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+    <!-- Calculator SEO URLs -->
+    <url>
+        <loc>https://adretools.com/calculator/bmi-calculator/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/calculator/vucut-kitle-indeksi-hesaplama/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/calculator/age-calculator/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+    <!-- Text SEO URLs -->
+    <url>
+        <loc>https://adretools.com/text/kelime-sayaci/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/text/word-counter/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+    <!-- URL SEO URLs -->
+    <url>
+        <loc>https://adretools.com/url/link-kisalt/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/url/url-shortener/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+    <!-- Color SEO URLs -->
+    <url>
+        <loc>https://adretools.com/color/renk-secici/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/color/color-picker/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
 </urlset>
