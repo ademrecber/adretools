@@ -41,7 +41,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="/{{ LANGUAGE_CODE }}/">
+            <a class="navbar-brand" href="{% url 'core:home' %}">
                 <i class="fas fa-tools"></i> AdreTools
             </a>
             
@@ -51,7 +51,7 @@
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav ms-auto">
-                    <a class="nav-link text-white" href="/{{ LANGUAGE_CODE }}/blog/">Blog</a>
+                    <a class="nav-link text-white" href="{% url 'blog:blog_home' %}">Blog</a>
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
                         <i class="fas fa-globe"></i> 
@@ -99,10 +99,10 @@
         <div class="container text-center">
             <p class="mb-0 text-muted">
                 &copy; {% now "Y" %} AdreTools. {% trans "All rights reserved." %} | 
-                <a href="/{{ LANGUAGE_CODE }}/terms-of-service/" class="text-muted">{% trans "Terms of Service" %}</a> | 
-                <a href="/{{ LANGUAGE_CODE }}/cookie-policy/" class="text-muted">{% trans "Cookie Policy" %}</a> | 
-                <a href="/{{ LANGUAGE_CODE }}/contact/" class="text-muted">{% trans "Contact" %}</a> | 
-                <a href="/{{ LANGUAGE_CODE }}/stats/" class="text-muted">{% trans "Statistics" %}</a>
+                <a href="{% url 'core:terms_of_service' %}" class="text-muted">{% trans "Terms of Service" %}</a> | 
+                <a href="{% url 'core:cookie_policy' %}" class="text-muted">{% trans "Cookie Policy" %}</a> | 
+                <a href="{% url 'core:contact' %}" class="text-muted">{% trans "Contact" %}</a> | 
+                <a href="{% url 'core:stats' %}" class="text-muted">{% trans "Statistics" %}</a>
             </p>
         </div>
     </footer>
