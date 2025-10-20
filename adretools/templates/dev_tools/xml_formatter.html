@@ -9,14 +9,14 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
             <li class="breadcrumb-item"><a href="{% url 'dev_tools:home' %}">{% trans "Developer Tools" %}</a></li>
-            <li class="breadcrumb-item active">XML Formatter</li>
+            <li class="breadcrumb-item active">{% trans "XML Formatter" %}</li>
         </ol>
     </nav>
 
     <div class="row">
         <div class="col-12">
-            <h1 class="h2 mb-3">XML Formatter & Viewer</h1>
-            <p class="text-muted mb-4">Format, validate and visualize XML data with syntax highlighting</p>
+            <h1 class="h2 mb-3">{% trans "XML Formatter & Viewer" %}</h1>
+            <p class="text-muted mb-4">{% trans "Format, validate and visualize XML data with syntax highlighting" %}</p>
         </div>
     </div>
 
@@ -24,21 +24,21 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0">XML Input</h5>
+                    <h5 class="mb-0">{% trans "XML Input" %}</h5>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                        <label for="xmlFile" class="form-label">Upload XML File</label>
+                        <label for="xmlFile" class="form-label">{% trans "Upload XML File" %}</label>
                         <input type="file" class="form-control" id="xmlFile" accept=".xml">
                     </div>
                     <div class="mb-3">
-                        <label for="xmlInput" class="form-label">Or paste XML content</label>
-                        <textarea class="form-control" id="xmlInput" rows="15" placeholder="Paste your XML here..."></textarea>
+                        <label for="xmlInput" class="form-label">{% trans "Or paste XML content" %}</label>
+                        <textarea class="form-control" id="xmlInput" rows="15" placeholder="{% trans 'Paste your XML here...' %}"></textarea>
                     </div>
                     <div class="d-flex gap-2">
-                        <button type="button" class="btn btn-primary" onclick="formatXML()">Format</button>
-                        <button type="button" class="btn btn-success" onclick="validateXML()">Validate</button>
-                        <button type="button" class="btn btn-info" onclick="minifyXML()">Minify</button>
+                        <button type="button" class="btn btn-primary" onclick="formatXML()">{% trans "Format" %}</button>
+                        <button type="button" class="btn btn-success" onclick="validateXML()">{% trans "Validate" %}</button>
+                        <button type="button" class="btn btn-info" onclick="minifyXML()">{% trans "Minify" %}</button>
                     </div>
                 </div>
             </div>
@@ -47,11 +47,11 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Formatted XML</h5>
+                    <h5 class="mb-0">{% trans "Formatted XML" %}</h5>
                     <div>
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="copyResult()">Copy</button>
-                        <button type="button" class="btn btn-sm btn-outline-success" onclick="downloadHTML()">Download HTML</button>
-                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="downloadPDF()">Download PDF</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="copyResult()">{% trans "Copy" %}</button>
+                        <button type="button" class="btn btn-sm btn-outline-success" onclick="downloadHTML()">{% trans "Download HTML" %}</button>
+                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="downloadPDF()">{% trans "Download PDF" %}</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -65,11 +65,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="mb-0">Visual Preview</h5>
+                    <h5 class="mb-0">{% trans "Visual Preview" %}</h5>
                 </div>
                 <div class="card-body">
                     <div id="xmlPreview" class="border rounded p-3" style="min-height: 200px; background: #f8f9fa;">
-                        <p class="text-muted text-center">Formatted XML will appear here as a visual tree</p>
+                        <p class="text-muted text-center">{% trans "Formatted XML will appear here as a visual tree" %}</p>
                     </div>
                 </div>
             </div>
