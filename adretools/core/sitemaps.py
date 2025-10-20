@@ -1,6 +1,5 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
-from blog.models import BlogPost
 
 class StaticViewSitemap(Sitemap):
     priority = 0.8
@@ -60,9 +59,6 @@ class StaticViewSitemap(Sitemap):
             
             # Horoscope Tools SEO
             'horoscope_tools:horoscope_calculator_tr', 'horoscope_tools:horoscope_calculator_en',
-            
-            # Blog SEO URLs
-            'blog:blog_home', 'blog:blog_tr', 'blog:how_to_tr', 'blog:tool_guides_tr',
         ]
 
     def location(self, item):
@@ -81,21 +77,3 @@ class StaticViewSitemap(Sitemap):
         if item in high_priority:
             return 1.0
         return 0.8
-
-class BlogPostSitemap(Sitemap):
-    changefreq = 'weekly'
-    priority = 0.9
-    
-    def items(self):
-        return BlogPost.objects.filter(is_published=True)
-    
-    def lastmod(self, obj):
-        return obj.updated_at
-    
-    def location(self, obj):
-        return obj.get_absolute_url()
-    
-    def priority(self, obj):
-        if obj.is_featured:
-            return 1.0
-        return 0.9
