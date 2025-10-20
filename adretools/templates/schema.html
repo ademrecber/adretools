@@ -1,0 +1,42 @@
+<!-- Global Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AdreTools",
+  "url": "{{ site_url }}",
+  "description": "Free online tools for PDF processing, QR code generation, image editing, text analysis, and more digital utilities",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ site_url }}/search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AdreTools",
+    "url": "{{ site_url }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site_url }}/static/images/logo.png"
+    }
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AdreTools",
+  "url": "{{ site_url }}",
+  "logo": "{{ site_url }}/static/images/logo.png",
+  "description": "Free online tools platform providing PDF tools, QR generators, calculators, and digital utilities",
+  "sameAs": [
+    "https://twitter.com/adretools",
+    "https://facebook.com/adretools"
+  ]
+}
+</script>

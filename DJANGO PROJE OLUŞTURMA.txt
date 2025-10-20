@@ -35,10 +35,6 @@ python manage.py makemessages -l es
 
 git add .
 git commit -m "Tüm proje güncellemeleri commit edildi"
-git push origin master
-
-git add .
-git commit -m "Tüm proje güncellemeleri commit edildi"
 git push origin main
 
 
