@@ -1,0 +1,457 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}E-Fatura Görüntüleyici - AdreTools{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'core:home' %}">{% trans "Home" %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'dev_tools:home' %}">{% trans "Developer Tools" %}</a></li>
+            <li class="breadcrumb-item active">E-Fatura Görüntüleyici</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <div class="col-12">
+            <h1 class="h2 mb-3">E-Fatura XML Görüntüleyici</h1>
+            <p class="text-muted mb-4">XML e-faturalarınızı gerçek fatura görünümünde görüntüleyin</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">XML Yükle</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="xmlFile" class="form-label">E-Fatura XML Dosyası</label>
+                        <input type="file" class="form-control" id="xmlFile" accept=".xml">
+                    </div>
+                    <div class="mb-3">
+                        <label for="xmlInput" class="form-label">Veya XML içeriği yapıştırın</label>
+                        <textarea class="form-control" id="xmlInput" rows="8" placeholder="E-fatura XML içeriğini buraya yapıştırın..."></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary w-100" onclick="processInvoice()">Faturayı Görüntüle</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Fatura Görünümü</h5>
+                    <div>
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick="printInvoice()">Yazdır</button>
+                        <button type="button" class="btn btn-sm btn-outline-success" onclick="downloadHTML()">HTML İndir</button>
+                        <button type="button" class="btn btn-sm btn-outline-danger" onclick="downloadPDF()">PDF İndir</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="invoicePreview" class="invoice-container">
+                        <div class="text-center text-muted py-5">
+                            <i class="fas fa-file-invoice fa-3x mb-3"></i>
+                            <p>XML dosyasını yükleyin veya içeriği yapıştırın</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.invoice-container {
+    background: white;
+    min-height: 600px;
+}
+
+.invoice-header {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.invoice-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.invoice-info {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.invoice-table th,
+.invoice-table td {
+    border: 1px solid #dee2e6;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.invoice-table th {
+    background: #f8f9fa;
+    font-weight: bold;
+}
+
+.invoice-totals {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.total-row.final {
+    font-weight: bold;
+    font-size: 1.1em;
+    border-top: 2px solid #007bff;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+@media print {
+    .card-header, .btn, nav {
+        display: none !important;
+    }
+    .card {
+        border: none !important;
+        box-shadow: none !important;
+    }
+}
+</style>
+
+<script>
+// File upload handler
+document.getElementById('xmlFile').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('xmlInput').value = e.target.result;
+        };
+        reader.readAsText(file);
+    }
+});
+
+function processInvoice() {
+    const xmlContent = document.getElementById('xmlInput').value.trim();
+    if (!xmlContent) {
+        alert('Lütfen XML içeriği girin!');
+        return;
+    }
+
+    try {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlContent, 'text/xml');
+        
+        // Check for parsing errors
+        const parseError = xmlDoc.getElementsByTagName('parsererror');
+        if (parseError.length > 0) {
+            throw new Error('Geçersiz XML formatı');
+        }
+
+        const invoiceHTML = generateInvoiceHTML(xmlDoc);
+        document.getElementById('invoicePreview').innerHTML = invoiceHTML;
+        
+    } catch (error) {
+        document.getElementById('invoicePreview').innerHTML = `
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle"></i>
+                Hata: ${error.message}
+            </div>
+        `;
+    }
+}
+
+function generateInvoiceHTML(xmlDoc) {
+    // E-fatura XML yapısından bilgileri çıkar
+    const invoice = extractInvoiceData(xmlDoc);
+    
+    return `
+        <div class="invoice-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="invoice-title">E-FATURA</div>
+                    <div class="mt-2">
+                        <strong>Fatura No:</strong> ${invoice.invoiceNumber}<br>
+                        <strong>Tarih:</strong> ${invoice.date}<br>
+                        <strong>ETTN:</strong> ${invoice.ettn}
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="company-info">
+                        <strong>${invoice.supplier.name}</strong><br>
+                        VKN: ${invoice.supplier.taxNumber}<br>
+                        ${invoice.supplier.address}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="invoice-info">
+                    <h6><strong>Satıcı Bilgileri</strong></h6>
+                    <strong>${invoice.supplier.name}</strong><br>
+                    VKN: ${invoice.supplier.taxNumber}<br>
+                    ${invoice.supplier.address}<br>
+                    ${invoice.supplier.city}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="invoice-info">
+                    <h6><strong>Alıcı Bilgileri</strong></h6>
+                    <strong>${invoice.customer.name}</strong><br>
+                    ${invoice.customer.taxNumber ? 'VKN: ' + invoice.customer.taxNumber : ''}<br>
+                    ${invoice.customer.address}<br>
+                    ${invoice.customer.city}
+                </div>
+            </div>
+        </div>
+
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Mal/Hizmet Adı</th>
+                    <th>Miktar</th>
+                    <th>Birim</th>
+                    <th>Birim Fiyat</th>
+                    <th>KDV %</th>
+                    <th>Tutar</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${invoice.lines.map((line, index) => `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${line.name}</td>
+                        <td>${line.quantity}</td>
+                        <td>${line.unit}</td>
+                        <td>${formatCurrency(line.unitPrice)}</td>
+                        <td>${line.taxRate}%</td>
+                        <td>${formatCurrency(line.lineTotal)}</td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+
+        <div class="invoice-totals">
+            <div class="total-row">
+                <span>Ara Toplam:</span>
+                <span>${formatCurrency(invoice.subtotal)}</span>
+            </div>
+            <div class="total-row">
+                <span>KDV Toplam:</span>
+                <span>${formatCurrency(invoice.taxTotal)}</span>
+            </div>
+            <div class="total-row final">
+                <span>GENEL TOPLAM:</span>
+                <span>${formatCurrency(invoice.total)}</span>
+            </div>
+        </div>
+    `;
+}
+
+function extractInvoiceData(xmlDoc) {
+    // UBL namespace'lerini handle et
+    const getValue = (xpath) => {
+        const result = xmlDoc.evaluate(xpath, xmlDoc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+        return result.singleNodeValue ? result.singleNodeValue.textContent : '';
+    };
+
+    const getValueByTag = (tagName) => {
+        const elements = xmlDoc.getElementsByTagName(tagName);
+        return elements.length > 0 ? elements[0].textContent : '';
+    };
+
+    // Fatura temel bilgileri
+    const invoiceNumber = getValueByTag('ID') || getValueByTag('cbc:ID');
+    const date = getValueByTag('IssueDate') || getValueByTag('cbc:IssueDate');
+    const ettn = getValueByTag('UUID') || getValueByTag('cbc:UUID');
+
+    // Satıcı bilgileri
+    const supplierParty = xmlDoc.getElementsByTagName('cac:AccountingSupplierParty')[0] || 
+                         xmlDoc.getElementsByTagName('AccountingSupplierParty')[0];
+    
+    let supplier = { name: '', taxNumber: '', address: '', city: '' };
+    if (supplierParty) {
+        const party = supplierParty.getElementsByTagName('cac:Party')[0] || 
+                     supplierParty.getElementsByTagName('Party')[0];
+        if (party) {
+            const name = party.getElementsByTagName('cbc:Name')[0] || party.getElementsByTagName('Name')[0];
+            const taxScheme = party.getElementsByTagName('cbc:CompanyID')[0] || party.getElementsByTagName('CompanyID')[0];
+            
+            supplier.name = name ? name.textContent : '';
+            supplier.taxNumber = taxScheme ? taxScheme.textContent : '';
+        }
+    }
+
+    // Alıcı bilgileri
+    const customerParty = xmlDoc.getElementsByTagName('cac:AccountingCustomerParty')[0] || 
+                         xmlDoc.getElementsByTagName('AccountingCustomerParty')[0];
+    
+    let customer = { name: '', taxNumber: '', address: '', city: '' };
+    if (customerParty) {
+        const party = customerParty.getElementsByTagName('cac:Party')[0] || 
+                     customerParty.getElementsByTagName('Party')[0];
+        if (party) {
+            const name = party.getElementsByTagName('cbc:Name')[0] || party.getElementsByTagName('Name')[0];
+            const taxScheme = party.getElementsByTagName('cbc:CompanyID')[0] || party.getElementsByTagName('CompanyID')[0];
+            
+            customer.name = name ? name.textContent : '';
+            customer.taxNumber = taxScheme ? taxScheme.textContent : '';
+        }
+    }
+
+    // Fatura satırları
+    const lines = [];
+    const invoiceLines = xmlDoc.getElementsByTagName('cac:InvoiceLine') || 
+                        xmlDoc.getElementsByTagName('InvoiceLine');
+    
+    for (let i = 0; i < invoiceLines.length; i++) {
+        const line = invoiceLines[i];
+        const item = line.getElementsByTagName('cac:Item')[0] || line.getElementsByTagName('Item')[0];
+        const price = line.getElementsByTagName('cac:Price')[0] || line.getElementsByTagName('Price')[0];
+        const quantity = line.getElementsByTagName('cbc:InvoicedQuantity')[0] || 
+                        line.getElementsByTagName('InvoicedQuantity')[0];
+        
+        lines.push({
+            name: item ? (item.getElementsByTagName('cbc:Name')[0] || item.getElementsByTagName('Name')[0])?.textContent || '' : '',
+            quantity: quantity ? quantity.textContent : '1',
+            unit: quantity ? quantity.getAttribute('unitCode') || 'Adet' : 'Adet',
+            unitPrice: price ? (price.getElementsByTagName('cbc:PriceAmount')[0] || price.getElementsByTagName('PriceAmount')[0])?.textContent || '0' : '0',
+            taxRate: '18', // Default KDV
+            lineTotal: (line.getElementsByTagName('cbc:LineExtensionAmount')[0] || line.getElementsByTagName('LineExtensionAmount')[0])?.textContent || '0'
+        });
+    }
+
+    // Toplam tutarlar
+    const legalMonetaryTotal = xmlDoc.getElementsByTagName('cac:LegalMonetaryTotal')[0] || 
+                              xmlDoc.getElementsByTagName('LegalMonetaryTotal')[0];
+    
+    let subtotal = '0', taxTotal = '0', total = '0';
+    if (legalMonetaryTotal) {
+        subtotal = (legalMonetaryTotal.getElementsByTagName('cbc:LineExtensionAmount')[0] || 
+                   legalMonetaryTotal.getElementsByTagName('LineExtensionAmount')[0])?.textContent || '0';
+        taxTotal = (legalMonetaryTotal.getElementsByTagName('cbc:TaxInclusiveAmount')[0] || 
+                   legalMonetaryTotal.getElementsByTagName('TaxInclusiveAmount')[0])?.textContent || '0';
+        total = (legalMonetaryTotal.getElementsByTagName('cbc:PayableAmount')[0] || 
+                legalMonetaryTotal.getElementsByTagName('PayableAmount')[0])?.textContent || '0';
+    }
+
+    return {
+        invoiceNumber,
+        date,
+        ettn,
+        supplier,
+        customer,
+        lines,
+        subtotal,
+        taxTotal,
+        total
+    };
+}
+
+function formatCurrency(amount) {
+    const num = parseFloat(amount) || 0;
+    return new Intl.NumberFormat('tr-TR', {
+        style: 'currency',
+        currency: 'TRY'
+    }).format(num);
+}
+
+function printInvoice() {
+    window.print();
+}
+
+function downloadHTML() {
+    const invoiceContent = document.getElementById('invoicePreview').innerHTML;
+    const html = `
+<!DOCTYPE html>
+<html>
+<head>
+    <title>E-Fatura</title>
+    <meta charset="utf-8">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .invoice-header { border-bottom: 2px solid #007bff; padding-bottom: 20px; margin-bottom: 30px; }
+        .invoice-title { font-size: 2rem; font-weight: bold; color: #007bff; }
+        .invoice-info { background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+        .invoice-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        .invoice-table th, .invoice-table td { border: 1px solid #dee2e6; padding: 8px 12px; text-align: left; }
+        .invoice-table th { background: #f8f9fa; font-weight: bold; }
+        .invoice-totals { background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 20px; }
+        .total-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+        .total-row.final { font-weight: bold; font-size: 1.1em; border-top: 2px solid #007bff; padding-top: 10px; margin-top: 10px; }
+        .row { display: flex; margin-bottom: 15px; }
+        .col-md-6 { flex: 0 0 50%; padding: 0 15px; }
+        .text-end { text-align: right; }
+    </style>
+</head>
+<body>
+    ${invoiceContent}
+</body>
+</html>`;
+    
+    const blob = new Blob([html], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'e-fatura.html';
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function downloadPDF() {
+    const printWindow = window.open('', '_blank');
+    const invoiceContent = document.getElementById('invoicePreview').innerHTML;
+    
+    printWindow.document.write(`
+        <html>
+        <head>
+            <title>E-Fatura</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; }
+                .invoice-header { border-bottom: 2px solid #007bff; padding-bottom: 20px; margin-bottom: 30px; }
+                .invoice-title { font-size: 2rem; font-weight: bold; color: #007bff; }
+                .invoice-info { background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+                .invoice-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+                .invoice-table th, .invoice-table td { border: 1px solid #dee2e6; padding: 8px 12px; text-align: left; }
+                .invoice-table th { background: #f8f9fa; font-weight: bold; }
+                .invoice-totals { background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 20px; }
+                .total-row { display: flex; justify-content: space-between; margin-bottom: 5px; }
+                .total-row.final { font-weight: bold; font-size: 1.1em; border-top: 2px solid #007bff; padding-top: 10px; margin-top: 10px; }
+                .row { display: flex; margin-bottom: 15px; }
+                .col-md-6 { flex: 0 0 50%; padding: 0 15px; }
+                .text-end { text-align: right; }
+            </style>
+        </head>
+        <body>
+            ${invoiceContent}
+        </body>
+        </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+}
+</script>
+{% endblock %}

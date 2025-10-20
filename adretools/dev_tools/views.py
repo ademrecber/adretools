@@ -21,6 +21,8 @@ def dev_home(request):
         {'name': 'HTML Encoder', 'id': 'html-encoder', 'icon': 'fab fa-html5', 'desc': 'HTML encode/decode'},
         {'name': 'SQL Formatter', 'id': 'sql-formatter', 'icon': 'fas fa-database', 'desc': 'Format SQL queries'},
         {'name': 'Timestamp Converter', 'id': 'timestamp-converter', 'icon': 'fas fa-clock', 'desc': 'Convert Unix timestamps'},
+        {'name': 'XML Formatter', 'id': 'xml-formatter', 'icon': 'fas fa-code', 'desc': 'Format and visualize XML'},
+        {'name': 'E-Fatura Viewer', 'id': 'invoice-viewer', 'icon': 'fas fa-file-invoice', 'desc': 'View XML invoices as formatted documents'},
     ]
     return render(request, 'dev_tools/home.html', {'tools': tools})
 
@@ -187,6 +189,20 @@ def timestamp_converter_page(request):
         'title': 'Online Timestamp Converter - Free',
         'description': 'Convert Unix timestamps to human readable dates',
         'keywords': 'timestamp converter, unix timestamp, date converter'
+    })
+
+def xml_formatter_page(request):
+    return render(request, 'dev_tools/xml_formatter.html', {
+        'title': 'Online XML Formatter - Free XML Validator',
+        'description': 'Format, validate and visualize XML data with syntax highlighting',
+        'keywords': 'xml formatter, xml validator, xml viewer, xml beautifier'
+    })
+
+def invoice_viewer_page(request):
+    return render(request, 'dev_tools/invoice_viewer.html', {
+        'title': 'E-Fatura XML Görüntüleyici - Ücretsiz',
+        'description': 'E-fatura XML dosyalarınızı gerçek fatura görünümünde görüntüleyin',
+        'keywords': 'e-fatura, xml fatura, fatura görüntüleyici, xml viewer'
     })
 
 @csrf_exempt

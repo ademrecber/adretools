@@ -15,6 +15,8 @@ urlpatterns = [
     path('html-encoder/', views.html_encoder_page, name='html_encoder_page'),
     path('sql-formatter/', views.sql_formatter_page, name='sql_formatter_page'),
     path('timestamp-converter/', views.timestamp_converter_page, name='timestamp_converter_page'),
+    path('xml-formatter/', views.xml_formatter_page, name='xml_formatter_page'),
+    path('invoice-viewer/', views.invoice_viewer_page, name='invoice_viewer_page'),
     
     # API endpoints
     path('api/json-formatter/', views.json_formatter_api, name='json_formatter_api'),
