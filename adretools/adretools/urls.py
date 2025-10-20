@@ -5,19 +5,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib.sitemaps.views import sitemap
-from core.sitemaps import StaticViewSitemap
+from core.sitemaps import StaticViewSitemap, BlogPostSitemap
 
 sitemaps = {
     'static': StaticViewSitemap,
+    'blog': BlogPostSitemap,
 }
-
-# Blog sitemap will be added when blog app is ready
-try:
-    from core.sitemaps import BlogPostSitemap
-    if BlogPostSitemap:
-        sitemaps['blog'] = BlogPostSitemap
-except (ImportError, AttributeError):
-    pass
 
 urlpatterns = [
     # SEO

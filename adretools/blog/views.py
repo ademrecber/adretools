@@ -3,23 +3,16 @@ from django.db.models import F
 from .models import BlogPost
 
 def blog_home(request):
-    try:
-        category = request.GET.get('category')
-        posts = BlogPost.objects.filter(is_published=True)
-        
-        if category:
-            posts = posts.filter(category=category)
-        
-        featured_posts = posts.filter(is_featured=True)[:3]
-        recent_posts = posts[:10]
-        
-        categories = BlogPost.objects.filter(is_published=True).values_list('category', flat=True).distinct()
-    except:
-        posts = []
-        featured_posts = []
-        recent_posts = []
-        categories = []
-        category = None
+    category = request.GET.get('category')
+    posts = BlogPost.objects.filter(is_published=True)
+    
+    if category:
+        posts = posts.filter(category=category)
+    
+    featured_posts = posts.filter(is_featured=True)[:3]
+    recent_posts = posts[:10]
+    
+    categories = BlogPost.objects.filter(is_published=True).values_list('category', flat=True).distinct()
     
     context = {
         'posts': recent_posts,
@@ -33,23 +26,16 @@ def blog_home(request):
     return render(request, 'blog/home.html', context)
 
 def blog_post(request, slug):
-    try:
-        post = get_object_or_404(BlogPost, slug=slug, is_published=True)
-        
-        # Increment view count
-        try:
-            BlogPost.objects.filter(slug=slug).update(view_count=F('view_count') + 1)
-        except:
-            pass
-        
-        # Get related posts
-        related_posts = BlogPost.objects.filter(
-            is_published=True,
-            category=post.category
-        ).exclude(slug=slug)[:3]
-    except:
-        from django.http import Http404
-        raise Http404("Blog post not found")
+    post = get_object_or_404(BlogPost, slug=slug, is_published=True)
+    
+    # Increment view count
+    BlogPost.objects.filter(slug=slug).update(view_count=F('view_count') + 1)
+    
+    # Get related posts
+    related_posts = BlogPost.objects.filter(
+        is_published=True,
+        category=post.category
+    ).exclude(slug=slug)[:3]
     
     context = {
         'post': post,

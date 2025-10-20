@@ -6,7 +6,7 @@ class BlogPost(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     content = models.TextField()
-    excerpt = models.TextField(max_length=300, blank=True, help_text="Short description for blog listing")
+    excerpt = models.TextField(max_length=300, help_text="Short description for blog listing")
     meta_description = models.CharField(max_length=160)
     meta_keywords = models.CharField(max_length=255, blank=True, help_text="SEO keywords separated by commas")
     og_title = models.CharField(max_length=60, blank=True, help_text="Open Graph title")
