@@ -15,6 +15,7 @@ class StaticViewSitemap(Sitemap):
             'text_tools:home', 'url_tools:home', 'color_tools:home',
             'converter_tools:home', 'svg_tools:home', 'horoscope_tools:home',
             'network_tools:home', 'dev_tools:home',
+            'dev_tools:xml_formatter', 'dev_tools:invoice_viewer',
             
             # QR Tools SEO (doğru isimler)
             'qr_tools:qr_generator_tr', 'qr_tools:qr_generator_en',
