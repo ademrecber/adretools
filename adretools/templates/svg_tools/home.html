@@ -20,6 +20,9 @@
         </a>
         <h1 class="display-4 text-primary">🎨 {% trans "SVG Tools" %}</h1>
         <p class="lead">{% trans "Edit and convert SVG files" %}</p>
+        <button class="btn btn-outline-info mb-3" data-bs-toggle="modal" data-bs-target="#svgGuideModal">
+            <i class="fas fa-question-circle"></i> {% trans "Usage Guide" %}
+        </button>
     </div>
 
     <div class="row">
@@ -211,6 +214,8 @@
         </div>
     </div>
 </div>
+
+{% include 'guide_modals.html' %}
 {% endblock %}
 
 {% block extra_js %}

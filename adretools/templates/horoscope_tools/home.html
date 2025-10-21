@@ -23,6 +23,9 @@
         </a>
         <h1 class="display-4 text-primary">🔮 {% trans "Horoscope Calculator" %}</h1>
         <p class="lead">{% trans "Discover your zodiac sign, ascendant and personality traits with your birth date" %}</p>
+        <button class="btn btn-outline-info mb-3" data-bs-toggle="modal" data-bs-target="#horoscopeGuideModal">
+            <i class="fas fa-question-circle"></i> {% trans "Usage Guide" %}
+        </button>
     </div>
 
     <div class="row">
@@ -111,6 +114,8 @@
     </div>
 </div>
 {% endblock %}
+
+{% include 'guide_modals.html' %}
 
 {% block extra_js %}
 <script src="{% static 'js/horoscope-tools.js' %}"></script>

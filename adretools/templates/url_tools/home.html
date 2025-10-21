@@ -21,6 +21,9 @@
         </a>
         <h1 class="display-4 text-primary">🔗 {% trans "URL Shortener" %}</h1>
         <p class="lead">{% trans "Shorten long links and generate QR codes" %}</p>
+        <button class="btn btn-outline-info mb-3" data-bs-toggle="modal" data-bs-target="#urlGuideModal">
+            <i class="fas fa-question-circle"></i> {% trans "Usage Guide" %}
+        </button>
     </div>
 
     <div class="row">
@@ -114,6 +117,81 @@
     </div>
 </div>
 {% endblock %}
+
+<!-- URL Tools Guide Modal -->
+<div class="modal fade" id="urlGuideModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title"><i class="fas fa-book"></i> {% trans "URL Shortener Guide" %}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="urlGuideAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#urlBasics">
+                                <i class="fas fa-link text-primary me-2"></i> {% trans "URL Shortening" %}
+                            </button>
+                        </h2>
+                        <div id="urlBasics" class="accordion-collapse collapse show" data-bs-parent="#urlGuideAccordion">
+                            <div class="accordion-body">
+                                <p>{% trans "Convert long URLs into short, manageable links perfect for social media, emails, and marketing campaigns." %}</p>
+                                <ul>
+                                    <li>{% trans "Easier to share and remember" %}</li>
+                                    <li>{% trans "Track click statistics" %}</li>
+                                    <li>{% trans "Generate QR codes automatically" %}</li>
+                                    <li>{% trans "Professional appearance" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#features">
+                                <i class="fas fa-chart-line text-success me-2"></i> {% trans "Features" %}
+                            </button>
+                        </h2>
+                        <div id="features" class="accordion-collapse collapse" data-bs-parent="#urlGuideAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><strong>{% trans "Click Tracking:" %}</strong> {% trans "Monitor how many times your link is clicked" %}</li>
+                                    <li><strong>{% trans "QR Code Generation:" %}</strong> {% trans "Automatic QR code for mobile sharing" %}</li>
+                                    <li><strong>{% trans "Statistics:" %}</strong> {% trans "View detailed analytics" %}</li>
+                                    <li><strong>{% trans "Custom Codes:" %}</strong> {% trans "Easy to remember short codes" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#useCases">
+                                <i class="fas fa-lightbulb text-warning me-2"></i> {% trans "Use Cases" %}
+                            </button>
+                        </h2>
+                        <div id="useCases" class="accordion-collapse collapse" data-bs-parent="#urlGuideAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>{% trans "Social media posts (Twitter character limits)" %}</li>
+                                    <li>{% trans "Email marketing campaigns" %}</li>
+                                    <li>{% trans "Print materials (business cards, flyers)" %}</li>
+                                    <li>{% trans "SMS marketing" %}</li>
+                                    <li>{% trans "QR codes for offline-to-online marketing" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-info-circle"></i> <strong>{% trans "Note:" %}</strong> {% trans "All shortened URLs are permanent and include click tracking" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% block extra_js %}
 <script src="{% static 'js/url-tools.js' %}"></script>

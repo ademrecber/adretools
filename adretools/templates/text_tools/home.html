@@ -144,83 +144,82 @@
             </div>
         </div>
     </div>
-</div>
-{% endblock %}
-
-<!-- Text Tools Guide Modal -->
-<div class="modal fade" id="textGuideModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header bg-info text-white">
-                <h5 class="modal-title"><i class="fas fa-book"></i> {% trans "Text Processing Guide" %}</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <div class="accordion" id="textGuideAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#analysisGuide">
-                                <i class="fas fa-chart-bar text-primary me-2"></i> {% trans "Text Analysis" %}
-                            </button>
-                        </h2>
-                        <div id="analysisGuide" class="accordion-collapse collapse show" data-bs-parent="#textGuideAccordion">
-                            <div class="accordion-body">
-                                <p>{% trans "Get detailed statistics about your text:" %}</p>
-                                <ul>
-                                    <li>{% trans "Character count (with/without spaces)" %}</li>
-                                    <li>{% trans "Word count for essays and articles" %}</li>
-                                    <li>{% trans "Reading statistics and structure" %}</li>
-                                </ul>
-                                <div class="alert alert-info">
-                                    <strong>{% trans "Use for:" %}</strong> {% trans "Academic papers, SEO content, social media" %}
+    <!-- Text Tools Guide Modal -->
+    <div class="modal fade" id="textGuideModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title"><i class="fas fa-book"></i> {% trans "Text Processing Guide" %}</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="accordion" id="textGuideAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#analysisGuide">
+                                    <i class="fas fa-chart-bar text-primary me-2"></i> {% trans "Text Analysis" %}
+                                </button>
+                            </h2>
+                            <div id="analysisGuide" class="accordion-collapse collapse show" data-bs-parent="#textGuideAccordion">
+                                <div class="accordion-body">
+                                    <p>{% trans "Get detailed statistics about your text:" %}</p>
+                                    <ul>
+                                        <li>{% trans "Character count (with/without spaces)" %}</li>
+                                        <li>{% trans "Word count for essays and articles" %}</li>
+                                        <li>{% trans "Reading statistics and structure" %}</li>
+                                    </ul>
+                                    <div class="alert alert-info">
+                                        <strong>{% trans "Use for:" %}</strong> {% trans "Academic papers, SEO content, social media" %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#transformGuide">
+                                    <i class="fas fa-exchange-alt text-success me-2"></i> {% trans "Text Transformation" %}
+                                </button>
+                            </h2>
+                            <div id="transformGuide" class="accordion-collapse collapse" data-bs-parent="#textGuideAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>{% trans "Case Changes:" %}</strong> {% trans "UPPERCASE, lowercase, Title Case" %}</li>
+                                        <li><strong>{% trans "URL Slug:" %}</strong> {% trans "SEO-friendly URLs" %}</li>
+                                        <li><strong>{% trans "Clean Text:" %}</strong> {% trans "Remove extra spaces, special chars" %}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#encodingGuide">
+                                    <i class="fas fa-code text-warning me-2"></i> {% trans "Encoding & Hashing" %}
+                                </button>
+                            </h2>
+                            <div id="encodingGuide" class="accordion-collapse collapse" data-bs-parent="#textGuideAccordion">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li><strong>Base64:</strong> {% trans "Data encoding for web/email" %}</li>
+                                        <li><strong>URL Encoding:</strong> {% trans "Safe URL parameters" %}</li>
+                                        <li><strong>MD5/SHA256:</strong> {% trans "Hash generation" %}</li>
+                                        <li><strong>JSON:</strong> {% trans "Format and validate JSON data" %}</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#transformGuide">
-                                <i class="fas fa-exchange-alt text-success me-2"></i> {% trans "Text Transformation" %}
-                            </button>
-                        </h2>
-                        <div id="transformGuide" class="accordion-collapse collapse" data-bs-parent="#textGuideAccordion">
-                            <div class="accordion-body">
-                                <ul>
-                                    <li><strong>{% trans "Case Changes:" %}</strong> {% trans "UPPERCASE, lowercase, Title Case" %}</li>
-                                    <li><strong>{% trans "URL Slug:" %}</strong> {% trans "SEO-friendly URLs" %}</li>
-                                    <li><strong>{% trans "Clean Text:" %}</strong> {% trans "Remove extra spaces, special chars" %}</li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="alert alert-info mt-3">
+                        <i class="fas fa-info-circle"></i> <strong>{% trans "Real-time:" %}</strong> {% trans "All processing happens instantly in browser" %}
                     </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#encodingGuide">
-                                <i class="fas fa-code text-warning me-2"></i> {% trans "Encoding & Hashing" %}
-                            </button>
-                        </h2>
-                        <div id="encodingGuide" class="accordion-collapse collapse" data-bs-parent="#textGuideAccordion">
-                            <div class="accordion-body">
-                                <ul>
-                                    <li><strong>Base64:</strong> {% trans "Data encoding for web/email" %}</li>
-                                    <li><strong>URL Encoding:</strong> {% trans "Safe URL parameters" %}</li>
-                                    <li><strong>MD5/SHA256:</strong> {% trans "Hash generation" %}</li>
-                                    <li><strong>JSON:</strong> {% trans "Format and validate JSON data" %}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="alert alert-info mt-3">
-                    <i class="fas fa-info-circle"></i> <strong>{% trans "Real-time:" %}</strong> {% trans "All processing happens instantly in browser" %}
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
 
 {% block extra_js %}
 <script src="{% static 'js/text-tools.js' %}"></script>

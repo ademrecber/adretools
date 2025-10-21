@@ -67,7 +67,12 @@
     <div class="col-12 text-center mb-4">
         <h1><i class="fas fa-code text-success"></i> {% trans "Developer Tools" %}</h1>
         <p class="lead">{% trans "Professional tools for coding and development" %}</p>
-        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+        <div class="mb-3">
+            <a href="{% url 'core:home' %}" class="btn btn-outline-secondary me-2">← {% trans "Home" %}</a>
+            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#devGuideModal">
+                <i class="fas fa-question-circle"></i> {% trans "Usage Guide" %}
+            </button>
+        </div>
     </div>
 </div>
 
@@ -148,4 +153,6 @@
         </div>
     </div>
 </div>
+
+{% include 'guide_modals.html' %}
 {% endblock %}

@@ -429,8 +429,6 @@
     </div>
 </div>
 
-{% endblock %}
-
 <!-- PDF Tools Guide Modal -->
 <div class="modal fade" id="pdfGuideModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
@@ -460,11 +458,11 @@
                     
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#securityGuide">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pdfSecurityGuide">
                                 <i class="fas fa-shield-alt text-success me-2"></i> {% trans "Security & Protection" %}
                             </button>
                         </h2>
-                        <div id="securityGuide" class="accordion-collapse collapse" data-bs-parent="#pdfGuideAccordion">
+                        <div id="pdfSecurityGuide" class="accordion-collapse collapse" data-bs-parent="#pdfGuideAccordion">
                             <div class="accordion-body">
                                 <ul>
                                     <li><strong>{% trans "Password Protection:" %}</strong> {% trans "AES-256 encryption" %}</li>
@@ -501,6 +499,8 @@
         </div>
     </div>
 </div>
+
+{% endblock %}
 
 {% block extra_js %}
 {% load static %}

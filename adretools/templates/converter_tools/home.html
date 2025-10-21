@@ -24,6 +24,9 @@
         </a>
         <h1 class="display-4 text-primary">⚖️ {% trans "Unit Converter" %}</h1>
         <p class="lead">{% trans "Convert length, weight, temperature and more" %}</p>
+        <button class="btn btn-outline-info mb-3" data-bs-toggle="modal" data-bs-target="#converterGuideModal">
+            <i class="fas fa-question-circle"></i> {% trans "Usage Guide" %}
+        </button>
     </div>
 
     <div class="row">
@@ -97,6 +100,83 @@
     </div>
 </div>
 {% endblock %}
+
+<!-- Converter Guide Modal -->
+<div class="modal fade" id="converterGuideModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title"><i class="fas fa-book"></i> {% trans "Unit Converter Guide" %}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="converterGuideAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#converterBasics">
+                                <i class="fas fa-exchange-alt text-primary me-2"></i> {% trans "Available Conversions" %}
+                            </button>
+                        </h2>
+                        <div id="converterBasics" class="accordion-collapse collapse show" data-bs-parent="#converterGuideAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><strong>{% trans "Length:" %}</strong> {% trans "Meters, feet, inches, kilometers, miles" %}</li>
+                                    <li><strong>{% trans "Weight:" %}</strong> {% trans "Kilograms, pounds, ounces, grams" %}</li>
+                                    <li><strong>{% trans "Temperature:" %}</strong> {% trans "Celsius, Fahrenheit, Kelvin" %}</li>
+                                    <li><strong>{% trans "Area:" %}</strong> {% trans "Square meters, acres, hectares" %}</li>
+                                    <li><strong>{% trans "Volume:" %}</strong> {% trans "Liters, gallons, cubic meters" %}</li>
+                                    <li><strong>{% trans "Speed:" %}</strong> {% trans "km/h, mph, m/s" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#howToUse">
+                                <i class="fas fa-cogs text-success me-2"></i> {% trans "How to Use" %}
+                            </button>
+                        </h2>
+                        <div id="howToUse" class="accordion-collapse collapse" data-bs-parent="#converterGuideAccordion">
+                            <div class="accordion-body">
+                                <ol>
+                                    <li>{% trans "Select conversion category (Length, Weight, etc.)" %}</li>
+                                    <li>{% trans "Enter the value you want to convert" %}</li>
+                                    <li>{% trans "Choose source and target units" %}</li>
+                                    <li>{% trans "Result appears automatically" %}</li>
+                                    <li>{% trans "Use swap button to reverse conversion" %}</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#useCases">
+                                <i class="fas fa-lightbulb text-warning me-2"></i> {% trans "Common Uses" %}
+                            </button>
+                        </h2>
+                        <div id="useCases" class="accordion-collapse collapse" data-bs-parent="#converterGuideAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>{% trans "Cooking and recipes (metric to imperial)" %}</li>
+                                    <li>{% trans "Travel planning (miles to kilometers)" %}</li>
+                                    <li>{% trans "Construction and engineering" %}</li>
+                                    <li>{% trans "Scientific calculations" %}</li>
+                                    <li>{% trans "International business" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-calculator"></i> <strong>{% trans "Accuracy:" %}</strong> {% trans "All conversions use standard international formulas" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% block extra_js %}
 <script src="{% static 'js/converter-tools.js' %}"></script>

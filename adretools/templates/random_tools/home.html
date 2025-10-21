@@ -150,7 +150,12 @@
     <div class="col-12 text-center mb-4">
         <h1><i class="fas fa-dice text-primary"></i> {% trans "Random Tools" %}</h1>
         <p class="lead">{% trans "Professional random generators and lottery systems" %}</p>
-        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+        <div class="mb-3">
+            <a href="{% url 'core:home' %}" class="btn btn-outline-secondary me-2">← {% trans "Home" %}</a>
+            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#randomGuideModal">
+                <i class="fas fa-question-circle"></i> {% trans "Usage Guide" %}
+            </button>
+        </div>
     </div>
 </div>
 
@@ -343,6 +348,8 @@
     </div>
 </div>
 {% endblock %}
+
+{% include 'guide_modals.html' %}
 
 {% block extra_js %}
 <script src="/static/js/random-tools.js"></script>
