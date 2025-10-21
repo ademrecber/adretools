@@ -164,6 +164,155 @@
 </div>
 {% endblock %}
 
+<!-- Detaylı Rehber Bölümü -->
+<div class="mt-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h4><i class="fas fa-book"></i> {% trans "Complete Calculator Guide" %}</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-weight text-danger"></i> {% trans "BMI Calculator Guide" %}</h5>
+                    <p>{% trans "Body Mass Index (BMI) is a measure of body fat based on height and weight. It's used to categorize weight status and assess health risks." %}</p>
+                    
+                    <h6>{% trans "BMI Categories:" %}</h6>
+                    <ul>
+                        <li><strong>{% trans "Underweight:" %}</strong> {% trans "BMI < 18.5" %}</li>
+                        <li><strong>{% trans "Normal weight:" %}</strong> {% trans "BMI 18.5-24.9" %}</li>
+                        <li><strong>{% trans "Overweight:" %}</strong> {% trans "BMI 25-29.9" %}</li>
+                        <li><strong>{% trans "Obese:" %}</strong> {% trans "BMI ≥ 30" %}</li>
+                    </ul>
+                    
+                    <div class="alert alert-info">
+                        <strong>{% trans "Formula:" %}</strong> BMI = {% trans "Weight (kg) / Height (m)²" %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-birthday-cake text-success"></i> {% trans "Age Calculator Guide" %}</h5>
+                    <p>{% trans "Calculate your exact age in years, months, days, hours, and minutes. Useful for official documents, age verification, and milestone tracking." %}</p>
+                    
+                    <h6>{% trans "What You Get:" %}</h6>
+                    <ul>
+                        <li>{% trans "Exact age in years, months, days" %}</li>
+                        <li>{% trans "Total days lived" %}</li>
+                        <li>{% trans "Next birthday countdown" %}</li>
+                        <li>{% trans "Age in different units (hours, minutes)" %}</li>
+                    </ul>
+                    
+                    <div class="alert alert-success">
+                        <strong>{% trans "Tip:" %}</strong> {% trans "Useful for visa applications, insurance, and legal documents" %}
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-globe text-info"></i> {% trans "World Clock" %}</h5>
+                    <p>{% trans "View current time in major cities worldwide. Perfect for international business, travel planning, and scheduling meetings across time zones." %}</p>
+                    
+                    <h6>{% trans "Featured Cities:" %}</h6>
+                    <ul>
+                        <li>New York (EST/EDT)</li>
+                        <li>London (GMT/BST)</li>
+                        <li>Tokyo (JST)</li>
+                        <li>Sydney (AEST/AEDT)</li>
+                        <li>Istanbul (TRT)</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="fas fa-percent text-warning"></i> {% trans "Percentage Calculator" %}</h5>
+                    <p>{% trans "Calculate percentages, percentage increase/decrease, and find what percentage one number is of another." %}</p>
+                    
+                    <h6>{% trans "Common Uses:" %}</h6>
+                    <ul>
+                        <li>{% trans "Sales discounts and taxes" %}</li>
+                        <li>{% trans "Grade calculations" %}</li>
+                        <li>{% trans "Financial calculations" %}</li>
+                        <li>{% trans "Statistics and data analysis" %}</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="fas fa-calendar text-primary"></i> {% trans "Date Calculator" %}</h5>
+                    <p>{% trans "Calculate the difference between two dates, add or subtract days from a date, and find specific dates." %}</p>
+                    
+                    <h6>{% trans "Applications:" %}</h6>
+                    <ul>
+                        <li>{% trans "Project planning" %}</li>
+                        <li>{% trans "Event countdown" %}</li>
+                        <li>{% trans "Age calculations" %}</li>
+                        <li>{% trans "Business day calculations" %}</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-lightbulb text-success"></i> {% trans "Health & Fitness Tips" %}</h5>
+                    <ul>
+                        <li>{% trans "BMI is a screening tool, not a diagnostic tool" %}</li>
+                        <li>{% trans "Muscle weighs more than fat - athletes may have high BMI" %}</li>
+                        <li>{% trans "Consult healthcare providers for health assessments" %}</li>
+                        <li>{% trans "Consider waist circumference and body composition" %}</li>
+                        <li>{% trans "Regular exercise and balanced diet are key" %}</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-clock text-info"></i> {% trans "Time Zone Tips" %}</h5>
+                    <ul>
+                        <li>{% trans "Consider daylight saving time changes" %}</li>
+                        <li>{% trans "Use UTC for international coordination" %}</li>
+                        <li>{% trans "Schedule meetings considering all participants' time zones" %}</li>
+                        <li>{% trans "Remember that dates can change across time zones" %}</li>
+                        <li>{% trans "Use world clock for travel planning" %}</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-calculator text-primary"></i> {% trans "Calculation Examples" %}</h5>
+                    <div class="card">
+                        <div class="card-body">
+                            <h6>{% trans "BMI Example:" %}</h6>
+                            <p>{% trans "Weight: 70kg, Height: 175cm" %}<br>
+                            BMI = 70 ÷ (1.75)² = 22.9<br>
+                            <span class="badge bg-success">{% trans "Normal Weight" %}</span></p>
+                            
+                            <h6>{% trans "Percentage Example:" %}</h6>
+                            <p>{% trans "20% of 150 = 30" %}<br>
+                            {% trans "150 increased by 20% = 180" %}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-chart-line text-warning"></i> {% trans "Accuracy & Precision" %}</h5>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul>
+                                <li>{% trans "All calculations use standard formulas" %}</li>
+                                <li>{% trans "Results are rounded to appropriate decimal places" %}</li>
+                                <li>{% trans "Time calculations account for leap years" %}</li>
+                                <li>{% trans "World clock updates in real-time" %}</li>
+                                <li>{% trans "No data is stored or transmitted" %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert alert-info mt-4">
+                <h6><i class="fas fa-shield-alt"></i> {% trans "Privacy & Accuracy:" %}</h6>
+                <p class="mb-0">{% trans "All calculations are performed in your browser. No personal data is collected or stored. Results are for informational purposes only and should not replace professional advice." %}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
 {% block extra_js %}
 <script src="/static/js/calculator-tools.js"></script>
 {% endblock %}

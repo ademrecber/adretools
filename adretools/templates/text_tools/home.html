@@ -144,6 +144,171 @@
 </div>
 {% endblock %}
 
+    <!-- Detaylı Rehber Bölümü -->
+    <div class="mt-5">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h4><i class="fas fa-book"></i> {% trans "Complete Text Processing Guide" %}</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-chart-bar text-primary"></i> {% trans "Text Analysis" %}</h5>
+                        <p>{% trans "Get detailed statistics about your text content. Perfect for writers, students, and content creators who need to meet specific requirements." %}</p>
+                        
+                        <h6>{% trans "Available Statistics:" %}</h6>
+                        <ul>
+                            <li><strong>{% trans "Character Count:" %}</strong> {% trans "Total characters with and without spaces" %}</li>
+                            <li><strong>{% trans "Word Count:" %}</strong> {% trans "Essential for essays, articles, and reports" %}</li>
+                            <li><strong>{% trans "Line & Paragraph Count:" %}</strong> {% trans "Document structure analysis" %}</li>
+                            <li><strong>{% trans "Reading Statistics:" %}</strong> {% trans "Longest word, average word length" %}</li>
+                        </ul>
+                        
+                        <div class="alert alert-info">
+                            <strong>{% trans "Use Cases:" %}</strong> {% trans "Academic papers, social media posts, SEO content, legal documents" %}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-exchange-alt text-success"></i> {% trans "Text Transformation" %}</h5>
+                        <p>{% trans "Transform your text into different formats and cases. Useful for data processing, content formatting, and text standardization." %}</p>
+                        
+                        <h6>{% trans "Transformation Options:" %}</h6>
+                        <ul>
+                            <li><strong>{% trans "Case Changes:" %}</strong> {% trans "UPPERCASE, lowercase, Title Case" %}</li>
+                            <li><strong>{% trans "Text Cleaning:" %}</strong> {% trans "Remove extra spaces, special characters" %}</li>
+                            <li><strong>{% trans "URL Slug:" %}</strong> {% trans "Create SEO-friendly URLs" %}</li>
+                            <li><strong>{% trans "Reverse Text:" %}</strong> {% trans "Mirror text for creative purposes" %}</li>
+                        </ul>
+                        
+                        <div class="alert alert-success">
+                            <strong>{% trans "Pro Tip:" %}</strong> {% trans "Use URL slug for creating clean, readable web addresses" %}
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+                
+                <div class="row mt-4">
+                    <div class="col-md-4">
+                        <h5><i class="fas fa-code text-warning"></i> {% trans "Encoding & Hashing" %}</h5>
+                        <p>{% trans "Encode, decode, and hash your text for security, data transmission, and web development purposes." %}</p>
+                        
+                        <h6>{% trans "Encoding Types:" %}</h6>
+                        <ul>
+                            <li><strong>Base64:</strong> {% trans "Data encoding for web/email" %}</li>
+                            <li><strong>URL Encoding:</strong> {% trans "Safe URL parameters" %}</li>
+                            <li><strong>MD5 Hash:</strong> {% trans "Quick checksums" %}</li>
+                            <li><strong>SHA256 Hash:</strong> {% trans "Secure hashing" %}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5><i class="fas fa-align-left text-danger"></i> {% trans "JSON Formatting" %}</h5>
+                        <p>{% trans "Format and validate JSON data for APIs, configuration files, and data exchange." %}</p>
+                        
+                        <h6>{% trans "JSON Tools:" %}</h6>
+                        <ul>
+                            <li><strong>{% trans "Beautify:" %}</strong> {% trans "Format for readability" %}</li>
+                            <li><strong>{% trans "Minify:" %}</strong> {% trans "Compress for production" %}</li>
+                            <li><strong>{% trans "Validation:" %}</strong> {% trans "Check syntax errors" %}</li>
+                            <li><strong>{% trans "Structure:" %}</strong> {% trans "Proper indentation" %}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5><i class="fas fa-lightbulb text-info"></i> {% trans "Common Use Cases" %}</h5>
+                        <ul>
+                            <li>{% trans "Academic writing (word count requirements)" %}</li>
+                            <li>{% trans "Social media content (character limits)" %}</li>
+                            <li>{% trans "SEO optimization (content analysis)" %}</li>
+                            <li>{% trans "Data cleaning and standardization" %}</li>
+                            <li>{% trans "Web development (encoding/decoding)" %}</li>
+                            <li>{% trans "API data formatting (JSON)" %}</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-graduation-cap text-primary"></i> {% trans "Academic & Professional" %}</h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>{% trans "Essay Writing:" %}</h6>
+                                <ul>
+                                    <li>{% trans "Track word count for assignments" %}</li>
+                                    <li>{% trans "Monitor paragraph structure" %}</li>
+                                    <li>{% trans "Ensure proper formatting" %}</li>
+                                </ul>
+                                
+                                <h6>{% trans "Content Creation:" %}</h6>
+                                <ul>
+                                    <li>{% trans "SEO content optimization" %}</li>
+                                    <li>{% trans "Social media character limits" %}</li>
+                                    <li>{% trans "Email subject line length" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-code text-success"></i> {% trans "Development & Technical" %}</h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <h6>{% trans "Web Development:" %}</h6>
+                                <ul>
+                                    <li>{% trans "URL encoding for safe parameters" %}</li>
+                                    <li>{% trans "Base64 encoding for data URIs" %}</li>
+                                    <li>{% trans "JSON formatting for APIs" %}</li>
+                                </ul>
+                                
+                                <h6>{% trans "Data Processing:" %}</h6>
+                                <ul>
+                                    <li>{% trans "Text cleaning and normalization" %}</li>
+                                    <li>{% trans "Hash generation for verification" %}</li>
+                                    <li>{% trans "Case conversion for databases" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-chart-line text-warning"></i> {% trans "Text Quality Metrics" %}</h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <ul>
+                                    <li><strong>{% trans "Readability:" %}</strong> {% trans "Average word length indicates complexity" %}</li>
+                                    <li><strong>{% trans "Structure:" %}</strong> {% trans "Paragraph count shows organization" %}</li>
+                                    <li><strong>{% trans "Density:" %}</strong> {% trans "Character-to-word ratio" %}</li>
+                                    <li><strong>{% trans "Completeness:" %}</strong> {% trans "Line count for formatting" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-shield-alt text-danger"></i> {% trans "Security & Encoding" %}</h5>
+                        <div class="card">
+                            <div class="card-body">
+                                <ul>
+                                    <li><strong>MD5:</strong> {% trans "Quick checksums (not cryptographically secure)" %}</li>
+                                    <li><strong>SHA256:</strong> {% trans "Secure hashing for passwords" %}</li>
+                                    <li><strong>Base64:</strong> {% trans "Safe data transmission" %}</li>
+                                    <li><strong>URL Encoding:</strong> {% trans "Prevent injection attacks" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-4">
+                    <h6><i class="fas fa-info-circle"></i> {% trans "Real-time Processing:" %}</h6>
+                    <p class="mb-0">{% trans "All text analysis and transformations happen instantly in your browser. No data is sent to servers, ensuring complete privacy. Results update automatically as you type." %}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
 {% block extra_js %}
 <script src="{% static 'js/text-tools.js' %}"></script>
 {% endblock %}

@@ -266,5 +266,85 @@
     </div>
 </div>
 
+<!-- Detaylı Rehber Bölümü -->
+<div class="mt-5">
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h4><i class="fas fa-book"></i> {% trans "Complete QR & Barcode Guide" %}</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-qrcode text-primary"></i> {% trans "What is QR Code?" %}</h5>
+                    <p>{% trans "QR (Quick Response) codes are two-dimensional barcodes that can store various types of information. They were invented in 1994 by Denso Wave for tracking automotive parts but have since become widely used for marketing, payments, and information sharing." %}</p>
+                    
+                    <h6>{% trans "QR Code Types:" %}</h6>
+                    <ul>
+                        <li><strong>{% trans "Text QR:" %}</strong> {% trans "Simple text messages, notes, or instructions" %}</li>
+                        <li><strong>{% trans "URL QR:" %}</strong> {% trans "Website links, social media profiles, online menus" %}</li>
+                        <li><strong>{% trans "WiFi QR:" %}</strong> {% trans "Automatic WiFi connection without typing passwords" %}</li>
+                        <li><strong>{% trans "vCard QR:" %}</strong> {% trans "Contact information that can be saved directly to phone" %}</li>
+                        <li><strong>{% trans "SMS QR:" %}</strong> {% trans "Pre-written text messages" %}</li>
+                        <li><strong>{% trans "Email QR:" %}</strong> {% trans "Email addresses with pre-filled subject and content" %}</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-barcode text-success"></i> {% trans "What is Barcode?" %}</h5>
+                    <p>{% trans "Barcodes are machine-readable codes consisting of parallel lines of varying widths. They're primarily used for product identification, inventory management, and point-of-sale systems." %}</p>
+                    
+                    <h6>{% trans "Barcode Types:" %}</h6>
+                    <ul>
+                        <li><strong>Code 128:</strong> {% trans "Most versatile, supports all ASCII characters" %}</li>
+                        <li><strong>EAN-13:</strong> {% trans "European standard for retail products" %}</li>
+                        <li><strong>UPC-A:</strong> {% trans "North American standard for retail" %}</li>
+                        <li><strong>Code 39:</strong> {% trans "Alphanumeric, widely used in logistics" %}</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-cogs text-warning"></i> {% trans "How to Use" %}</h5>
+                    <ol>
+                        <li>{% trans "Select the tool you want to use above" %}</li>
+                        <li>{% trans "Choose QR type or barcode format" %}</li>
+                        <li>{% trans "Enter your content or data" %}</li>
+                        <li>{% trans "Customize size, colors, and error correction" %}</li>
+                        <li>{% trans "Generate and download in your preferred format" %}</li>
+                    </ol>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="fas fa-lightbulb text-info"></i> {% trans "Best Practices" %}</h5>
+                    <ul>
+                        <li>{% trans "Use high contrast colors (dark on light)" %}</li>
+                        <li>{% trans "Choose appropriate size for scanning distance" %}</li>
+                        <li>{% trans "Test QR codes before printing" %}</li>
+                        <li>{% trans "Include call-to-action text near QR codes" %}</li>
+                        <li>{% trans "Use error correction for damaged surfaces" %}</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="fas fa-rocket text-danger"></i> {% trans "Use Cases" %}</h5>
+                    <ul>
+                        <li>{% trans "Restaurant menus and ordering" %}</li>
+                        <li>{% trans "Event tickets and check-ins" %}</li>
+                        <li>{% trans "Product information and reviews" %}</li>
+                        <li>{% trans "WiFi sharing in offices/cafes" %}</li>
+                        <li>{% trans "Contact sharing at networking events" %}</li>
+                        <li>{% trans "Inventory and asset tracking" %}</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="alert alert-info mt-4">
+                <h6><i class="fas fa-info-circle"></i> {% trans "Pro Tips:" %}</h6>
+                <p class="mb-0">{% trans "For maximum compatibility, keep QR content under 300 characters. Use medium error correction for most applications. Always test your QR codes with different devices and apps before final use." %}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="{% load static %}{% static 'js/qr-tools.js' %}"></script>
 {% endblock %}

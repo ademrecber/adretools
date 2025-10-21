@@ -426,6 +426,151 @@
 
 {% endblock %}
 
+<!-- Detaylı Rehber Bölümü -->
+<div class="mt-5">
+    <div class="card">
+        <div class="card-header bg-danger text-white">
+            <h4><i class="fas fa-book"></i> {% trans "Complete PDF Processing Guide" %}</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-cut text-primary"></i> {% trans "PDF Splitting" %}</h5>
+                    <p>{% trans "Split large PDF files into smaller, manageable documents. Perfect for extracting specific pages or creating separate documents from chapters." %}</p>
+                    
+                    <h6>{% trans "Split Options:" %}</h6>
+                    <ul>
+                        <li><strong>{% trans "Single Page Split:" %}</strong> {% trans "Each page becomes a separate PDF" %}</li>
+                        <li><strong>{% trans "Range Split:" %}</strong> {% trans "Extract specific page ranges" %}</li>
+                        <li><strong>{% trans "Interval Split:" %}</strong> {% trans "Split every N pages" %}</li>
+                        <li><strong>{% trans "Multi-Range Split:" %}</strong> {% trans "Multiple custom ranges" %}</li>
+                    </ul>
+                    
+                    <div class="alert alert-info">
+                        <strong>{% trans "Use Cases:" %}</strong> {% trans "Separate chapters, extract forms, create handouts, reduce file size" %}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-compress-arrows-alt text-success"></i> {% trans "PDF Merging" %}</h5>
+                    <p>{% trans "Combine multiple PDF files into a single document. Ideal for creating reports, combining scanned documents, or assembling presentations." %}</p>
+                    
+                    <h6>{% trans "Merge Features:" %}</h6>
+                    <ul>
+                        <li><strong>{% trans "File Order:" %}</strong> {% trans "Drag and drop to reorder files" %}</li>
+                        <li><strong>{% trans "Folder Merge:" %}</strong> {% trans "Merge entire folders at once" %}</li>
+                        <li><strong>{% trans "Bookmark Preservation:" %}</strong> {% trans "Keep original bookmarks" %}</li>
+                        <li><strong>{% trans "Metadata Handling:" %}</strong> {% trans "Combine document properties" %}</li>
+                    </ul>
+                    
+                    <div class="alert alert-success">
+                        <strong>{% trans "Pro Tip:" %}</strong> {% trans "Name files with numbers (01, 02, 03) for automatic ordering" %}
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-shield-alt text-danger"></i> {% trans "PDF Security" %}</h5>
+                    <p>{% trans "Protect your PDFs with passwords and watermarks. Essential for confidential documents and copyright protection." %}</p>
+                    
+                    <h6>{% trans "Security Options:" %}</h6>
+                    <ul>
+                        <li><strong>{% trans "Password Protection:" %}</strong> {% trans "Encrypt with AES-256" %}</li>
+                        <li><strong>{% trans "Watermarks:" %}</strong> {% trans "Text overlays for branding" %}</li>
+                        <li><strong>{% trans "Permission Control:" %}</strong> {% trans "Restrict printing/copying" %}</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="fas fa-compress text-warning"></i> {% trans "PDF Compression" %}</h5>
+                    <p>{% trans "Reduce PDF file size while maintaining quality. Perfect for email attachments and web uploads." %}</p>
+                    
+                    <h6>{% trans "Compression Levels:" %}</h6>
+                    <ul>
+                        <li><strong>{% trans "High Quality:" %}</strong> {% trans "Minimal compression, best quality" %}</li>
+                        <li><strong>{% trans "Medium Quality:" %}</strong> {% trans "Balanced size and quality" %}</li>
+                        <li><strong>{% trans "Low Quality:" %}</strong> {% trans "Maximum compression" %}</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5><i class="fas fa-exchange-alt text-info"></i> {% trans "Format Conversion" %}</h5>
+                    <p>{% trans "Convert between PDF and other formats. Essential for document editing and compatibility." %}</p>
+                    
+                    <h6>{% trans "Supported Formats:" %}</h6>
+                    <ul>
+                        <li><strong>PDF → Word:</strong> {% trans "Editable documents" %}</li>
+                        <li><strong>PDF → Excel:</strong> {% trans "Spreadsheet data" %}</li>
+                        <li><strong>Word → PDF:</strong> {% trans "Universal format" %}</li>
+                        <li><strong>Images ↔ PDF:</strong> {% trans "Visual documents" %}</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-cogs text-secondary"></i> {% trans "Best Practices" %}</h5>
+                    <ol>
+                        <li>{% trans "Always backup original files before processing" %}</li>
+                        <li>{% trans "Use descriptive filenames for merged documents" %}</li>
+                        <li>{% trans "Choose appropriate compression based on use case" %}</li>
+                        <li>{% trans "Test password-protected PDFs before sharing" %}</li>
+                        <li>{% trans "Consider file size limits for email attachments" %}</li>
+                        <li>{% trans "Use watermarks for draft or confidential documents" %}</li>
+                    </ol>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-lightbulb text-warning"></i> {% trans "Common Use Cases" %}</h5>
+                    <ul>
+                        <li><strong>{% trans "Business Reports:" %}</strong> {% trans "Merge chapters, add security" %}</li>
+                        <li><strong>{% trans "Academic Papers:" %}</strong> {% trans "Combine references, compress for upload" %}</li>
+                        <li><strong>{% trans "Legal Documents:" %}</strong> {% trans "Split contracts, add watermarks" %}</li>
+                        <li><strong>{% trans "Presentations:" %}</strong> {% trans "Merge slides, convert formats" %}</li>
+                        <li><strong>{% trans "Invoices:" %}</strong> {% trans "Split batches, add security" %}</li>
+                        <li><strong>{% trans "Manuals:" %}</strong> {% trans "Extract sections, compress size" %}</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-chart-bar text-primary"></i> {% trans "File Size Guidelines" %}</h5>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li><strong>{% trans "Email Attachment:" %}</strong> {% trans "< 25MB (use compression)" %}</li>
+                                <li><strong>{% trans "Web Upload:" %}</strong> {% trans "< 10MB (medium compression)" %}</li>
+                                <li><strong>{% trans "Print Quality:" %}</strong> {% trans "High quality (minimal compression)" %}</li>
+                                <li><strong>{% trans "Archive Storage:" %}</strong> {% trans "Balance quality and size" %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5><i class="fas fa-clock text-info"></i> {% trans "Processing Speed" %}</h5>
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="mb-0">
+                                <li><strong>{% trans "Split/Merge:" %}</strong> {% trans "Instant for most files" %}</li>
+                                <li><strong>{% trans "Compression:" %}</strong> {% trans "Depends on file size and level" %}</li>
+                                <li><strong>{% trans "Conversion:" %}</strong> {% trans "May take longer for complex layouts" %}</li>
+                                <li><strong>{% trans "Security:" %}</strong> {% trans "Quick encryption and watermarking" %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert alert-success mt-4">
+                <h6><i class="fas fa-shield-alt"></i> {% trans "Privacy & Security:" %}</h6>
+                <p class="mb-0">{% trans "All PDF processing happens in your browser using client-side JavaScript. Your files are never uploaded to our servers, ensuring complete privacy and security. Large files are processed locally for maximum speed and confidentiality." %}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
 {% block extra_js %}
 {% load static %}
 <script src="{% static 'js/pdf-main.js' %}"></script>
