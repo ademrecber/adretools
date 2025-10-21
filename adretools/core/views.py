@@ -23,6 +23,9 @@ def home(request):
 def terms_of_service(request):
     return render(request, 'terms-of-service.html')
 
+def privacy_policy(request):
+    return render(request, 'privacy_policy.html')
+
 def cookie_policy(request):
     return render(request, 'cookie-policy.html')
 
