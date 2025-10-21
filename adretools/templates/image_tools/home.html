@@ -7,7 +7,12 @@
 <div class="row">
     <div class="col-12 text-center mb-4">
         <h2><i class="fas fa-image text-success"></i> {% trans "Image Tools" %}</h2>
-        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+        <div class="mb-3">
+            <a href="{% url 'core:home' %}" class="btn btn-outline-secondary me-2">← {% trans "Home" %}</a>
+            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#imageGuideModal">
+                <i class="fas fa-question-circle"></i> {% trans "Usage Guide" %}
+            </button>
+        </div>
     </div>
 </div>
 
@@ -267,6 +272,81 @@
             </div>
             <div class="text-center">
                 <button class="btn btn-success" onclick="compressImage()">Sıkıştır ve İndir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image Tools Kullanım Rehberi Modal -->
+<div class="modal fade" id="imageGuideModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title"><i class="fas fa-book"></i> {% trans "Image Processing Guide" %}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="imageGuideAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#resizeGuide">
+                                <i class="fas fa-expand-arrows-alt text-primary me-2"></i> {% trans "Image Resizing" %}
+                            </button>
+                        </h2>
+                        <div id="resizeGuide" class="accordion-collapse collapse show" data-bs-parent="#imageGuideAccordion">
+                            <div class="accordion-body">
+                                <p><strong>{% trans "When to resize:" %}</strong></p>
+                                <ul>
+                                    <li>{% trans "Web optimization (faster loading)" %}</li>
+                                    <li>{% trans "Social media posts (Instagram: 1080x1080)" %}</li>
+                                    <li>{% trans "Email attachments (reduce size)" %}</li>
+                                </ul>
+                                <div class="alert alert-info">
+                                    <strong>{% trans "Tip:" %}</strong> {% trans "Keep aspect ratio to avoid distortion" %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#formatGuide">
+                                <i class="fas fa-exchange-alt text-warning me-2"></i> {% trans "Format Conversion" %}
+                            </button>
+                        </h2>
+                        <div id="formatGuide" class="accordion-collapse collapse" data-bs-parent="#imageGuideAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><strong>JPG:</strong> {% trans "Best for photos, smaller files" %}</li>
+                                    <li><strong>PNG:</strong> {% trans "Supports transparency, lossless" %}</li>
+                                    <li><strong>WEBP:</strong> {% trans "Modern format, excellent compression" %}</li>
+                                    <li><strong>ICO:</strong> {% trans "Website favicons" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#qualityGuide">
+                                <i class="fas fa-compress text-danger me-2"></i> {% trans "Quality & Compression" %}
+                            </button>
+                        </h2>
+                        <div id="qualityGuide" class="accordion-collapse collapse" data-bs-parent="#imageGuideAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><strong>{% trans "Light (90%):" %}</strong> {% trans "Minimal quality loss" %}</li>
+                                    <li><strong>{% trans "Medium (70%):" %}</strong> {% trans "Good balance" %}</li>
+                                    <li><strong>{% trans "Heavy (50%):" %}</strong> {% trans "Maximum compression" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-success mt-3">
+                    <i class="fas fa-shield-alt"></i> <strong>{% trans "Privacy:" %}</strong> {% trans "All processing happens locally in your browser" %}
+                </div>
             </div>
         </div>
     </div>

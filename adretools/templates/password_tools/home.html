@@ -23,6 +23,9 @@
         </a>
         <h1 class="display-4 text-primary">🔐 {% trans "Password Generator" %}</h1>
         <p class="lead">{% trans "Generate strong passwords and perform security checks" %}</p>
+        <button class="btn btn-outline-info mb-3" data-bs-toggle="modal" data-bs-target="#passwordGuideModal">
+            <i class="fas fa-question-circle"></i> {% trans "Security Guide" %}
+        </button>
     </div>
 
     <div class="row">
@@ -157,6 +160,82 @@
     </div>
 </div>
 {% endblock %}
+
+<!-- Password Security Guide Modal -->
+<div class="modal fade" id="passwordGuideModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title"><i class="fas fa-shield-alt"></i> {% trans "Password Security Guide" %}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="passwordGuideAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#strengthGuide">
+                                <i class="fas fa-key text-danger me-2"></i> {% trans "Password Strength" %}
+                            </button>
+                        </h2>
+                        <div id="strengthGuide" class="accordion-collapse collapse show" data-bs-parent="#passwordGuideAccordion">
+                            <div class="accordion-body">
+                                <p><strong>{% trans "Strong Password Rules:" %}</strong></p>
+                                <ul>
+                                    <li>{% trans "Minimum 12 characters (16+ recommended)" %}</li>
+                                    <li>{% trans "Mix uppercase, lowercase, numbers, symbols" %}</li>
+                                    <li>{% trans "Avoid personal information" %}</li>
+                                    <li>{% trans "Unique for each account" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#threatsGuide">
+                                <i class="fas fa-exclamation-triangle text-warning me-2"></i> {% trans "Security Threats" %}
+                            </button>
+                        </h2>
+                        <div id="threatsGuide" class="accordion-collapse collapse" data-bs-parent="#passwordGuideAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><strong>{% trans "Brute Force:" %}</strong> {% trans "Automated password guessing" %}</li>
+                                    <li><strong>{% trans "Dictionary Attacks:" %}</strong> {% trans "Common words and phrases" %}</li>
+                                    <li><strong>{% trans "Data Breaches:" %}</strong> {% trans "Stolen password databases" %}</li>
+                                </ul>
+                                <div class="alert alert-danger">
+                                    <strong>{% trans "Fact:" %}</strong> {% trans "81% of breaches involve weak passwords" %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bestPractices">
+                                <i class="fas fa-lightbulb text-success me-2"></i> {% trans "Best Practices" %}
+                            </button>
+                        </h2>
+                        <div id="bestPractices" class="accordion-collapse collapse" data-bs-parent="#passwordGuideAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>{% trans "Use password manager" %}</li>
+                                    <li>{% trans "Enable two-factor authentication" %}</li>
+                                    <li>{% trans "Update passwords regularly" %}</li>
+                                    <li>{% trans "Never share via email/text" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-shield-alt"></i> <strong>{% trans "Privacy:" %}</strong> {% trans "No passwords sent to servers" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% block extra_js %}
 <script src="{% static 'js/password-tools.js' %}"></script>

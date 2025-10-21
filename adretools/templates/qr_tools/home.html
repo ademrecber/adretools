@@ -7,7 +7,12 @@
 <div class="row">
     <div class="col-12 text-center mb-4">
         <h2><i class="fas fa-qrcode text-primary"></i> {% trans "QR & Barcode Tools" %}</h2>
-        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+        <div class="mb-3">
+            <a href="{% url 'core:home' %}" class="btn btn-outline-secondary me-2">← {% trans "Home" %}</a>
+            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#guideModal">
+                <i class="fas fa-question-circle"></i> {% trans "Usage Guide" %}
+            </button>
+        </div>
     </div>
 </div>
 
@@ -261,6 +266,115 @@
             <div id="barcodePreview" class="text-center mt-4" style="display:none;">
                 <h6>Barkod Önizleme:</h6>
                 <div id="barcodeCanvas"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Kullanım Rehberi Modal -->
+<div class="modal fade" id="guideModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title"><i class="fas fa-book"></i> {% trans "QR & Barcode Usage Guide" %}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="qrGuideAccordion">
+                    <!-- QR Kodları -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#qrBasics">
+                                <i class="fas fa-qrcode text-primary me-2"></i> {% trans "QR Code Basics" %}
+                            </button>
+                        </h2>
+                        <div id="qrBasics" class="accordion-collapse collapse show" data-bs-parent="#qrGuideAccordion">
+                            <div class="accordion-body">
+                                <p><strong>{% trans "What is QR Code?" %}</strong></p>
+                                <p>{% trans "QR codes store information that can be quickly read by smartphones and scanners." %}</p>
+                                <ul>
+                                    <li><strong>{% trans "Text:" %}</strong> {% trans "Simple messages, notes" %}</li>
+                                    <li><strong>{% trans "URL:" %}</strong> {% trans "Website links, social media" %}</li>
+                                    <li><strong>{% trans "WiFi:" %}</strong> {% trans "Automatic connection" %}</li>
+                                    <li><strong>{% trans "Contact:" %}</strong> {% trans "Save to phone directly" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Barkodlar -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#barcodeBasics">
+                                <i class="fas fa-barcode text-success me-2"></i> {% trans "Barcode Types" %}
+                            </button>
+                        </h2>
+                        <div id="barcodeBasics" class="accordion-collapse collapse" data-bs-parent="#qrGuideAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><strong>Code 128:</strong> {% trans "Most versatile, all characters" %}</li>
+                                    <li><strong>EAN-13:</strong> {% trans "European retail standard" %}</li>
+                                    <li><strong>UPC-A:</strong> {% trans "North American retail" %}</li>
+                                    <li><strong>Code 39:</strong> {% trans "Logistics and inventory" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kullanım İpuçları -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tips">
+                                <i class="fas fa-lightbulb text-warning me-2"></i> {% trans "Best Practices" %}
+                            </button>
+                        </h2>
+                        <div id="tips" class="accordion-collapse collapse" data-bs-parent="#qrGuideAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>{% trans "Use high contrast colors (dark on light)" %}</li>
+                                    <li>{% trans "Test QR codes before printing" %}</li>
+                                    <li>{% trans "Choose appropriate size for distance" %}</li>
+                                    <li>{% trans "Include instructions near QR codes" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kullanım Alanları -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#useCases">
+                                <i class="fas fa-rocket text-danger me-2"></i> {% trans "Common Uses" %}
+                            </button>
+                        </h2>
+                        <div id="useCases" class="accordion-collapse collapse" data-bs-parent="#qrGuideAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6>{% trans "Business:" %}</h6>
+                                        <ul>
+                                            <li>{% trans "Restaurant menus" %}</li>
+                                            <li>{% trans "Contact sharing" %}</li>
+                                            <li>{% trans "Product information" %}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6>{% trans "Personal:" %}</h6>
+                                        <ul>
+                                            <li>{% trans "WiFi sharing" %}</li>
+                                            <li>{% trans "Event invitations" %}</li>
+                                            <li>{% trans "Social media links" %}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-shield-alt"></i> <strong>{% trans "Privacy:" %}</strong> {% trans "All processing happens in your browser. No data is uploaded." %}
+                </div>
             </div>
         </div>
     </div>

@@ -16,7 +16,12 @@
     <div class="col-12 text-center mb-4">
         <h1><i class="fas fa-calculator text-primary"></i> {% trans "Calculator Tools" %}</h1>
         <p class="lead">{% trans "Free online calculators for daily use" %}</p>
-        <a href="{% url 'core:home' %}" class="btn btn-outline-secondary">← {% trans "Home" %}</a>
+        <div class="mb-3">
+            <a href="{% url 'core:home' %}" class="btn btn-outline-secondary me-2">← {% trans "Home" %}</a>
+            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#calcGuideModal">
+                <i class="fas fa-question-circle"></i> {% trans "Calculator Guide" %}
+            </button>
+        </div>
     </div>
 </div>
 
@@ -163,6 +168,83 @@
     </div>
 </div>
 {% endblock %}
+
+<!-- Calculator Guide Modal -->
+<div class="modal fade" id="calcGuideModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title"><i class="fas fa-book"></i> {% trans "Calculator Guide" %}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="calcGuideAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#bmiGuide">
+                                <i class="fas fa-weight text-danger me-2"></i> {% trans "BMI Calculator" %}
+                            </button>
+                        </h2>
+                        <div id="bmiGuide" class="accordion-collapse collapse show" data-bs-parent="#calcGuideAccordion">
+                            <div class="accordion-body">
+                                <p><strong>{% trans "BMI Categories:" %}</strong></p>
+                                <ul>
+                                    <li>{% trans "Underweight: BMI < 18.5" %}</li>
+                                    <li>{% trans "Normal: BMI 18.5-24.9" %}</li>
+                                    <li>{% trans "Overweight: BMI 25-29.9" %}</li>
+                                    <li>{% trans "Obese: BMI ≥ 30" %}</li>
+                                </ul>
+                                <div class="alert alert-info">
+                                    <strong>{% trans "Formula:" %}</strong> BMI = {% trans "Weight (kg) / Height (m)²" %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ageGuide">
+                                <i class="fas fa-birthday-cake text-success me-2"></i> {% trans "Age Calculator" %}
+                            </button>
+                        </h2>
+                        <div id="ageGuide" class="accordion-collapse collapse" data-bs-parent="#calcGuideAccordion">
+                            <div class="accordion-body">
+                                <p>{% trans "Calculate exact age in years, months, days, and hours" %}</p>
+                                <ul>
+                                    <li>{% trans "Useful for visa applications" %}</li>
+                                    <li>{% trans "Insurance calculations" %}</li>
+                                    <li>{% trans "Legal document requirements" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#worldClockGuide">
+                                <i class="fas fa-globe text-info me-2"></i> {% trans "World Clock" %}
+                            </button>
+                        </h2>
+                        <div id="worldClockGuide" class="accordion-collapse collapse" data-bs-parent="#calcGuideAccordion">
+                            <div class="accordion-body">
+                                <p>{% trans "View current time in major cities worldwide" %}</p>
+                                <ul>
+                                    <li>{% trans "International business meetings" %}</li>
+                                    <li>{% trans "Travel planning" %}</li>
+                                    <li>{% trans "Global team coordination" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-info-circle"></i> <strong>{% trans "Note:" %}</strong> {% trans "Results are for informational purposes only" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% block extra_js %}
 <script src="/static/js/calculator-tools.js"></script>
