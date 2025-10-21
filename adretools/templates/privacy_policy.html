@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Privacy Policy - AdreTools" %}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="text-center mb-4">{% trans "Privacy Policy" %}</h1>
+            
+            <div class="card">
+                <div class="card-body">
+                    <p><strong>{% trans "Last updated:" %}</strong> {% now "F d, Y" %}</p>
+                    
+                    <h3>{% trans "Information We Collect" %}</h3>
+                    <p>{% trans "We collect information you provide directly to us and information we collect automatically when you use our services." %}</p>
+                    
+                    <h3>{% trans "How We Use Your Information" %}</h3>
+                    <ul>
+                        <li>{% trans "To provide and maintain our services" %}</li>
+                        <li>{% trans "To improve user experience" %}</li>
+                        <li>{% trans "To analyze usage patterns" %}</li>
+                        <li>{% trans "To comply with legal obligations" %}</li>
+                    </ul>
+                    
+                    <h3>{% trans "Google Analytics" %}</h3>
+                    <p>{% trans "We use Google Analytics to analyze website traffic. Google Analytics uses cookies to collect information about your use of our website." %}</p>
+                    
+                    <h3>{% trans "Google AdSense" %}</h3>
+                    <p>{% trans "We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your visits to this and other websites." %}</p>
+                    
+                    <h3>{% trans "Data Security" %}</h3>
+                    <p>{% trans "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction." %}</p>
+                    
+                    <h3>{% trans "Contact Us" %}</h3>
+                    <p>{% trans "If you have any questions about this Privacy Policy, please contact us at:" %} <a href="{% url 'core:contact' %}">{% trans "Contact Page" %}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
