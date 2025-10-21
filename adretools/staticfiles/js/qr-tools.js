@@ -101,7 +101,7 @@ function prepareQRContent() {
 async function generateQR() {
     const content = prepareQRContent();
     if (!content.trim()) {
-        alert('⚠️ İçerik Gerekli\n\nLütfen QR kod içeriğini girin!');
+        alert('⚠️ Content Required\n\nPlease enter QR code content!');
         return;
     }
     
@@ -146,16 +146,16 @@ async function generateQR() {
         } else {
             try {
                 const error = await response.json();
-                alert('❌ Sunucu Hatası\n\n' + error.error);
+                alert('❌ Server Error\n\n' + error.error);
             } catch {
-                alert('🔌 Bağlantı Sorunu\n\nSunucu çalışmıyor gibi görünüyor.\nLütfen sayfayı yenileyin.');
+                alert('🔌 Connection Issue\n\nThe server seems to be down.\nPlease refresh the page.');
             }
         }
     } catch (error) {
         if (error.message.includes('Failed to fetch') || error.name === 'TypeError') {
-            alert('🔌 Bağlantı Sorunu\n\nSunucu çalışmıyor gibi görünüyor.\nLütfen sayfayı yenileyin veya daha sonra tekrar deneyin.');
+            alert('🔌 Connection Issue\n\nUnable to connect to the server.\nPlease refresh the page or try again later.');
         } else {
-            alert('❌ Bir sorun oluştu\n\n' + error.message);
+            alert('❌ An error occurred\n\n' + error.message);
         }
     }
 }
@@ -163,7 +163,7 @@ async function generateQR() {
 // QR kod indir
 async function downloadQR(format) {
     if (!window.currentQRBlob) {
-        alert('⚠️ QR Kod Gerekli\n\nÖnce QR kod oluşturun!');
+        alert('⚠️ QR Code Required\n\nPlease generate a QR code first!');
         return;
     }
     
@@ -205,13 +205,13 @@ async function downloadQR(format) {
             document.body.removeChild(link);
         } else {
             const error = await response.json();
-            alert('❌ İndirme Hatası\n\n' + error.error);
+            alert('❌ Download Error\n\n' + error.error);
         }
     } catch (error) {
         if (error.message.includes('Failed to fetch')) {
-            alert('🔌 Bağlantı Sorunu\n\nSunucu ile bağlantı kurulamıyor.');
+            alert('🔌 Connection Issue\n\nUnable to connect to the server.');
         } else {
-            alert('❌ İndirme hatası\n\n' + error.message);
+            alert('❌ Download error\n\n' + error.message);
         }
     }
 }
@@ -240,25 +240,25 @@ async function readQR() {
                 const result = await response.json();
                 document.getElementById('qrResult').innerHTML = `
                     <div class="alert alert-success">
-                        <h6>✅ QR Kod Başarıyla Okundu!</h6>
-                        <p><strong>İçerik:</strong> ${result.content}</p>
+                        <h6>✅ QR Code Successfully Read!</h6>
+                        <p><strong>Content:</strong> ${result.content}</p>
                     </div>
                 `;
             } else {
                 const error = await response.json();
                 document.getElementById('qrResult').innerHTML = `
                     <div class="alert alert-warning">
-                        <h6>⚠️ QR Kod Okunamadı</h6>
+                        <h6>⚠️ QR Code Could Not Be Read</h6>
                         <p>${error.error}</p>
-                        <small>Daha net bir resim deneyin.</small>
+                        <small>Try a clearer image.</small>
                     </div>
                 `;
             }
         } catch (error) {
             document.getElementById('qrResult').innerHTML = `
                 <div class="alert alert-danger">
-                    <h6>❌ Okuma Hatası</h6>
-                    <p>Resim işlenirken bir sorun oluştu.</p>
+                    <h6>❌ Reading Error</h6>
+                    <p>An error occurred while processing the image.</p>
                 </div>
             `;
         }
@@ -271,7 +271,7 @@ async function generateBarcode() {
     const data = document.getElementById('barcodeData').value;
     
     if (!data.trim()) {
-        alert('⚠️ Veri Gerekli\n\nLütfen barkod verisini girin!');
+        alert('⚠️ Data Required\n\nPlease enter barcode data!');
         return;
     }
     
@@ -299,13 +299,13 @@ async function generateBarcode() {
             window.currentBarcodeBlob = blob;
         } else {
             const error = await response.json();
-            alert('❌ Barkod Hatası\n\n' + error.error);
+            alert('❌ Barcode Error\n\n' + error.error);
         }
     } catch (error) {
         if (error.message.includes('Failed to fetch')) {
-            alert('🔌 Bağlantı Sorunu\n\nSunucu ile bağlantı kurulamıyor.');
+            alert('🔌 Connection Issue\n\nUnable to connect to the server.');
         } else {
-            alert('❌ Barkod oluşturma hatası\n\n' + error.message);
+            alert('❌ Barcode generation error\n\n' + error.message);
         }
     }
 }
@@ -313,7 +313,7 @@ async function generateBarcode() {
 // Barkod indir
 async function downloadBarcode(format) {
     if (!window.currentBarcodeBlob) {
-        alert('⚠️ Barkod Gerekli\n\nÖnce barkod oluşturun!');
+        alert('⚠️ Barcode Required\n\nPlease generate a barcode first!');
         return;
     }
     
@@ -341,13 +341,13 @@ async function downloadBarcode(format) {
             document.body.removeChild(link);
         } else {
             const error = await response.json();
-            alert('❌ İndirme Hatası\n\n' + error.error);
+            alert('❌ Download Error\n\n' + error.error);
         }
     } catch (error) {
         if (error.message.includes('Failed to fetch')) {
-            alert('🔌 Bağlantı Sorunu\n\nSunucu ile bağlantı kurulamıyor.');
+            alert('🔌 Connection Issue\n\nUnable to connect to the server.');
         } else {
-            alert('❌ İndirme hatası\n\n' + error.message);
+            alert('❌ Download error\n\n' + error.message);
         }
     }
 }

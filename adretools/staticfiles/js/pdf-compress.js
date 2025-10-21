@@ -1,4 +1,4 @@
-// PDF Sıkıştırma Modülü
+// PDF Compression Module
 
 async function compressPDF() {
     const compressionLevel = document.getElementById('compressionLevel').value;
@@ -18,7 +18,7 @@ async function compressPDF() {
             const arrayBuffer = await file.arrayBuffer();
             const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
             
-            // Basit sıkıştırma - metadata temizleme
+            // Simple compression - metadata cleanup
             pdfDoc.setTitle('');
             pdfDoc.setAuthor('');
             pdfDoc.setSubject('');
@@ -38,15 +38,15 @@ async function compressPDF() {
 
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `${file.name.replace('.pdf', '')}_sikistirilmis.pdf`;
+            link.download = `${file.name.replace('.pdf', '')}_compressed.pdf`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            alert(`PDF sıkıştırıldı!\nOrijinal: ${originalSize} MB\nYeni: ${newSize} MB\nTasarruf: %${savings}`);
+            alert(`PDF compressed!\nOriginal: ${originalSize} MB\nNew: ${newSize} MB\nSavings: %${savings}`);
             
         } catch (error) {
-            alert('Hata: ' + error.message);
+            alert('Error: ' + error.message);
         }
     };
 }

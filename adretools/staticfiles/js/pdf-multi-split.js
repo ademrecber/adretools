@@ -1,4 +1,4 @@
-// Çoklu PDF Bölme Modülü
+// Multi-Page PDF Split Module
 (function() {
     let selectedPDFMulti = null;
 
@@ -13,8 +13,8 @@
             const display = document.getElementById('selectedFileDisplay');
             display.innerHTML = `
                 <div class="alert alert-info">
-                    <strong>${selectedPDFMulti.name}</strong> seçildi
-                    <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeSelectedPDF()">Kaldır</button>
+                    <strong>${selectedPDFMulti.name}</strong> selected
+                    <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeSelectedPDF()">Remove</button>
                 </div>
             `;
         };
@@ -30,15 +30,15 @@
         const div = document.createElement('div');
         div.className = 'input-group mb-2';
         div.innerHTML = `
-            <input type="text" class="form-control" placeholder="örn: 5-10 veya 99">
-            <button class="btn btn-outline-danger" onclick="this.parentElement.remove()">Kaldır</button>
+            <input type="text" class="form-control" placeholder="e.g: 5-10 or 99">
+            <button class="btn btn-outline-danger" onclick="this.parentElement.remove()">Remove</button>
         `;
         container.appendChild(div);
     };
 
     window.splitMultipleRanges = async function() {
         if (!selectedPDFMulti) {
-            alert("Lütfen önce bir PDF seçin.");
+            alert("Please select a PDF first.");
             return;
         }
 
@@ -57,7 +57,7 @@
             if (value.includes('-')) {
                 const match = value.match(/^(\d+)-(\d+)$/);
                 if (!match) {
-                    alert(`Geçersiz aralık: ${value}`);
+                    alert(`Invalid range: ${value}`);
                     return;
                 }
                 start = parseInt(match[1], 10) - 1;
@@ -65,14 +65,14 @@
             } else {
                 const pageNum = parseInt(value, 10);
                 if (isNaN(pageNum)) {
-                    alert(`Geçersiz sayfa: ${value}`);
+                    alert(`Invalid page: ${value}`);
                     return;
                 }
                 start = end = pageNum - 1;
             }
 
             if (start < 0 || end >= totalPages || start > end) {
-                alert(`Geçersiz aralık: ${value}`);
+                alert(`Invalid range: ${value}`);
                 return;
             }
 
@@ -91,7 +91,7 @@
 
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `sayfa_${range.label}.pdf`;
+            link.download = `page_${range.label}.pdf`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -99,6 +99,6 @@
             await new Promise(resolve => setTimeout(resolve, 300));
         }
 
-        alert("Çoklu bölme tamamlandı.");
+        alert("Multi-page split completed.");
     };
 })();

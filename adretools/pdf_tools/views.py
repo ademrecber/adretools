@@ -5,7 +5,6 @@ import os
 import tempfile
 import io
 
-
 def pdf_home(request):
     tools = [
         {'name': 'Split PDF', 'id': 'split', 'icon': 'fas fa-cut', 'desc': 'Split PDF file into pages'},
@@ -13,11 +12,11 @@ def pdf_home(request):
         {'name': 'Multi Split', 'id': 'multi-split', 'icon': 'fas fa-scissors', 'desc': 'Split specific page ranges'},
         {'name': 'Folder Merge', 'id': 'folder-merge', 'icon': 'fas fa-folder-plus', 'desc': 'Merge same-named PDFs from folders'},
         {'name': 'Interval Split', 'id': 'interval-split', 'icon': 'fas fa-layer-group', 'desc': 'Split by intervals like 3, 5 pages'},
-        {'name': 'Convert PDF', 'id': 'convert', 'icon': 'fas fa-exchange-alt', 'desc': 'PDF → Word/Excel/PowerPoint'},
+        {'name': 'Convert PDF', 'id': 'convert', 'icon': 'fas fa-exchange-alt', 'desc': 'PDF to Word/Excel/PowerPoint'},
         {'name': 'PDF Security', 'id': 'security', 'icon': 'fas fa-shield-alt', 'desc': 'Encryption, watermark adding'},
         {'name': 'Compress PDF', 'id': 'compress', 'icon': 'fas fa-compress', 'desc': 'Reduce file size'},
         {'name': 'Edit PDF', 'id': 'edit', 'icon': 'fas fa-edit', 'desc': 'Rotate pages, reorder'},
-        {'name': 'Image ↔ PDF', 'id': 'image-pdf', 'icon': 'fas fa-images', 'desc': 'Image → PDF, PDF → Image'},
+        {'name': 'Image ↔ PDF', 'id': 'image-pdf', 'icon': 'fas fa-images', 'desc': 'Image to PDF, PDF to Image'},
     ]
     return render(request, 'pdf_tools/home.html', {'tools': tools})
 
@@ -132,7 +131,7 @@ def convert_pdf_to_excel(request):
 @csrf_exempt
 def convert_word_to_pdf(request):
     return JsonResponse({
-        'error': 'Word → PDF conversion is currently under development. You can use other features!'
+        'error': 'Word to PDF conversion is currently under development. You can use other features!'
     }, status=501)
 
 @csrf_exempt
@@ -168,13 +167,13 @@ def split_pdf(request):
                 page_buffer.seek(0)
                 
                 # ZIP'e ekle
-                filename = f"{pdf_file.name.replace('.pdf', '')}_sayfa_{i+1}.pdf"
+                filename = f"{pdf_file.name.replace('.pdf', '')}_page_{i+1}.pdf"
                 zip_file.writestr(filename, page_buffer.getvalue())
         
         zip_buffer.seek(0)
         
         response = HttpResponse(zip_buffer.getvalue(), content_type='application/zip')
-        response['Content-Disposition'] = f'attachment; filename="{pdf_file.name.replace(".pdf", "_bolunmus.zip")}"'
+        response['Content-Disposition'] = f'attachment; filename="{pdf_file.name.replace(".pdf", "_split.zip")}"'
         
         return response
         
@@ -320,7 +319,7 @@ def encrypt_pdf(request):
         os.unlink(temp_pdf_path)
         
         response = HttpResponse(output_buffer.getvalue(), content_type='application/pdf')
-        response['Content-Disposition'] = f'attachment; filename="{pdf_file.name.replace(".pdf", "_sifreli.pdf")}"'
+        response['Content-Disposition'] = f'attachment; filename="{pdf_file.name.replace(".pdf", "_encrypted.pdf")}"'
         
         return response
         
@@ -415,9 +414,9 @@ def add_watermark(request):
         os.unlink(temp_pdf_path)
         
         response = HttpResponse(output_buffer.getvalue(), content_type='application/pdf')
-        response['Content-Disposition'] = f'attachment; filename="{pdf_file.name.replace(".pdf", "_filigranli.pdf")}"'
+        response['Content-Disposition'] = f'attachment; filename="{pdf_file.name.replace(".pdf", "_watermarked.pdf")}"'
         
         return response
         
     except Exception as e:
-        return JsonResponse({'error': f'Filigran ekleme hatası: {str(e)}'}, status=500)
+        return JsonResponse({'error': f'Watermarking error: {str(e)}'}, status=500)

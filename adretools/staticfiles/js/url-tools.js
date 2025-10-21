@@ -5,7 +5,7 @@ async function shortenUrl() {
     const url = document.getElementById('originalUrl').value.trim();
     
     if (!url) {
-        alert('⚠️ İçerik Gerekli: URL girin!');
+        alert('⚠️ Content Required: Please enter a URL!');
         return;
     }
     
@@ -23,13 +23,13 @@ async function shortenUrl() {
             showResult(data);
         } else {
             const error = await response.json();
-            alert('❌ Hata: ' + error.error);
+            alert('❌ Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: The Django server might not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }
@@ -48,7 +48,7 @@ function copyUrl() {
     const shortUrl = document.getElementById('shortUrl');
     shortUrl.select();
     document.execCommand('copy');
-    alert('✅ URL kopyalandı!');
+    alert('✅ URL copied!');
 }
 
 // QR kod indir
@@ -68,7 +68,7 @@ function shareUrl() {
     
     if (navigator.share) {
         navigator.share({
-            title: 'Kısaltılmış URL',
+            title: 'Shortened URL',
             url: shortUrl
         });
     } else {
@@ -81,7 +81,7 @@ async function getStats() {
     const code = document.getElementById('statsCode').value.trim();
     
     if (!code) {
-        alert('⚠️ İçerik Gerekli: Kısa kod girin!');
+        alert('⚠️ Content Required: Please enter a short code!');
         return;
     }
     
@@ -99,14 +99,14 @@ async function getStats() {
             showStats(data);
         } else {
             const error = await response.json();
-            alert('❌ Hata: ' + error.error);
+            alert('❌ Error: ' + error.error);
             document.getElementById('statsResult').style.display = 'none';
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: The Django server might not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }

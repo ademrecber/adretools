@@ -61,7 +61,7 @@
     {% endfor %}
 </div>
 
-<!-- PDF Böl Modal -->
+<!-- PDF Split Modal -->
 <div class="modal fade" id="splitModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -76,7 +76,7 @@
     </div>
 </div>
 
-<!-- PDF Birleştir Modal -->
+<!-- PDF Merge Modal -->
 <div class="modal fade" id="mergeModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -95,7 +95,7 @@
     </div>
 </div>
 
-<!-- Çoklu Böl Modal -->
+<!-- Multi-Page Split Modal -->
 <div class="modal fade" id="multiSplitModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -118,7 +118,7 @@
     </div>
 </div>
 
-<!-- Klasör Birleştir Modal -->
+<!-- Folder Merge Modal -->
 <div class="modal fade" id="folderMergeModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -137,7 +137,7 @@
     </div>
 </div>
 
-<!-- Aralıklı Böl Modal -->
+<!-- Interval Page Split Modal -->
 <div class="modal fade" id="intervalSplitModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -168,7 +168,7 @@
     </div>
 </div>
 
-<!-- PDF Dönüştür Modal -->
+<!-- PDF Convert Modal -->
 <div class="modal fade" id="convertModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -179,15 +179,15 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-4 text-center">
-                        <h6>PDF → Word</h6>
+                        <h6>PDF to Word</h6>
                         <button class="btn btn-primary" onclick="convertPDFToWord()">{% trans "Convert" %}</button>
                     </div>
                     <div class="col-md-4 text-center">
-                        <h6>PDF → Excel</h6>
+                        <h6>PDF to Excel</h6>
                         <button class="btn btn-success" onclick="convertPDFToExcel()">{% trans "Convert" %}</button>
                     </div>
                     <div class="col-md-4 text-center">
-                        <h6>Word → PDF</h6>
+                        <h6>Word to PDF</h6>
                         <button class="btn btn-warning" onclick="convertWordToPDF()">{% trans "Convert" %}</button>
                     </div>
                 </div>
@@ -196,7 +196,7 @@
     </div>
 </div>
 
-<!-- PDF Güvenlik Modal -->
+<!-- PDF Security Modal -->
 <div class="modal fade" id="securityModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -205,7 +205,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <!-- Adım 1: PDF Seçimi -->
+                <!-- Step 1: PDF Selection -->
                 <div id="step1-select-pdf" class="security-step">
                     <div class="text-center mb-4">
                         <h5><i class="fas fa-file-pdf text-danger"></i> {% trans "Step 1: Select PDF File" %}</h5>
@@ -216,14 +216,14 @@
                     </div>
                 </div>
 
-                <!-- Adım 2: Güvenlik Seçenekleri -->
+                <!-- Step 2: Security Options -->
                 <div id="step2-security-options" class="security-step" style="display: none;">
                     <div class="text-center mb-4">
                         <h5><i class="fas fa-shield-alt text-success"></i> {% trans "Step 2: Choose Security Options" %}</h5>
                     </div>
                     
                     <div class="row">
-                        <!-- Şifreleme Seçeneği -->
+                        <!-- Encryption Option -->
                         <div class="col-md-6">
                             <div class="card h-100">
                                 <div class="card-body text-center">
@@ -237,7 +237,7 @@
                             </div>
                         </div>
                         
-                        <!-- Filigran Seçeneği -->
+                        <!-- Watermark Option -->
                         <div class="col-md-6">
                             <div class="card h-100">
                                 <div class="card-body text-center">
@@ -253,7 +253,7 @@
                     </div>
                 </div>
 
-                <!-- Adım 3: Şifreleme Formu -->
+                <!-- Step 3: Encryption Form -->
                 <div id="step3-encryption" class="security-step" style="display: none;">
                     <div class="text-center mb-4">
                         <h5><i class="fas fa-key text-danger"></i> {% trans "Password Protection Settings" %}</h5>
@@ -267,7 +267,6 @@
                             <div class="mb-3">
                                 <label class="form-label"><i class="fas fa-lock"></i> {% trans "Enter Password" %}</label>
                                 <input type="password" id="pdfPassword" class="form-control" placeholder="{% trans 'Enter a strong password' %}">
-
                             </div>
                             
                             <div class="mb-3">
@@ -284,7 +283,7 @@
                     </div>
                 </div>
 
-                <!-- Adım 3: Filigran Formu -->
+                <!-- Step 3: Watermark Form -->
                 <div id="step3-watermark" class="security-step" style="display: none;">
                     <div class="text-center mb-4">
                         <h5><i class="fas fa-stamp text-info"></i> {% trans "Watermark Settings" %}</h5>
@@ -343,52 +342,52 @@
     </div>
 </div>
 
-<!-- PDF Sıkıştır Modal -->
+<!-- PDF Compress Modal -->
 <div class="modal fade" id="compressModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><i class="fas fa-compress"></i> PDF Sıkıştır</h5>
+                <h5 class="modal-title"><i class="fas fa-compress"></i> {% trans "Compress PDF" %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body text-center">
                 <div class="mb-3">
-                    <label class="form-label">Kalite Seçimi</label>
+                    <label class="form-label">{% trans "Quality Selection" %}</label>
                     <select id="compressionLevel" class="form-select">
-                        <option value="high">Yüksek Kalite</option>
-                        <option value="medium" selected>Orta Kalite</option>
-                        <option value="low">Düşük Kalite</option>
+                        <option value="high">{% trans "High Quality" %}</option>
+                        <option value="medium" selected>{% trans "Medium Quality" %}</option>
+                        <option value="low">{% trans "Low Quality" %}</option>
                     </select>
                 </div>
-                <button class="btn btn-primary" onclick="compressPDF()">PDF Sıkıştır</button>
+                <button class="btn btn-primary" onclick="compressPDF()">{% trans "Compress PDF" %}</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- PDF Düzenle Modal -->
+<!-- PDF Edit Modal -->
 <div class="modal fade" id="editModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><i class="fas fa-edit"></i> PDF Düzenle</h5>
+                <h5 class="modal-title"><i class="fas fa-edit"></i> {% trans "Edit PDF" %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-6 text-center">
-                        <h6>Sayfa Döndür</h6>
+                        <h6>{% trans "Rotate Page" %}</h6>
                         <select id="rotationAngle" class="form-select mb-2">
-                            <option value="90">90° Sağa</option>
-                            <option value="180">180°</option>
-                            <option value="270">270° Sola</option>
+                            <option value="90">{% trans "90° Right" %}</option>
+                            <option value="180">{% trans "180°" %}</option>
+                            <option value="270">{% trans "270° Left" %}</option>
                         </select>
-                        <button class="btn btn-primary" onclick="rotatePDF()">Döndür</button>
+                        <button class="btn btn-primary" onclick="rotatePDF()">{% trans "Rotate" %}</button>
                     </div>
                     <div class="col-md-6 text-center">
-                        <h6>Boş Sayfa Ekle</h6>
-                        <input type="number" id="pagePosition" class="form-control mb-2" placeholder="Pozisyon" min="1">
-                        <button class="btn btn-success" onclick="addBlankPage()">Sayfa Ekle</button>
+                        <h6>{% trans "Add Blank Page" %}</h6>
+                        <input type="number" id="pagePosition" class="form-control mb-2" placeholder="{% trans 'Position' %}" min="1">
+                        <button class="btn btn-success" onclick="addBlankPage()">{% trans "Add Page" %}</button>
                     </div>
                 </div>
             </div>
@@ -396,28 +395,28 @@
     </div>
 </div>
 
-<!-- Resim ↔ PDF Modal -->
+<!-- Image ↔ PDF Modal -->
 <div class="modal fade" id="imagePdfModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title"><i class="fas fa-images"></i> Resim ↔ PDF</h5>
+                <h5 class="modal-title"><i class="fas fa-images"></i> {% trans "Image ↔ PDF" %}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-6 text-center">
-                        <h6>Resim → PDF</h6>
-                        <button class="btn btn-primary" onclick="imagesToPDF()">Resimleri Seç</button>
+                        <h6>{% trans "Image to PDF" %}</h6>
+                        <button class="btn btn-primary" onclick="imagesToPDF()">{% trans "Select Images" %}</button>
                         <div id="selectedImages" class="mt-2"></div>
                     </div>
                     <div class="col-md-6 text-center">
-                        <h6>PDF → Resim</h6>
+                        <h6>{% trans "PDF to Image" %}</h6>
                         <select id="imageFormat" class="form-select mb-2">
                             <option value="png">PNG</option>
                             <option value="jpg">JPG</option>
                         </select>
-                        <button class="btn btn-success" onclick="pdfToImages()">PDF Seç</button>
+                        <button class="btn btn-success" onclick="pdfToImages()">{% trans "Select PDF" %}</button>
                     </div>
                 </div>
             </div>

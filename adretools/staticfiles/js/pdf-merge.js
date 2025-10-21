@@ -1,4 +1,4 @@
-// PDF Birleştirme Modülü
+// PDF Merge Module
 let selectedFiles = [];
 
 function addPDF() {
@@ -24,7 +24,7 @@ function updateFileList() {
         div.className = 'list-group-item d-flex justify-content-between align-items-center';
         div.innerHTML = `
             ${file.name}
-            <button class="btn btn-sm btn-danger" onclick="removeFile(${index})">Kaldır</button>
+            <button class="btn btn-sm btn-danger" onclick="removeFile(${index})">Remove</button>
         `;
         fileList.appendChild(div);
     });
@@ -37,7 +37,7 @@ function removeFile(index) {
 
 async function mergeSelectedPDFs() {
     if (selectedFiles.length === 0) {
-        alert("Birleştirilecek PDF seçilmedi.");
+        alert("No PDFs selected for merging.");
         return;
     }
 
@@ -55,12 +55,12 @@ async function mergeSelectedPDFs() {
 
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'birlestirilmis.pdf';
+    link.download = 'merged.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
     selectedFiles = [];
     updateFileList();
-    alert("PDF birleştirme tamamlandı.");
+    alert("PDF merging completed.");
 }

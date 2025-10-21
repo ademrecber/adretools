@@ -1,4 +1,4 @@
-// Metin Araçları JavaScript
+// Text Tools JavaScript
 
 let analyzeTimeout;
 
@@ -38,10 +38,10 @@ async function analyzeText() {
             const data = await response.json();
             updateStats(data);
         } else {
-            console.error('Analiz hatası');
+            console.error('Analysis error');
         }
     } catch (error) {
-        console.error('Bağlantı hatası:', error);
+        console.error('Connection error:', error);
     }
 }
 
@@ -76,7 +76,7 @@ async function transformText(type) {
     const text = document.getElementById('inputText').value;
     
     if (!text.trim()) {
-        alert('⚠️ İçerik Gerekli: Önce metin girin!');
+        alert('⚠️ Content Required: Please enter text first!');
         return;
     }
     
@@ -96,13 +96,13 @@ async function transformText(type) {
             analyzeText();
         } else {
             const error = await response.json();
-            alert('❌ Dönüştürme Hatası: ' + error.error);
+            alert('❌ Transformation Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: The Django server might not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }
@@ -112,7 +112,7 @@ async function encodeText(type) {
     const text = document.getElementById('inputText').value;
     
     if (!text.trim()) {
-        alert('⚠️ İçerik Gerekli: Önce metin girin!');
+        alert('⚠️ Content Required: Please enter text first!');
         return;
     }
     
@@ -132,13 +132,13 @@ async function encodeText(type) {
             analyzeText();
         } else {
             const error = await response.json();
-            alert('❌ Kodlama Hatası: ' + error.error);
+            alert('❌ Encoding Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: The Django server might not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }
@@ -148,7 +148,7 @@ async function formatText(type) {
     const text = document.getElementById('inputText').value;
     
     if (!text.trim()) {
-        alert('⚠️ İçerik Gerekli: Önce metin girin!');
+        alert('⚠️ Content Required: Please enter text first!');
         return;
     }
     
@@ -168,13 +168,13 @@ async function formatText(type) {
             analyzeText();
         } else {
             const error = await response.json();
-            alert('❌ Format Hatası: ' + error.error);
+            alert('❌ Formatting Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: The Django server might not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }

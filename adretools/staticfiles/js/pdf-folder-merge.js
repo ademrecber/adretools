@@ -1,4 +1,4 @@
-// Klasör Birleştirme Modülü
+// Folder Merge Module
 let selectedFolders = [];
 
 function addFolder() {
@@ -11,7 +11,7 @@ function addFolder() {
     input.onchange = () => {
         const files = Array.from(input.files).filter(f => f.name.toLowerCase().endsWith('.pdf'));
         if (files.length === 0) {
-            alert("Seçilen klasörde PDF dosyası bulunamadı.");
+            alert("No PDF files found in the selected folder.");
             return;
         }
 
@@ -29,7 +29,7 @@ function updateFolderList() {
         div.className = 'list-group-item d-flex justify-content-between align-items-center';
         div.innerHTML = `
             ${folder.path} (${folder.files.length} PDF)
-            <button class="btn btn-sm btn-danger" onclick="removeFolder(${index})">Kaldır</button>
+            <button class="btn btn-sm btn-danger" onclick="removeFolder(${index})">Remove</button>
         `;
         folderList.appendChild(div);
     });
@@ -42,7 +42,7 @@ function removeFolder(index) {
 
 async function mergeFolderPDFs() {
     if (selectedFolders.length < 2) {
-        alert("En az iki klasör seçilmelidir.");
+        alert("At least two folders must be selected.");
         return;
     }
 
@@ -55,7 +55,7 @@ async function mergeFolderPDFs() {
     );
 
     if (commonNames.length === 0) {
-        alert("Ortak isimde PDF bulunamadı.");
+        alert("No PDFs with common names found.");
         return;
     }
 
@@ -75,7 +75,7 @@ async function mergeFolderPDFs() {
 
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = `${name.replace(/\.pdf$/i, '')}_birlestirilmis.pdf`;
+        link.download = `${name.replace(/\.pdf$/i, '')}_merged.pdf`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -85,5 +85,5 @@ async function mergeFolderPDFs() {
 
     selectedFolders = [];
     updateFolderList();
-    alert(`${commonNames.length} adet PDF birleştirildi.`);
+    alert(`${commonNames.length} PDFs merged.`);
 }

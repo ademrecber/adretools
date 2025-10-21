@@ -26,7 +26,7 @@ function displaySelectedSecurityFile(file) {
         <div class="alert alert-success">
             <i class="fas fa-file-pdf text-danger"></i>
             <strong>${file.name}</strong> (${fileSize} MB)
-            <br><small>PDF dosyası başarıyla seçildi</small>
+            <br><small>PDF file successfully selected</small>
         </div>
     `;
 }
@@ -59,7 +59,7 @@ function backToSecurityOptions() {
 // PDF Şifreleme
 function encryptPDF() {
     if (!selectedSecurityFile) {
-        showSecurityAlert('Lütfen önce bir PDF dosyası seçin!', 'warning');
+        showSecurityAlert('Please select a PDF file first!', 'warning');
         return;
     }
 
@@ -67,14 +67,12 @@ function encryptPDF() {
     const confirmPassword = document.getElementById('pdfPasswordConfirm').value;
 
     if (!password) {
-        showSecurityAlert('Lütfen bir şifre girin!', 'warning');
+        showSecurityAlert('Please enter a password!', 'warning');
         return;
     }
 
-
-
     if (password !== confirmPassword) {
-        showSecurityAlert('Şifreler eşleşmiyor!', 'warning');
+        showSecurityAlert('Passwords do not match!', 'warning');
         return;
     }
 
@@ -82,7 +80,7 @@ function encryptPDF() {
     formData.append('pdf', selectedSecurityFile);
     formData.append('password', password);
 
-    showSecurityLoading('PDF şifreleniyor...');
+    showSecurityLoading('Encrypting PDF...');
 
     fetch('/pdf/encrypt/', {
         method: 'POST',
@@ -93,7 +91,7 @@ function encryptPDF() {
             return response.blob();
         }
         return response.json().then(data => {
-            throw new Error(data.error || 'Şifreleme hatası');
+            throw new Error(data.error || 'Encryption error');
         });
     })
     .then(blob => {
@@ -101,23 +99,23 @@ function encryptPDF() {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = selectedSecurityFile.name.replace('.pdf', '_sifreli.pdf');
+        a.download = selectedSecurityFile.name.replace('.pdf', '_encrypted.pdf');
         a.click();
         window.URL.revokeObjectURL(url);
         
-        showSecurityAlert('PDF başarıyla şifrelendi!', 'success');
+        showSecurityAlert('PDF successfully encrypted!', 'success');
         resetSecurityModal();
     })
     .catch(error => {
         hideSecurityLoading();
-        showSecurityAlert('Hata: ' + error.message, 'danger');
+        showSecurityAlert('Error: ' + error.message, 'danger');
     });
 }
 
 // Filigran Ekleme
 function addWatermark() {
     if (!selectedSecurityFile) {
-        showSecurityAlert('Lütfen önce bir PDF dosyası seçin!', 'warning');
+        showSecurityAlert('Please select a PDF file first!', 'warning');
         return;
     }
 
@@ -127,7 +125,7 @@ function addWatermark() {
     const size = document.getElementById('watermarkSize').value;
 
     if (!watermarkText.trim()) {
-        showSecurityAlert('Lütfen filigran metni girin!', 'warning');
+        showSecurityAlert('Please enter watermark text!', 'warning');
         return;
     }
 
@@ -138,7 +136,7 @@ function addWatermark() {
     formData.append('opacity', opacity);
     formData.append('size', size);
 
-    showSecurityLoading('Filigran ekleniyor...');
+    showSecurityLoading('Adding watermark...');
 
     fetch('/pdf/add-watermark/', {
         method: 'POST',
@@ -149,7 +147,7 @@ function addWatermark() {
             return response.blob();
         }
         return response.json().then(data => {
-            throw new Error(data.error || 'Filigran ekleme hatası');
+            throw new Error(data.error || 'Watermark addition error');
         });
     })
     .then(blob => {
@@ -157,16 +155,16 @@ function addWatermark() {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = selectedSecurityFile.name.replace('.pdf', '_filigranli.pdf');
+        a.download = selectedSecurityFile.name.replace('.pdf', '_watermarked.pdf');
         a.click();
         window.URL.revokeObjectURL(url);
         
-        showSecurityAlert('Filigran başarıyla eklendi!', 'success');
+        showSecurityAlert('Watermark successfully added!', 'success');
         resetSecurityModal();
     })
     .catch(error => {
         hideSecurityLoading();
-        showSecurityAlert('Hata: ' + error.message, 'danger');
+        showSecurityAlert('Error: ' + error.message, 'danger');
     });
 }
 

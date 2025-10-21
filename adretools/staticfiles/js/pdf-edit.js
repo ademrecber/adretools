@@ -1,4 +1,4 @@
-// PDF Düzenleme Modülü
+// PDF Editing Module
 
 async function rotatePDF() {
     const angle = parseInt(document.getElementById('rotationAngle').value);
@@ -27,15 +27,15 @@ async function rotatePDF() {
 
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `${file.name.replace('.pdf', '')}_donmus.pdf`;
+            link.download = `${file.name.replace('.pdf', '')}_rotated.pdf`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            alert(`PDF ${angle}° döndürüldü!`);
+            alert(`PDF rotated by ${angle}°!`);
             
         } catch (error) {
-            alert('Hata: ' + error.message);
+            alert('Error: ' + error.message);
         }
     };
 }
@@ -43,7 +43,7 @@ async function rotatePDF() {
 async function addBlankPage() {
     const position = parseInt(document.getElementById('pagePosition').value);
     if (!position || position < 1) {
-        alert("Lütfen geçerli bir sayfa pozisyonu girin!");
+        alert("Please enter a valid page position!");
         return;
     }
     
@@ -63,29 +63,29 @@ async function addBlankPage() {
             const totalPages = pdfDoc.getPageCount();
             
             if (position > totalPages + 1) {
-                alert(`Pozisyon ${totalPages + 1}'den büyük olamaz!`);
+                alert(`Position cannot be greater than ${totalPages + 1}!`);
                 return;
             }
             
-            // Boş sayfa ekle
+            // Add blank page
             const blankPage = pdfDoc.insertPage(position - 1);
-            blankPage.setSize(595, 842); // A4 boyutu
+            blankPage.setSize(595, 842); // A4 size
 
             const pdfBytes = await pdfDoc.save();
             const blob = new Blob([pdfBytes], { type: 'application/pdf' });
 
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `${file.name.replace('.pdf', '')}_bos_sayfa.pdf`;
+            link.download = `${file.name.replace('.pdf', '')}_blank_page.pdf`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
-            alert(`${position}. pozisyona boş sayfa eklendi!`);
+            alert(`Blank page added at position ${position}!`);
             document.getElementById('pagePosition').value = '';
             
         } catch (error) {
-            alert('Hata: ' + error.message);
+            alert('Error: ' + error.message);
         }
     };
 }

@@ -22,7 +22,7 @@ def dev_home(request):
         {'name': 'SQL Formatter', 'id': 'sql-formatter', 'icon': 'fas fa-database', 'desc': 'Format SQL queries'},
         {'name': 'Timestamp Converter', 'id': 'timestamp-converter', 'icon': 'fas fa-clock', 'desc': 'Convert Unix timestamps'},
         {'name': 'XML Formatter', 'id': 'xml-formatter', 'icon': 'fas fa-code', 'desc': 'Format and visualize XML'},
-        {'name': 'E-Fatura Viewer', 'id': 'invoice-viewer', 'icon': 'fas fa-file-invoice', 'desc': 'View XML invoices as formatted documents'},
+        {'name': 'E-Invoice Viewer', 'id': 'invoice-viewer', 'icon': 'fas fa-file-invoice', 'desc': 'View XML invoices as formatted documents'},
     ]
     return render(request, 'dev_tools/home.html', {'tools': tools})
 
@@ -200,9 +200,9 @@ def xml_formatter_page(request):
 
 def invoice_viewer_page(request):
     return render(request, 'dev_tools/invoice_viewer.html', {
-        'title': 'E-Fatura XML Görüntüleyici - Ücretsiz',
-        'description': 'E-fatura XML dosyalarınızı gerçek fatura görünümünde görüntüleyin',
-        'keywords': 'e-fatura, xml fatura, fatura görüntüleyici, xml viewer'
+        'title': 'E-Invoice XML Viewer - Free',
+        'description': 'View your XML e-invoices in a formatted document view',
+        'keywords': 'e-invoice, xml invoice, invoice viewer, xml viewer'
     })
 
 @csrf_exempt

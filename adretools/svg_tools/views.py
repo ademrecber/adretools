@@ -8,10 +8,10 @@ import xml.etree.ElementTree as ET
 
 def svg_home(request):
     tools = [
-        {'name': 'PNG/JPG → SVG', 'id': 'raster-to-svg', 'icon': 'fas fa-vector-square', 'desc': 'Raster görüntüyü SVG\'ye çevir'},
-        {'name': 'SVG → PNG/JPG', 'id': 'svg-to-raster', 'icon': 'fas fa-image', 'desc': 'SVG\'yi PNG/JPG\'ye çevir'},
-        {'name': 'SVG Düzenle', 'id': 'svg-edit', 'icon': 'fas fa-edit', 'desc': 'SVG boyut ve renk düzenle'},
-        {'name': 'Vektör Trace', 'id': 'vector-trace', 'icon': 'fas fa-bezier-curve', 'desc': 'Resmi vektörel SVG\'ye çevir'},
+        {'name': 'PNG/JPG to SVG', 'id': 'raster-to-svg', 'icon': 'fas fa-vector-square', 'desc': 'Convert raster image to SVG'},
+        {'name': 'SVG to PNG/JPG', 'id': 'svg-to-raster', 'icon': 'fas fa-image', 'desc': 'Convert SVG to PNG/JPG'},
+        {'name': 'SVG Edit', 'id': 'svg-edit', 'icon': 'fas fa-edit', 'desc': 'Edit SVG size and color'},
+        {'name': 'Vector Trace', 'id': 'vector-trace', 'icon': 'fas fa-bezier-curve', 'desc': 'Convert image to vector SVG'},
     ]
     return render(request, 'svg_tools/home.html', {'tools': tools})
 
@@ -21,7 +21,7 @@ def raster_to_svg(request):
         return JsonResponse({'error': 'POST method required'}, status=405)
     
     if 'image_file' not in request.FILES:
-        return JsonResponse({'error': 'Resim dosyası gerekli'}, status=400)
+        return JsonResponse({'error': 'Image file required'}, status=400)
     
     try:
         image_file = request.FILES['image_file']
@@ -45,7 +45,7 @@ def raster_to_svg(request):
         return response
 
     except Exception as e:
-        return JsonResponse({'error': f'Dönüştürme hatası: {str(e)}'}, status=500)
+        return JsonResponse({'error': f'Conversion error: {str(e)}'}, status=500)
 
 @csrf_exempt
 def svg_to_raster(request):
@@ -53,7 +53,7 @@ def svg_to_raster(request):
         return JsonResponse({'error': 'POST method required'}, status=405)
     
     if 'svg_file' not in request.FILES:
-        return JsonResponse({'error': 'SVG dosyası gerekli'}, status=400)
+        return JsonResponse({'error': 'SVG file required'}, status=400)
     
     try:
         from cairosvg import svg2png, svg2jpeg
@@ -79,7 +79,7 @@ def svg_to_raster(request):
         return response
         
     except Exception as e:
-        return JsonResponse({'error': f'Dönüştürme hatası: {str(e)}'}, status=500)
+        return JsonResponse({'error': f'Conversion error: {str(e)}'}, status=500)
 
 @csrf_exempt
 def vector_trace(request):
@@ -87,7 +87,7 @@ def vector_trace(request):
         return JsonResponse({'error': 'POST method required'}, status=405)
     
     if 'image_file' not in request.FILES:
-        return JsonResponse({'error': 'Resim dosyası gerekli'}, status=400)
+        return JsonResponse({'error': 'Image file required'}, status=400)
     
     try:
         image_file = request.FILES['image_file']
@@ -134,7 +134,7 @@ def vector_trace(request):
         return response
         
     except Exception as e:
-        return JsonResponse({'error': f'Vektörleştirme hatası: {str(e)}'}, status=500)
+        return JsonResponse({'error': f'Vectorization error: {str(e)}'}, status=500)
 
 
 @csrf_exempt
@@ -143,7 +143,7 @@ def edit_svg(request):
         return JsonResponse({'error': 'POST method required'}, status=405)
     
     if 'svg_file' not in request.FILES:
-        return JsonResponse({'error': 'SVG dosyası gerekli'}, status=400)
+        return JsonResponse({'error': 'SVG file required'}, status=400)
     
     try:
         svg_file = request.FILES['svg_file']
@@ -173,4 +173,4 @@ def edit_svg(request):
         return response
         
     except Exception as e:
-        return JsonResponse({'error': f'Düzenleme hatası: {str(e)}'}, status=500)
+        return JsonResponse({'error': f'Editing error: {str(e)}'}, status=500)
