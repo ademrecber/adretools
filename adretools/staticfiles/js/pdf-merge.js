@@ -62,5 +62,5 @@ async function mergeSelectedPDFs() {
 
     selectedFiles = [];
     updateFileList();
-    alert("PDF merging completed.");
+    alert("PDF merge completed.");
 }

@@ -1,4 +1,4 @@
-// Raster'ı SVG'ye dönüştür (geliştirilmiş sürüm)
+// Convert Raster to SVG (enhanced version)
 async function convertRasterToSVG() {
     if (!currentRasterFile) {
         alert('⚠️ Content Required: Please select an image file first!');
@@ -8,7 +8,7 @@ async function convertRasterToSVG() {
     const formData = new FormData();
     formData.append('image_file', currentRasterFile);
 
-    // Yeni: Dönüştürme modu seçicisi (embed veya vector)
+    // New: Conversion mode selector (embed or vector)
     const modeSelect = document.getElementById('convertMode');
     const mode = modeSelect ? modeSelect.value : 'embed';
     formData.append('mode', mode);
@@ -28,7 +28,7 @@ async function convertRasterToSVG() {
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Connection Issue: The Django server might not be running. Please start the server.');
+            alert('🔌 Connection Issue: The Django server may not be running. Please start the server.');
         } else {
             alert('⚠️ Unexpected Error: ' + error.message);
         }

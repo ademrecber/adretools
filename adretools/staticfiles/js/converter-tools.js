@@ -81,11 +81,11 @@ const quickConversions = {
         {from: 'm2', to: 'cm2', value: 1, label: '1 m² = 10,000 cm²'},
         {from: 'hectare', to: 'm2', value: 1, label: '1 hectare = 10,000 m²'},
         {from: 'acre', to: 'm2', value: 1, label: '1 acre = 4,047 m²'},
-        {from: 'km2', to: 'hectare', value: 1, label: '1 km² = 100 hectares'}
+        {from: 'km2', to: 'hectare', value: 1, label: '1 km² = 100 hectare'}
     ],
     volume: [
         {from: 'l', to: 'ml', value: 1, label: '1 liter = 1000 ml'},
-        {from: 'm3', to: 'l', value: 1, label: '1 m³ = 1000 liters'},
+        {from: 'm3', to: 'l', value: 1, label: '1 m³ = 1000 liter'},
         {from: 'gallon_us', to: 'l', value: 1, label: '1 gallon (US) = 3.785 l'},
         {from: 'cup', to: 'ml', value: 1, label: '1 cup = 237 ml'}
     ],
@@ -101,7 +101,7 @@ const quickConversions = {
 document.addEventListener('DOMContentLoaded', function() {
     selectCategory('length');
     
-    // Convert automatically when input changes
+    // Auto convert when input changes
     document.getElementById('inputValue').addEventListener('input', convertUnit);
     document.getElementById('fromUnit').addEventListener('change', convertUnit);
     document.getElementById('toUnit').addEventListener('change', convertUnit);
@@ -127,7 +127,7 @@ function selectCategory(category) {
     convertUnit();
 }
 
-// Update unit select lists
+// Update unit selection lists
 function updateUnitSelects() {
     const fromSelect = document.getElementById('fromUnit');
     const toSelect = document.getElementById('toUnit');

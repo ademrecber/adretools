@@ -28,7 +28,7 @@ function updateFolderList() {
         const div = document.createElement('div');
         div.className = 'list-group-item d-flex justify-content-between align-items-center';
         div.innerHTML = `
-            ${folder.path} (${folder.files.length} PDF)
+            ${folder.path} (${folder.files.length} PDFs)
             <button class="btn btn-sm btn-danger" onclick="removeFolder(${index})">Remove</button>
         `;
         folderList.appendChild(div);

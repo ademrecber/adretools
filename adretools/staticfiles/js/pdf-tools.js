@@ -1,17 +1,17 @@
-// PDF Tools JavaScript - Modüler yapı
+// PDF Tools JavaScript - Modular structure
 let selectedFiles = [];
 let selectedPDF = null;
 
 function showTool(toolId) {
-    // Tüm araçları gizle
+    // Hide all tool sections
     document.querySelectorAll('.tool-section').forEach(section => {
         section.style.display = 'none';
     });
-    // Seçilen aracı göster
+    // Show selected tool
     const toolElement = document.getElementById(toolId);
     toolElement.style.display = 'block';
     
-    // Smooth scroll ile araca git
+    // Smooth scroll to tool
     setTimeout(() => {
         toolElement.scrollIntoView({ 
             behavior: 'smooth', 
@@ -20,7 +20,7 @@ function showTool(toolId) {
     }, 100);
 }
 
-// PDF Bölme
+// PDF Split
 async function splitPDF() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -51,11 +51,11 @@ async function splitPDF() {
 
             await new Promise(resolve => setTimeout(resolve, 300));
         }
-        alert("PDF splitting completed.");
+        alert("PDF split completed.");
     };
 }
 
-// PDF Birleştirme
+// PDF Merge
 function addPDF() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -117,10 +117,10 @@ async function mergeSelectedPDFs() {
 
     selectedFiles = [];
     updateFileList();
-    alert("PDF merging completed.");
+    alert("PDF merge completed.");
 }
 
-// Çoklu Bölme
+// Multi-Split
 function selectPDF() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -149,7 +149,7 @@ function addRange() {
     const div = document.createElement('div');
     div.className = 'input-group mb-2';
     div.innerHTML = `
-        <input type="text" class="form-control" placeholder="e.g: 5-10 or 99">
+        <input type="text" class="form-control" placeholder="e.g., 5-10 or 99">
         <button class="btn btn-outline-danger" onclick="this.parentElement.remove()">Remove</button>
     `;
     container.appendChild(div);
@@ -218,10 +218,10 @@ async function splitMultipleRanges() {
         await new Promise(resolve => setTimeout(resolve, 300));
     }
 
-    alert("Multi-page split completed.");
+    alert("Multi-split completed.");
 }
 
-// Klasör Birleştirme
+// Folder Merge
 let selectedFolders = [];
 
 function addFolder() {
@@ -311,7 +311,7 @@ async function mergeFolderPDFs() {
     alert(`${commonNames.length} PDFs merged.`);
 }
 
-// Aralıklı Bölme
+// Interval-based Split
 let intervalPDF = null;
 
 function selectIntervalPDF() {

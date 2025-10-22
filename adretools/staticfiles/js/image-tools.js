@@ -46,7 +46,7 @@ function applyPresetSize() {
 // Resize image
 async function resizeImage() {
     if (!currentImageFile) {
-        alert('⚠️ Content Required: Please select an image first!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -85,7 +85,7 @@ async function resizeImage() {
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Connection Issue: Django server might not be running. Please start the server.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
             alert('⚠️ Unexpected Error: ' + error.message);
         }
@@ -115,7 +115,7 @@ function selectImageForCrop() {
 // Crop image
 async function cropImage() {
     if (!currentImageFile) {
-        alert('⚠️ Content Required: Please select an image first!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -141,7 +141,7 @@ async function cropImage() {
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Connection Issue: Django server might not be running. Please start the server.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
             alert('⚠️ Unexpected Error: ' + error.message);
         }
@@ -171,7 +171,7 @@ function selectImageForRotate() {
 // Flip horizontally
 function flipHorizontal() {
     if (!currentImageFile) {
-        alert('⚠️ Content Required: Please select an image first!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -185,7 +185,7 @@ function flipHorizontal() {
 // Flip vertically
 function flipVertical() {
     if (!currentImageFile) {
-        alert('⚠️ Content Required: Please select an image first!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -199,7 +199,7 @@ function flipVertical() {
 // Rotate image
 async function rotateImage() {
     if (!currentImageFile) {
-        alert('⚠️ Content Required: Please select an image first!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -220,7 +220,7 @@ async function rotateImage() {
     processRotation(formData, 'rotated_');
 }
 
-// Perform rotation
+// Process rotation
 async function processRotation(formData, prefix) {
     try {
         const response = await fetch('/image/rotate/', {
@@ -237,7 +237,7 @@ async function processRotation(formData, prefix) {
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Connection Issue: Django server might not be running. Please start the server.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
             alert('⚠️ Unexpected Error: ' + error.message);
         }
@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Convert format
 async function convertFormat() {
     if (!currentImageFile) {
-        alert('⚠️ Content Required: Please select an image first!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -305,7 +305,7 @@ async function convertFormat() {
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Connection Issue: Django server might not be running. Please start the server.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
             alert('⚠️ Unexpected Error: ' + error.message);
         }
@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Compress image
 async function compressImage() {
     if (!currentImageFile) {
-        alert('⚠️ Content Required: Please select an image first!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -394,7 +394,7 @@ async function compressImage() {
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Connection Issue: Django server might not be running. Please start the server.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
             alert('⚠️ Unexpected Error: ' + error.message);
         }
@@ -425,7 +425,7 @@ function selectFileForIco() {
 // Create ICO
 async function createIco() {
     if (!currentImageFile) {
-        alert('⚠️ Content Required: Please select a file first!');
+        alert('⚠️ Input Required: Please select a file first!');
         return;
     }
     
@@ -449,7 +449,7 @@ async function createIco() {
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Connection Issue: Django server might not be running. Please start the server.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
             alert('⚠️ Unexpected Error: ' + error.message);
         }

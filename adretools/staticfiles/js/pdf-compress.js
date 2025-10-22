@@ -18,7 +18,7 @@ async function compressPDF() {
             const arrayBuffer = await file.arrayBuffer();
             const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
             
-            // Simple compression - metadata cleanup
+            // Simple compression - clear metadata
             pdfDoc.setTitle('');
             pdfDoc.setAuthor('');
             pdfDoc.setSubject('');

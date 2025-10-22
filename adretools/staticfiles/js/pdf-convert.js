@@ -35,9 +35,9 @@
                 console.log('Response received:', response.status, response.statusText);
                 
                 if (response.ok) {
-                    console.log('Response successful, retrieving blob...');
+                    console.log('Response successful, getting blob...');
                     const blob = await response.blob();
-                    console.log('Blob retrieved, size:', blob.size);
+                    console.log('Blob received, size:', blob.size);
                     
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(blob);
@@ -49,7 +49,7 @@
                     console.log('File downloaded');
                     alert('PDF successfully converted to Word!');
                 } else {
-                    console.log('Response failed, retrieving error...');
+                    console.log('Response failed, getting error...');
                     try {
                         const error = await response.json();
                         console.log('Error message:', error);
@@ -143,9 +143,9 @@
                 console.log('Word Response received:', response.status, response.statusText);
                 
                 if (response.ok) {
-                    console.log('Word Response successful, retrieving blob...');
+                    console.log('Word Response successful, getting blob...');
                     const blob = await response.blob();
-                    console.log('Word Blob retrieved, size:', blob.size);
+                    console.log('Word Blob received, size:', blob.size);
                     
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(blob);
@@ -157,7 +157,7 @@
                     console.log('Word PDF file downloaded');
                     alert('Word successfully converted to PDF!');
                 } else {
-                    console.log('Word Response failed, retrieving error...');
+                    console.log('Word Response failed, getting error...');
                     try {
                         const error = await response.json();
                         console.log('Word Error message:', error);

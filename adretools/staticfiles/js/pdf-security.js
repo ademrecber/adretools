@@ -1,7 +1,7 @@
-// PDF Güvenlik İşlemleri
+// PDF Security Operations
 let selectedSecurityFile = null;
 
-// Adım 1: PDF Dosyası Seçimi
+// Step 1: PDF File Selection
 function selectSecurityPDF() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -17,7 +17,7 @@ function selectSecurityPDF() {
     input.click();
 }
 
-// Seçilen PDF dosyasını göster
+// Display selected PDF file
 function displaySelectedSecurityFile(file) {
     const display = document.getElementById('selectedSecurityFile');
     const fileSize = (file.size / 1024 / 1024).toFixed(2);
@@ -31,32 +31,32 @@ function displaySelectedSecurityFile(file) {
     `;
 }
 
-// Adım 2: Güvenlik seçeneklerini göster
+// Step 2: Show security options
 function showSecurityOptions() {
     document.getElementById('step1-select-pdf').style.display = 'none';
     document.getElementById('step2-security-options').style.display = 'block';
 }
 
-// Şifreleme formunu göster
+// Show encryption form
 function showEncryptionForm() {
     document.getElementById('step2-security-options').style.display = 'none';
     document.getElementById('step3-encryption').style.display = 'block';
 }
 
-// Filigran formunu göster
+// Show watermark form
 function showWatermarkForm() {
     document.getElementById('step2-security-options').style.display = 'none';
     document.getElementById('step3-watermark').style.display = 'block';
 }
 
-// Güvenlik seçeneklerine geri dön
+// Back to security options
 function backToSecurityOptions() {
     document.getElementById('step3-encryption').style.display = 'none';
     document.getElementById('step3-watermark').style.display = 'none';
     document.getElementById('step2-security-options').style.display = 'block';
 }
 
-// PDF Şifreleme
+// PDF Encryption
 function encryptPDF() {
     if (!selectedSecurityFile) {
         showSecurityAlert('Please select a PDF file first!', 'warning');
@@ -112,7 +112,7 @@ function encryptPDF() {
     });
 }
 
-// Filigran Ekleme
+// Add Watermark
 function addWatermark() {
     if (!selectedSecurityFile) {
         showSecurityAlert('Please select a PDF file first!', 'warning');
@@ -168,7 +168,7 @@ function addWatermark() {
     });
 }
 
-// Modal'ı sıfırla
+// Reset modal
 function resetSecurityModal() {
     selectedSecurityFile = null;
     document.getElementById('step1-select-pdf').style.display = 'block';
@@ -176,7 +176,7 @@ function resetSecurityModal() {
     document.getElementById('step3-encryption').style.display = 'none';
     document.getElementById('step3-watermark').style.display = 'none';
     
-    // Form alanlarını temizle
+    // Clear form fields
     document.getElementById('selectedSecurityFile').innerHTML = '';
     document.getElementById('pdfPassword').value = '';
     document.getElementById('pdfPasswordConfirm').value = '';
@@ -186,7 +186,7 @@ function resetSecurityModal() {
     document.getElementById('watermarkSize').value = '36';
 }
 
-// Modal kapandığında sıfırla
+// Reset when modal closes
 document.addEventListener('DOMContentLoaded', function() {
     const securityModal = document.getElementById('securityModal');
     if (securityModal) {
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Yardımcı fonksiyonlar
+// Helper functions
 function showSecurityAlert(message, type) {
     if (window.showAlert) {
         window.showAlert(message, type);

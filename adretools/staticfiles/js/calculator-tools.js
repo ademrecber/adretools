@@ -155,7 +155,7 @@ function calculateDateDiff() {
     
     if (startDate > endDate) {
         document.getElementById('dateResult').innerHTML = 
-            '<div class="alert alert-warning">Start date cannot be later than end date!</div>';
+            '<div class="alert alert-warning">Start date cannot be after end date!</div>';
         return;
     }
     
@@ -178,7 +178,7 @@ function calculateDateDiff() {
     `;
 }
 
-// Update clocks when World Clock modal is opened
+// Update clocks when World Clock modal opens
 document.addEventListener('DOMContentLoaded', function() {
     const worldClockModal = document.getElementById('world-clockModal');
     if (worldClockModal) {
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Update every second
             const interval = setInterval(updateWorldClocks, 1000);
             
-            // Clear interval when modal is closed
+            // Clear interval when modal closes
             worldClockModal.addEventListener('hidden.bs.modal', function() {
                 clearInterval(interval);
             }, { once: true });

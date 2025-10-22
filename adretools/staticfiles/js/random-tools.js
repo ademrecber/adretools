@@ -13,7 +13,7 @@ function generateRandomNumbers() {
     
     if (min >= max) {
         document.getElementById('randomResult').innerHTML = 
-            '<div class="alert alert-warning">The minimum value must be less than the maximum!</div>';
+            '<div class="alert alert-warning">Minimum value must be less than maximum!</div>';
         return;
     }
     
@@ -134,15 +134,17 @@ function drawWheel() {
                 
                 const textAngle = startAngle + segmentAngle / 2;
                 const textAngleRad = (textAngle * Math.PI) / 180;
+                const textX = 100 + 50 * Math.cos(textAngleRad);
+                const textY = 100 + 50 * Math.sin(textAngleRad);
                 
                 return `
                     <path d="M 100 100 L ${x1} ${y1} A 90 90 0 ${largeArcFlag} 1 ${x2} ${y2} Z" 
                           fill="${color}" stroke="white" stroke-width="2"/>
-                    <text x="100" y="100" 
-                          text-anchor="start" dominant-baseline="middle" 
-                          fill="white" font-weight="bold" font-size="10"
-                          transform="rotate(${textAngle} 100 100) translate(10, 0)">
-                        ${option.length > 12 ? option.substring(0, 12) + '...' : option}
+                    <text x="${textX}" y="${textY}" 
+                          text-anchor="middle" dominant-baseline="middle" 
+                          fill="white" font-weight="bold" font-size="11"
+                          transform="rotate(${textAngle} ${textX} ${textY})">
+                        ${option.length > 10 ? option.substring(0, 10) + '...' : option}
                     </text>
                 `;
             }).join('')}
@@ -167,34 +169,37 @@ function spinWheel() {
     spinBtn.disabled = true;
     spinBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Spinning...';
     
-    // Çarkı sıfırla ve yeni dönüş başlat
+    // Reset wheel and start new spin
     wheel.style.transition = 'none';
     wheel.style.transform = 'rotate(0deg)';
     
-    // Kısa bir gecikme sonrası animasyonu başlat
+    // Start animation after short delay
     setTimeout(() => {
-        wheel.style.transition = 'transform 8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        // Get user-specified duration
+        const duration = parseInt(document.getElementById('spinDuration').value) || 8;
         
-        // Daha güçlü random - timestamp + crypto random
+        wheel.style.transition = `transform ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+        
+        // Stronger random - timestamp + crypto random
         const timestamp = Date.now();
         const cryptoRandom = crypto.getRandomValues(new Uint32Array(1))[0] / 4294967295;
         const baseRotation = Math.floor((Math.random() + cryptoRandom + (timestamp % 1000) / 1000) * 360);
-        const randomRotation = baseRotation + 2880 + Math.floor(Math.random() * 720); // 8-10 tur arası
+        const randomRotation = baseRotation + (duration * 360) + Math.floor(Math.random() * 720); // Duration-based spins
         wheel.style.transform = `rotate(${randomRotation}deg)`;
         
-        // Tam 8 saniye bekle (animasyon süresi)
+        // Wait for duration
         setTimeout(() => {
-            // Basit random kazanan - çark görsel ama kazanan tamamen random
+            // Simple random winner - wheel is visual but winner is purely random
             const winnerIndex = Math.floor(Math.random() * wheelOptions.length);
             const winner = wheelOptions[winnerIndex];
             
-            // Kazanan segmenti ışık saçsın
+            // Highlight winner segment
             highlightWinnerSegment(winnerIndex);
             
-            // Süslü kazanan gösterimi
+            // Fancy winner display
             showWinnerDisplay(winner);
             
-            // Normal sonuç da göster
+            // Show regular result
             document.getElementById('wheelResult').innerHTML = `
                 <div class="alert alert-success text-center">
                     <h4>🎉 Winner</h4>
@@ -205,15 +210,15 @@ function spinWheel() {
             
             spinBtn.disabled = false;
             spinBtn.innerHTML = '<i class="fas fa-play"></i> Spin Wheel';
-        }, 8000);
+        }, duration * 1000);
     }, 50);
 }
 
 function showWinnerDisplay(winner) {
-    // Önceki popup'ları temizle
+    // Clear previous popups
     closeWinnerDisplay();
     
-    // Süslü kazanan ekranı oluştur
+    // Create fancy winner display
     const winnerDisplay = document.createElement('div');
     winnerDisplay.id = 'winnerPopup';
     winnerDisplay.style.cssText = `
@@ -273,10 +278,10 @@ function showWinnerDisplay(winner) {
         </div>
     `;
     
-    // Body'ye ekle
+    // Append to body
     document.body.appendChild(winnerDisplay);
     
-    // 6 saniye sonra otomatik kapat
+    // Auto-close after 6 seconds
     setTimeout(() => {
         closeWinnerDisplay();
     }, 6000);
@@ -294,10 +299,10 @@ function highlightWinnerSegment(winnerIndex) {
     const paths = wheel.querySelectorAll('path');
     
     if (paths[winnerIndex]) {
-        // Kazanan segmenti ışık saçsın
+        // Highlight winner segment
         paths[winnerIndex].classList.add('winner-segment');
         
-        // 5 saniye sonra animasyonu kaldır
+        // Remove animation after 5 seconds
         setTimeout(() => {
             paths[winnerIndex].classList.remove('winner-segment');
         }, 5000);

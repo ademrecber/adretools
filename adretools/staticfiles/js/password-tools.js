@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lengthValue.textContent = this.value;
     });
     
-    // Real-time check for password strength input
+    // Real-time password strength check
     const checkPasswordInput = document.getElementById('checkPassword');
     let checkTimeout;
     
@@ -50,7 +50,7 @@ async function generatePassword() {
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Connection Issue: Django server might not be running. Please start the server.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
             alert('⚠️ Unexpected Error: ' + error.message);
         }
@@ -94,7 +94,7 @@ async function checkPasswordStrength() {
     }
 }
 
-// Show password check result
+// Show password check results
 function showPasswordCheck(strength) {
     updateStrengthDisplay('check', strength);
     

@@ -1,8 +1,8 @@
-// PDF Bölme Modülü
+// PDF Split Module
 (function() {
     let selectedPDFSplit = null;
 
-    // Tek sayfa bölme
+    // Single page split
     window.splitPDF = async function() {
         const input = document.createElement('input');
         input.type = 'file';
@@ -33,11 +33,11 @@
 
                 await new Promise(resolve => setTimeout(resolve, 300));
             }
-            alert("PDF splitting completed.");
+            alert("PDF split completed.");
         };
     };
 
-    // Aralıklı bölme
+    // Interval-based split
     window.selectIntervalPDF = function() {
         const input = document.createElement('input');
         input.type = 'file';

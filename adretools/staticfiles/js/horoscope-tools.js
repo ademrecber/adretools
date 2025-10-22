@@ -54,7 +54,7 @@ async function calculateHoroscope() {
     const birthPlace = document.getElementById('birthPlace').value;
     
     if (!birthDate) {
-        alert('⚠️ Input Required: Please enter your birth date!');
+        alert('⚠️ Input Required: Please enter birth date!');
         return;
     }
     
@@ -78,7 +78,7 @@ async function calculateHoroscope() {
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Connection Issue: Django server might not be running. Please start the server.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
             alert('⚠️ Unexpected Error: ' + error.message);
         }
@@ -129,7 +129,7 @@ function showResults(data) {
     });
 }
 
-// Set today when page loads
+// Set today on page load
 document.addEventListener('DOMContentLoaded', function() {
-    // Do not set today by default, let the user choose
+    // Don't set today by default, let user choose
 });

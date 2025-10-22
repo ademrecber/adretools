@@ -1,4 +1,4 @@
-// Color Picker JavaScript
+// Color Finder JavaScript
 
 let canvas, ctx, imageData;
 let colorHistory = [];
@@ -199,7 +199,7 @@ function addToHistory(r, g, b) {
     const color = { r, g, b };
     const colorStr = `rgb(${r}, ${g}, ${b})`;
     
-    // Remove if same color exists
+    // Remove duplicate color
     colorHistory = colorHistory.filter(c => !(c.r === r && c.g === g && c.b === b));
     
     // Add to beginning
@@ -218,7 +218,7 @@ function updateHistoryDisplay() {
     const historyDiv = document.getElementById('colorHistory');
     
     if (colorHistory.length === 0) {
-        historyDiv.innerHTML = '<small class="text-muted">No color selected yet</small>';
+        historyDiv.innerHTML = '<small class="text-muted">No colors selected yet</small>';
         return;
     }
     
@@ -246,7 +246,7 @@ function copyAllColors() {
     navigator.clipboard.writeText(text).then(() => {
         alert('✅ Color codes copied!');
     }).catch(() => {
-        alert('❌ Copying failed!');
+        alert('❌ Copy failed!');
     });
 }
 

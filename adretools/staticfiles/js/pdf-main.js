@@ -66,7 +66,7 @@ window.isPDFFile = function(file) {
     return file && file.type === 'application/pdf';
 };
 
-// File extension check
+// Get file extension
 window.getFileExtension = function(filename) {
     return filename.split('.').pop().toLowerCase();
 };

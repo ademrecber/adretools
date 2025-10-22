@@ -1,4 +1,4 @@
-// Multi-Page PDF Split Module
+// PDF Multi-Split Module
 (function() {
     let selectedPDFMulti = null;
 
@@ -30,7 +30,7 @@
         const div = document.createElement('div');
         div.className = 'input-group mb-2';
         div.innerHTML = `
-            <input type="text" class="form-control" placeholder="e.g: 5-10 or 99">
+            <input type="text" class="form-control" placeholder="e.g., 5-10 or 99">
             <button class="btn btn-outline-danger" onclick="this.parentElement.remove()">Remove</button>
         `;
         container.appendChild(div);
@@ -99,6 +99,6 @@
             await new Promise(resolve => setTimeout(resolve, 300));
         }
 
-        alert("Multi-page split completed.");
+        alert("Multi-split completed.");
     };
 })();
