@@ -13,28 +13,89 @@
                 <div class="card-body">
                     <p><strong>{% trans "Last updated:" %}</strong> {% now "F d, Y" %}</p>
                     
-                    <h3>{% trans "Information We Collect" %}</h3>
-                    <p>{% trans "We collect information you provide directly to us and information we collect automatically when you use our services." %}</p>
+                    <h3>1. {% trans "Information We Collect" %}</h3>
+                    <h4>{% trans "Information You Provide" %}</h4>
+                    <p>{% trans "We collect information when you use our online tools, including files you upload for processing (images, PDFs, text). All uploaded files are processed locally and automatically deleted after processing." %}</p>
                     
-                    <h3>{% trans "How We Use Your Information" %}</h3>
+                    <h4>{% trans "Automatically Collected Information" %}</h4>
                     <ul>
-                        <li>{% trans "To provide and maintain our services" %}</li>
-                        <li>{% trans "To improve user experience" %}</li>
-                        <li>{% trans "To analyze usage patterns" %}</li>
-                        <li>{% trans "To comply with legal obligations" %}</li>
+                        <li>{% trans "IP address and browser information" %}</li>
+                        <li>{% trans "Device type and operating system" %}</li>
+                        <li>{% trans "Pages visited and time spent" %}</li>
+                        <li>{% trans "Referral sources" %}</li>
                     </ul>
                     
-                    <h3>{% trans "Google Analytics" %}</h3>
-                    <p>{% trans "We use Google Analytics to analyze website traffic. Google Analytics uses cookies to collect information about your use of our website." %}</p>
+                    <h3>2. {% trans "How We Use Your Information" %}</h3>
+                    <ul>
+                        <li>{% trans "To provide and maintain our free online tools" %}</li>
+                        <li>{% trans "To improve user experience and tool functionality" %}</li>
+                        <li>{% trans "To analyze usage patterns and optimize performance" %}</li>
+                        <li>{% trans "To display relevant advertisements" %}</li>
+                        <li>{% trans "To comply with legal obligations" %}</li>
+                        <li>{% trans "To prevent fraud and ensure security" %}</li>
+                    </ul>
                     
-                    <h3>{% trans "Google AdSense" %}</h3>
-                    <p>{% trans "We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your visits to this and other websites." %}</p>
+                    <h3>3. {% trans "Cookies and Tracking" %}</h3>
+                    <p>{% trans "We use cookies and similar technologies to:" %}</p>
+                    <ul>
+                        <li>{% trans "Remember your preferences and settings" %}</li>
+                        <li>{% trans "Analyze website traffic and user behavior" %}</li>
+                        <li>{% trans "Serve personalized advertisements" %}</li>
+                        <li>{% trans "Improve website functionality" %}</li>
+                    </ul>
                     
-                    <h3>{% trans "Data Security" %}</h3>
-                    <p>{% trans "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction." %}</p>
+                    <h3>4. {% trans "Third-Party Services" %}</h3>
                     
-                    <h3>{% trans "Contact Us" %}</h3>
-                    <p>{% trans "If you have any questions about this Privacy Policy, please contact us at:" %} <a href="{% url 'core:contact' %}">{% trans "Contact Page" %}</a></p>
+                    <h4>{% trans "Google Analytics" %}</h4>
+                    <p>{% trans "We use Google Analytics to understand how visitors use our website. Google Analytics collects information anonymously and reports website trends. You can opt-out by installing the Google Analytics opt-out browser add-on." %}</p>
+                    
+                    <h4>{% trans "Google AdSense" %}</h4>
+                    <p>{% trans "We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your visits to this and other websites. You can opt-out of personalized advertising by visiting Google's Ad Settings." %}</p>
+                    
+                    <h4>{% trans "Third-Party Advertising Partners" %}</h4>
+                    <p>{% trans "Our advertising partners may use cookies and web beacons to collect information about your activities on this and other websites to provide targeted advertising." %}</p>
+                    
+                    <h3>5. {% trans "Data Retention" %}</h3>
+                    <p>{% trans "We retain personal information only as long as necessary to provide our services. Uploaded files are automatically deleted immediately after processing. Analytics data is retained according to Google Analytics retention policies." %}</p>
+                    
+                    <h3>6. {% trans "Data Security" %}</h3>
+                    <p>{% trans "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. All data transmission is encrypted using SSL/TLS." %}</p>
+                    
+                    <h3>7. {% trans "Your Rights" %}</h3>
+                    <p>{% trans "You have the right to:" %}</p>
+                    <ul>
+                        <li>{% trans "Access your personal information" %}</li>
+                        <li>{% trans "Correct inaccurate information" %}</li>
+                        <li>{% trans "Request deletion of your information" %}</li>
+                        <li>{% trans "Object to processing" %}</li>
+                        <li>{% trans "Withdraw consent" %}</li>
+                    </ul>
+                    
+                    <h3>8. {% trans "Children's Privacy" %}</h3>
+                    <p>{% trans "Our services are not intended for children under 13. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us." %}</p>
+                    
+                    <h3>9. {% trans "International Data Transfers" %}</h3>
+                    <p>{% trans "Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place for such transfers." %}</p>
+                    
+                    <h3>10. {% trans "Changes to Privacy Policy" %}</h3>
+                    <p>{% trans "We may update this Privacy Policy periodically. We will notify users of significant changes by posting the new policy on this page with an updated revision date." %}</p>
+                    
+                    <h3>11. {% trans "Contact Information" %}</h3>
+                    <p>{% trans "If you have questions about this Privacy Policy or our privacy practices, please contact us:" %}</p>
+                    <ul>
+                        <li>{% trans "Email: Through our" %} <a href="{% url 'core:contact' %}">{% trans "Contact Page" %}</a></li>
+                        <li>{% trans "Website: adretools.com" %}</li>
+                    </ul>
+                    
+                    <div class="alert alert-info mt-4">
+                        <h5>{% trans "Important Notes:" %}</h5>
+                        <ul class="mb-0">
+                            <li>{% trans "We do not sell personal information to third parties" %}</li>
+                            <li>{% trans "All file processing is done locally and securely" %}</li>
+                            <li>{% trans "We comply with GDPR, CCPA, and other privacy regulations" %}</li>
+                            <li>{% trans "You can use our tools without creating an account" %}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
