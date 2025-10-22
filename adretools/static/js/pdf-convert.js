@@ -1,43 +1,43 @@
-// PDF Dönüştürme Modülü
+// PDF Conversion Module
 (function() {
     window.convertPDFToWord = async function() {
-        console.log('convertPDFToWord fonksiyonu çağrıldı');
+        console.log('convertPDFToWord function called');
         
         const input = document.createElement('input');
         input.type = 'file';
         input.accept = 'application/pdf';
         input.click();
         
-        console.log('Dosya seçici açıldı');
+        console.log('File picker opened');
 
         input.onchange = async () => {
-            console.log('Dosya seçildi, input.files:', input.files);
+            console.log('File selected, input.files:', input.files);
             
             const file = input.files[0];
             if (!file) {
-                console.log('Dosya seçilmedi, çıkılıyor');
+                console.log('No file selected, exiting');
                 return;
             }
             
-            console.log('Seçilen dosya:', file.name, 'Boyut:', file.size);
+            console.log('Selected file:', file.name, 'Size:', file.size);
 
             try {
-                console.log('FormData oluşturuluyor...');
+                console.log('Creating FormData...');
                 const formData = new FormData();
                 formData.append('pdf', file);
                 
-                console.log('Fetch isteği gönderiliyor: /pdf/convert-to-word/');
+                console.log('Sending fetch request: /pdf/convert-to-word/');
                 const response = await fetch('/pdf/convert-to-word/', {
                     method: 'POST',
                     body: formData
                 });
                 
-                console.log('Response alındı:', response.status, response.statusText);
+                console.log('Response received:', response.status, response.statusText);
                 
                 if (response.ok) {
-                    console.log('Response başarılı, blob alınıyor...');
+                    console.log('Response successful, getting blob...');
                     const blob = await response.blob();
-                    console.log('Blob alındı, boyut:', blob.size);
+                    console.log('Blob received, size:', blob.size);
                     
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(blob);
@@ -46,29 +46,29 @@
                     link.click();
                     document.body.removeChild(link);
                     
-                    console.log('Dosya indirildi');
-                    alert('PDF başarıyla Word\'e dönüştürüldü!');
+                    console.log('File downloaded');
+                    alert('PDF successfully converted to Word!');
                 } else {
-                    console.log('Response başarısız, hata alınıyor...');
+                    console.log('Response failed, getting error...');
                     try {
                         const error = await response.json();
-                        console.log('Hata mesajı:', error);
-                        console.log('Hata mesajı detay:', JSON.stringify(error));
+                        console.log('Error message:', error);
+                        console.log('Error message details:', JSON.stringify(error));
                         alert(error.error);
                     } catch (jsonError) {
-                        console.log('JSON parse hatası:', jsonError);
-                        alert('Dönüştürme hatası oluştu (JSON parse hatası)');
+                        console.log('JSON parse error:', jsonError);
+                        alert('Conversion error occurred (JSON parse error)');
                     }
                 }
             } catch (error) {
-                console.log('Catch bloğu - Genel hata:', error);
-                alert('Hata: ' + error.message);
+                console.log('Catch block - General error:', error);
+                alert('Error: ' + error.message);
             }
         };
     };
 
     window.convertPDFToExcel = async function() {
-        console.log('convertPDFToExcel çağrıldı');
+        console.log('convertPDFToExcel called');
         
         const input = document.createElement('input');
         input.type = 'file';
@@ -97,55 +97,55 @@
                     link.click();
                     document.body.removeChild(link);
                     
-                    alert('PDF başarıyla Excel\'e dönüştürüldü!');
+                    alert('PDF successfully converted to Excel!');
                 } else {
                     const error = await response.json();
                     alert(error.error);
                 }
             } catch (error) {
-                alert('Hata: ' + error.message);
+                alert('Error: ' + error.message);
             }
         };
     };
 
     window.convertWordToPDF = async function() {
-        console.log('convertWordToPDF fonksiyonu çağrıldı');
+        console.log('convertWordToPDF function called');
         
         const input = document.createElement('input');
         input.type = 'file';
         input.accept = '.doc,.docx';
         input.click();
         
-        console.log('Word dosya seçici açıldı');
+        console.log('Word file picker opened');
 
         input.onchange = async () => {
-            console.log('Word dosyası seçildi, input.files:', input.files);
+            console.log('Word file selected, input.files:', input.files);
             
             const file = input.files[0];
             if (!file) {
-                console.log('Word dosyası seçilmedi, çıkılıyor');
+                console.log('No Word file selected, exiting');
                 return;
             }
             
-            console.log('Seçilen Word dosyası:', file.name, 'Boyut:', file.size);
+            console.log('Selected Word file:', file.name, 'Size:', file.size);
 
             try {
-                console.log('Word FormData oluşturuluyor...');
+                console.log('Creating Word FormData...');
                 const formData = new FormData();
                 formData.append('word', file);
                 
-                console.log('Word Fetch isteği gönderiliyor: /pdf/convert-to-pdf/');
+                console.log('Sending Word fetch request: /pdf/convert-to-pdf/');
                 const response = await fetch('/pdf/convert-to-pdf/', {
                     method: 'POST',
                     body: formData
                 });
                 
-                console.log('Word Response alındı:', response.status, response.statusText);
+                console.log('Word Response received:', response.status, response.statusText);
                 
                 if (response.ok) {
-                    console.log('Word Response başarılı, blob alınıyor...');
+                    console.log('Word Response successful, getting blob...');
                     const blob = await response.blob();
-                    console.log('Word Blob alındı, boyut:', blob.size);
+                    console.log('Word Blob received, size:', blob.size);
                     
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(blob);
@@ -154,22 +154,22 @@
                     link.click();
                     document.body.removeChild(link);
                     
-                    console.log('Word PDF dosyası indirildi');
-                    alert('Word başarıyla PDF\'e dönüştürüldü!');
+                    console.log('Word PDF file downloaded');
+                    alert('Word successfully converted to PDF!');
                 } else {
-                    console.log('Word Response başarısız, hata alınıyor...');
+                    console.log('Word Response failed, getting error...');
                     try {
                         const error = await response.json();
-                        console.log('Word Hata mesajı:', error);
+                        console.log('Word Error message:', error);
                         alert(error.error);
                     } catch (jsonError) {
-                        console.log('Word JSON parse hatası:', jsonError);
-                        alert('Word dönüştürme hatası oluştu (JSON parse hatası)');
+                        console.log('Word JSON parse error:', jsonError);
+                        alert('Word conversion error occurred (JSON parse error)');
                     }
                 }
             } catch (error) {
-                console.log('Word Catch bloğu - Genel hata:', error);
-                alert('Hata: ' + error.message);
+                console.log('Word Catch block - General error:', error);
+                alert('Error: ' + error.message);
             }
         };
     };

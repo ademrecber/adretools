@@ -1,9 +1,9 @@
-// Renk Bulucu JavaScript
+// Color Finder JavaScript
 
 let canvas, ctx, imageData;
 let colorHistory = [];
 
-// Sayfa yüklendiğinde
+// When page loads
 document.addEventListener('DOMContentLoaded', function() {
     canvas = document.getElementById('colorCanvas');
     ctx = canvas.getContext('2d');
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Canvas tıklama
+    // Canvas click
     canvas.addEventListener('click', function(e) {
         if (imageData) {
             const rect = canvas.getBoundingClientRect();
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Dosya input
+    // File input
     document.getElementById('imageInput').addEventListener('change', function(e) {
         if (e.target.files.length > 0) {
             loadImage(e.target.files[0]);
@@ -53,15 +53,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Görsel seç
+// Select image
 function selectImage() {
     document.getElementById('imageInput').click();
 }
 
-// Görseli yükle
+// Load image
 function loadImage(file) {
     if (!file.type.startsWith('image/')) {
-        alert('⚠️ Geçersiz Dosya: Lütfen bir görsel dosyası seçin!');
+        alert('⚠️ Invalid File: Please select an image file!');
         return;
     }
     
@@ -69,7 +69,7 @@ function loadImage(file) {
     reader.onload = function(e) {
         const img = new Image();
         img.onload = function() {
-            // Canvas boyutunu ayarla
+            // Set canvas size
             const maxWidth = 600;
             const maxHeight = 400;
             
@@ -88,11 +88,11 @@ function loadImage(file) {
             canvas.width = width;
             canvas.height = height;
             
-            // Görseli çiz
+            // Draw image
             ctx.drawImage(img, 0, 0, width, height);
             imageData = ctx.getImageData(0, 0, width, height);
             
-            // UI güncelle
+            // Update UI
             document.getElementById('uploadArea').style.display = 'none';
             document.getElementById('imageContainer').style.display = 'block';
         };
@@ -101,7 +101,7 @@ function loadImage(file) {
     reader.readAsDataURL(file);
 }
 
-// Belirtilen pozisyondaki rengi al
+// Get color at specified position
 function getColorAtPosition(x, y) {
     if (!imageData) return;
     
@@ -114,9 +114,9 @@ function getColorAtPosition(x, y) {
     addToHistory(r, g, b);
 }
 
-// Renk bilgilerini güncelle
+// Update color information
 function updateColorInfo(x, y, r, g, b) {
-    // Koordinat
+    // Coordinates
     document.getElementById('coordinates').textContent = `X: ${x}, Y: ${y}`;
     
     // HEX
@@ -135,16 +135,16 @@ function updateColorInfo(x, y, r, g, b) {
     const cmyk = rgbToCmyk(r, g, b);
     document.getElementById('cmykValue').value = `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`;
     
-    // Renk önizleme
+    // Color preview
     document.getElementById('colorPreview').style.backgroundColor = rgb;
 }
 
-// RGB'yi HEX'e çevir
+// Convert RGB to HEX
 function rgbToHex(r, g, b) {
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 }
 
-// RGB'yi HSL'ye çevir
+// Convert RGB to HSL
 function rgbToHsl(r, g, b) {
     r /= 255;
     g /= 255;
@@ -175,7 +175,7 @@ function rgbToHsl(r, g, b) {
     };
 }
 
-// RGB'yi CMYK'ye çevir
+// Convert RGB to CMYK
 function rgbToCmyk(r, g, b) {
     r /= 255;
     g /= 255;
@@ -194,18 +194,18 @@ function rgbToCmyk(r, g, b) {
     };
 }
 
-// Renk geçmişine ekle
+// Add to color history
 function addToHistory(r, g, b) {
     const color = { r, g, b };
     const colorStr = `rgb(${r}, ${g}, ${b})`;
     
-    // Aynı renk varsa çıkar
+    // Remove duplicate color
     colorHistory = colorHistory.filter(c => !(c.r === r && c.g === g && c.b === b));
     
-    // Başa ekle
+    // Add to beginning
     colorHistory.unshift(color);
     
-    // Maksimum 10 renk tut
+    // Keep maximum 10 colors
     if (colorHistory.length > 10) {
         colorHistory = colorHistory.slice(0, 10);
     }
@@ -213,12 +213,12 @@ function addToHistory(r, g, b) {
     updateHistoryDisplay();
 }
 
-// Geçmiş görünümünü güncelle
+// Update history display
 function updateHistoryDisplay() {
     const historyDiv = document.getElementById('colorHistory');
     
     if (colorHistory.length === 0) {
-        historyDiv.innerHTML = '<small class="text-muted">Henüz renk seçilmedi</small>';
+        historyDiv.innerHTML = '<small class="text-muted">No colors selected yet</small>';
         return;
     }
     
@@ -229,12 +229,12 @@ function updateHistoryDisplay() {
     }).join('');
 }
 
-// Geçmişten renk seç
+// Select color from history
 function selectHistoryColor(r, g, b) {
     updateColorInfo(0, 0, r, g, b);
 }
 
-// Tüm renk kodlarını kopyala
+// Copy all color codes
 function copyAllColors() {
     const hex = document.getElementById('hexValue').value;
     const rgb = document.getElementById('rgbValue').value;
@@ -244,19 +244,19 @@ function copyAllColors() {
     const text = `HEX: ${hex}\nRGB: ${rgb}\nHSL: ${hsl}\nCMYK: ${cmyk}`;
     
     navigator.clipboard.writeText(text).then(() => {
-        alert('✅ Renk kodları kopyalandı!');
+        alert('✅ Color codes copied!');
     }).catch(() => {
-        alert('❌ Kopyalama başarısız!');
+        alert('❌ Copy failed!');
     });
 }
 
-// Geçmişi temizle
+// Clear history
 function clearHistory() {
     colorHistory = [];
     updateHistoryDisplay();
 }
 
-// Görseli sıfırla
+// Reset image
 function resetImage() {
     document.getElementById('uploadArea').style.display = 'block';
     document.getElementById('imageContainer').style.display = 'none';
@@ -264,7 +264,7 @@ function resetImage() {
     
     imageData = null;
     
-    // Renk bilgilerini sıfırla
+    // Reset color information
     document.getElementById('coordinates').textContent = 'X: -, Y: -';
     document.getElementById('hexValue').value = '#ffffff';
     document.getElementById('rgbValue').value = 'rgb(255, 255, 255)';

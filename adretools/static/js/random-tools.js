@@ -13,7 +13,7 @@ function generateRandomNumbers() {
     
     if (min >= max) {
         document.getElementById('randomResult').innerHTML = 
-            '<div class="alert alert-warning">Minimum değer maksimumdan küçük olmalıdır!</div>';
+            '<div class="alert alert-warning">Minimum value must be less than maximum!</div>';
         return;
     }
     
@@ -24,7 +24,7 @@ function generateRandomNumbers() {
     
     document.getElementById('randomResult').innerHTML = `
         <div class="alert alert-success text-center">
-            <h4>🎲 Rastgele Sayılar</h4>
+            <h4>🎲 Random Numbers</h4>
             <div class="h2 text-primary">${numbers.join(', ')}</div>
         </div>
     `;
@@ -58,13 +58,13 @@ function updateWheelDisplay() {
         showBtn.style.display = 'block';
         preview.querySelector('.alert').innerHTML = `
             <i class="fas fa-check-circle text-success"></i><br>
-            ${wheelOptions.length} seçenek eklendi. Çarkı görüntüleyebilirsiniz!
+            ${wheelOptions.length} options added. You can view the wheel!
         `;
     } else {
         showBtn.style.display = 'none';
         preview.querySelector('.alert').innerHTML = `
             <i class="fas fa-info-circle"></i><br>
-            En az 2 seçenek ekleyin
+            Add at least 2 options
         `;
         hideWheel();
     }
@@ -90,7 +90,7 @@ function clearWheelOptions() {
 
 function showWheel() {
     if (wheelOptions.length < 2) {
-        alert('En az 2 seçenek ekleyin!');
+        alert('Add at least 2 options!');
         return;
     }
     
@@ -159,7 +159,7 @@ function drawWheel() {
 
 function spinWheel() {
     if (wheelOptions.length === 0) {
-        alert('Lütfen önce seçenekler ekleyin!');
+        alert('Please add options first!');
         return;
     }
     
@@ -167,58 +167,58 @@ function spinWheel() {
     const spinBtn = document.getElementById('spinBtn');
     
     spinBtn.disabled = true;
-    spinBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Çevriliyor...';
+    spinBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Spinning...';
     
-    // Çarkı sıfırla ve yeni dönüş başlat
+    // Reset wheel and start new spin
     wheel.style.transition = 'none';
     wheel.style.transform = 'rotate(0deg)';
     
-    // Kısa bir gecikme sonrası animasyonu başlat
+    // Start animation after short delay
     setTimeout(() => {
-        // Kullanıcının belirlediği süreyi al
+        // Get user-specified duration
         const duration = parseInt(document.getElementById('spinDuration').value) || 8;
         
         wheel.style.transition = `transform ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
         
-        // Daha güçlü random - timestamp + crypto random
+        // Stronger random - timestamp + crypto random
         const timestamp = Date.now();
         const cryptoRandom = crypto.getRandomValues(new Uint32Array(1))[0] / 4294967295;
         const baseRotation = Math.floor((Math.random() + cryptoRandom + (timestamp % 1000) / 1000) * 360);
-        const randomRotation = baseRotation + (duration * 360) + Math.floor(Math.random() * 720); // Süreye göre tur
+        const randomRotation = baseRotation + (duration * 360) + Math.floor(Math.random() * 720); // Duration-based spins
         wheel.style.transform = `rotate(${randomRotation}deg)`;
         
-        // Belirlenen süre kadar bekle
+        // Wait for duration
         setTimeout(() => {
-            // Basit random kazanan - çark görsel ama kazanan tamamen random
+            // Simple random winner - wheel is visual but winner is purely random
             const winnerIndex = Math.floor(Math.random() * wheelOptions.length);
             const winner = wheelOptions[winnerIndex];
             
-            // Kazanan segmenti ışık saçsın
+            // Highlight winner segment
             highlightWinnerSegment(winnerIndex);
             
-            // Süslü kazanan gösterimi
+            // Fancy winner display
             showWinnerDisplay(winner);
             
-            // Normal sonuç da göster
+            // Show regular result
             document.getElementById('wheelResult').innerHTML = `
                 <div class="alert alert-success text-center">
-                    <h4>🎉 Kazanan</h4>
+                    <h4>🎉 Winner</h4>
                     <div class="h3 text-primary">${winner}</div>
-                    <small class="text-muted">Rastgele seçildi</small>
+                    <small class="text-muted">Randomly selected</small>
                 </div>
             `;
             
             spinBtn.disabled = false;
-            spinBtn.innerHTML = '<i class="fas fa-play"></i> Çarkı Çevir';
+            spinBtn.innerHTML = '<i class="fas fa-play"></i> Spin Wheel';
         }, duration * 1000);
     }, 50);
 }
 
 function showWinnerDisplay(winner) {
-    // Önceki popup'ları temizle
+    // Clear previous popups
     closeWinnerDisplay();
     
-    // Süslü kazanan ekranı oluştur
+    // Create fancy winner display
     const winnerDisplay = document.createElement('div');
     winnerDisplay.id = 'winnerPopup';
     winnerDisplay.style.cssText = `
@@ -253,7 +253,7 @@ function showWinnerDisplay(winner) {
                 color: #333;
                 text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
                 margin: 20px 0;
-            ">KAZANAN</div>
+            ">WINNER</div>
             <div style="
                 font-size: 4rem;
                 font-weight: bold;
@@ -273,15 +273,15 @@ function showWinnerDisplay(winner) {
                 cursor: pointer;
                 margin-top: 20px;
             ">
-                <i class="fas fa-times"></i> Kapat
+                <i class="fas fa-times"></i> Close
             </button>
         </div>
     `;
     
-    // Body'ye ekle
+    // Append to body
     document.body.appendChild(winnerDisplay);
     
-    // 6 saniye sonra otomatik kapat
+    // Auto-close after 6 seconds
     setTimeout(() => {
         closeWinnerDisplay();
     }, 6000);
@@ -299,10 +299,10 @@ function highlightWinnerSegment(winnerIndex) {
     const paths = wheel.querySelectorAll('path');
     
     if (paths[winnerIndex]) {
-        // Kazanan segmenti ışık saçsın
+        // Highlight winner segment
         paths[winnerIndex].classList.add('winner-segment');
         
-        // 5 saniye sonra animasyonu kaldır
+        // Remove animation after 5 seconds
         setTimeout(() => {
             paths[winnerIndex].classList.remove('winner-segment');
         }, 5000);
@@ -341,9 +341,9 @@ function rollDice() {
         
         document.getElementById('diceResult').innerHTML = `
             <div class="alert alert-success">
-                <h5>🎲 Sonuç</h5>
-                <p><strong>Zarlar:</strong> ${results.join(', ')}</p>
-                <p><strong>Toplam:</strong> ${total}</p>
+                <h5>🎲 Result</h5>
+                <p><strong>Dice:</strong> ${results.join(', ')}</p>
+                <p><strong>Total:</strong> ${total}</p>
             </div>
         `;
     }, 1000);
@@ -387,7 +387,7 @@ function removeParticipant(id) {
 }
 
 function clearAllParticipants() {
-    if (participants.length > 0 && !confirm('Tüm katılımcıları silmek istediğinizden emin misiniz?')) {
+    if (participants.length > 0 && !confirm('Are you sure you want to delete all participants?')) {
         return;
     }
     participants = [];
@@ -409,7 +409,7 @@ function updateParticipantsList() {
     countElement.textContent = participants.length;
     
     if (participants.length === 0) {
-        container.innerHTML = '<div class="text-muted text-center p-3">Henüz katılımcı eklenmedi</div>';
+        container.innerHTML = '<div class="text-muted text-center p-3">No participants added yet</div>';
         return;
     }
     
@@ -425,7 +425,7 @@ function updateParticipantsList() {
 
 function startLottery() {
     if (participants.length === 0) {
-        alert('Lütfen önce katılımcı ekleyin!');
+        alert('Please add participants first!');
         return;
     }
     
@@ -433,7 +433,7 @@ function startLottery() {
     const allowDuplicates = document.getElementById('allowDuplicates').checked;
     
     if (winnerCount > participants.length && !allowDuplicates) {
-        alert('Kazanan sayısı katılımcı sayısından fazla olamaz!');
+        alert('The number of winners cannot exceed the number of participants!');
         return;
     }
     
@@ -442,7 +442,7 @@ function startLottery() {
     
     // Lottery animation
     const resultContainer = document.getElementById('lotteryResult');
-    resultContainer.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin fa-2x"></i><br>Kura çekiliyor...</div>';
+    resultContainer.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin fa-2x"></i><br>Drawing lottery...</div>';
     
     setTimeout(() => {
         for (let i = 0; i < winnerCount; i++) {
@@ -479,7 +479,7 @@ function displayLotteryResults(winners) {
     
     container.innerHTML = `
         <div class="alert alert-success">
-            <h5><i class="fas fa-trophy"></i> Kazananlar</h5>
+            <h5><i class="fas fa-trophy"></i> Winners</h5>
             ${winners.map(winner => `
                 <div class="winner-animation p-2 mb-2 rounded">
                     <strong>${winner.position}. ${winner.name}</strong>
@@ -495,19 +495,19 @@ function updateWinnerHistory() {
     if (winnerHistory.length === 0) return;
     
     container.innerHTML = `
-        <h6><i class="fas fa-history"></i> Kura Geçmişi</h6>
+        <h6><i class="fas fa-history"></i> Lottery History</h6>
         <div style="max-height: 200px; overflow-y: auto;">
             ${winnerHistory.slice(-5).reverse().map((lottery, index) => `
                 <div class="card mb-2">
                     <div class="card-body p-2">
-                        <small class="text-muted">${lottery.date.toLocaleString('tr-TR')}</small>
+                        <small class="text-muted">${lottery.date.toLocaleString('en-US')}</small>
                         <div>${lottery.winners.map(w => w.name).join(', ')}</div>
-                        <small>(${lottery.totalParticipants} katılımcı)</small>
+                        <small>(${lottery.totalParticipants} participants)</small>
                     </div>
                 </div>
             `).join('')}
         </div>
-        <button class="btn btn-sm btn-outline-warning" onclick="clearHistory()">Geçmişi Temizle</button>
+        <button class="btn btn-sm btn-outline-warning" onclick="clearHistory()">Clear History</button>
     `;
 }
 

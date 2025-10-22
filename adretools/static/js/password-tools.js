@@ -1,6 +1,6 @@
-// Şifre Araçları JavaScript
+// Password Tools JavaScript
 
-// Sayfa yüklendiğinde
+// When page loads
 document.addEventListener('DOMContentLoaded', function() {
     const lengthSlider = document.getElementById('passwordLength');
     const lengthValue = document.getElementById('lengthValue');
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lengthValue.textContent = this.value;
     });
     
-    // Şifre kontrol input'u için gerçek zamanlı kontrol
+    // Real-time password strength check
     const checkPasswordInput = document.getElementById('checkPassword');
     let checkTimeout;
     
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Şifre üret
+// Generate password
 async function generatePassword() {
     const formData = new FormData();
     formData.append('length', document.getElementById('passwordLength').value);
@@ -46,25 +46,25 @@ async function generatePassword() {
             showGeneratedPassword(data);
         } else {
             const error = await response.json();
-            alert('❌ Hata: ' + error.error);
+            alert('❌ Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }
 
-// Üretilen şifreyi göster
+// Show generated password
 function showGeneratedPassword(data) {
     document.getElementById('generatedPassword').value = data.password;
     updateStrengthDisplay('generated', data.strength);
     document.getElementById('generatedResult').style.display = 'block';
 }
 
-// Şifre güvenlik kontrolü
+// Check password strength
 async function checkPasswordStrength() {
     const password = document.getElementById('checkPassword').value.trim();
     
@@ -87,41 +87,41 @@ async function checkPasswordStrength() {
             showPasswordCheck(data.strength);
         } else {
             const error = await response.json();
-            console.error('Kontrol hatası:', error.error);
+            console.error('Check error:', error.error);
         }
     } catch (error) {
-        console.error('Bağlantı hatası:', error);
+        console.error('Connection error:', error);
     }
 }
 
-// Şifre kontrol sonucunu göster
+// Show password check results
 function showPasswordCheck(strength) {
     updateStrengthDisplay('check', strength);
     
-    // Detayları göster
+    // Show details
     const details = strength.details;
     const detailsHtml = `
         <div class="row small">
-            <div class="col-6">Uzunluk: ${details.length}</div>
-            <div class="col-6">Benzersizlik: %${details.unique_ratio}</div>
-            <div class="col-6">Küçük Harf: ${details.has_lower ? '✓' : '✗'}</div>
-            <div class="col-6">Büyük Harf: ${details.has_upper ? '✓' : '✗'}</div>
-            <div class="col-6">Rakam: ${details.has_digit ? '✓' : '✗'}</div>
-            <div class="col-6">Sembol: ${details.has_symbol ? '✓' : '✗'}</div>
+            <div class="col-6">Length: ${details.length}</div>
+            <div class="col-6">Uniqueness: %${details.unique_ratio}</div>
+            <div class="col-6">Lowercase: ${details.has_lower ? '✓' : '✗'}</div>
+            <div class="col-6">Uppercase: ${details.has_upper ? '✓' : '✗'}</div>
+            <div class="col-6">Digits: ${details.has_digit ? '✓' : '✗'}</div>
+            <div class="col-6">Symbols: ${details.has_symbol ? '✓' : '✗'}</div>
         </div>
     `;
     document.getElementById('passwordDetails').innerHTML = detailsHtml;
     
-    // Önerileri göster
+    // Show feedback
     const feedbackHtml = strength.feedback.map(feedback => 
         `<div class="feedback-item">${feedback}</div>`
     ).join('');
-    document.getElementById('passwordFeedback').innerHTML = feedbackHtml || '<div class="feedback-item">Şifreniz güvenli görünüyor!</div>';
+    document.getElementById('passwordFeedback').innerHTML = feedbackHtml || '<div class="feedback-item">Your password looks secure!</div>';
     
     document.getElementById('checkResult').style.display = 'block';
 }
 
-// Güç göstergesini güncelle
+// Update strength display
 function updateStrengthDisplay(type, strength) {
     const bar = document.getElementById(`${type}StrengthBar`);
     const level = document.getElementById(`${type}StrengthLevel`);
@@ -133,15 +133,15 @@ function updateStrengthDisplay(type, strength) {
     score.textContent = `${strength.score}/100`;
 }
 
-// Şifre kopyala
+// Copy password
 function copyPassword() {
     const passwordField = document.getElementById('generatedPassword');
     passwordField.select();
     document.execCommand('copy');
-    alert('✅ Şifre kopyalandı!');
+    alert('✅ Password copied!');
 }
 
-// Şifre görünürlüğünü değiştir
+// Toggle password visibility
 function togglePasswordVisibility(fieldId) {
     const field = document.getElementById(fieldId);
     const button = field.nextElementSibling.querySelector('button:last-child i');

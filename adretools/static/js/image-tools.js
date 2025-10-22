@@ -1,19 +1,19 @@
-// Resim Araçları JavaScript
+// Image Tools JavaScript
 
 let currentImageFile = null;
 
-// Araç gösterme/gizleme
+// Show/hide tools
 function showTool(toolId) {
-    // Tüm araçları gizle
+    // Hide all tools
     document.querySelectorAll('.tool-section').forEach(section => {
         section.style.display = 'none';
     });
     
-    // Seçilen aracı göster
+    // Show selected tool
     document.getElementById(toolId).style.display = 'block';
 }
 
-// Boyutlandırma için resim seç
+// Select image for resizing
 function selectImageForResize() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -26,14 +26,14 @@ function selectImageForResize() {
             currentImageFile = file;
             document.getElementById('resizeImageDisplay').innerHTML = `
                 <div class="alert alert-info">
-                    Seçilen: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)
+                    Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)
                 </div>
             `;
         }
     };
 }
 
-// Preset boyut uygula
+// Apply preset size
 function applyPresetSize() {
     const preset = document.getElementById('resizePreset').value;
     if (preset) {
@@ -43,10 +43,10 @@ function applyPresetSize() {
     }
 }
 
-// Resim boyutlandır
+// Resize image
 async function resizeImage() {
     if (!currentImageFile) {
-        alert('⚠️ İçerik Gerekli: Önce resim seçin!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -64,7 +64,7 @@ async function resizeImage() {
         formData.append('width', width);
         formData.append('height', height);
     } else {
-        alert('⚠️ Parametre Eksik: Boyut parametrelerini girin!');
+        alert('⚠️ Missing Parameters: Please enter size parameters!');
         return;
     }
     
@@ -81,18 +81,18 @@ async function resizeImage() {
             downloadBlob(blob, `resized_${currentImageFile.name}`);
         } else {
             const error = await response.json();
-            alert('❌ Sunucu Hatası: ' + error.error);
+            alert('❌ Server Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }
 
-// Kırpma için resim seç
+// Select image for cropping
 function selectImageForCrop() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -105,17 +105,17 @@ function selectImageForCrop() {
             currentImageFile = file;
             document.getElementById('cropImageDisplay').innerHTML = `
                 <div class="alert alert-info">
-                    Seçilen: ${file.name}
+                    Selected: ${file.name}
                 </div>
             `;
         }
     };
 }
 
-// Resim kırp
+// Crop image
 async function cropImage() {
     if (!currentImageFile) {
-        alert('⚠️ İçerik Gerekli: Önce resim seçin!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -137,18 +137,18 @@ async function cropImage() {
             downloadBlob(blob, `cropped_${currentImageFile.name}`);
         } else {
             const error = await response.json();
-            alert('❌ Sunucu Hatası: ' + error.error);
+            alert('❌ Server Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }
 
-// Döndürme için resim seç
+// Select image for rotation
 function selectImageForRotate() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -161,17 +161,17 @@ function selectImageForRotate() {
             currentImageFile = file;
             document.getElementById('rotateImageDisplay').innerHTML = `
                 <div class="alert alert-info">
-                    Seçilen: ${file.name}
+                    Selected: ${file.name}
                 </div>
             `;
         }
     };
 }
 
-// Yatay çevir
+// Flip horizontally
 function flipHorizontal() {
     if (!currentImageFile) {
-        alert('⚠️ İçerik Gerekli: Önce resim seçin!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -182,10 +182,10 @@ function flipHorizontal() {
     processRotation(formData, 'flipped_h_');
 }
 
-// Dikey çevir
+// Flip vertically
 function flipVertical() {
     if (!currentImageFile) {
-        alert('⚠️ İçerik Gerekli: Önce resim seçin!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -196,10 +196,10 @@ function flipVertical() {
     processRotation(formData, 'flipped_v_');
 }
 
-// Resim döndür
+// Rotate image
 async function rotateImage() {
     if (!currentImageFile) {
-        alert('⚠️ İçerik Gerekli: Önce resim seçin!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -220,7 +220,7 @@ async function rotateImage() {
     processRotation(formData, 'rotated_');
 }
 
-// Döndürme işlemini gerçekleştir
+// Process rotation
 async function processRotation(formData, prefix) {
     try {
         const response = await fetch('/image/rotate/', {
@@ -233,18 +233,18 @@ async function processRotation(formData, prefix) {
             downloadBlob(blob, `${prefix}${currentImageFile.name}`);
         } else {
             const error = await response.json();
-            alert('❌ Sunucu Hatası: ' + error.error);
+            alert('❌ Server Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }
 
-// Format dönüştürme için resim seç
+// Select image for format conversion
 function selectImageForConvert() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -257,14 +257,14 @@ function selectImageForConvert() {
             currentImageFile = file;
             document.getElementById('convertImageDisplay').innerHTML = `
                 <div class="alert alert-info">
-                    Seçilen: ${file.name}
+                    Selected: ${file.name}
                 </div>
             `;
         }
     };
 }
 
-// Kalite değerini güncelle
+// Update quality value
 document.addEventListener('DOMContentLoaded', function() {
     const qualitySlider = document.getElementById('imageQuality');
     const qualityValue = document.getElementById('qualityValue');
@@ -276,10 +276,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Format dönüştür
+// Convert format
 async function convertFormat() {
     if (!currentImageFile) {
-        alert('⚠️ İçerik Gerekli: Önce resim seçin!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -301,18 +301,18 @@ async function convertFormat() {
             downloadBlob(blob, `converted.${format}`);
         } else {
             const error = await response.json();
-            alert('❌ Sunucu Hatası: ' + error.error);
+            alert('❌ Server Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }
 
-// Sıkıştırma için resim seç
+// Select image for compression
 function selectImageForCompress() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -325,14 +325,14 @@ function selectImageForCompress() {
             currentImageFile = file;
             document.getElementById('compressImageDisplay').innerHTML = `
                 <div class="alert alert-info">
-                    Seçilen: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)
+                    Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)
                 </div>
             `;
         }
     };
 }
 
-// Özel kalite değerini güncelle
+// Update custom quality value
 document.addEventListener('DOMContentLoaded', function() {
     const customQualitySlider = document.getElementById('customQuality');
     const customQualityValue = document.getElementById('customQualityValue');
@@ -344,10 +344,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Resim sıkıştır
+// Compress image
 async function compressImage() {
     if (!currentImageFile) {
-        alert('⚠️ İçerik Gerekli: Önce resim seçin!');
+        alert('⚠️ Input Required: Please select an image first!');
         return;
     }
     
@@ -390,18 +390,18 @@ async function compressImage() {
             downloadBlob(blob, `compressed_${currentImageFile.name.split('.')[0]}.jpg`);
         } else {
             const error = await response.json();
-            alert('❌ Sunucu Hatası: ' + error.error);
+            alert('❌ Server Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }
 
-// ICO için dosya seç
+// Select file for ICO
 function selectFileForIco() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -415,17 +415,17 @@ function selectFileForIco() {
             const fileType = file.name.split('.').pop().toUpperCase();
             document.getElementById('icoFileDisplay').innerHTML = `
                 <div class="alert alert-success">
-                    <i class="fas fa-check"></i> Seçilen: ${file.name} (${fileType})
+                    <i class="fas fa-check"></i> Selected: ${file.name} (${fileType})
                 </div>
             `;
         }
     };
 }
 
-// ICO oluştur
+// Create ICO
 async function createIco() {
     if (!currentImageFile) {
-        alert('⚠️ İçerik Gerekli: Önce dosya seçin!');
+        alert('⚠️ Input Required: Please select a file first!');
         return;
     }
     
@@ -445,20 +445,20 @@ async function createIco() {
             downloadBlob(blob, `${currentImageFile.name.split('.')[0]}.ico`);
         } else {
             const error = await response.json();
-            alert('❌ Sunucu Hatası: ' + error.error);
+            alert('❌ Server Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: Django server may not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     } finally {
         document.getElementById('icoProgress').style.display = 'none';
     }
 }
 
-// Blob dosyasını indir
+// Download blob file
 function downloadBlob(blob, filename) {
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);

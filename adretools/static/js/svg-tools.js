@@ -1,14 +1,14 @@
-// Raster'ı SVG'ye dönüştür (geliştirilmiş sürüm)
+// Convert Raster to SVG (enhanced version)
 async function convertRasterToSVG() {
     if (!currentRasterFile) {
-        alert('⚠️ İçerik Gerekli: Önce resim dosyası seçin!');
+        alert('⚠️ Content Required: Please select an image file first!');
         return;
     }
 
     const formData = new FormData();
     formData.append('image_file', currentRasterFile);
 
-    // Yeni: Dönüştürme modu seçicisi (embed veya vector)
+    // New: Conversion mode selector (embed or vector)
     const modeSelect = document.getElementById('convertMode');
     const mode = modeSelect ? modeSelect.value : 'embed';
     formData.append('mode', mode);
@@ -24,13 +24,13 @@ async function convertRasterToSVG() {
             downloadBlob(blob, `${currentRasterFile.name.split('.')[0]}.svg`);
         } else {
             const error = await response.json();
-            alert('❌ Sunucu Hatası: ' + error.error);
+            alert('❌ Server Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: The Django server may not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }

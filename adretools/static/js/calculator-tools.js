@@ -7,7 +7,7 @@ function calculateBMI() {
     
     if (!weight || !height || weight <= 0 || height <= 0) {
         document.getElementById('bmiResult').innerHTML = 
-            '<div class="alert alert-warning">Lütfen geçerli değerler girin!</div>';
+            '<div class="alert alert-warning">Please enter valid values!</div>';
         return;
     }
     
@@ -16,28 +16,28 @@ function calculateBMI() {
     
     let category, color;
     if (bmi < 18.5) {
-        category = 'Zayıf';
+        category = 'Underweight';
         color = 'info';
     } else if (bmi < 25) {
         category = 'Normal';
         color = 'success';
     } else if (bmi < 30) {
-        category = 'Fazla Kilolu';
+        category = 'Overweight';
         color = 'warning';
     } else {
-        category = 'Obez';
+        category = 'Obese';
         color = 'danger';
     }
     
     document.getElementById('bmiResult').innerHTML = `
         <div class="alert alert-${color}">
-            <h5>BMI Sonucu: ${bmi.toFixed(1)}</h5>
-            <p><strong>Kategori:</strong> ${category}</p>
+            <h5>BMI Result: ${bmi.toFixed(1)}</h5>
+            <p><strong>Category:</strong> ${category}</p>
             <small>
-                • Zayıf: < 18.5<br>
+                • Underweight: < 18.5<br>
                 • Normal: 18.5 - 24.9<br>
-                • Fazla Kilolu: 25 - 29.9<br>
-                • Obez: ≥ 30
+                • Overweight: 25 - 29.9<br>
+                • Obese: ≥ 30
             </small>
         </div>
     `;
@@ -50,7 +50,7 @@ function calculateAge() {
     
     if (!birthDate || birthDate > today) {
         document.getElementById('ageResult').innerHTML = 
-            '<div class="alert alert-warning">Lütfen geçerli bir doğum tarihi girin!</div>';
+            '<div class="alert alert-warning">Please enter a valid birth date!</div>';
         return;
     }
     
@@ -74,14 +74,14 @@ function calculateAge() {
     
     document.getElementById('ageResult').innerHTML = `
         <div class="alert alert-success">
-            <h5>Yaşınız: ${years} yıl, ${months} ay, ${days} gün</h5>
+            <h5>Your Age: ${years} years, ${months} months, ${days} days</h5>
             <hr>
-            <p><strong>Toplam:</strong></p>
+            <p><strong>Total:</strong></p>
             <ul class="mb-0">
-                <li>${totalMonths} ay</li>
-                <li>${totalWeeks} hafta</li>
-                <li>${totalDays} gün</li>
-                <li>${totalDays * 24} saat</li>
+                <li>${totalMonths} months</li>
+                <li>${totalWeeks} weeks</li>
+                <li>${totalDays} days</li>
+                <li>${totalDays * 24} hours</li>
             </ul>
         </div>
     `;
@@ -90,7 +90,7 @@ function calculateAge() {
 // World Clock
 function updateWorldClocks() {
     const timezones = [
-        { name: 'İstanbul', timezone: 'Europe/Istanbul', flag: '🇹🇷' },
+        { name: 'Istanbul', timezone: 'Europe/Istanbul', flag: '🇹🇷' },
         { name: 'London', timezone: 'Europe/London', flag: '🇬🇧' },
         { name: 'New York', timezone: 'America/New_York', flag: '🇺🇸' },
         { name: 'Tokyo', timezone: 'Asia/Tokyo', flag: '🇯🇵' },
@@ -105,7 +105,7 @@ function updateWorldClocks() {
     
     timezones.forEach(tz => {
         const now = new Date();
-        const timeString = now.toLocaleString('tr-TR', {
+        const timeString = now.toLocaleString('en-US', {
             timeZone: tz.timezone,
             hour: '2-digit',
             minute: '2-digit',
@@ -134,7 +134,7 @@ function calculatePercentage() {
     const percentage = parseFloat(document.getElementById('percentage').value);
     
     if (isNaN(number) || isNaN(percentage)) {
-        document.getElementById('percentResult').value = 'Geçersiz değer';
+        document.getElementById('percentResult').value = 'Invalid value';
         return;
     }
     
@@ -149,13 +149,13 @@ function calculateDateDiff() {
     
     if (!startDate || !endDate) {
         document.getElementById('dateResult').innerHTML = 
-            '<div class="alert alert-warning">Lütfen her iki tarihi de girin!</div>';
+            '<div class="alert alert-warning">Please enter both dates!</div>';
         return;
     }
     
     if (startDate > endDate) {
         document.getElementById('dateResult').innerHTML = 
-            '<div class="alert alert-warning">Başlangıç tarihi bitiş tarihinden sonra olamaz!</div>';
+            '<div class="alert alert-warning">Start date cannot be after end date!</div>';
         return;
     }
     
@@ -167,27 +167,27 @@ function calculateDateDiff() {
     
     document.getElementById('dateResult').innerHTML = `
         <div class="alert alert-success">
-            <h5>Tarihler Arası Fark</h5>
+            <h5>Date Difference</h5>
             <ul class="mb-0">
-                <li><strong>${daysDiff}</strong> gün</li>
-                <li><strong>${weeksDiff}</strong> hafta</li>
-                <li><strong>${monthsDiff}</strong> ay (yaklaşık)</li>
-                <li><strong>${yearsDiff}</strong> yıl (yaklaşık)</li>
+                <li><strong>${daysDiff}</strong> days</li>
+                <li><strong>${weeksDiff}</strong> weeks</li>
+                <li><strong>${monthsDiff}</strong> months (approx.)</li>
+                <li><strong>${yearsDiff}</strong> years (approx.)</li>
             </ul>
         </div>
     `;
 }
 
-// World Clock modal açıldığında saatleri güncelle
+// Update clocks when World Clock modal opens
 document.addEventListener('DOMContentLoaded', function() {
     const worldClockModal = document.getElementById('world-clockModal');
     if (worldClockModal) {
         worldClockModal.addEventListener('shown.bs.modal', function() {
             updateWorldClocks();
-            // Her saniye güncelle
+            // Update every second
             const interval = setInterval(updateWorldClocks, 1000);
             
-            // Modal kapandığında interval'i temizle
+            // Clear interval when modal closes
             worldClockModal.addEventListener('hidden.bs.modal', function() {
                 clearInterval(interval);
             }, { once: true });

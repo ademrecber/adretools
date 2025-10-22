@@ -1,22 +1,22 @@
-// Metin Araçları JavaScript
+// Text Tools JavaScript
 
 let analyzeTimeout;
 
-// Sayfa yüklendiğinde
+// When page loads
 document.addEventListener('DOMContentLoaded', function() {
     const inputText = document.getElementById('inputText');
     
-    // Metin değiştiğinde otomatik analiz
+    // Auto-analyze when text changes
     inputText.addEventListener('input', function() {
         clearTimeout(analyzeTimeout);
         analyzeTimeout = setTimeout(analyzeText, 300);
     });
     
-    // İlk analiz
+    // Initial analysis
     analyzeText();
 });
 
-// Metin analizi
+// Text analysis
 async function analyzeText() {
     const text = document.getElementById('inputText').value;
     
@@ -38,14 +38,14 @@ async function analyzeText() {
             const data = await response.json();
             updateStats(data);
         } else {
-            console.error('Analiz hatası');
+            console.error('Analysis error');
         }
     } catch (error) {
-        console.error('Bağlantı hatası:', error);
+        console.error('Connection error:', error);
     }
 }
 
-// İstatistikleri güncelle
+// Update statistics
 function updateStats(data) {
     document.getElementById('charCount').textContent = data.char_count;
     document.getElementById('charNoSpaces').textContent = data.char_no_spaces;
@@ -58,7 +58,7 @@ function updateStats(data) {
     document.getElementById('avgWordLength').textContent = data.avg_word_length;
 }
 
-// İstatistikleri sıfırla
+// Reset statistics
 function resetStats() {
     document.getElementById('charCount').textContent = '0';
     document.getElementById('charNoSpaces').textContent = '0';
@@ -71,12 +71,12 @@ function resetStats() {
     document.getElementById('avgWordLength').textContent = '0';
 }
 
-// Metin dönüştürme
+// Text transformation
 async function transformText(type) {
     const text = document.getElementById('inputText').value;
     
     if (!text.trim()) {
-        alert('⚠️ İçerik Gerekli: Önce metin girin!');
+        alert('⚠️ Content Required: Please enter text first!');
         return;
     }
     
@@ -96,23 +96,23 @@ async function transformText(type) {
             analyzeText();
         } else {
             const error = await response.json();
-            alert('❌ Dönüştürme Hatası: ' + error.error);
+            alert('❌ Transformation Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: The Django server may not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }
 
-// Metin kodlama
+// Text encoding
 async function encodeText(type) {
     const text = document.getElementById('inputText').value;
     
     if (!text.trim()) {
-        alert('⚠️ İçerik Gerekli: Önce metin girin!');
+        alert('⚠️ Content Required: Please enter text first!');
         return;
     }
     
@@ -132,23 +132,23 @@ async function encodeText(type) {
             analyzeText();
         } else {
             const error = await response.json();
-            alert('❌ Kodlama Hatası: ' + error.error);
+            alert('❌ Encoding Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: The Django server may not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }
 
-// Metin formatlama
+// Text formatting
 async function formatText(type) {
     const text = document.getElementById('inputText').value;
     
     if (!text.trim()) {
-        alert('⚠️ İçerik Gerekli: Önce metin girin!');
+        alert('⚠️ Content Required: Please enter text first!');
         return;
     }
     
@@ -168,13 +168,13 @@ async function formatText(type) {
             analyzeText();
         } else {
             const error = await response.json();
-            alert('❌ Format Hatası: ' + error.error);
+            alert('❌ Formatting Error: ' + error.error);
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            alert('🔌 Bağlantı Sorunu: Django sunucusu çalışmıyor olabilir. Lütfen sunucuyu başlatın.');
+            alert('🔌 Connection Issue: The Django server may not be running. Please start the server.');
         } else {
-            alert('⚠️ Beklenmeyen Hata: ' + error.message);
+            alert('⚠️ Unexpected Error: ' + error.message);
         }
     }
 }

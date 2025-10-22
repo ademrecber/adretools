@@ -3,7 +3,7 @@
 function analyzeText() {
     const text = document.getElementById('text-input').value;
     if (!text.trim()) {
-        alert('Lütfen analiz edilecek metni girin.');
+        alert('Please enter text to analyze.');
         return;
     }
     
@@ -32,7 +32,7 @@ function analyzeText() {
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Analiz sırasında hata oluştu.');
+        alert('An error occurred during analysis.');
     });
 }
 
@@ -41,7 +41,7 @@ function transformText() {
     const type = document.getElementById('transform-type').value;
     
     if (!text.trim()) {
-        alert('Lütfen dönüştürülecek metni girin.');
+        alert('Please enter text to transform.');
         return;
     }
     
@@ -62,7 +62,7 @@ function transformText() {
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Dönüştürme sırasında hata oluştu.');
+        alert('An error occurred during transformation.');
     });
 }
 
@@ -71,7 +71,7 @@ function encodeText() {
     const type = document.getElementById('encode-type').value;
     
     if (!text.trim()) {
-        alert('Lütfen kodlanacak metni girin.');
+        alert('Please enter text to encode.');
         return;
     }
     
@@ -92,7 +92,7 @@ function encodeText() {
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Kodlama sırasında hata oluştu.');
+        alert('An error occurred during encoding.');
     });
 }
 
@@ -101,7 +101,7 @@ function formatJSON() {
     const type = document.getElementById('json-type').value;
     
     if (!text.trim()) {
-        alert('Lütfen JSON metni girin.');
+        alert('Please enter JSON text.');
         return;
     }
     
@@ -119,14 +119,14 @@ function formatJSON() {
     .then(response => response.json())
     .then(data => {
         if (data.error) {
-            alert('JSON Hatası: ' + data.error);
+            alert('JSON Error: ' + data.error);
         } else {
             document.getElementById('json-result').value = data.result;
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('JSON formatlama sırasında hata oluştu.');
+        alert('An error occurred during JSON formatting.');
     });
 }
 
@@ -138,7 +138,7 @@ function copyResult(elementId) {
     // Show feedback
     const button = event.target;
     const originalText = button.innerHTML;
-    button.innerHTML = '<i class="fas fa-check"></i> Kopyalandı!';
+    button.innerHTML = '<i class="fas fa-check"></i> Copied!';
     button.classList.add('btn-success');
     
     setTimeout(() => {

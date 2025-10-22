@@ -1,4 +1,4 @@
-// Resim ↔ PDF Modülü
+// Image ↔ PDF Module
 let selectedImageFiles = [];
 
 async function imagesToPDF() {
@@ -15,8 +15,8 @@ async function imagesToPDF() {
         if (selectedImageFiles.length > 0) {
             display.innerHTML = `
                 <div class="alert alert-info">
-                    ${selectedImageFiles.length} resim seçildi
-                    <button class="btn btn-sm btn-success ms-2" onclick="createPDFFromImages()">PDF Oluştur</button>
+                    ${selectedImageFiles.length} images selected
+                    <button class="btn btn-sm btn-success ms-2" onclick="createPDFFromImages()">Create PDF</button>
                 </div>
             `;
         }
@@ -25,7 +25,7 @@ async function imagesToPDF() {
 
 async function createPDFFromImages() {
     if (selectedImageFiles.length === 0) {
-        alert("Lütfen resim seçin!");
+        alert("Please select images!");
         return;
     }
 
@@ -45,7 +45,7 @@ async function createPDFFromImages() {
             const page = pdfDoc.addPage();
             const { width, height } = page.getSize();
             
-            // Resmi sayfaya sığdır
+            // Fit image to page
             const imageAspectRatio = image.width / image.height;
             const pageAspectRatio = width / height;
             
@@ -71,17 +71,17 @@ async function createPDFFromImages() {
 
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = 'resimlerden_pdf.pdf';
+        link.download = 'images_to_pdf.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
 
         selectedImageFiles = [];
         document.getElementById('selectedImages').innerHTML = '';
-        alert("PDF başarıyla oluşturuldu!");
+        alert("PDF successfully created!");
 
     } catch (error) {
-        alert("Hata: " + error.message);
+        alert("Error: " + error.message);
     }
 }
 
@@ -98,7 +98,7 @@ async function pdfToImages() {
         if (!file) return;
 
         try {
-            // PDF.js kütüphanesini yükle
+            // Load PDF.js library
             if (!window.pdfjsLib) {
                 const script = document.createElement('script');
                 script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
@@ -128,11 +128,11 @@ async function pdfToImages() {
                     viewport: viewport
                 }).promise;
                 
-                // Canvas'tan resim oluştur
+                // Create image from canvas
                 canvas.toBlob((blob) => {
                     const link = document.createElement('a');
                     link.href = URL.createObjectURL(blob);
-                    link.download = `sayfa_${pageNum}.${format}`;
+                    link.download = `page_${pageNum}.${format}`;
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
@@ -141,10 +141,10 @@ async function pdfToImages() {
                 await new Promise(resolve => setTimeout(resolve, 500));
             }
             
-            alert(`PDF ${pdf.numPages} resme dönüştürüldü!`);
+            alert(`PDF converted to ${pdf.numPages} images!`);
             
         } catch (error) {
-            alert('Hata: ' + error.message);
+            alert('Error: ' + error.message);
         }
     };
 }

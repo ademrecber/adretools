@@ -1,8 +1,8 @@
-// PDF Ana Modül - Ortak fonksiyonlar
+// PDF Main Module - Common functions
 
-// Alert gösterme fonksiyonu
+// Show alert function
 window.showAlert = function(message, type = 'info') {
-    // Bootstrap alert oluştur
+    // Create Bootstrap alert
     const alertDiv = document.createElement('div');
     alertDiv.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
     alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px;';
@@ -14,7 +14,7 @@ window.showAlert = function(message, type = 'info') {
     
     document.body.appendChild(alertDiv);
     
-    // 5 saniye sonra otomatik kapat
+    // Auto-close after 5 seconds
     setTimeout(() => {
         if (alertDiv.parentNode) {
             alertDiv.remove();
@@ -22,9 +22,9 @@ window.showAlert = function(message, type = 'info') {
     }, 5000);
 };
 
-// Loading gösterme fonksiyonu
-window.showLoading = function(message = 'İşlem yapılıyor...') {
-    // Mevcut loading'i kaldır
+// Show loading function
+window.showLoading = function(message = 'Processing...') {
+    // Remove existing loading
     hideLoading();
     
     const loadingDiv = document.createElement('div');
@@ -44,7 +44,7 @@ window.showLoading = function(message = 'İşlem yapılıyor...') {
     document.body.appendChild(loadingDiv);
 };
 
-// Loading gizleme fonksiyonu
+// Hide loading function
 window.hideLoading = function() {
     const loadingDiv = document.getElementById('pdf-loading');
     if (loadingDiv) {
@@ -52,7 +52,7 @@ window.hideLoading = function() {
     }
 };
 
-// Dosya boyutu formatla
+// Format file size
 window.formatFileSize = function(bytes) {
     if (bytes === 0) return '0 Bytes';
     const k = 1024;
@@ -61,12 +61,12 @@ window.formatFileSize = function(bytes) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
 };
 
-// PDF dosyası kontrolü
+// PDF file check
 window.isPDFFile = function(file) {
     return file && file.type === 'application/pdf';
 };
 
-// Dosya uzantısı kontrolü
+// Get file extension
 window.getFileExtension = function(filename) {
     return filename.split('.').pop().toLowerCase();
 };

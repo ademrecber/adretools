@@ -44,7 +44,7 @@ function generateQR() {
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('QR kod oluşturulurken hata oluştu.');
+        alert('An error occurred while generating the QR code.');
     });
 }
 

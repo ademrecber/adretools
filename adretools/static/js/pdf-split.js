@@ -1,8 +1,8 @@
-// PDF Bölme Modülü
+// PDF Split Module
 (function() {
     let selectedPDFSplit = null;
 
-    // Tek sayfa bölme
+    // Single page split
     window.splitPDF = async function() {
         const input = document.createElement('input');
         input.type = 'file';
@@ -26,18 +26,18 @@
 
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
-                link.download = `sayfa${i + 1}.pdf`;
+                link.download = `page${i + 1}.pdf`;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
 
                 await new Promise(resolve => setTimeout(resolve, 300));
             }
-            alert("PDF bölme tamamlandı.");
+            alert("PDF split completed.");
         };
     };
 
-    // Aralıklı bölme
+    // Interval-based split
     window.selectIntervalPDF = function() {
         const input = document.createElement('input');
         input.type = 'file';
@@ -49,8 +49,8 @@
             const display = document.getElementById('intervalFileDisplay');
             display.innerHTML = `
                 <div class="alert alert-info">
-                    <strong>${selectedPDFSplit.name}</strong> seçildi
-                    <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeIntervalPDF()">Kaldır</button>
+                    <strong>${selectedPDFSplit.name}</strong> selected
+                    <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeIntervalPDF()">Remove</button>
                 </div>
             `;
         };
@@ -63,7 +63,7 @@
 
     window.splitByInterval = async function() {
         if (!selectedPDFSplit) {
-            alert("Lütfen önce bir PDF seçin.");
+            alert("Please select a PDF first.");
             return;
         }
 
@@ -71,7 +71,7 @@
         const startPage = parseInt(document.getElementById('startPage').value);
 
         if (intervalSize < 1 || startPage < 1) {
-            alert("Geçersiz değerler. Lütfen pozitif sayılar girin.");
+            alert("Invalid values. Please enter positive numbers.");
             return;
         }
 
@@ -80,7 +80,7 @@
         const totalPages = pdfDoc.getPageCount();
 
         if (startPage > totalPages) {
-            alert(`Başlangıç sayfası (${startPage}) toplam sayfa sayısından (${totalPages}) büyük olamaz.`);
+            alert(`Start page (${startPage}) cannot be greater than total pages (${totalPages}).`);
             return;
         }
 
@@ -105,7 +105,7 @@
 
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `bolum_${partNumber}_sayfa_${currentPage + 1}-${endPage + 1}.pdf`;
+            link.download = `part_${partNumber}_page_${currentPage + 1}-${endPage + 1}.pdf`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -116,6 +116,6 @@
             await new Promise(resolve => setTimeout(resolve, 300));
         }
 
-        alert(`PDF ${partNumber - 1} parçaya bölündü.`);
+        alert(`PDF split into ${partNumber - 1} parts.`);
     };
 })();

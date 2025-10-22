@@ -1,25 +1,25 @@
-// Birim Dönüştürücü JavaScript
+// Unit Converter JavaScript
 
 let currentCategory = 'length';
 
-// Birim tanımları
+// Unit definitions
 const units = {
     length: {
-        'mm': 'Milimetre',
-        'cm': 'Santimetre', 
-        'm': 'Metre',
-        'km': 'Kilometre',
-        'inch': 'İnç',
-        'ft': 'Feet',
+        'mm': 'Millimeter',
+        'cm': 'Centimeter', 
+        'm': 'Meter',
+        'km': 'Kilometer',
+        'inch': 'Inch',
+        'ft': 'Foot',
         'yard': 'Yard',
-        'mile': 'Mil'
+        'mile': 'Mile'
     },
     weight: {
-        'mg': 'Miligram',
+        'mg': 'Milligram',
         'g': 'Gram',
         'kg': 'Kilogram',
         'ton': 'Ton',
-        'oz': 'Ons',
+        'oz': 'Ounce',
         'lb': 'Pound',
         'stone': 'Stone'
     },
@@ -29,47 +29,47 @@ const units = {
         'kelvin': 'Kelvin (K)'
     },
     area: {
-        'mm2': 'Milimetre²',
-        'cm2': 'Santimetre²',
-        'm2': 'Metre²',
-        'km2': 'Kilometre²',
-        'inch2': 'İnç²',
-        'ft2': 'Feet²',
+        'mm2': 'Millimeter²',
+        'cm2': 'Centimeter²',
+        'm2': 'Meter²',
+        'km2': 'Kilometer²',
+        'inch2': 'Inch²',
+        'ft2': 'Foot²',
         'acre': 'Acre',
-        'hectare': 'Hektar'
+        'hectare': 'Hectare'
     },
     volume: {
-        'ml': 'Mililitre',
-        'l': 'Litre',
-        'm3': 'Metre³',
-        'gallon_us': 'Galon (US)',
-        'gallon_uk': 'Galon (UK)',
+        'ml': 'Milliliter',
+        'l': 'Liter',
+        'm3': 'Cubic Meter',
+        'gallon_us': 'Gallon (US)',
+        'gallon_uk': 'Gallon (UK)',
         'pint': 'Pint',
         'quart': 'Quart',
         'cup': 'Cup'
     },
     speed: {
-        'mps': 'Metre/Saniye',
-        'kmh': 'Kilometre/Saat',
-        'mph': 'Mil/Saat',
+        'mps': 'Meter/Second',
+        'kmh': 'Kilometer/Hour',
+        'mph': 'Mile/Hour',
         'knot': 'Knot',
-        'fps': 'Feet/Saniye'
+        'fps': 'Foot/Second'
     }
 };
 
-// Hızlı dönüştürme örnekleri
+// Quick conversion examples
 const quickConversions = {
     length: [
-        {from: 'm', to: 'cm', value: 1, label: '1 metre = 100 cm'},
-        {from: 'km', to: 'm', value: 1, label: '1 kilometre = 1000 m'},
-        {from: 'inch', to: 'cm', value: 1, label: '1 inç = 2.54 cm'},
-        {from: 'ft', to: 'm', value: 1, label: '1 feet = 0.3048 m'}
+        {from: 'm', to: 'cm', value: 1, label: '1 meter = 100 cm'},
+        {from: 'km', to: 'm', value: 1, label: '1 kilometer = 1000 m'},
+        {from: 'inch', to: 'cm', value: 1, label: '1 inch = 2.54 cm'},
+        {from: 'ft', to: 'm', value: 1, label: '1 foot = 0.3048 m'}
     ],
     weight: [
         {from: 'kg', to: 'g', value: 1, label: '1 kilogram = 1000 g'},
         {from: 'lb', to: 'kg', value: 1, label: '1 pound = 0.454 kg'},
         {from: 'ton', to: 'kg', value: 1, label: '1 ton = 1000 kg'},
-        {from: 'oz', to: 'g', value: 1, label: '1 ons = 28.35 g'}
+        {from: 'oz', to: 'g', value: 1, label: '1 ounce = 28.35 g'}
     ],
     temperature: [
         {from: 'celsius', to: 'fahrenheit', value: 0, label: '0°C = 32°F'},
@@ -79,14 +79,14 @@ const quickConversions = {
     ],
     area: [
         {from: 'm2', to: 'cm2', value: 1, label: '1 m² = 10,000 cm²'},
-        {from: 'hectare', to: 'm2', value: 1, label: '1 hektar = 10,000 m²'},
+        {from: 'hectare', to: 'm2', value: 1, label: '1 hectare = 10,000 m²'},
         {from: 'acre', to: 'm2', value: 1, label: '1 acre = 4,047 m²'},
-        {from: 'km2', to: 'hectare', value: 1, label: '1 km² = 100 hektar'}
+        {from: 'km2', to: 'hectare', value: 1, label: '1 km² = 100 hectare'}
     ],
     volume: [
-        {from: 'l', to: 'ml', value: 1, label: '1 litre = 1000 ml'},
-        {from: 'm3', to: 'l', value: 1, label: '1 m³ = 1000 litre'},
-        {from: 'gallon_us', to: 'l', value: 1, label: '1 galon (US) = 3.785 l'},
+        {from: 'l', to: 'ml', value: 1, label: '1 liter = 1000 ml'},
+        {from: 'm3', to: 'l', value: 1, label: '1 m³ = 1000 liter'},
+        {from: 'gallon_us', to: 'l', value: 1, label: '1 gallon (US) = 3.785 l'},
         {from: 'cup', to: 'ml', value: 1, label: '1 cup = 237 ml'}
     ],
     speed: [
@@ -97,46 +97,46 @@ const quickConversions = {
     ]
 };
 
-// Sayfa yüklendiğinde
+// When page loads
 document.addEventListener('DOMContentLoaded', function() {
     selectCategory('length');
     
-    // Input değiştiğinde otomatik dönüştür
+    // Auto convert when input changes
     document.getElementById('inputValue').addEventListener('input', convertUnit);
     document.getElementById('fromUnit').addEventListener('change', convertUnit);
     document.getElementById('toUnit').addEventListener('change', convertUnit);
 });
 
-// Kategori seç
+// Select category
 function selectCategory(category) {
     currentCategory = category;
     
-    // Aktif kategori butonunu güncelle
+    // Update active category button
     document.querySelectorAll('.category-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     event.target.classList.add('active');
     
-    // Birim listelerini güncelle
+    // Update unit lists
     updateUnitSelects();
     
-    // Hızlı dönüştürmeleri güncelle
+    // Update quick conversions
     updateQuickConversions();
     
-    // Dönüştürme yap
+    // Perform conversion
     convertUnit();
 }
 
-// Birim seçim listelerini güncelle
+// Update unit selection lists
 function updateUnitSelects() {
     const fromSelect = document.getElementById('fromUnit');
     const toSelect = document.getElementById('toUnit');
     
-    // Listeleri temizle
+    // Clear lists
     fromSelect.innerHTML = '';
     toSelect.innerHTML = '';
     
-    // Yeni seçenekleri ekle
+    // Add new options
     const categoryUnits = units[currentCategory];
     Object.keys(categoryUnits).forEach(unit => {
         const option1 = new Option(categoryUnits[unit], unit);
@@ -145,14 +145,14 @@ function updateUnitSelects() {
         toSelect.add(option2);
     });
     
-    // Varsayılan seçimleri ayarla
+    // Set default selections
     const unitKeys = Object.keys(categoryUnits);
     if (unitKeys.length > 1) {
         toSelect.selectedIndex = 1;
     }
 }
 
-// Hızlı dönüştürmeleri güncelle
+// Update quick conversions
 function updateQuickConversions() {
     const quickList = document.getElementById('quickList');
     const conversions = quickConversions[currentCategory];
@@ -164,7 +164,7 @@ function updateQuickConversions() {
     ).join('');
 }
 
-// Hızlı dönüştürme uygula
+// Apply quick conversion
 function applyQuickConversion(from, to, value) {
     document.getElementById('inputValue').value = value;
     document.getElementById('fromUnit').value = from;
@@ -172,7 +172,7 @@ function applyQuickConversion(from, to, value) {
     convertUnit();
 }
 
-// Birimleri değiştir
+// Swap units
 function swapUnits() {
     const fromSelect = document.getElementById('fromUnit');
     const toSelect = document.getElementById('toUnit');
@@ -184,7 +184,7 @@ function swapUnits() {
     convertUnit();
 }
 
-// Birim dönüştürme
+// Unit conversion
 async function convertUnit() {
     const value = parseFloat(document.getElementById('inputValue').value) || 0;
     const fromUnit = document.getElementById('fromUnit').value;
@@ -209,13 +209,13 @@ async function convertUnit() {
             document.getElementById('resultValue').textContent = data.formatted;
         } else {
             const error = await response.json();
-            document.getElementById('resultValue').textContent = 'Hata: ' + error.error;
+            document.getElementById('resultValue').textContent = 'Error: ' + error.error;
         }
     } catch (error) {
         if (error.name === 'TypeError' && error.message.includes('fetch')) {
-            document.getElementById('resultValue').textContent = 'Bağlantı Hatası';
+            document.getElementById('resultValue').textContent = 'Connection Error';
         } else {
-            document.getElementById('resultValue').textContent = 'Hata: ' + error.message;
+            document.getElementById('resultValue').textContent = 'Error: ' + error.message;
         }
     }
 }

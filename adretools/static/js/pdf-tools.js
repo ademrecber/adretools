@@ -1,17 +1,17 @@
-// PDF Tools JavaScript - Modüler yapı
+// PDF Tools JavaScript - Modular structure
 let selectedFiles = [];
 let selectedPDF = null;
 
 function showTool(toolId) {
-    // Tüm araçları gizle
+    // Hide all tool sections
     document.querySelectorAll('.tool-section').forEach(section => {
         section.style.display = 'none';
     });
-    // Seçilen aracı göster
+    // Show selected tool
     const toolElement = document.getElementById(toolId);
     toolElement.style.display = 'block';
     
-    // Smooth scroll ile araca git
+    // Smooth scroll to tool
     setTimeout(() => {
         toolElement.scrollIntoView({ 
             behavior: 'smooth', 
@@ -20,7 +20,7 @@ function showTool(toolId) {
     }, 100);
 }
 
-// PDF Bölme
+// PDF Split
 async function splitPDF() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -44,18 +44,18 @@ async function splitPDF() {
 
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `sayfa${i + 1}.pdf`;
+            link.download = `page${i + 1}.pdf`;
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
 
             await new Promise(resolve => setTimeout(resolve, 300));
         }
-        alert("PDF bölme tamamlandı.");
+        alert("PDF split completed.");
     };
 }
 
-// PDF Birleştirme
+// PDF Merge
 function addPDF() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -79,7 +79,7 @@ function updateFileList() {
         div.className = 'list-group-item d-flex justify-content-between align-items-center';
         div.innerHTML = `
             ${file.name}
-            <button class="btn btn-sm btn-danger" onclick="removeFile(${index})">Kaldır</button>
+            <button class="btn btn-sm btn-danger" onclick="removeFile(${index})">Remove</button>
         `;
         fileList.appendChild(div);
     });
@@ -92,7 +92,7 @@ function removeFile(index) {
 
 async function mergeSelectedPDFs() {
     if (selectedFiles.length === 0) {
-        alert("Birleştirilecek PDF seçilmedi.");
+        alert("No PDFs selected for merging.");
         return;
     }
 
@@ -110,17 +110,17 @@ async function mergeSelectedPDFs() {
 
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'birlestirilmis.pdf';
+    link.download = 'merged.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
     selectedFiles = [];
     updateFileList();
-    alert("PDF birleştirme tamamlandı.");
+    alert("PDF merge completed.");
 }
 
-// Çoklu Bölme
+// Multi-Split
 function selectPDF() {
     const input = document.createElement('input');
     input.type = 'file';
@@ -132,8 +132,8 @@ function selectPDF() {
         const display = document.getElementById('selectedFileDisplay');
         display.innerHTML = `
             <div class="alert alert-info">
-                <strong>${selectedPDF.name}</strong> seçildi
-                <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeSelectedPDF()">Kaldır</button>
+                <strong>${selectedPDF.name}</strong> selected
+                <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeSelectedPDF()">Remove</button>
             </div>
         `;
     };
@@ -149,15 +149,15 @@ function addRange() {
     const div = document.createElement('div');
     div.className = 'input-group mb-2';
     div.innerHTML = `
-        <input type="text" class="form-control" placeholder="örn: 5-10 veya 99">
-        <button class="btn btn-outline-danger" onclick="this.parentElement.remove()">Kaldır</button>
+        <input type="text" class="form-control" placeholder="e.g., 5-10 or 99">
+        <button class="btn btn-outline-danger" onclick="this.parentElement.remove()">Remove</button>
     `;
     container.appendChild(div);
 }
 
 async function splitMultipleRanges() {
     if (!selectedPDF) {
-        alert("Lütfen önce bir PDF seçin.");
+        alert("Please select a PDF first.");
         return;
     }
 
@@ -176,7 +176,7 @@ async function splitMultipleRanges() {
         if (value.includes('-')) {
             const match = value.match(/^(\d+)-(\d+)$/);
             if (!match) {
-                alert(`Geçersiz aralık: ${value}`);
+                alert(`Invalid range: ${value}`);
                 return;
             }
             start = parseInt(match[1], 10) - 1;
@@ -184,14 +184,14 @@ async function splitMultipleRanges() {
         } else {
             const pageNum = parseInt(value, 10);
             if (isNaN(pageNum)) {
-                alert(`Geçersiz sayfa: ${value}`);
+                alert(`Invalid page: ${value}`);
                 return;
             }
             start = end = pageNum - 1;
         }
 
         if (start < 0 || end >= totalPages || start > end) {
-            alert(`Geçersiz aralık: ${value}`);
+            alert(`Invalid range: ${value}`);
             return;
         }
 
@@ -210,7 +210,7 @@ async function splitMultipleRanges() {
 
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = `sayfa_${range.label}.pdf`;
+        link.download = `page_${range.label}.pdf`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -218,10 +218,10 @@ async function splitMultipleRanges() {
         await new Promise(resolve => setTimeout(resolve, 300));
     }
 
-    alert("Çoklu bölme tamamlandı.");
+    alert("Multi-split completed.");
 }
 
-// Klasör Birleştirme
+// Folder Merge
 let selectedFolders = [];
 
 function addFolder() {
@@ -234,7 +234,7 @@ function addFolder() {
     input.onchange = () => {
         const files = Array.from(input.files).filter(f => f.name.toLowerCase().endsWith('.pdf'));
         if (files.length === 0) {
-            alert("Seçilen klasörde PDF dosyası bulunamadı.");
+            alert("No PDF files found in the selected folder.");
             return;
         }
 
@@ -251,8 +251,8 @@ function updateFolderList() {
         const div = document.createElement('div');
         div.className = 'list-group-item d-flex justify-content-between align-items-center';
         div.innerHTML = `
-            ${folder.path} (${folder.files.length} PDF)
-            <button class="btn btn-sm btn-danger" onclick="removeFolder(${index})">Kaldır</button>
+            ${folder.path} (${folder.files.length} PDFs)
+            <button class="btn btn-sm btn-danger" onclick="removeFolder(${index})">Remove</button>
         `;
         folderList.appendChild(div);
     });
@@ -265,7 +265,7 @@ function removeFolder(index) {
 
 async function mergeFolderPDFs() {
     if (selectedFolders.length < 2) {
-        alert("En az iki klasör seçilmelidir.");
+        alert("At least two folders must be selected.");
         return;
     }
 
@@ -278,7 +278,7 @@ async function mergeFolderPDFs() {
     );
 
     if (commonNames.length === 0) {
-        alert("Ortak isimde PDF bulunamadı.");
+        alert("No PDFs with common names found.");
         return;
     }
 
@@ -298,7 +298,7 @@ async function mergeFolderPDFs() {
 
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = `${name.replace(/\.pdf$/i, '')}_birlestirilmis.pdf`;
+        link.download = `${name.replace(/\.pdf$/i, '')}_merged.pdf`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -308,10 +308,10 @@ async function mergeFolderPDFs() {
 
     selectedFolders = [];
     updateFolderList();
-    alert(`${commonNames.length} adet PDF birleştirildi.`);
+    alert(`${commonNames.length} PDFs merged.`);
 }
 
-// Aralıklı Bölme
+// Interval-based Split
 let intervalPDF = null;
 
 function selectIntervalPDF() {
@@ -325,8 +325,8 @@ function selectIntervalPDF() {
         const display = document.getElementById('intervalFileDisplay');
         display.innerHTML = `
             <div class="alert alert-info">
-                <strong>${intervalPDF.name}</strong> seçildi
-                <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeIntervalPDF()">Kaldır</button>
+                <strong>${intervalPDF.name}</strong> selected
+                <button class="btn btn-sm btn-outline-danger ms-2" onclick="removeIntervalPDF()">Remove</button>
             </div>
         `;
     };
@@ -339,7 +339,7 @@ function removeIntervalPDF() {
 
 async function splitByInterval() {
     if (!intervalPDF) {
-        alert("Lütfen önce bir PDF seçin.");
+        alert("Please select a PDF first.");
         return;
     }
 
@@ -347,7 +347,7 @@ async function splitByInterval() {
     const startPage = parseInt(document.getElementById('startPage').value);
 
     if (intervalSize < 1 || startPage < 1) {
-        alert("Geçersiz değerler. Lütfen pozitif sayılar girin.");
+        alert("Invalid values. Please enter positive numbers.");
         return;
     }
 
@@ -356,7 +356,7 @@ async function splitByInterval() {
     const totalPages = pdfDoc.getPageCount();
 
     if (startPage > totalPages) {
-        alert(`Başlangıç sayfası (${startPage}) toplam sayfa sayısından (${totalPages}) büyük olamaz.`);
+        alert(`Start page (${startPage}) cannot be greater than total pages (${totalPages}).`);
         return;
     }
 
@@ -381,7 +381,7 @@ async function splitByInterval() {
 
         const link = document.createElement('a');
         link.href = URL.createObjectURL(blob);
-        link.download = `bolum_${partNumber}_sayfa_${currentPage + 1}-${endPage + 1}.pdf`;
+        link.download = `part_${partNumber}_page_${currentPage + 1}-${endPage + 1}.pdf`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -392,5 +392,5 @@ async function splitByInterval() {
         await new Promise(resolve => setTimeout(resolve, 300));
     }
 
-    alert(`PDF ${partNumber - 1} parçaya bölündü.`);
+    alert(`PDF split into ${partNumber - 1} parts.`);
 }
