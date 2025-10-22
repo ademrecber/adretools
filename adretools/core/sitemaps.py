@@ -60,6 +60,17 @@ class StaticViewSitemap(Sitemap):
             
             # Horoscope Tools SEO
             'horoscope_tools:horoscope_calculator_tr', 'horoscope_tools:horoscope_calculator_en',
+            
+            # PDF Tools SEO
+            'pdf_tools:merge_pdf_tr', 'pdf_tools:merge_pdf_en',
+            'pdf_tools:split_pdf_tr', 'pdf_tools:split_pdf_en',
+            'pdf_tools:encrypt_pdf_tr', 'pdf_tools:encrypt_pdf_en',
+            'pdf_tools:watermark_pdf_tr', 'pdf_tools:watermark_pdf_en',
+            'pdf_tools:compress_pdf_tr', 'pdf_tools:compress_pdf_en',
+            'pdf_tools:pdf_to_word_tr', 'pdf_tools:pdf_to_word_en',
+            'pdf_tools:pdf_to_excel_tr', 'pdf_tools:pdf_to_excel_en',
+            'pdf_tools:free_merge_pdf_tr', 'pdf_tools:free_merge_pdf_en',
+            'pdf_tools:online_pdf_editor_tr', 'pdf_tools:online_pdf_editor_en',
         ]
 
     def location(self, item):
@@ -73,6 +84,8 @@ class StaticViewSitemap(Sitemap):
             'password_tools:password_generator_tr', 'password_tools:password_generator_en',
             'calculator_tools:bmi_calculator_tr', 'calculator_tools:bmi_calculator_seo',
             'random_tools:random_number_tr', 'random_tools:random_number_seo',
+            'pdf_tools:merge_pdf_tr', 'pdf_tools:merge_pdf_en',
+            'pdf_tools:split_pdf_tr', 'pdf_tools:split_pdf_en',
         ]
         
         if item in high_priority:
