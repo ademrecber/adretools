@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1><i class="fas fa-route text-info"></i> {% trans "Online Traceroute - Free" %}</h1>
+            <p class="lead">{% trans "Trace network path" %}</p>
+            <a href="{% url 'network_tools:home' %}" class="btn btn-outline-secondary">← {% trans "Network Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-route"></i> {% trans "Traceroute" %}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Target IP/Domain" %}</label>
+                        <input type="text" id="traceTarget" class="form-control" placeholder="{% trans 'e.g: google.com' %}">
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-info btn-lg" id="traceBtn" onclick="traceRoute()">
+                            <i class="fas fa-play"></i> {% trans "Start Traceroute" %}
+                        </button>
+                    </div>
+                    
+                    <div id="loadingSpinner" class="text-center mt-3" style="display:none;">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="visually-hidden">{% trans "Tracing..." %}</span>
+                        </div>
+                        <p class="mt-2">{% trans "Tracing route, please wait..." %}</p>
+                    </div>
+                    
+                    <div id="traceResult" class="mt-4" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let isTracing = false;
+
+async function traceRoute() {
+    if (isTracing) return;
+    
+    const target = document.getElementById('traceTarget').value.trim();
+    
+    if (!target) {
+        alert('{% trans "Please enter target IP/domain!" %}');
+        return;
+    }
+    
+    isTracing = true;
+    document.getElementById('traceBtn').disabled = true;
+    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('traceResult').style.display = 'none';
+    
+    try {
+        const response = await fetch('{% url "network_tools:traceroute_api" %}', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ target: target })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            displayTraceResult(data);
+        } else {
+            showError('{% trans "Traceroute failed" %}: ' + data.error);
+        }
+    } catch (error) {
+        showError('{% trans "Connection error" %}: ' + error.message);
+    } finally {
+        isTracing = false;
+        document.getElementById('traceBtn').disabled = false;
+        document.getElementById('loadingSpinner').style.display = 'none';
+    }
+}
+
+function displayTraceResult(data) {
+    const resultDiv = document.getElementById('traceResult');
+    
+    let hopsHtml = '';
+    data.hops.forEach(hop => {
+        hopsHtml += `
+            <tr>
+                <td>${hop.hop}</td>
+                <td>${hop.ip}</td>
+                <td>${hop.hostname}</td>
+                <td>${hop.rtt}</td>
+            </tr>
+        `;
+    });
+    
+    resultDiv.innerHTML = `
+        <div class="alert alert-success">
+            <h4><i class="fas fa-check-circle"></i> {% trans "Traceroute Result" %}: ${data.target}</h4>
+        </div>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{% trans "Hop" %}</th>
+                    <th>{% trans "IP Address" %}</th>
+                    <th>{% trans "Hostname" %}</th>
+                    <th>{% trans "RTT" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${hopsHtml}
+            </tbody>
+        </table>
+        
+        <div class="alert alert-info">
+            <strong>{% trans "Total Hops" %}:</strong> ${data.total_hops}
+        </div>
+    `;
+    
+    resultDiv.style.display = 'block';
+}
+
+function showError(message) {
+    const resultDiv = document.getElementById('traceResult');
+    resultDiv.innerHTML = `
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i> ${message}
+        </div>
+    `;
+    resultDiv.style.display = 'block';
+}
+</script>
+{% endblock %}

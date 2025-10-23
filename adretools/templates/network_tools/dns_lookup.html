@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1><i class="fas fa-server text-info"></i> {% trans "Online DNS Lookup - Free" %}</h1>
+            <p class="lead">{% trans "Query DNS records" %}</p>
+            <a href="{% url 'network_tools:home' %}" class="btn btn-outline-secondary">← {% trans "Network Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-server"></i> {% trans "DNS Lookup" %}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Domain Name" %}</label>
+                        <input type="text" id="dnsTarget" class="form-control" placeholder="{% trans 'e.g: google.com' %}">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Record Type" %}</label>
+                        <select id="recordType" class="form-select">
+                            <option value="A">A (IPv4 Address)</option>
+                            <option value="AAAA">AAAA (IPv6 Address)</option>
+                            <option value="MX">MX (Mail Exchange)</option>
+                            <option value="NS">NS (Name Server)</option>
+                            <option value="TXT">TXT (Text Record)</option>
+                            <option value="CNAME">CNAME (Canonical Name)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-info btn-lg" id="dnsBtn" onclick="dnsLookup()">
+                            <i class="fas fa-search"></i> {% trans "Lookup DNS" %}
+                        </button>
+                    </div>
+                    
+                    <div id="loadingSpinner" class="text-center mt-3" style="display:none;">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="visually-hidden">{% trans "Looking up..." %}</span>
+                        </div>
+                        <p class="mt-2">{% trans "Querying DNS records..." %}</p>
+                    </div>
+                    
+                    <div id="dnsResult" class="mt-4" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let isLooking = false;
+
+async function dnsLookup() {
+    if (isLooking) return;
+    
+    const domain = document.getElementById('dnsTarget').value.trim();
+    const type = document.getElementById('recordType').value;
+    
+    if (!domain) {
+        alert('{% trans "Please enter domain name!" %}');
+        return;
+    }
+    
+    isLooking = true;
+    document.getElementById('dnsBtn').disabled = true;
+    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('dnsResult').style.display = 'none';
+    
+    try {
+        const response = await fetch('{% url "network_tools:dns_lookup_api" %}', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ domain: domain, type: type })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            displayDnsResult(data);
+        } else {
+            showError('{% trans "DNS lookup failed" %}: ' + data.error);
+        }
+    } catch (error) {
+        showError('{% trans "Connection error" %}: ' + error.message);
+    } finally {
+        isLooking = false;
+        document.getElementById('dnsBtn').disabled = false;
+        document.getElementById('loadingSpinner').style.display = 'none';
+    }
+}
+
+function displayDnsResult(data) {
+    const resultDiv = document.getElementById('dnsResult');
+    
+    let recordsHtml = '';
+    data.records.forEach(record => {
+        recordsHtml += `<li class="list-group-item">${record}</li>`;
+    });
+    
+    resultDiv.innerHTML = `
+        <div class="alert alert-success">
+            <h4><i class="fas fa-check-circle"></i> {% trans "DNS Records Found" %}</h4>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <tr><th>{% trans "Domain" %}:</th><td>${data.domain}</td></tr>
+                    <tr><th>{% trans "Record Type" %}:</th><td>${data.type}</td></tr>
+                    <tr><th>{% trans "Record Count" %}:</th><td>${data.count}</td></tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h5>{% trans "Records" %}:</h5>
+                <ul class="list-group">
+                    ${recordsHtml}
+                </ul>
+            </div>
+        </div>
+    `;
+    
+    resultDiv.style.display = 'block';
+}
+
+function showError(message) {
+    const resultDiv = document.getElementById('dnsResult');
+    resultDiv.innerHTML = `
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i> ${message}
+        </div>
+    `;
+    resultDiv.style.display = 'block';
+}
+</script>
+{% endblock %}

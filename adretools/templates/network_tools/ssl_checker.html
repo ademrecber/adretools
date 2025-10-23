@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1><i class="fas fa-shield-alt text-info"></i> {% trans "Online SSL Checker - Free" %}</h1>
+            <p class="lead">{% trans "Check SSL certificate" %}</p>
+            <a href="{% url 'network_tools:home' %}" class="btn btn-outline-secondary">← {% trans "Network Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-shield-alt"></i> {% trans "SSL Certificate Checker" %}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "Domain Name" %}</label>
+                        <input type="text" id="sslTarget" class="form-control" placeholder="{% trans 'e.g: google.com' %}">
+                        <small class="text-muted">{% trans "Enter domain without https://" %}</small>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-info btn-lg" id="sslBtn" onclick="checkSSL()">
+                            <i class="fas fa-search"></i> {% trans "Check SSL" %}
+                        </button>
+                    </div>
+                    
+                    <div id="loadingSpinner" class="text-center mt-3" style="display:none;">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="visually-hidden">{% trans "Checking..." %}</span>
+                        </div>
+                        <p class="mt-2">{% trans "Checking SSL certificate..." %}</p>
+                    </div>
+                    
+                    <div id="sslResult" class="mt-4" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let isChecking = false;
+
+async function checkSSL() {
+    if (isChecking) return;
+    
+    const domain = document.getElementById('sslTarget').value.trim();
+    
+    if (!domain) {
+        alert('{% trans "Please enter domain name!" %}');
+        return;
+    }
+    
+    isChecking = true;
+    document.getElementById('sslBtn').disabled = true;
+    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('sslResult').style.display = 'none';
+    
+    try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+        
+        const response = await fetch('{% url "network_tools:ssl_checker_api" %}', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ domain: domain }),
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        const data = await response.json();
+        
+        if (response.ok && data.valid) {
+            displaySSLResult(data);
+        } else {
+            showError('{% trans "SSL check failed" %}: ' + (data.error || '{% trans "Invalid certificate" %}'));
+        }
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            showError('{% trans "SSL check timeout. Please try again." %}');
+        } else {
+            showError('{% trans "Connection error" %}: ' + error.message);
+        }
+    } finally {
+        isChecking = false;
+        document.getElementById('sslBtn').disabled = false;
+        document.getElementById('loadingSpinner').style.display = 'none';
+    }
+}
+
+function displaySSLResult(data) {
+    const resultDiv = document.getElementById('sslResult');
+    
+    const statusClass = data.expired ? 'alert-danger' : 'alert-success';
+    const statusIcon = data.expired ? 'fas fa-times-circle' : 'fas fa-check-circle';
+    const statusText = data.expired ? '{% trans "Expired" %}' : '{% trans "Valid" %}';
+    
+    resultDiv.innerHTML = `
+        <div class="alert ${statusClass}">
+            <h4><i class="${statusIcon}"></i> {% trans "SSL Certificate" %}: ${statusText}</h4>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <tr><th>{% trans "Domain" %}:</th><td>${data.domain}</td></tr>
+                    <tr><th>{% trans "Subject" %}:</th><td>${data.subject}</td></tr>
+                    <tr><th>{% trans "Issuer" %}:</th><td>${data.issuer}</td></tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <tr><th>{% trans "Expiry Date" %}:</th><td>${data.not_after}</td></tr>
+                    <tr><th>{% trans "Days Until Expiry" %}:</th><td class="${data.days_until_expiry < 30 ? 'text-danger' : 'text-success'}">${data.days_until_expiry}</td></tr>
+                    <tr><th>{% trans "Status" %}:</th><td class="${data.expired ? 'text-danger' : 'text-success'}">${statusText}</td></tr>
+                </table>
+            </div>
+        </div>
+        
+        ${data.days_until_expiry < 30 && !data.expired ? '<div class="alert alert-warning"><i class="fas fa-exclamation-triangle"></i> {% trans "Certificate expires soon!" %}</div>' : ''}
+    `;
+    
+    resultDiv.style.display = 'block';
+}
+
+function showError(message) {
+    const resultDiv = document.getElementById('sslResult');
+    resultDiv.innerHTML = `
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i> ${message}
+        </div>
+    `;
+    resultDiv.style.display = 'block';
+}
+</script>
+{% endblock %}
