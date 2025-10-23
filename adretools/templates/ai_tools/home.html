@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "AI Tools - Artificial Intelligence Tools - AdreTools" %}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="Free AI tools: AI Finder, text generation, image creation. Discover the best artificial intelligence tools for your needs.">
+<meta name="keywords" content="ai tools, artificial intelligence, ai finder, machine learning, ai applications">
+<style>
+.ai-card { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    color: white; 
+    transition: transform 0.3s;
+}
+.ai-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+.ai-icon { 
+    font-size: 4rem; 
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center mb-4">
+        <h1><i class="fas fa-robot text-primary"></i> {% trans "AI Tools" %}</h1>
+        <p class="lead">{% trans "Artificial Intelligence powered tools for modern needs" %}</p>
+        <div class="mb-3">
+            <a href="{% url 'core:home' %}" class="btn btn-outline-secondary me-2">← {% trans "Home" %}</a>
+            <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#aiGuideModal">
+                <i class="fas fa-question-circle"></i> {% trans "AI Guide" %}
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    {% for tool in tools %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card h-100 ai-card">
+            <div class="card-body text-center">
+                <i class="{{ tool.icon }} ai-icon"></i>
+                <h5 class="card-title">{{ tool.name }}</h5>
+                <p class="card-text">{{ tool.desc }}</p>
+                <a href="{% url 'ai_tools:ai_finder_page' %}" class="btn btn-light btn-lg">
+                    <i class="fas fa-rocket"></i> {% trans "Use AI" %}
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3>🤖 {% trans "About AI Tools" %}</h3>
+                <p>{% trans "Discover and use the most advanced artificial intelligence tools. Our AI-powered platform helps you find the perfect AI solution for any task." %}</p>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>🔍 {% trans "AI Finder" %}</h5>
+                        <p>{% trans "Tell us what you need, and our AI will recommend the best tools, applications, and services for your specific requirements." %}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>🚀 {% trans "Future Tools" %}</h5>
+                        <p>{% trans "More AI-powered tools coming soon: text generation, image creation, code assistance, and advanced analysis tools." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- AI Guide Modal -->
+<div class="modal fade" id="aiGuideModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title"><i class="fas fa-robot"></i> {% trans "AI Tools Guide" %}</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="accordion" id="aiGuideAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#aiFinderGuide">
+                                <i class="fas fa-search text-primary me-2"></i> {% trans "AI Finder" %}
+                            </button>
+                        </h2>
+                        <div id="aiFinderGuide" class="accordion-collapse collapse show" data-bs-parent="#aiGuideAccordion">
+                            <div class="accordion-body">
+                                <p>{% trans "AI Finder helps you discover the perfect AI tools for your needs:" %}</p>
+                                <ul>
+                                    <li>{% trans "Describe what you want to accomplish" %}</li>
+                                    <li>{% trans "Get personalized AI tool recommendations" %}</li>
+                                    <li>{% trans "See pricing, features, and direct links" %}</li>
+                                    <li>{% trans "Save time finding the right solution" %}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="fas fa-lightbulb"></i> <strong>{% trans "Tip:" %}</strong> {% trans "Be specific about your needs for better AI recommendations" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

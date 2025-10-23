@@ -5,6 +5,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production')
 
+# Google Gemini AI API Key
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AIzaSyD8_GZDCBax_bFxECqy7o7OM6OZ84pR1tM')
+
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', 'adretools.onrender.com', 'adretools.com', 'www.adretools.com']
@@ -32,6 +35,7 @@ INSTALLED_APPS = [
     'dev_tools',
     'calculator_tools',
     'random_tools',
+    'ai_tools',
     'blog',
 ]
 

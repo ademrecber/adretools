@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block extra_head %}
+<meta name="description" content="{{ description }}">
+<meta name="keywords" content="{{ keywords }}">
+<style>
+.ai-finder-card { 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+    color: white; 
+}
+.tool-card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+.tool-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+.pricing-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center mb-4">
+            <h1><i class="fas fa-search text-primary"></i> {% trans "AI Finder" %}</h1>
+            <p class="lead">{% trans "Describe what you need, and AI will find the perfect tools for you" %}</p>
+            <a href="{% url 'ai_tools:home' %}" class="btn btn-outline-secondary">← {% trans "AI Tools" %}</a>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card ai-finder-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-robot"></i> {% trans "AI Tool Finder" %}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label">{% trans "What do you need help with?" %}</label>
+                        <textarea id="aiQuery" class="form-control" rows="3" 
+                                placeholder="{% trans 'e.g: I need to create professional videos for social media, or I want to write blog posts automatically, or I need to analyze customer feedback...' %}"></textarea>
+                        <small class="form-text text-light">{% trans "Be specific about your needs for better recommendations" %}</small>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button class="btn btn-light btn-lg" id="findBtn" onclick="findAITools()">
+                            <i class="fas fa-magic"></i> {% trans "Find AI Tools" %}
+                        </button>
+                    </div>
+                    
+                    <div id="loadingSpinner" class="text-center mt-3" style="display:none;">
+                        <div class="spinner-border text-light" role="status">
+                            <span class="visually-hidden">{% trans "Searching..." %}</span>
+                        </div>
+                        <p class="mt-2">{% trans "AI is analyzing your needs and finding the best tools..." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="aiResults" class="row mt-4" style="display:none;"></div>
+</div>
+
+<script>
+let isSearching = false;
+
+async function findAITools() {
+    if (isSearching) return;
+    
+    const query = document.getElementById('aiQuery').value.trim();
+    
+    if (!query) {
+        alert('{% trans "Please describe what you need help with!" %}');
+        return;
+    }
+    
+    isSearching = true;
+    document.getElementById('findBtn').disabled = true;
+    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('aiResults').style.display = 'none';
+    
+    try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000);
+        
+        const response = await fetch('{% url "ai_tools:ai_finder_api" %}', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: query }),
+            signal: controller.signal
+        });
+        
+        clearTimeout(timeoutId);
+        const data = await response.json();
+        
+        if (response.ok) {
+            displayAIResults(data);
+        } else {
+            showError('{% trans "AI search failed" %}: ' + data.error);
+        }
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            showError('{% trans "Search timeout. Please try again." %}');
+        } else {
+            showError('{% trans "Connection error" %}: ' + error.message);
+        }
+    } finally {
+        isSearching = false;
+        document.getElementById('findBtn').disabled = false;
+        document.getElementById('loadingSpinner').style.display = 'none';
+    }
+}
+
+function displayAIResults(data) {
+    const resultsDiv = document.getElementById('aiResults');
+    
+    let toolsHtml = `
+        <div class="col-12 mb-4">
+            <div class="alert alert-success">
+                <h4><i class="fas fa-check-circle"></i> {% trans "Found" %} ${data.count} {% trans "AI tools for" %}: "${data.query}"</h4>
+            </div>
+        </div>
+    `;
+    
+    data.tools.forEach(tool => {
+        const pricingColor = tool.pricing === 'Free' ? 'success' : tool.pricing === 'Paid' ? 'danger' : 'warning';
+        
+        toolsHtml += `
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card tool-card h-100 position-relative">
+                    <span class="badge bg-${pricingColor} pricing-badge">${tool.pricing}</span>
+                    <div class="card-body">
+                        <h5 class="card-title">${tool.name}</h5>
+                        <p class="card-text">${tool.description}</p>
+                        <p class="text-muted small"><strong>{% trans "Best for" %}:</strong> ${tool.use_cases}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="${tool.url}" target="_blank" class="btn btn-primary btn-sm">
+                            <i class="fas fa-external-link-alt"></i> {% trans "Visit Tool" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    resultsDiv.innerHTML = toolsHtml;
+    resultsDiv.style.display = 'flex';
+    
+    // Scroll to results
+    resultsDiv.scrollIntoView({ behavior: 'smooth' });
+}
+
+function showError(message) {
+    const resultsDiv = document.getElementById('aiResults');
+    resultsDiv.innerHTML = `
+        <div class="col-12">
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle"></i> ${message}
+            </div>
+        </div>
+    `;
+    resultsDiv.style.display = 'flex';
+}
+
+// Enter key support
+document.getElementById('aiQuery').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && e.ctrlKey && !isSearching) {
+        findAITools();
+    }
+});
+</script>
+{% endblock %}

@@ -3,6 +3,7 @@ from django.utils.translation import gettext as _
 
 def home(request):
     tools = [
+        {'name': _('AI Tools'), 'url': '/ai/', 'icon': 'fas fa-robot', 'desc': _('AI-powered analysis and generation tools')},
         {'name': _('PDF Tools'), 'url': '/pdf/', 'icon': 'fas fa-file-pdf', 'desc': _('Split, merge, convert PDF files')},
         {'name': _('Image Tools'), 'url': '/image/', 'icon': 'fas fa-image', 'desc': _('Resize images, change formats')},
         {'name': _('QR & Barcode'), 'url': '/qr/', 'icon': 'fas fa-qrcode', 'desc': _('Generate QR codes, read barcodes')},
