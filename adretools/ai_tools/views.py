@@ -3,7 +3,12 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 import json
-import google.generativeai as genai
+
+try:
+    import google.generativeai as genai
+    GEMINI_AVAILABLE = True
+except ImportError:
+    GEMINI_AVAILABLE = False
 
 def ai_home(request):
     tools = [
@@ -29,6 +34,9 @@ def ai_finder_api(request):
         
         if not query:
             return JsonResponse({'error': 'Query required'}, status=400)
+        
+        if not GEMINI_AVAILABLE:
+            return JsonResponse({'error': 'AI service temporarily unavailable'}, status=503)
         
         # Configure Gemini
         genai.configure(api_key=settings.GEMINI_API_KEY)
