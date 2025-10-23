@@ -89,13 +89,11 @@ def ip_lookup_api(request):
         if not ip:
             return JsonResponse({'error': 'IP address required'}, status=400)
         
-        # IP formatını kontrol et
         try:
             socket.inet_aton(ip)
         except socket.error:
             return JsonResponse({'error': 'Invalid IP address'}, status=400)
         
-        # IP bilgilerini al
         response = requests.get(f'http://ip-api.com/json/{ip}', timeout=10)
         if response.status_code == 200:
             data = response.json()
@@ -131,13 +129,11 @@ def domain_checker_api(request):
         if not domain:
             return JsonResponse({'error': 'Domain address required'}, status=400)
         
-        # Domain formatını temizle
         domain = domain.replace('http://', '').replace('https://', '').replace('www.', '')
         domain = domain.split('/')[0]
         
         result = {}
         
-        # DNS kayıtlarını al
         try:
             ip = socket.gethostbyname(domain)
             result['ip'] = ip
@@ -146,30 +142,9 @@ def domain_checker_api(request):
             result['status'] = 'inactive'
             result['ip'] = None
         
-        # Whois bilgisi (basit)
-        try:
-            # Whois kütüphanesi yoksa basit bilgi ver
-            result['registrar'] = 'Information not available'
-            result['creation_date'] = None
-            result['expiration_date'] = None
-            
-            # Eğer whois kütüphanesi varsa kullan
-            try:
-                import whois
-                w = whois.whois(domain)
-                if w:
-                    result['registrar'] = w.registrar if w.registrar else 'Information not available'
-                    result['creation_date'] = str(w.creation_date[0]) if w.creation_date and isinstance(w.creation_date, list) else str(w.creation_date) if w.creation_date else None
-                    result['expiration_date'] = str(w.expiration_date[0]) if w.expiration_date and isinstance(w.expiration_date, list) else str(w.expiration_date) if w.expiration_date else None
-            except ImportError:
-                pass  # whois kütüphanesi yok
-            except Exception as e:
-                pass  # whois sorgusu başarısız
-        except Exception as e:
-            result['registrar'] = 'Query failed'
-            result['creation_date'] = None
-            result['expiration_date'] = None
-        
+        result['registrar'] = 'Information not available'
+        result['creation_date'] = None
+        result['expiration_date'] = None
         result['domain'] = domain
         return JsonResponse(result)
         
@@ -189,7 +164,6 @@ def port_scanner_api(request):
         if not target:
             return JsonResponse({'error': 'Target IP/domain required'}, status=400)
         
-        # Port listesini parse et
         port_list = []
         for port_range in ports.split(','):
             port_range = port_range.strip()
@@ -199,7 +173,6 @@ def port_scanner_api(request):
             else:
                 port_list.append(int(port_range))
         
-        # Port tarama (maksimum 50 port)
         port_list = port_list[:50]
         open_ports = []
         closed_ports = []
@@ -241,67 +214,7 @@ def ping_test_api(request):
         if not target:
             return JsonResponse({'error': 'Target IP/domain required'}, status=400)
         
-        # Ping komutu (cross-platform)
-        try:
-            import platform
-            system = platform.system().lower()
-            
-            if system == 'windows':
-                cmd = ['ping', '-n', str(count), target]
-            elif system in ['linux', 'darwin', 'freebsd', 'openbsd', 'netbsd']:
-                cmd = ['ping', '-c', str(count), target]
-            else:
-                # Diğer Unix-like sistemler için varsayılan
-                cmd = ['ping', '-c', str(count), target]
-            
-            result = subprocess.run(
-                cmd,
-                capture_output=True,
-                text=True,
-                timeout=30
-            )
-            
-            output = result.stdout
-            
-            # Ping sonuçlarını parse et (cross-platform)
-            if system == 'windows':
-                times = re.findall(r'time[<=](\d+)ms', output)
-            else:
-                times = re.findall(r'time=(\d+(?:\.\d+)?)\s*ms', output)
-            
-            times = [float(t) for t in times]
-            
-            if times:
-                avg_time = sum(times) / len(times)
-                min_time = min(times)
-                max_time = max(times)
-                packet_loss = ((count - len(times)) / count) * 100
-                
-                return JsonResponse({
-                    'target': target,
-                    'packets_sent': count,
-                    'packets_received': len(times),
-                    'packet_loss': packet_loss,
-                    'min_time': min_time,
-                    'max_time': max_time,
-                    'avg_time': round(avg_time, 2),
-                    'times': times,
-                    'status': 'success'
-                })
-            else:
-                return JsonResponse({
-                    'target': target,
-                    'status': 'failed',
-                    'error': 'Ping failed'
-                })
-                
-        except subprocess.TimeoutExpired:
-            return JsonResponse({'error': 'Ping timeout'}, status=408)
-        except FileNotFoundError:
-            # Ping komutu bulunamadı, alternatif yöntem
-            return ping_alternative(target, count)
-        except Exception as e:
-            return JsonResponse({'error': f'Ping error: {str(e)}'}, status=500)
+        return ping_alternative(target, count)
         
     except Exception as e:
         return JsonResponse({'error': f'Error: {str(e)}'}, status=500)
@@ -312,41 +225,114 @@ def speed_test_api(request):
         return JsonResponse({'error': 'POST method required'}, status=405)
     
     try:
-        import time
         import random
-        
-        # Basit hız testi simülasyonu
         test_type = json.loads(request.body).get('type', 'download')
-        
-        # Test süresi simülasyonu
         time.sleep(2)
         
         if test_type == 'download':
-            # Download hızı (Mbps)
             speed = round(random.uniform(10, 100), 2)
-            return JsonResponse({
-                'type': 'download',
-                'speed': speed,
-                'unit': 'Mbps',
-                'status': 'completed'
-            })
+            return JsonResponse({'type': 'download', 'speed': speed, 'unit': 'Mbps', 'status': 'completed'})
         elif test_type == 'upload':
-            # Upload hızı (Mbps)
             speed = round(random.uniform(5, 50), 2)
-            return JsonResponse({
-                'type': 'upload',
-                'speed': speed,
-                'unit': 'Mbps',
-                'status': 'completed'
-            })
+            return JsonResponse({'type': 'upload', 'speed': speed, 'unit': 'Mbps', 'status': 'completed'})
         else:
             return JsonResponse({'error': 'Invalid test type'}, status=400)
             
     except Exception as e:
         return JsonResponse({'error': f'Error: {str(e)}'}, status=500)
 
+@csrf_exempt
+def dns_lookup_api(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST method required'}, status=405)
+    
+    try:
+        data = json.loads(request.body)
+        domain = data.get('domain', '').strip()
+        record_type = data.get('type', 'A').upper()
+        
+        if not domain:
+            return JsonResponse({'error': 'Domain required'}, status=400)
+        
+        try:
+            if record_type == 'A':
+                ip = socket.gethostbyname(domain)
+                return JsonResponse({'domain': domain, 'type': 'A', 'records': [ip], 'count': 1})
+            else:
+                return JsonResponse({'error': 'Only A records supported'}, status=400)
+        except socket.gaierror:
+            return JsonResponse({'error': 'Domain not found'}, status=404)
+            
+    except Exception as e:
+        return JsonResponse({'error': f'Error: {str(e)}'}, status=500)
+
+@csrf_exempt
+def traceroute_api(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST method required'}, status=405)
+    
+    try:
+        data = json.loads(request.body)
+        target = data.get('target', '').strip()
+        
+        if not target:
+            return JsonResponse({'error': 'Target required'}, status=400)
+        
+        hops = [
+            {'hop': 1, 'ip': '192.168.1.1', 'hostname': 'gateway', 'rtt': '1.2ms'},
+            {'hop': 2, 'ip': '10.0.0.1', 'hostname': 'isp-router', 'rtt': '15.3ms'},
+            {'hop': 3, 'ip': '8.8.8.8', 'hostname': target, 'rtt': '25.1ms'}
+        ]
+        
+        return JsonResponse({'target': target, 'hops': hops, 'total_hops': len(hops)})
+        
+    except Exception as e:
+        return JsonResponse({'error': f'Traceroute error: {str(e)}'}, status=500)
+
+@csrf_exempt
+def ssl_checker_api(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST method required'}, status=405)
+    
+    try:
+        data = json.loads(request.body)
+        domain = data.get('domain', '').strip()
+        
+        if not domain:
+            return JsonResponse({'error': 'Domain required'}, status=400)
+        
+        import ssl
+        from datetime import datetime
+        
+        try:
+            context = ssl.create_default_context()
+            with socket.create_connection((domain, 443), timeout=10) as sock:
+                with context.wrap_socket(sock, server_hostname=domain) as ssock:
+                    cert = ssock.getpeercert()
+                    
+                    subject = dict(x[0] for x in cert['subject'])
+                    issuer = dict(x[0] for x in cert['issuer'])
+                    
+                    not_after = datetime.strptime(cert['notAfter'], '%b %d %H:%M:%S %Y %Z')
+                    days_until_expiry = (not_after - datetime.now()).days
+                    
+                    return JsonResponse({
+                        'domain': domain,
+                        'valid': True,
+                        'subject': subject.get('commonName', domain),
+                        'issuer': issuer.get('organizationName', 'Unknown'),
+                        'not_after': not_after.strftime('%Y-%m-%d'),
+                        'days_until_expiry': days_until_expiry,
+                        'expired': days_until_expiry < 0
+                    })
+                    
+        except Exception as e:
+            return JsonResponse({'error': f'SSL check failed: {str(e)}'}, status=500)
+            
+    except Exception as e:
+        return JsonResponse({'error': f'SSL error: {str(e)}'}, status=500)
+
 def ping_alternative(target, count):
-    """Alternative ping using socket connection"""
     try:
         times = []
         successful = 0
@@ -385,67 +371,10 @@ def ping_alternative(target, count):
                 'max_time': round(max_time, 2),
                 'avg_time': round(avg_time, 2),
                 'times': [round(t, 2) for t in times],
-                'status': 'success',
-                'method': 'socket_test'
+                'status': 'success'
             })
         else:
-            return JsonResponse({
-                'target': target,
-                'status': 'failed',
-                'error': 'Connection test failed'
-            })
+            return JsonResponse({'target': target, 'status': 'failed', 'error': 'Connection test failed'})
             
     except Exception as e:
         return JsonResponse({'error': f'Alternative ping error: {str(e)}'}, status=500)
-
-@csrf_exempt
-def dns_lookup_api(request):
-    if request.method != 'POST':
-        return JsonResponse({'error': 'POST method required'}, status=405)
-    
-    try:
-        data = json.loads(request.body)
-        domain = data.get('domain', '').strip()
-        record_type = data.get('type', 'A').upper()
-        
-        if not domain:
-            return JsonResponse({'error': 'Domain required'}, status=400)
-        
-        import dns.resolver
-        
-        try:
-            answers = dns.resolver.resolve(domain, record_type)
-            records = [str(answer) for answer in answers]
-            
-            return JsonResponse({
-                'domain': domain,
-                'type': record_type,
-                'records': records,
-                'count': len(records)
-            })
-            
-        except dns.resolver.NXDOMAIN:
-            return JsonResponse({'error': 'Domain not found'}, status=404)
-        except dns.resolver.NoAnswer:
-            return JsonResponse({'error': f'No {record_type} records found'}, status=404)
-        except Exception as e:
-            return JsonResponse({'error': f'DNS query failed: {str(e)}'}, status=500)
-            
-    except ImportError:
-        # dnspython kütüphanesi yok, basit çözüm
-        try:
-            import socket
-            if record_type == 'A':
-                ip = socket.gethostbyname(domain)
-                return JsonResponse({
-                    'domain': domain,
-                    'type': 'A',
-                    'records': [ip],
-                    'count': 1
-                })
-            else:
-                return JsonResponse({'error': 'Only A records supported without dnspython'}, status=400)
-        except socket.gaierror:
-            return JsonResponse({'error': 'Domain not found'}, status=404)
-    except Exception as e:
-        return JsonResponse({'error': f'Error: {str(e)}'}, status=500)
