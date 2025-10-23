@@ -115,7 +115,7 @@ async function lookupIP() {
     document.getElementById('ipResult').style.display = 'none';
     
     try {
-        const response = await fetch('/network/api/ip-lookup/', {
+        const response = await fetch('{% url "network_tools:ip_lookup_api" %}', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

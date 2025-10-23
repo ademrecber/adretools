@@ -6,6 +6,7 @@ import subprocess
 import requests
 import json
 import re
+import time
 
 def network_home(request):
     tools = [
@@ -14,6 +15,9 @@ def network_home(request):
         {'name': 'Port Scanner', 'id': 'port-scanner', 'icon': 'fas fa-network-wired', 'desc': 'Scan open ports'},
         {'name': 'Ping Test', 'id': 'ping-test', 'icon': 'fas fa-wifi', 'desc': 'Test connection speed'},
         {'name': 'Speed Test', 'id': 'speed-test', 'icon': 'fas fa-tachometer-alt', 'desc': 'Measure internet speed'},
+        {'name': 'Traceroute', 'id': 'traceroute', 'icon': 'fas fa-route', 'desc': 'Trace network path'},
+        {'name': 'DNS Lookup', 'id': 'dns-lookup', 'icon': 'fas fa-server', 'desc': 'Query DNS records'},
+        {'name': 'SSL Checker', 'id': 'ssl-checker', 'icon': 'fas fa-shield-alt', 'desc': 'Check SSL certificate'},
     ]
     return render(request, 'network_tools/home.html', {'tools': tools})
 
@@ -50,6 +54,27 @@ def speed_test_page(request):
         'title': 'Online Speed Test - Free Internet Speed Measurement',
         'description': 'Test your internet connection speed for free. Measure download, upload and ping values.',
         'keywords': 'speed test, internet speed, connection test, download, upload'
+    })
+
+def traceroute_page(request):
+    return render(request, 'network_tools/traceroute.html', {
+        'title': 'Online Traceroute - Free Network Path Tracing',
+        'description': 'Trace network path to destination. See all hops and routing information.',
+        'keywords': 'traceroute, network path, routing, hops'
+    })
+
+def dns_lookup_page(request):
+    return render(request, 'network_tools/dns_lookup.html', {
+        'title': 'Online DNS Lookup - Free DNS Records Query',
+        'description': 'Query DNS records for any domain. Check A, AAAA, MX, NS, TXT records.',
+        'keywords': 'dns lookup, dns records, domain records, mx records'
+    })
+
+def ssl_checker_page(request):
+    return render(request, 'network_tools/ssl_checker.html', {
+        'title': 'Online SSL Checker - Free SSL Certificate Validator',
+        'description': 'Check SSL certificate validity, expiration date and security details.',
+        'keywords': 'ssl checker, ssl certificate, https, security'
     })
 
 @csrf_exempt
@@ -123,13 +148,25 @@ def domain_checker_api(request):
         
         # Whois bilgisi (basit)
         try:
-            import whois
-            w = whois.whois(domain)
-            result['registrar'] = w.registrar
-            result['creation_date'] = str(w.creation_date[0]) if w.creation_date else None
-            result['expiration_date'] = str(w.expiration_date[0]) if w.expiration_date else None
-        except:
+            # Whois kütüphanesi yoksa basit bilgi ver
             result['registrar'] = 'Information not available'
+            result['creation_date'] = None
+            result['expiration_date'] = None
+            
+            # Eğer whois kütüphanesi varsa kullan
+            try:
+                import whois
+                w = whois.whois(domain)
+                if w:
+                    result['registrar'] = w.registrar if w.registrar else 'Information not available'
+                    result['creation_date'] = str(w.creation_date[0]) if w.creation_date and isinstance(w.creation_date, list) else str(w.creation_date) if w.creation_date else None
+                    result['expiration_date'] = str(w.expiration_date[0]) if w.expiration_date and isinstance(w.expiration_date, list) else str(w.expiration_date) if w.expiration_date else None
+            except ImportError:
+                pass  # whois kütüphanesi yok
+            except Exception as e:
+                pass  # whois sorgusu başarısız
+        except Exception as e:
+            result['registrar'] = 'Query failed'
             result['creation_date'] = None
             result['expiration_date'] = None
         
@@ -204,10 +241,21 @@ def ping_test_api(request):
         if not target:
             return JsonResponse({'error': 'Target IP/domain required'}, status=400)
         
-        # Ping komutu (Windows)
+        # Ping komutu (cross-platform)
         try:
+            import platform
+            system = platform.system().lower()
+            
+            if system == 'windows':
+                cmd = ['ping', '-n', str(count), target]
+            elif system in ['linux', 'darwin', 'freebsd', 'openbsd', 'netbsd']:
+                cmd = ['ping', '-c', str(count), target]
+            else:
+                # Diğer Unix-like sistemler için varsayılan
+                cmd = ['ping', '-c', str(count), target]
+            
             result = subprocess.run(
-                ['ping', '-n', str(count), target],
+                cmd,
                 capture_output=True,
                 text=True,
                 timeout=30
@@ -215,9 +263,13 @@ def ping_test_api(request):
             
             output = result.stdout
             
-            # Ping sonuçlarını parse et
-            times = re.findall(r'time[<=](\d+)ms', output)
-            times = [int(t) for t in times]
+            # Ping sonuçlarını parse et (cross-platform)
+            if system == 'windows':
+                times = re.findall(r'time[<=](\d+)ms', output)
+            else:
+                times = re.findall(r'time=(\d+(?:\.\d+)?)\s*ms', output)
+            
+            times = [float(t) for t in times]
             
             if times:
                 avg_time = sum(times) / len(times)
@@ -245,6 +297,9 @@ def ping_test_api(request):
                 
         except subprocess.TimeoutExpired:
             return JsonResponse({'error': 'Ping timeout'}, status=408)
+        except FileNotFoundError:
+            # Ping komutu bulunamadı, alternatif yöntem
+            return ping_alternative(target, count)
         except Exception as e:
             return JsonResponse({'error': f'Ping error: {str(e)}'}, status=500)
         
@@ -287,5 +342,110 @@ def speed_test_api(request):
         else:
             return JsonResponse({'error': 'Invalid test type'}, status=400)
             
+    except Exception as e:
+        return JsonResponse({'error': f'Error: {str(e)}'}, status=500)
+
+def ping_alternative(target, count):
+    """Alternative ping using socket connection"""
+    try:
+        times = []
+        successful = 0
+        
+        for i in range(count):
+            start_time = time.time()
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(5)
+            
+            try:
+                result = sock.connect_ex((target, 80))
+                end_time = time.time()
+                
+                if result == 0:
+                    response_time = (end_time - start_time) * 1000
+                    times.append(response_time)
+                    successful += 1
+            except:
+                pass
+            finally:
+                sock.close()
+                time.sleep(0.5)
+        
+        if times:
+            avg_time = sum(times) / len(times)
+            min_time = min(times)
+            max_time = max(times)
+            packet_loss = ((count - successful) / count) * 100
+            
+            return JsonResponse({
+                'target': target,
+                'packets_sent': count,
+                'packets_received': successful,
+                'packet_loss': packet_loss,
+                'min_time': round(min_time, 2),
+                'max_time': round(max_time, 2),
+                'avg_time': round(avg_time, 2),
+                'times': [round(t, 2) for t in times],
+                'status': 'success',
+                'method': 'socket_test'
+            })
+        else:
+            return JsonResponse({
+                'target': target,
+                'status': 'failed',
+                'error': 'Connection test failed'
+            })
+            
+    except Exception as e:
+        return JsonResponse({'error': f'Alternative ping error: {str(e)}'}, status=500)
+
+@csrf_exempt
+def dns_lookup_api(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST method required'}, status=405)
+    
+    try:
+        data = json.loads(request.body)
+        domain = data.get('domain', '').strip()
+        record_type = data.get('type', 'A').upper()
+        
+        if not domain:
+            return JsonResponse({'error': 'Domain required'}, status=400)
+        
+        import dns.resolver
+        
+        try:
+            answers = dns.resolver.resolve(domain, record_type)
+            records = [str(answer) for answer in answers]
+            
+            return JsonResponse({
+                'domain': domain,
+                'type': record_type,
+                'records': records,
+                'count': len(records)
+            })
+            
+        except dns.resolver.NXDOMAIN:
+            return JsonResponse({'error': 'Domain not found'}, status=404)
+        except dns.resolver.NoAnswer:
+            return JsonResponse({'error': f'No {record_type} records found'}, status=404)
+        except Exception as e:
+            return JsonResponse({'error': f'DNS query failed: {str(e)}'}, status=500)
+            
+    except ImportError:
+        # dnspython kütüphanesi yok, basit çözüm
+        try:
+            import socket
+            if record_type == 'A':
+                ip = socket.gethostbyname(domain)
+                return JsonResponse({
+                    'domain': domain,
+                    'type': 'A',
+                    'records': [ip],
+                    'count': 1
+                })
+            else:
+                return JsonResponse({'error': 'Only A records supported without dnspython'}, status=400)
+        except socket.gaierror:
+            return JsonResponse({'error': 'Domain not found'}, status=404)
     except Exception as e:
         return JsonResponse({'error': f'Error: {str(e)}'}, status=500)

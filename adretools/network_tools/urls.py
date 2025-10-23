@@ -12,6 +12,9 @@ urlpatterns = [
     path('port-scanner/', views.port_scanner_page, name='port_scanner_page'),
     path('ping-test/', views.ping_test_page, name='ping_test_page'),
     path('speed-test/', views.speed_test_page, name='speed_test_page'),
+    path('traceroute/', views.traceroute_page, name='traceroute_page'),
+    path('dns-lookup/', views.dns_lookup_page, name='dns_lookup_page'),
+    path('ssl-checker/', views.ssl_checker_page, name='ssl_checker_page'),
     
     # API endpoints
     path('api/ip-lookup/', views.ip_lookup_api, name='ip_lookup_api'),
@@ -19,4 +22,7 @@ urlpatterns = [
     path('api/port-scanner/', views.port_scanner_api, name='port_scanner_api'),
     path('api/ping-test/', views.ping_test_api, name='ping_test_api'),
     path('api/speed-test/', views.speed_test_api, name='speed_test_api'),
+    path('api/traceroute/', views.traceroute_api, name='traceroute_api'),
+    path('api/dns-lookup/', views.dns_lookup_api, name='dns_lookup_api'),
+    path('api/ssl-checker/', views.ssl_checker_api, name='ssl_checker_api'),
 ]

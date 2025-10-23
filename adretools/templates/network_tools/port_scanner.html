@@ -36,9 +36,17 @@
                     </div>
                     
                     <div class="text-center">
-                        <button class="btn btn-info btn-lg" onclick="scanPorts()">
+                        <button class="btn btn-info btn-lg" id="scanBtn" onclick="scanPorts()">
                             <i class="fas fa-search"></i> {% trans "Scan Ports" %}
                         </button>
+                    </div>
+                    
+                    <div id="loadingSpinner" class="text-center mt-3" style="display:none;">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="visually-hidden">{% trans "Scanning..." %}</span>
+                        </div>
+                        <p class="mt-2">{% trans "Scanning ports, please wait..." %}</p>
+                        <small class="text-muted">{% trans "This may take up to 30 seconds" %}</small>
                     </div>
                     
                     <div id="scanResult" class="mt-4" style="display:none;"></div>
@@ -49,7 +57,11 @@
 </div>
 
 <script>
+let isScanning = false;
+
 async function scanPorts() {
+    if (isScanning) return;
+    
     const target = document.getElementById('targetInput').value.trim();
     const ports = document.getElementById('portsInput').value.trim();
     
@@ -58,30 +70,82 @@ async function scanPorts() {
         return;
     }
     
+    isScanning = true;
+    document.getElementById('scanBtn').disabled = true;
+    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('scanResult').style.display = 'none';
+    
     try {
-        const response = await fetch('/network/api/port-scanner/', {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 30000);
+        
+        const response = await fetch('{% url "network_tools:port_scanner_api" %}', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ target: target, ports: ports })
+            body: JSON.stringify({ target: target, ports: ports }),
+            signal: controller.signal
         });
+        
+        clearTimeout(timeoutId);
         
         const data = await response.json();
         
         if (response.ok) {
-            document.getElementById('scanResult').innerHTML = `
-                <div class="alert alert-success">
-                    <h4>Tarama Sonucu: ${data.target}</h4>
-                    <p>Açık Portlar: ${data.open_ports.join(', ') || 'Yok'}</p>
-                    <p>Toplam Taranan: ${data.total_scanned}</p>
-                </div>
-            `;
-            document.getElementById('scanResult').style.display = 'block';
+            displayScanResult(data);
         } else {
-            alert('{% trans "Error" %}: ' + data.error);
+            showError('{% trans "Error" %}: ' + data.error);
         }
     } catch (error) {
-        alert('{% trans "Connection error" %}: ' + error.message);
+        if (error.name === 'AbortError') {
+            showError('{% trans "Scan timeout. Please try again." %}');
+        } else {
+            showError('{% trans "Connection error" %}: ' + error.message);
+        }
+    } finally {
+        isScanning = false;
+        document.getElementById('scanBtn').disabled = false;
+        document.getElementById('loadingSpinner').style.display = 'none';
     }
+}
+
+function displayScanResult(data) {
+    const resultDiv = document.getElementById('scanResult');
+    
+    resultDiv.innerHTML = `
+        <div class="alert alert-success">
+            <h4><i class="fas fa-check-circle"></i> {% trans "Scan Result" %}: ${data.target}</h4>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="text-success">{% trans "Open Ports" %} (${data.open_ports.length})</h5>
+                <div class="alert alert-success">
+                    ${data.open_ports.length > 0 ? data.open_ports.join(', ') : '{% trans "No open ports found" %}'}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h5 class="text-muted">{% trans "Scan Summary" %}</h5>
+                <table class="table table-sm">
+                    <tr><th>{% trans "Target" %}:</th><td>${data.target}</td></tr>
+                    <tr><th>{% trans "Total Scanned" %}:</th><td>${data.total_scanned}</td></tr>
+                    <tr><th>{% trans "Open Ports" %}:</th><td>${data.open_ports.length}</td></tr>
+                    <tr><th>{% trans "Closed Ports" %}:</th><td>${data.closed_ports.length}</td></tr>
+                </table>
+            </div>
+        </div>
+    `;
+    
+    resultDiv.style.display = 'block';
+}
+
+function showError(message) {
+    const resultDiv = document.getElementById('scanResult');
+    resultDiv.innerHTML = `
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i> ${message}
+        </div>
+    `;
+    resultDiv.style.display = 'block';
 }
 </script>
 {% endblock %}

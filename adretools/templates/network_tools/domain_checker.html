@@ -31,9 +31,16 @@
                     </div>
                     
                     <div class="text-center">
-                        <button class="btn btn-info btn-lg" onclick="checkDomain()">
+                        <button class="btn btn-info btn-lg" id="checkBtn" onclick="checkDomain()">
                             <i class="fas fa-search"></i> {% trans "Check Domain" %}
                         </button>
+                    </div>
+                    
+                    <div id="loadingSpinner" class="text-center mt-3" style="display:none;">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="visually-hidden">{% trans "Checking..." %}</span>
+                        </div>
+                        <p class="mt-2">{% trans "Checking domain information..." %}</p>
                     </div>
                     
                     <div id="domainResult" class="mt-4" style="display:none;"></div>
@@ -44,7 +51,11 @@
 </div>
 
 <script>
+let isChecking = false;
+
 async function checkDomain() {
+    if (isChecking) return;
+    
     const domain = document.getElementById('domainInput').value.trim();
     
     if (!domain) {
@@ -52,30 +63,87 @@ async function checkDomain() {
         return;
     }
     
+    isChecking = true;
+    document.getElementById('checkBtn').disabled = true;
+    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('domainResult').style.display = 'none';
+    
     try {
-        const response = await fetch('/network/api/domain-checker/', {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 saniye timeout
+        
+        const response = await fetch('{% url "network_tools:domain_checker_api" %}', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ domain: domain })
+            body: JSON.stringify({ domain: domain }),
+            signal: controller.signal
         });
         
+        clearTimeout(timeoutId);
         const data = await response.json();
         
         if (response.ok) {
-            document.getElementById('domainResult').innerHTML = `
-                <div class="alert alert-success">
-                    <h4>{% trans "Domain" %}: ${data.domain}</h4>
-                    <p>{% trans "Status" %}: ${data.status}</p>
-                    <p>IP: ${data.ip || '{% trans "Not found" %}'}</p>
-                </div>
-            `;
-            document.getElementById('domainResult').style.display = 'block';
+            displayDomainResult(data);
         } else {
-            alert('{% trans "Error" %}: ' + data.error);
+            showError('{% trans "Error" %}: ' + data.error);
         }
     } catch (error) {
-        alert('{% trans "Connection error" %}: ' + error.message);
+        if (error.name === 'AbortError') {
+            showError('{% trans "Request timeout. Please try again." %}');
+        } else {
+            showError('{% trans "Connection error" %}: ' + error.message);
+        }
+    } finally {
+        isChecking = false;
+        document.getElementById('checkBtn').disabled = false;
+        document.getElementById('loadingSpinner').style.display = 'none';
     }
 }
+
+function displayDomainResult(data) {
+    const resultDiv = document.getElementById('domainResult');
+    
+    resultDiv.innerHTML = `
+        <div class="alert alert-success">
+            <h4><i class="fas fa-check-circle"></i> {% trans "Domain Information" %}</h4>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <tr><th>{% trans "Domain" %}:</th><td>${data.domain}</td></tr>
+                    <tr><th>{% trans "Status" %}:</th><td><span class="badge ${data.status === 'active' ? 'bg-success' : 'bg-danger'}">${data.status === 'active' ? '{% trans "Active" %}' : '{% trans "Inactive" %}'}</span></td></tr>
+                    <tr><th>IP {% trans "Address" %}:</th><td>${data.ip || '{% trans "Not found" %}'}</td></tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <tr><th>{% trans "Registrar" %}:</th><td>${data.registrar || '{% trans "Unknown" %}'}</td></tr>
+                    <tr><th>{% trans "Creation Date" %}:</th><td>${data.creation_date || '{% trans "Unknown" %}'}</td></tr>
+                    <tr><th>{% trans "Expiration Date" %}:</th><td>${data.expiration_date || '{% trans "Unknown" %}'}</td></tr>
+                </table>
+            </div>
+        </div>
+    `;
+    
+    resultDiv.style.display = 'block';
+}
+
+function showError(message) {
+    const resultDiv = document.getElementById('domainResult');
+    resultDiv.innerHTML = `
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i> ${message}
+        </div>
+    `;
+    resultDiv.style.display = 'block';
+}
+
+// Enter tuşu ile arama
+document.getElementById('domainInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && !isChecking) {
+        checkDomain();
+    }
+});
 </script>
 {% endblock %}
