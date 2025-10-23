@@ -100,4 +100,10 @@ Return ONLY valid JSON array:
         })
             
     except Exception as e:
+        error_msg = str(e)
+        if '429' in error_msg or 'quota' in error_msg.lower():
+            return JsonResponse({
+                'error': 'AI service temporarily unavailable due to high usage. Please try again later or upgrade to premium for unlimited access.',
+                'retry_later': True
+            }, status=429)
         return JsonResponse({'error': f'AI Finder error: {str(e)}'}, status=500)
