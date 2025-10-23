@@ -44,7 +44,7 @@ def ai_finder_api(request):
         
         # Use Gemini API
         genai.configure(api_key=settings.GEMINI_API_KEY)
-        model = genai.GenerativeModel('gemini-pro')
+        model = genai.GenerativeModel('gemini-1.5-flash')
         
         prompt = f"""
 User needs: "{query}"
