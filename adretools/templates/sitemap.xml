@@ -214,6 +214,23 @@
         <changefreq>monthly</changefreq>
     </url>
     
+    <!-- Network Tools SEO URLs -->
+    <url>
+        <loc>https://adretools.com/network/traceroute/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/network/dns-lookup/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/network/ssl-checker/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
     <!-- Blog SEO URLs -->
     <url>
         <loc>https://adretools.com/blog/</loc>
