@@ -134,6 +134,52 @@ def convert_word_to_pdf(request):
         'error': 'Word to PDF conversion is currently under development. You can use other features!'
     }, status=501)
 
+@csrf_exempt
+def split_pdf(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'POST method required'}, status=405)
+    
+    if 'pdf' not in request.FILES:
+        return JsonResponse({'error': 'PDF file required'}, status=400)
+    
+    pdf_file = request.FILES['pdf']
+    
+    try:
+        from pypdf import PdfReader, PdfWriter
+        import zipfile
+        
+        # PDF'i oku
+        reader = PdfReader(pdf_file)
+        total_pages = len(reader.pages)
+        
+        # ZIP dosyası oluştur
+        zip_buffer = io.BytesIO()
+        
+        with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+            # Her sayfayı ayrı PDF olarak kaydet
+            for i, page in enumerate(reader.pages):
+                writer = PdfWriter()
+                writer.add_page(page)
+                
+                # Sayfa PDF'ini oluştur
+                page_buffer = io.BytesIO()
+                writer.write(page_buffer)
+                page_buffer.seek(0)
+                
+                # ZIP'e ekle
+                filename = f"{pdf_file.name.replace('.pdf', '')}_page_{i+1}.pdf"
+                zip_file.writestr(filename, page_buffer.getvalue())
+        
+        zip_buffer.seek(0)
+        
+        response = HttpResponse(zip_buffer.getvalue(), content_type='application/zip')
+        response['Content-Disposition'] = f'attachment; filename="{pdf_file.name.replace(".pdf", "_split.zip")}"'
+        
+        return response
+        
+    except Exception as e:
+        return JsonResponse({'error': f'Error: {str(e)}'}, status=500)
+
 
 
 @csrf_exempt
