@@ -45,19 +45,19 @@ def ai_finder_api(request):
         # Use Gemini API
         genai.configure(api_key=settings.GEMINI_API_KEY)
         
-        # Try different model names
-        model_names = ['gemini-1.5-flash', 'gemini-pro', 'gemini-1.0-pro', 'models/gemini-pro']
-        model = None
-        
-        for model_name in model_names:
-            try:
-                model = genai.GenerativeModel(model_name)
-                break
-            except:
-                continue
-        
-        if not model:
-            return JsonResponse({'error': 'No available Gemini model found'}, status=503)
+        # List available models and find working one
+        try:
+            models = genai.list_models()
+            available_models = [m.name for m in models if 'generateContent' in m.supported_generation_methods]
+            
+            if not available_models:
+                return JsonResponse({'error': 'No models support generateContent'}, status=503)
+            
+            # Use first available model
+            model = genai.GenerativeModel(available_models[0])
+            
+        except Exception as model_error:
+            return JsonResponse({'error': f'Model setup failed: {str(model_error)}'}, status=503)
         
         prompt = f"""
 User needs: "{query}"
