@@ -40,9 +40,16 @@
                     </div>
                     
                     <div class="text-center">
-                        <button class="btn btn-info btn-lg" onclick="pingTest()">
+                        <button class="btn btn-info btn-lg" id="pingBtn" onclick="pingTest()">
                             <i class="fas fa-play"></i> {% trans "Start Ping" %}
                         </button>
+                    </div>
+                    
+                    <div id="loadingSpinner" class="text-center mt-3" style="display:none;">
+                        <div class="spinner-border text-info" role="status">
+                            <span class="visually-hidden">{% trans "Pinging..." %}</span>
+                        </div>
+                        <p class="mt-2">{% trans "Pinging target, please wait..." %}</p>
                     </div>
                     
                     <div id="pingResult" class="mt-4" style="display:none;"></div>
@@ -53,7 +60,11 @@
 </div>
 
 <script>
+let isPinging = false;
+
 async function pingTest() {
+    if (isPinging) return;
+    
     const target = document.getElementById('pingTarget').value.trim();
     const count = document.getElementById('pingCount').value;
     
@@ -62,32 +73,87 @@ async function pingTest() {
         return;
     }
     
+    isPinging = true;
+    document.getElementById('pingBtn').disabled = true;
+    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('pingResult').style.display = 'none';
+    
     try {
-        const response = await fetch('/network/api/ping-test/', {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 20000);
+        
+        const response = await fetch('{% url "network_tools:ping_test_api" %}', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ target: target, count: parseInt(count) })
+            body: JSON.stringify({ target: target, count: parseInt(count) }),
+            signal: controller.signal
         });
         
+        clearTimeout(timeoutId);
         const data = await response.json();
         
         if (response.ok && data.status === 'success') {
-            document.getElementById('pingResult').innerHTML = `
-                <div class="alert alert-success">
-                    <h4>Ping Sonucu: ${data.target}</h4>
-                    <p>Gönderilen: ${data.packets_sent} paket</p>
-                    <p>Alınan: ${data.packets_received} paket</p>
-                    <p>Kayıp: %${data.packet_loss}</p>
-                    <p>Ortalama Süre: ${data.avg_time}ms</p>
-                </div>
-            `;
-            document.getElementById('pingResult').style.display = 'block';
+            displayPingResult(data);
         } else {
-            alert('{% trans "Ping failed" %}: ' + (data.error || '{% trans "Unknown error" %}'));
+            showError('{% trans "Ping failed" %}: ' + (data.error || '{% trans "Unknown error" %}'));
         }
     } catch (error) {
-        alert('{% trans "Connection error" %}: ' + error.message);
+        if (error.name === 'AbortError') {
+            showError('{% trans "Ping timeout. Please try again." %}');
+        } else {
+            showError('{% trans "Connection error" %}: ' + error.message);
+        }
+    } finally {
+        isPinging = false;
+        document.getElementById('pingBtn').disabled = false;
+        document.getElementById('loadingSpinner').style.display = 'none';
     }
 }
+
+function displayPingResult(data) {
+    const resultDiv = document.getElementById('pingResult');
+    
+    resultDiv.innerHTML = `
+        <div class="alert alert-success">
+            <h4><i class="fas fa-check-circle"></i> {% trans "Ping Result" %}: ${data.target}</h4>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <tr><th>{% trans "Packets Sent" %}:</th><td>${data.packets_sent}</td></tr>
+                    <tr><th>{% trans "Packets Received" %}:</th><td>${data.packets_received}</td></tr>
+                    <tr><th>{% trans "Packet Loss" %}:</th><td>${data.packet_loss}%</td></tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-striped">
+                    <tr><th>{% trans "Min Time" %}:</th><td>${data.min_time}ms</td></tr>
+                    <tr><th>{% trans "Max Time" %}:</th><td>${data.max_time}ms</td></tr>
+                    <tr><th>{% trans "Avg Time" %}:</th><td>${data.avg_time}ms</td></tr>
+                </table>
+            </div>
+        </div>
+    `;
+    
+    resultDiv.style.display = 'block';
+}
+
+function showError(message) {
+    const resultDiv = document.getElementById('pingResult');
+    resultDiv.innerHTML = `
+        <div class="alert alert-danger">
+            <i class="fas fa-exclamation-triangle"></i> ${message}
+        </div>
+    `;
+    resultDiv.style.display = 'block';
+}
+
+// Enter tuşu ile ping
+document.getElementById('pingTarget').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && !isPinging) {
+        pingTest();
+    }
+});
 </script>
 {% endblock %}
