@@ -35,108 +35,58 @@ def ai_finder_api(request):
         if not query:
             return JsonResponse({'error': 'Query required'}, status=400)
         
-        # Try Gemini API first
-        if GEMINI_AVAILABLE and settings.GEMINI_API_KEY:
-            try:
-                genai.configure(api_key=settings.GEMINI_API_KEY)
-                model = genai.GenerativeModel('gemini-pro')
-                
-                prompt = f"""
-User needs: "{query}"
+        # Check if Gemini is available
+        if not GEMINI_AVAILABLE:
+            return JsonResponse({'error': 'AI service not available - missing library'}, status=503)
+        
+        if not settings.GEMINI_API_KEY:
+            return JsonResponse({'error': 'AI service not configured'}, status=503)
+        
+        # Use Gemini API
+        genai.configure(api_key=settings.GEMINI_API_KEY)
+        model = genai.GenerativeModel('gemini-pro')
+        
+        prompt = f"""
+User query: "{query}"
 
-Provide 5 specific AI tools for this exact need. For each tool, provide:
-1. Name
-2. What it does (specific to the user's need)
-3. How to use it (step-by-step)
-4. Pricing
-5. Website URL
+Find 8-10 best AI tools/websites for this specific need. Include both popular and newer tools. For each tool provide:
 
-Format as JSON:
+1. Name (exact tool name)
+2. Description (what it does for this specific need)
+3. How to use (detailed step-by-step instructions)
+4. Pricing (specific prices, free tiers, etc.)
+5. Website URL (real working URL)
+
+Include tools like Sora, Veo, Luma Dream Machine, Kling AI for video needs.
+Include latest and most relevant tools available in 2024.
+
+Return ONLY valid JSON array:
 [
   {{
     "name": "Tool Name",
-    "description": "Specific description for user's need",
+    "description": "What it does for user's specific need",
     "how_to_use": "Step 1: ... Step 2: ... Step 3: ...",
-    "pricing": "Free/Paid/Freemium with details",
-    "url": "https://example.com"
+    "pricing": "Detailed pricing info",
+    "url": "https://real-website.com"
   }}
 ]
-
-Only return valid JSON array.
 """
-                
-                response = model.generate_content(prompt)
-                ai_tools = json.loads(response.text)
-                
-                return JsonResponse({
-                    'query': query,
-                    'tools': ai_tools,
-                    'count': len(ai_tools)
-                })
-                
-            except Exception as gemini_error:
-                # Fall back to manual recommendations
-                pass
         
-        # Fallback: Manual recommendations based on query
-        query_lower = query.lower()
+        response = model.generate_content(prompt)
         
-        if 'video' in query_lower:
-            tools = [
-                {
-                    "name": "Runway ML",
-                    "description": "AI video generation and editing platform",
-                    "how_to_use": "1. Sign up at runway.ml 2. Choose 'Gen-2' for text-to-video 3. Enter your prompt 4. Wait 1-2 minutes for generation 5. Download your video",
-                    "pricing": "Free: 125 credits/month, Paid: $12-35/month",
-                    "url": "https://runway.ml"
-                },
-                {
-                    "name": "Pika Labs",
-                    "description": "Text-to-video AI generator",
-                    "how_to_use": "1. Join Discord server 2. Use /create command 3. Type your video description 4. Wait for generation 5. Download result",
-                    "pricing": "Free with Discord, Paid plans available",
-                    "url": "https://pika.art"
-                },
-                {
-                    "name": "Synthesia",
-                    "description": "AI avatar video creation",
-                    "how_to_use": "1. Choose avatar 2. Write script 3. Select voice 4. Generate video 5. Download or share",
-                    "pricing": "Paid: $22-67/month",
-                    "url": "https://synthesia.io"
-                }
-            ]
-        elif 'image' in query_lower or 'photo' in query_lower:
-            tools = [
-                {
-                    "name": "Midjourney",
-                    "description": "High-quality AI image generation",
-                    "how_to_use": "1. Join Discord 2. Use /imagine command 3. Type detailed prompt 4. Choose variation 5. Upscale image",
-                    "pricing": "Paid: $10-60/month",
-                    "url": "https://midjourney.com"
-                },
-                {
-                    "name": "DALL-E 3",
-                    "description": "OpenAI's image generator",
-                    "how_to_use": "1. Go to ChatGPT Plus 2. Ask to create image 3. Describe what you want 4. Get 4 variations 5. Download",
-                    "pricing": "ChatGPT Plus: $20/month",
-                    "url": "https://chat.openai.com"
-                }
-            ]
-        else:
-            tools = [
-                {
-                    "name": "ChatGPT",
-                    "description": "AI assistant for your specific need",
-                    "how_to_use": "1. Go to chat.openai.com 2. Create account 3. Type your request clearly 4. Ask follow-up questions 5. Copy results",
-                    "pricing": "Free version available, Plus: $20/month",
-                    "url": "https://chat.openai.com"
-                }
-            ]
+        # Clean and parse response
+        response_text = response.text.strip()
+        if response_text.startswith('```json'):
+            response_text = response_text[7:-3]
+        elif response_text.startswith('```'):
+            response_text = response_text[3:-3]
+        
+        ai_tools = json.loads(response_text)
         
         return JsonResponse({
             'query': query,
-            'tools': tools,
-            'count': len(tools)
+            'tools': ai_tools,
+            'count': len(ai_tools)
         })
             
     except Exception as e:
