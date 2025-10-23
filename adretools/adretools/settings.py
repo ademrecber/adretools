@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production')
 
 # Google Gemini AI API Key
-GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'AIzaSyD8_GZDCBax_bFxECqy7o7OM6OZ84pR1tM')
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
 
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 

@@ -35,7 +35,7 @@ def ai_finder_api(request):
         if not query:
             return JsonResponse({'error': 'Query required'}, status=400)
         
-        if not GEMINI_AVAILABLE:
+        if not GEMINI_AVAILABLE or not settings.GEMINI_API_KEY:
             return JsonResponse({'error': 'AI service temporarily unavailable'}, status=503)
         
         # Configure Gemini
