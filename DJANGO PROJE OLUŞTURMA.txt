@@ -42,8 +42,6 @@ django-admin compilemessages
 
 cd C:\adretools\adretools
 venv\Scripts\activate
-python manage.py makemessages -l tr 
-python manage.py makemessages -l fr 
 
 python manage.py makemessages -l tr --no-location
 
