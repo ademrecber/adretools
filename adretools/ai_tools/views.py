@@ -47,27 +47,24 @@ def ai_finder_api(request):
         model = genai.GenerativeModel('gemini-pro')
         
         prompt = f"""
-User query: "{query}"
+User needs: "{query}"
 
-Find 8-10 best AI tools/websites for this specific need. Include both popular and newer tools. For each tool provide:
+Find the best current AI tools for this specific need. Include both popular and newest available tools. For each tool provide:
 
-1. Name (exact tool name)
-2. Description (what it does for this specific need)
-3. How to use (detailed step-by-step instructions)
-4. Pricing (specific prices, free tiers, etc.)
-5. Website URL (real working URL)
-
-Include tools like Sora, Veo, Luma Dream Machine, Kling AI for video needs.
-Include latest and most relevant tools available in 2024.
+1. Name
+2. Description (specific to user's need)
+3. How to use (step-by-step)
+4. Pricing
+5. Website URL
 
 Return ONLY valid JSON array:
 [
   {{
     "name": "Tool Name",
-    "description": "What it does for user's specific need",
+    "description": "What it does for user's need",
     "how_to_use": "Step 1: ... Step 2: ... Step 3: ...",
-    "pricing": "Detailed pricing info",
-    "url": "https://real-website.com"
+    "pricing": "Pricing details",
+    "url": "https://website.com"
   }}
 ]
 """
