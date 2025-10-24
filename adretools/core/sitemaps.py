@@ -17,60 +17,23 @@ class StaticViewSitemap(Sitemap):
             'network_tools:home', 'dev_tools:home',
             'dev_tools:xml_formatter', 'dev_tools:invoice_viewer',
             
-            # QR Tools SEO (doğru isimler)
-            'qr_tools:qr_generator_tr', 'qr_tools:qr_generator_en',
-            'qr_tools:barcode_generator_tr', 'qr_tools:barcode_generator_en',
-            
-            # Image Tools SEO
-            'image_tools:resize_image_tr', 'image_tools:resize_image_en',
-            'image_tools:crop_image_tr', 'image_tools:crop_image_en',
-            'image_tools:compress_image_tr', 'image_tools:compress_image_en',
-            
-            # Password Tools SEO
-            'password_tools:password_generator_tr', 'password_tools:password_generator_en',
-            'password_tools:strong_password_tr', 'password_tools:strong_password_en',
-            
-            # Text Tools SEO
-            'text_tools:word_counter_tr', 'text_tools:word_counter_en',
-            'text_tools:text_analyzer_tr', 'text_tools:text_analyzer_en',
-            
-            # URL Tools SEO
-            'url_tools:url_shortener_tr', 'url_tools:url_shortener_en',
-            'url_tools:link_shortener_tr', 'url_tools:link_shortener_en',
-            
-            # Color Tools SEO
-            'color_tools:color_picker_tr', 'color_tools:color_picker_en',
-            'color_tools:hex_color_tr', 'color_tools:hex_color_en',
-            
-            # Calculator Tools SEO
-            'calculator_tools:bmi_calculator', 'calculator_tools:bmi_calculator_tr',
-            'calculator_tools:age_calculator', 'calculator_tools:age_calculator_tr',
-            
-            # Random Tools SEO
-            'random_tools:random_number_seo', 'random_tools:random_number_tr',
-            'random_tools:lucky_wheel_seo', 'random_tools:lucky_wheel_tr',
-            
-            # Converter Tools SEO
-            'converter_tools:unit_converter_tr', 'converter_tools:unit_converter_en',
-            'converter_tools:temperature_converter_tr', 'converter_tools:temperature_converter_en',
-            
-            # SVG Tools SEO
-            'svg_tools:svg_editor_tr', 'svg_tools:svg_editor_en',
-            'svg_tools:image_to_svg_tr', 'svg_tools:image_to_svg_en',
-            
-            # Horoscope Tools SEO
-            'horoscope_tools:horoscope_calculator_tr', 'horoscope_tools:horoscope_calculator_en',
-            
-            # PDF Tools SEO
-            'pdf_tools:merge_pdf_tr', 'pdf_tools:merge_pdf_en',
-            'pdf_tools:split_pdf_tr', 'pdf_tools:split_pdf_en',
-            'pdf_tools:encrypt_pdf_tr', 'pdf_tools:encrypt_pdf_en',
-            'pdf_tools:watermark_pdf_tr', 'pdf_tools:watermark_pdf_en',
-            'pdf_tools:compress_pdf_tr', 'pdf_tools:compress_pdf_en',
-            'pdf_tools:pdf_to_word_tr', 'pdf_tools:pdf_to_word_en',
-            'pdf_tools:pdf_to_excel_tr', 'pdf_tools:pdf_to_excel_en',
-            'pdf_tools:free_merge_pdf_tr', 'pdf_tools:free_merge_pdf_en',
-            'pdf_tools:online_pdf_editor_tr', 'pdf_tools:online_pdf_editor_en',
+            # Global English URLs (Primary)
+            'qr_tools:qr_generator_en', 'qr_tools:barcode_generator_en',
+            'image_tools:resize_image_en', 'image_tools:crop_image_en', 'image_tools:compress_image_en',
+            'password_tools:password_generator_en', 'password_tools:strong_password_en',
+            'text_tools:word_counter_en', 'text_tools:text_analyzer_en',
+            'url_tools:url_shortener_en', 'url_tools:link_shortener_en',
+            'color_tools:color_picker_en', 'color_tools:hex_color_en',
+            'calculator_tools:bmi_calculator', 'calculator_tools:age_calculator',
+            'random_tools:random_number_seo', 'random_tools:lucky_wheel_seo',
+            'converter_tools:unit_converter_en', 'converter_tools:temperature_converter_en',
+            'svg_tools:svg_editor_en', 'svg_tools:image_to_svg_en',
+            'horoscope_tools:horoscope_calculator_en',
+            'pdf_tools:merge_pdf_en', 'pdf_tools:split_pdf_en',
+            'pdf_tools:encrypt_pdf_en', 'pdf_tools:watermark_pdf_en',
+            'pdf_tools:compress_pdf_en', 'pdf_tools:pdf_to_word_en',
+            'pdf_tools:pdf_to_excel_en', 'pdf_tools:free_merge_pdf_en',
+            'pdf_tools:online_pdf_editor_en',
         ]
 
     def location(self, item):
@@ -79,13 +42,13 @@ class StaticViewSitemap(Sitemap):
     def priority(self, item):
         # Popüler araçlara daha yüksek öncelik
         high_priority = [
-            'qr_tools:qr_generator_tr', 'qr_tools:qr_generator_en',
-            'image_tools:resize_image_tr', 'image_tools:resize_image_en', 
-            'password_tools:password_generator_tr', 'password_tools:password_generator_en',
-            'calculator_tools:bmi_calculator_tr', 'calculator_tools:bmi_calculator_seo',
-            'random_tools:random_number_tr', 'random_tools:random_number_seo',
-            'pdf_tools:merge_pdf_tr', 'pdf_tools:merge_pdf_en',
-            'pdf_tools:split_pdf_tr', 'pdf_tools:split_pdf_en',
+            'qr_tools:qr_generator_en', 'qr_tools:barcode_generator_en',
+            'image_tools:resize_image_en', 'image_tools:compress_image_en',
+            'password_tools:password_generator_en',
+            'calculator_tools:bmi_calculator', 'calculator_tools:age_calculator',
+            'random_tools:random_number_seo',
+            'pdf_tools:merge_pdf_en', 'pdf_tools:split_pdf_en',
+            'text_tools:word_counter_en', 'converter_tools:unit_converter_en',
         ]
         
         if item in high_priority:

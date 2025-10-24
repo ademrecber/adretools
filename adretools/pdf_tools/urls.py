@@ -1,5 +1,6 @@
 from django.urls import path
 from django.views.generic import TemplateView
+from django.http import HttpResponsePermanentRedirect
 from . import views
 
 app_name = 'pdf_tools'
@@ -15,21 +16,23 @@ urlpatterns = [
     path('merge/', views.merge_pdf, name='merge_pdf'),
     path('compress/', views.compress_pdf, name='compress_pdf'),
     
-    # SEO optimized URLs
-    path('pdf-birlestir/', views.pdf_home, name='merge_pdf_tr'),
+    # English URLs (Primary)
     path('merge-pdf/', views.pdf_home, name='merge_pdf_en'),
-    path('pdf-bol/', views.pdf_home, name='split_pdf_tr'),
     path('split-pdf/', views.pdf_home, name='split_pdf_en'),
-    path('pdf-sifrele/', views.pdf_home, name='encrypt_pdf_tr'),
     path('encrypt-pdf/', views.pdf_home, name='encrypt_pdf_en'),
-    path('pdf-filigran/', views.pdf_home, name='watermark_pdf_tr'),
     path('watermark-pdf/', views.pdf_home, name='watermark_pdf_en'),
-    path('pdf-sikistir/', views.pdf_home, name='compress_pdf_tr'),
     path('compress-pdf/', views.pdf_home, name='compress_pdf_en'),
-    path('pdf-word-donustur/', views.pdf_home, name='pdf_to_word_tr'),
     path('pdf-to-word/', views.pdf_home, name='pdf_to_word_en'),
-    path('pdf-excel-donustur/', views.pdf_home, name='pdf_to_excel_tr'),
     path('pdf-to-excel/', views.pdf_home, name='pdf_to_excel_en'),
+    
+    # Turkish redirects to English
+    path('pdf-birlestir/', lambda r: HttpResponsePermanentRedirect('/pdf/merge-pdf/'), name='merge_pdf_tr'),
+    path('pdf-bol/', lambda r: HttpResponsePermanentRedirect('/pdf/split-pdf/'), name='split_pdf_tr'),
+    path('pdf-sifrele/', lambda r: HttpResponsePermanentRedirect('/pdf/encrypt-pdf/'), name='encrypt_pdf_tr'),
+    path('pdf-filigran/', lambda r: HttpResponsePermanentRedirect('/pdf/watermark-pdf/'), name='watermark_pdf_tr'),
+    path('pdf-sikistir/', lambda r: HttpResponsePermanentRedirect('/pdf/compress-pdf/'), name='compress_pdf_tr'),
+    path('pdf-word-donustur/', lambda r: HttpResponsePermanentRedirect('/pdf/pdf-to-word/'), name='pdf_to_word_tr'),
+    path('pdf-excel-donustur/', lambda r: HttpResponsePermanentRedirect('/pdf/pdf-to-excel/'), name='pdf_to_excel_tr'),
     
     # Popüler arama terimleri
     path('ucretsiz-pdf-birlestir/', views.pdf_home, name='free_merge_pdf_tr'),
