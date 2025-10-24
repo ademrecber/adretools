@@ -14,7 +14,7 @@ class StaticViewSitemap(Sitemap):
             'password_tools:home', 'calculator_tools:home', 'random_tools:home',
             'text_tools:home', 'url_tools:home', 'color_tools:home',
             'converter_tools:home', 'svg_tools:home', 'horoscope_tools:home',
-            'network_tools:home', 'dev_tools:home',
+            'network_tools:home', 'dev_tools:home', 'ai_tools:home',
             'dev_tools:xml_formatter', 'dev_tools:invoice_viewer',
             
             # Global English URLs (Primary)
@@ -34,6 +34,7 @@ class StaticViewSitemap(Sitemap):
             'pdf_tools:compress_pdf_en', 'pdf_tools:pdf_to_word_en',
             'pdf_tools:pdf_to_excel_en', 'pdf_tools:free_merge_pdf_en',
             'pdf_tools:online_pdf_editor_en',
+            'ai_tools:ai_finder_page',
         ]
 
     def location(self, item):
