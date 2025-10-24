@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib.sitemaps.views import sitemap
+from django.http import HttpResponsePermanentRedirect
 from core.sitemaps import StaticViewSitemap
 
 sitemaps = {
@@ -16,6 +17,8 @@ urlpatterns = [
     path('sitemap.xml', TemplateView.as_view(template_name='sitemap.xml', content_type='application/xml')),
     path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     path('ads.txt', TemplateView.as_view(template_name='ads.txt', content_type='text/plain')),
+    # Language redirects
+    path('en/', lambda r: HttpResponsePermanentRedirect('/')),
 ]
 
 urlpatterns += i18n_patterns(

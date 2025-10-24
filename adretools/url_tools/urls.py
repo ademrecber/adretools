@@ -7,7 +7,7 @@ urlpatterns = [
     path('', views.url_home, name='home'),
     path('shorten/', views.shorten_url, name='shorten_url'),
     path('stats/', views.get_stats, name='get_stats'),
-    path('<str:short_code>/', views.redirect_url, name='redirect_url'),
+    path('r/<str:short_code>/', views.redirect_url, name='redirect_url'),
     
     # English URLs (Primary)
     path('url-shortener/', views.url_home, name='url_shortener_en'),
