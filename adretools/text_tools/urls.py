@@ -8,13 +8,9 @@ urlpatterns = [
     path('encode/', views.encode_text, name='encode_text'),
     path('format/', views.format_text, name='format_text'),
     
-    # SEO optimized URLs
-    path('metin-analiz/', views.text_home, name='text_analyzer_tr'),
+    # English URLs (Primary)
     path('text-analyzer/', views.text_home, name='text_analyzer_en'),
-    path('kelime-sayaci/', views.text_home, name='word_counter_tr'),
     path('word-counter/', views.text_home, name='word_counter_en'),
-    path('metin-donusturucu/', views.text_home, name='text_converter_tr'),
     path('text-converter/', views.text_home, name='text_converter_en'),
-    path('base64-encode/', views.text_home, name='base64_encoder_en'),
-    path('base64-kodlama/', views.text_home, name='base64_encoder_tr'),
+    path('base64-encoder/', views.text_home, name='base64_encoder_en'),
 ]
