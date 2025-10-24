@@ -58,40 +58,6 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link text-white" href="{% url 'blog:blog_home' %}">Blog</a>
-                <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
-                        <i class="fas fa-globe"></i> 
-                        {% get_current_language as LANGUAGE_CODE %}
-                        {% if LANGUAGE_CODE == 'en' %}English
-                        {% elif LANGUAGE_CODE == 'tr' %}Türkçe
-                        {% elif LANGUAGE_CODE == 'fr' %}Français
-                        {% elif LANGUAGE_CODE == 'es' %}Español
-                        {% endif %}
-                    </a>
-                    <ul class="dropdown-menu">
-                        {% get_available_languages as LANGUAGES %}
-                        {% get_language_info_list for LANGUAGES as languages %}
-                        {% for language in languages %}
-                            <li>
-                                <form action="/i18n/setlang/" method="post" class="d-inline">
-                                    {% csrf_token %}
-                                    <input name="next" type="hidden" value="{{ request.get_full_path }}" />
-                                    <input name="language" type="hidden" value="{{ language.code }}" />
-                                    <button type="submit" class="dropdown-item {% if language.code == LANGUAGE_CODE %}active{% endif %}">
-                                        {% if language.code == 'en' %}
-                                            <i class="fas fa-flag-usa"></i> English
-                                        {% elif language.code == 'tr' %}
-                                            <i class="fas fa-flag"></i> Türkçe
-                                        {% elif language.code == 'fr' %}
-                                            <i class="fas fa-flag"></i> Français
-                                        {% elif language.code == 'es' %}
-                                            <i class="fas fa-flag"></i> Español
-                                        {% endif %}
-                                    </button>
-                                </form>
-                            </li>
-                        {% endfor %}
-                    </ul>
                 </div>
             </div>
         </div>
