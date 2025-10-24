@@ -28,12 +28,5 @@ Allow: /random/
 Allow: /ai/
 Allow: /blog/
 
-# SEO pages
-Allow: /qr/qr-code-generator/
-Allow: /image/image-resize/
-Allow: /pdf/merge-pdf/
-Allow: /password/password-generator/
-Allow: /calculator/bmi-calculator/
-
 # Crawl settings for global reach
 Crawl-delay: 0.5
