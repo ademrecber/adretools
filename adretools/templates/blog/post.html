@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ post.title }} - AdreTools Blog{% endblock %}
+{% block meta_description %}{{ post.meta_description }}{% endblock %}
+
+{% block extra_head %}
+<meta property="og:title" content="{{ post.title }}">
+<meta property="og:description" content="{{ post.meta_description }}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="article:published_time" content="{{ post.created_at|date:'c' }}">
+<meta property="article:modified_time" content="{{ post.updated_at|date:'c' }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ post.title }}">
+<meta name="twitter:description" content="{{ post.meta_description }}">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ post.title }}",
+  "description": "{{ post.meta_description }}",
+  "datePublished": "{{ post.created_at|date:'c' }}",
+  "dateModified": "{{ post.updated_at|date:'c' }}",
+  "author": {
+    "@type": "Organization",
+    "name": "AdreTools"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "AdreTools",
+    "url": "https://adretools.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ request.build_absolute_uri }}"
+  }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <nav aria-label="breadcrumb" class="mb-4">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'core:home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'blog:blog_home' %}">Blog</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
+                </ol>
+            </nav>
+            
+            <article class="blog-post">
+                <header class="mb-4">
+                    <h1 class="display-5 fw-bold mb-3">{{ post.title }}</h1>
+                    <div class="text-muted mb-3">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        <time datetime="{{ post.created_at|date:'c' }}">{{ post.created_at|date:"F d, Y" }}</time>
+                        {% if post.updated_at != post.created_at %}
+                        <span class="ms-3">
+                            <i class="fas fa-edit me-2"></i>
+                            Updated: <time datetime="{{ post.updated_at|date:'c' }}">{{ post.updated_at|date:"F d, Y" }}</time>
+                        </span>
+                        {% endif %}
+                    </div>
+                </header>
+                
+                <div class="blog-content">
+                    {{ post.content|safe }}
+                </div>
+                
+                <footer class="mt-5 pt-4 border-top">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Related Tools:</h6>
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="{% url 'core:home' %}" class="btn btn-outline-primary btn-sm">All Tools</a>
+                                {% if 'pdf' in post.slug %}
+                                <a href="/pdf/" class="btn btn-outline-danger btn-sm">PDF Tools</a>
+                                {% elif 'qr' in post.slug %}
+                                <a href="/qr/" class="btn btn-outline-primary btn-sm">QR Tools</a>
+                                {% elif 'password' in post.slug %}
+                                <a href="/password/" class="btn btn-outline-dark btn-sm">Password Tools</a>
+                                {% elif 'url' in post.slug %}
+                                <a href="/url/" class="btn btn-outline-info btn-sm">URL Tools</a>
+                                {% elif 'color' in post.slug %}
+                                <a href="/color/" class="btn btn-outline-danger btn-sm">Color Tools</a>
+                                {% elif 'text' in post.slug %}
+                                <a href="/text/" class="btn btn-outline-secondary btn-sm">Text Tools</a>
+                                {% elif 'image' in post.slug %}
+                                <a href="/image/" class="btn btn-outline-success btn-sm">Image Tools</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-md-end">
+                            <h6>Share this guide:</h6>
+                            <div class="d-flex justify-content-md-end gap-2">
+                                <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri|urlencode }}&text={{ post.title|urlencode }}" 
+                                   class="btn btn-outline-info btn-sm" target="_blank">
+                                    <i class="fab fa-twitter"></i> Twitter
+                                </a>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}" 
+                                   class="btn btn-outline-primary btn-sm" target="_blank">
+                                    <i class="fab fa-facebook"></i> Facebook
+                                </a>
+                                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri|urlencode }}" 
+                                   class="btn btn-outline-dark btn-sm" target="_blank">
+                                    <i class="fab fa-linkedin"></i> LinkedIn
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </div>
+</div>
+
+<style>
+.blog-content h2 {
+    color: #2c3e50;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.blog-content h3 {
+    color: #34495e;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+}
+
+.blog-content p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.blog-content ul, .blog-content ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.blog-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.blog-content strong {
+    color: #2c3e50;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+}
+</style>
+{% endblock %}

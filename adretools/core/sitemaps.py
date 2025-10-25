@@ -1,5 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
+from blog.models import BlogPost
 
 class StaticViewSitemap(Sitemap):
     priority = 0.8
@@ -35,6 +36,7 @@ class StaticViewSitemap(Sitemap):
             'pdf_tools:pdf_to_excel_en', 'pdf_tools:free_merge_pdf_en',
             'pdf_tools:online_pdf_editor_en',
             'ai_tools:ai_finder_page',
+            'blog:blog_home',
         ]
 
     def location(self, item):
@@ -55,3 +57,16 @@ class StaticViewSitemap(Sitemap):
         if item in high_priority:
             return 1.0
         return 0.8
+
+class BlogSitemap(Sitemap):
+    changefreq = 'monthly'
+    priority = 0.7
+    
+    def items(self):
+        return BlogPost.objects.filter(is_published=True)
+    
+    def lastmod(self, obj):
+        return obj.updated_at
+    
+    def location(self, obj):
+        return reverse('blog:blog_post', args=[obj.slug])

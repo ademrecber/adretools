@@ -6,10 +6,11 @@ from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib.sitemaps.views import sitemap
 from django.http import HttpResponsePermanentRedirect
-from core.sitemaps import StaticViewSitemap
+from core.sitemaps import StaticViewSitemap, BlogSitemap
 
 sitemaps = {
     'static': StaticViewSitemap,
+    'blog': BlogSitemap,
 }
 
 urlpatterns = [
