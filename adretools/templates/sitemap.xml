@@ -231,6 +231,18 @@
         <changefreq>monthly</changefreq>
     </url>
     
+    <!-- AI Tools SEO URLs -->
+    <url>
+        <loc>https://adretools.com/ai/</loc>
+        <priority>0.8</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/ai/ai-finder/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
     <!-- Blog SEO URLs -->
     <url>
         <loc>https://adretools.com/blog/</loc>
@@ -238,19 +250,44 @@
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://adretools.com/blog/rehberler/</loc>
-        <priority>0.9</priority>
-        <changefreq>weekly</changefreq>
+        <loc>https://adretools.com/blog/how-to-split-pdf-files-online/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://adretools.com/blog/nasil-kullanilir/</loc>
-        <priority>0.9</priority>
-        <changefreq>weekly</changefreq>
+        <loc>https://adretools.com/blog/pdf-merge-tutorial-combine-multiple-pdfs/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://adretools.com/blog/arac-rehberleri/</loc>
-        <priority>0.9</priority>
-        <changefreq>weekly</changefreq>
+        <loc>https://adretools.com/blog/qr-code-generator-guide-create-custom-codes/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/blog/image-optimization-resize-convert-images-online/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/blog/password-security-generate-strong-passwords/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/blog/url-shortener-benefits-create-short-links/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/blog/color-theory-designers-pick-perfect-colors/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/blog/text-analysis-tools-analyze-content-effectively/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
     </url>
     
     <!-- Legal & Info Pages -->
