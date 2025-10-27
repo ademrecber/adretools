@@ -45,8 +45,8 @@ def ai_finder_api(request):
         # Use Gemini API with rate limiting
         genai.configure(api_key=settings.GEMINI_API_KEY)
         
-        # Use gemini-1.5-flash (lighter model)
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        # Use gemini-pro (stable free model)
+        model = genai.GenerativeModel('gemini-pro')
         
         # Add generation config for better rate limiting
         generation_config = {
