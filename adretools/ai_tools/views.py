@@ -42,22 +42,19 @@ def ai_finder_api(request):
         if not settings.GEMINI_API_KEY:
             return JsonResponse({'error': 'AI service not configured'}, status=503)
         
-        # Use Gemini API
+        # Use Gemini API with rate limiting
         genai.configure(api_key=settings.GEMINI_API_KEY)
         
-        # List available models and find working one
-        try:
-            models = genai.list_models()
-            available_models = [m.name for m in models if 'generateContent' in m.supported_generation_methods]
-            
-            if not available_models:
-                return JsonResponse({'error': 'No models support generateContent'}, status=503)
-            
-            # Use first available model
-            model = genai.GenerativeModel(available_models[0])
-            
-        except Exception as model_error:
-            return JsonResponse({'error': f'Model setup failed: {str(model_error)}'}, status=503)
+        # Use gemini-1.5-flash (lighter model)
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        
+        # Add generation config for better rate limiting
+        generation_config = {
+            'temperature': 0.7,
+            'top_p': 0.8,
+            'top_k': 40,
+            'max_output_tokens': 2048,
+        }
         
         prompt = f"""
 User needs: "{query}"
@@ -82,7 +79,10 @@ Return ONLY valid JSON array:
 ]
 """
         
-        response = model.generate_content(prompt)
+        response = model.generate_content(
+            prompt,
+            generation_config=generation_config
+        )
         
         # Clean and parse response
         response_text = response.text.strip()
@@ -100,10 +100,27 @@ Return ONLY valid JSON array:
         })
             
     except Exception as e:
-        error_msg = str(e)
-        if '429' in error_msg or 'quota' in error_msg.lower():
+        error_msg = str(e).lower()
+        
+        # Handle different types of API errors
+        if '429' in error_msg or 'quota' in error_msg or 'rate limit' in error_msg:
             return JsonResponse({
-                'error': 'AI service temporarily unavailable due to high usage. Please try again later or upgrade to premium for unlimited access.',
-                'retry_later': True
+                'error': 'API rate limit exceeded. Please wait a moment and try again.',
+                'retry_after': 60,
+                'type': 'rate_limit'
             }, status=429)
-        return JsonResponse({'error': f'AI Finder error: {str(e)}'}, status=500)
+        elif 'api key' in error_msg or 'authentication' in error_msg:
+            return JsonResponse({
+                'error': 'API authentication failed. Please contact support.',
+                'type': 'auth_error'
+            }, status=401)
+        elif 'blocked' in error_msg or 'safety' in error_msg:
+            return JsonResponse({
+                'error': 'Request blocked by safety filters. Please rephrase your query.',
+                'type': 'safety_error'
+            }, status=400)
+        else:
+            return JsonResponse({
+                'error': f'AI service error: {str(e)}',
+                'type': 'general_error'
+            }, status=500)

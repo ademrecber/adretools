@@ -107,6 +107,9 @@ async function findAITools() {
         
         if (response.ok) {
             displayAIResults(data);
+        } else if (response.status === 429) {
+            // Rate limit - show retry option
+            showRetryError(data.error, data.retry_after || 60);
         } else {
             showError('{% trans "AI search failed" %}: ' + data.error);
         }
@@ -180,11 +183,53 @@ function showError(message) {
     resultsDiv.style.display = 'flex';
 }
 
+function showRetryError(message, retryAfter) {
+    const resultsDiv = document.getElementById('aiResults');
+    resultsDiv.innerHTML = `
+        <div class="col-12">
+            <div class="alert alert-warning">
+                <i class="fas fa-clock"></i> ${message}
+                <br><br>
+                <button class="btn btn-warning btn-sm" onclick="retryAfterDelay(${retryAfter})">
+                    <i class="fas fa-redo"></i> {% trans "Retry in" %} ${retryAfter} {% trans "seconds" %}
+                </button>
+            </div>
+        </div>
+    `;
+    resultsDiv.style.display = 'flex';
+}
+
+function retryAfterDelay(seconds) {
+    const btn = event.target;
+    btn.disabled = true;
+    
+    let countdown = seconds;
+    const interval = setInterval(() => {
+        btn.innerHTML = `<i class="fas fa-clock"></i> {% trans "Retry in" %} ${countdown} {% trans "seconds" %}`;
+        countdown--;
+        
+        if (countdown < 0) {
+            clearInterval(interval);
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-redo"></i> {% trans "Try Again" %}';
+            btn.onclick = findAITools;
+        }
+    }, 1000);
+}
+
 // Enter key support
 document.getElementById('aiQuery').addEventListener('keypress', function(e) {
     if (e.key === 'Enter' && e.ctrlKey && !isSearching) {
         findAITools();
     }
 });
+
+// Auto-retry on page load if there was a rate limit
+if (localStorage.getItem('ai_finder_retry')) {
+    const retryTime = parseInt(localStorage.getItem('ai_finder_retry'));
+    if (Date.now() > retryTime) {
+        localStorage.removeItem('ai_finder_retry');
+    }
+}
 </script>
 {% endblock %}
