@@ -3,6 +3,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 import json
+import hashlib
+import time
 
 try:
     import google.generativeai as genai
@@ -34,6 +36,15 @@ def ai_finder_api(request):
         
         if not query:
             return JsonResponse({'error': 'Query required'}, status=400)
+        
+        # Simple cache check
+        query_hash = hashlib.md5(query.lower().encode()).hexdigest()
+        cache_key = f'ai_finder_{query_hash}'
+        
+        # Check if we have cached result (valid for 1 hour)
+        cached_result = getattr(settings, 'AI_CACHE', {}).get(cache_key)
+        if cached_result and time.time() - cached_result['timestamp'] < 3600:
+            return JsonResponse(cached_result['data'])
         
         # Check if Gemini is available
         if not GEMINI_AVAILABLE:
@@ -105,11 +116,21 @@ Return ONLY valid JSON array:
         
         ai_tools = json.loads(response_text)
         
-        return JsonResponse({
+        result = {
             'query': query,
             'tools': ai_tools,
             'count': len(ai_tools)
-        })
+        }
+        
+        # Cache the result
+        if not hasattr(settings, 'AI_CACHE'):
+            settings.AI_CACHE = {}
+        settings.AI_CACHE[cache_key] = {
+            'data': result,
+            'timestamp': time.time()
+        }
+        
+        return JsonResponse(result)
             
     except Exception as e:
         error_msg = str(e).lower()
@@ -117,8 +138,8 @@ Return ONLY valid JSON array:
         # Handle different types of API errors
         if '429' in error_msg or 'quota' in error_msg or 'rate limit' in error_msg:
             return JsonResponse({
-                'error': 'API rate limit exceeded. Please wait a moment and try again.',
-                'retry_after': 60,
+                'error': 'Free tier rate limit exceeded. Please wait 5 minutes before trying again.',
+                'retry_after': 300,
                 'type': 'rate_limit'
             }, status=429)
         elif 'api key' in error_msg or 'authentication' in error_msg:
