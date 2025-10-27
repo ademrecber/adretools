@@ -45,8 +45,20 @@ def ai_finder_api(request):
         # Use Gemini API with rate limiting
         genai.configure(api_key=settings.GEMINI_API_KEY)
         
-        # Use gemini-pro (stable free model)
-        model = genai.GenerativeModel('gemini-pro')
+        # List available models and find working one
+        try:
+            models = genai.list_models()
+            available_models = [m.name for m in models if 'generateContent' in m.supported_generation_methods]
+            
+            if not available_models:
+                return JsonResponse({'error': 'No models support generateContent'}, status=503)
+            
+            # Use first available model
+            model_name = available_models[0]
+            model = genai.GenerativeModel(model_name)
+            
+        except Exception as model_error:
+            return JsonResponse({'error': f'Model setup failed: {str(model_error)}'}, status=503)
         
         # Add generation config for better rate limiting
         generation_config = {
