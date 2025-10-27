@@ -1,0 +1,191 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}3D Card Generator - AdreTools{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h2><i class="fas fa-cube"></i> 3D Card Generator</h2>
+                    <p class="mb-0">{% trans "Convert your 2D images to interactive 3D cards" %}</p>
+                </div>
+                <div class="card-body">
+                    <form id="card3dForm" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <!-- Image Upload -->
+                        <div class="mb-3">
+                            <label class="form-label">{% trans "Select Image" %}</label>
+                            <input type="file" class="form-control" id="imageInput" name="image" accept="image/*" required>
+                        </div>
+                        
+                        <!-- File Name -->
+                        <div class="mb-3">
+                            <label class="form-label">{% trans "File Name" %}</label>
+                            <input type="text" class="form-control" name="filename" placeholder="my_3d_card" maxlength="50">
+                            <small class="text-muted">{% trans "Optional - Leave empty for auto-generated name" %}</small>
+                        </div>
+                        
+                        <!-- Style Selection -->
+                        <div class="mb-3">
+                            <label class="form-label">{% trans "Card Style" %}</label>
+                            <select class="form-select" name="style">
+                                <option value="modern">{% trans "Modern" %}</option>
+                                <option value="vintage">{% trans "Vintage" %}</option>
+                                <option value="hologram">{% trans "Hologram" %}</option>
+                                <option value="crystal">{% trans "Crystal" %}</option>
+                                <option value="snow">{% trans "Snow" %}</option>
+                                <option value="fire">{% trans "Fire" %}</option>
+                                <option value="rain">{% trans "Rain" %}</option>
+                                <option value="lightning">{% trans "Lightning" %}</option>
+                                <option value="matrix">{% trans "Matrix" %}</option>
+                                <option value="galaxy">{% trans "Galaxy" %}</option>
+                                <option value="neon">{% trans "Neon" %}</option>
+                                <option value="autumn">{% trans "Autumn" %}</option>
+                                <option value="magic">{% trans "Magic" %}</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Generate Button -->
+                        <button type="submit" class="btn btn-primary" id="generateBtn" disabled>
+                            <i class="fas fa-magic"></i> {% trans "Generate 3D Card" %}
+                        </button>
+                        <small class="text-muted mt-2 d-block" id="uploadStatus">{% trans "Please select an image first" %}</small>
+                    </form>
+                    
+                    <!-- Progress -->
+                    <div id="progress" class="mt-3" style="display: none;">
+                        <div class="progress mb-2">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" id="progressBar" style="width: 0%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <small id="progressText">{% trans "Starting..." %}</small>
+                            <small id="progressPercent">0%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+const imageInput = document.getElementById('imageInput');
+const generateBtn = document.getElementById('generateBtn');
+const uploadStatus = document.getElementById('uploadStatus');
+const progress = document.getElementById('progress');
+const progressBar = document.getElementById('progressBar');
+const progressText = document.getElementById('progressText');
+const progressPercent = document.getElementById('progressPercent');
+
+// Image upload kontrolü
+imageInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        // Dosya tipini kontrol et
+        if (!file.type.startsWith('image/')) {
+            uploadStatus.textContent = '{% trans "Please select a valid image file" %}';
+            uploadStatus.className = 'text-danger mt-2 d-block';
+            generateBtn.disabled = true;
+            return;
+        }
+        
+        // Dosya boyutunu kontrol et (10MB max)
+        if (file.size > 10 * 1024 * 1024) {
+            uploadStatus.textContent = '{% trans "Image size must be less than 10MB" %}';
+            uploadStatus.className = 'text-danger mt-2 d-block';
+            generateBtn.disabled = true;
+            return;
+        }
+        
+        uploadStatus.textContent = `✓ ${file.name} (${(file.size/1024/1024).toFixed(1)}MB)`;
+        uploadStatus.className = 'text-success mt-2 d-block';
+        generateBtn.disabled = false;
+    } else {
+        uploadStatus.textContent = '{% trans "Please select an image first" %}';
+        uploadStatus.className = 'text-muted mt-2 d-block';
+        generateBtn.disabled = true;
+    }
+});
+
+// Form submit
+document.getElementById('card3dForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    
+    // Progress göster
+    progress.style.display = 'block';
+    generateBtn.disabled = true;
+    
+    // Progress simulation
+    let currentProgress = 0;
+    const progressSteps = [
+        {percent: 20, text: '{% trans "Processing image..." %}'},
+        {percent: 40, text: '{% trans "Generating depth map..." %}'},
+        {percent: 60, text: '{% trans "Creating 3D layers..." %}'},
+        {percent: 80, text: '{% trans "Building ADRE file..." %}'},
+        {percent: 95, text: '{% trans "Finalizing..." %}'}
+    ];
+    
+    const updateProgress = (step) => {
+        if (step < progressSteps.length) {
+            const current = progressSteps[step];
+            progressBar.style.width = current.percent + '%';
+            progressText.textContent = current.text;
+            progressPercent.textContent = current.percent + '%';
+            
+            setTimeout(() => updateProgress(step + 1), 800);
+        }
+    };
+    
+    updateProgress(0);
+    
+    fetch('/card3d/generate/', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.headers.get('content-type') && response.headers.get('content-type').includes('application/json')) {
+            return response.json().then(data => {
+                throw new Error(data.error || 'Unknown error');
+            });
+        }
+        return response.blob();
+    })
+    .then(blob => {
+        // 100% complete
+        progressBar.style.width = '100%';
+        progressText.textContent = '{% trans "Download starting..." %}';
+        progressPercent.textContent = '100%';
+        
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        
+        // Get custom filename or use default
+        const customName = document.querySelector('input[name="filename"]').value.trim();
+        const filename = customName ? customName.replace(/[^a-zA-Z0-9_-]/g, '_') : '3d_card';
+        a.download = filename + '.html';
+        
+        a.click();
+        
+        setTimeout(() => {
+            progress.style.display = 'none';
+            generateBtn.disabled = false;
+            progressBar.style.width = '0%';
+        }, 1000);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        progress.style.display = 'none';
+        generateBtn.disabled = false;
+        progressBar.style.width = '0%';
+        alert('{% trans "An error occurred while generating the card" %}');
+    });
+});
+</script>
+{% endblock %}

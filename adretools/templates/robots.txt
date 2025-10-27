@@ -17,6 +17,7 @@ Allow: /qr/
 Allow: /svg/
 Allow: /text/
 Allow: /color/
+Allow: /card3d/
 Allow: /url/
 Allow: /password/
 Allow: /converter/

@@ -18,6 +18,7 @@ def home(request):
         {'name': _('Developer Tools'), 'url': '/dev/', 'icon': 'fas fa-code', 'desc': _('JSON, Hash, Regex, SQL tools')},
         {'name': _('Calculator Tools'), 'url': '/calculator/', 'icon': 'fas fa-calculator', 'desc': _('BMI, Age, World Clock calculators')},
         {'name': _('Random Tools'), 'url': '/random/', 'icon': 'fas fa-dice', 'desc': _('Random number, lucky wheel, lottery system')},
+        {'name': _('3D Card Generator'), 'url': '/card3d/', 'icon': 'fas fa-cube', 'desc': _('Convert 2D images to interactive 3D cards')},
     ]
     return render(request, 'core/home.html', {'tools': tools})
 

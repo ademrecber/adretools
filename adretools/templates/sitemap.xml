@@ -50,6 +50,11 @@
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
     </url>
+    <url>
+        <loc>https://adretools.com/card3d/</loc>
+        <priority>0.9</priority>
+        <changefreq>weekly</changefreq>
+    </url>
     
     <!-- QR SEO URLs -->
     <url>
@@ -157,6 +162,73 @@
     <url>
         <loc>https://adretools.com/color/color-picker/</loc>
         <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+    <!-- 3D Card SEO URLs -->
+    <url>
+        <loc>https://adretools.com/card3d/3d-card-generator/</loc>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/interactive-3d-card/</loc>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/3d-photo-card/</loc>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/business-3d-cards/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/3d-business-card-maker/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/3d-photo-effects/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/interactive-business-cards/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/3d-marketing-cards/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/free-3d-card-generator/</loc>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/free-3d-photo-effects/</loc>
+        <priority>0.9</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/free-business-card-maker/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/free-interactive-cards/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://adretools.com/card3d/adre-format/</loc>
+        <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     

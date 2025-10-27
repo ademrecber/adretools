@@ -42,6 +42,7 @@ urlpatterns += i18n_patterns(
     path('random/', include('random_tools.urls')),
     path('ai/', include('ai_tools.urls')),
     path('blog/', include('blog.urls')),
+    path('card3d/', include('card3d_tools.urls')),
     prefix_default_language=False,
 )
 
