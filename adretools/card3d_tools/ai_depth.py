@@ -1,27 +1,22 @@
-import cv2
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageFilter, ImageEnhance
 
 def generate_depth_map(image):
-    """AI ile depth map oluştur"""
-    try:
-        # MiDaS AI model kullanmayı dene
-        from transformers import pipeline
-        depth_estimator = pipeline('depth-estimation', model='Intel/dpt-large')
-        depth_result = depth_estimator(image)
-        return depth_result['depth']
-    except:
-        # Fallback: OpenCV ile basit depth
-        img_array = np.array(image.convert('RGB'))
-        gray = cv2.cvtColor(img_array, cv2.COLOR_RGB2GRAY)
-        
-        # Edge detection ile fake depth
-        edges = cv2.Canny(gray, 50, 150)
-        depth = cv2.GaussianBlur(edges, (15, 15), 0)
-        
-        # Normalize
-        depth = cv2.normalize(depth, None, 0, 255, cv2.NORM_MINMAX)
-        return Image.fromarray(depth)
+    """Basit depth map oluştur"""
+    # PIL ile basit depth detection
+    img = image.convert('L')  # Grayscale
+    
+    # Edge detection
+    edges = img.filter(ImageFilter.FIND_EDGES)
+    
+    # Blur for depth effect
+    depth = edges.filter(ImageFilter.GaussianBlur(radius=5))
+    
+    # Enhance contrast
+    enhancer = ImageEnhance.Contrast(depth)
+    depth = enhancer.enhance(2.0)
+    
+    return depth
 
 def create_3d_layers(image, depth_map):
     """3D katmanlar oluştur"""
